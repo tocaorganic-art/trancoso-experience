@@ -75,7 +75,7 @@ Responda de forma concisa e útil. Se for sobre cotação/preço, sugira preench
       toast.error("Erro ao processar mensagem");
       setMessages(prev => [...prev, { 
         role: "assistant", 
-        content: "Desculpe, tive um problema. Entre em contato via WhatsApp: (21) 97282-4659" 
+        content: "Desculpe, tive um problema. Entre em contato via eventos@tocaexperience.com.br ou WhatsApp: (21) 97282-4659" 
       }]);
     } finally {
       setIsLoading(false);

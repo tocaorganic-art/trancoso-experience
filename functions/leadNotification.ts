@@ -36,7 +36,7 @@ Deno.serve(async (req) => {
 
     // Enviar email para equipe
     await base44.asServiceRole.integrations.Core.SendEmail({
-      to: 'tocaorganic@gmail.com',
+      to: 'eventos@tocaexperience.com.br',
       subject: `🔥 Novo Lead: ${data.client_name} (Score: ${leadScore})`,
       body: `
         <h2>Novo Lead Recebido!</h2>
@@ -82,7 +82,7 @@ Deno.serve(async (req) => {
         </ul>
 
         <p>Qualquer dúvida:</p>
-        <p>WhatsApp: (21) 97282-4659<br/>Email: tocaorganic@gmail.com</p>
+        <p>WhatsApp: (21) 97282-4659<br/>Email: eventos@tocaexperience.com.br</p>
 
         <p>Atenciosamente,<br/><strong>Toca Experience</strong></p>
       `
