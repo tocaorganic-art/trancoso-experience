@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube, LogOut } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube } from "lucide-react";
+import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
-import { toast } from "sonner";
 import QuickStats from "@/components/admin/QuickStats";
 import QuickGuide from "@/components/admin/QuickGuide";
 import ExportCSV from "@/components/admin/ExportCSV";
@@ -15,43 +14,18 @@ import RevenueChart from "@/components/analytics/RevenueChart";
 import ABTestManager from "@/components/analytics/ABTestManager";
 
 export default function AdminDashboard() {
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
-
-  useEffect(() => {
-    const isAdmin = localStorage.getItem("toca_admin");
-    if (!isAdmin) {
-      toast.error("Acesso não autorizado");
-      navigate(createPageUrl("AdminLogin"));
-    }
-  }, [navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem("toca_admin");
-    toast.success("Logout realizado");
-    navigate(createPageUrl("Home"));
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-700 py-8 shadow-lg">
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between mb-4">
-            <Link to={createPageUrl("Home")}>
-              <Button variant="ghost" className="text-white/70 hover:text-white">
-                <ArrowLeft className="w-4 h-4 mr-2" /> Voltar ao Site
-              </Button>
-            </Link>
-            <Button
-              variant="ghost"
-              className="text-white/70 hover:text-white"
-              onClick={handleLogout}
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              Sair
+          <Link to={createPageUrl("Home")}>
+            <Button variant="ghost" className="text-white/70 hover:text-white mb-4">
+              <ArrowLeft className="w-4 h-4 mr-2" /> Voltar ao Site
             </Button>
-          </div>
+          </Link>
           
           <motion.div
             initial={{ opacity: 0, y: -20 }}
