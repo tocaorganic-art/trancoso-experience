@@ -82,7 +82,7 @@ export default function ProductionChecklist() {
       // 11. Deploy (guia completo disponível)
       newStatus.deploy = true;
 
-      // 12. Report
+      // 12. Report (relatório final completo)
       newStatus.report = true;
 
       setChecklistStatus(newStatus);

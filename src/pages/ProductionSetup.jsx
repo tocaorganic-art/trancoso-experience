@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import ProductionGuide from "@/components/production/ProductionGuide";
 import DeployGuide from "@/components/production/DeployGuide";
+import FinalReport from "@/components/production/FinalReport";
 
 export default function ProductionSetup() {
   return (
@@ -37,6 +38,10 @@ export default function ProductionSetup() {
         
         <div className="mt-12">
           <DeployGuide />
+        </div>
+
+        <div className="mt-12">
+          <FinalReport />
         </div>
       </div>
     </div>
