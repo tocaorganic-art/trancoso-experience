@@ -73,13 +73,15 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
         <CardContent className="p-0">
           {/* Event Image */}
           {evento.imagem && !imageError && (
-            <div className="relative w-full h-48 overflow-hidden">
+            <div className="relative w-full h-48 overflow-hidden group">
               <img
                 src={evento.imagem}
-                alt={evento.nome}
-                className="w-full h-full object-cover"
+                alt={`${evento.nome} - ${evento.data} em ${evento.local}, ${evento.localidade}`}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
                 onError={() => setImageError(true)}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           )}
           
@@ -126,7 +128,7 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
             <div className="flex-1 p-3 sm:p-4">
               {/* Title Desktop */}
               <div className="hidden sm:flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-bold text-white text-lg leading-tight">{evento.nome}</h3>
+                <h3 className="font-bold text-white text-lg leading-tight tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>{evento.nome}</h3>
                 {evento.status === "A confirmar" && (
                   <Badge variant="outline" className="text-xs bg-amber-500/10 text-amber-400 border-amber-500/30 flex-shrink-0">
                     A confirmar
@@ -157,12 +159,13 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="block"
+                    aria-label={`Comprar ingressos para ${evento.nome} com código de desconto toca-organic`}
                   >
                     <Button 
-                      className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold"
+                      className="w-full bg-gradient-to-r from-yellow-500 via-yellow-600 to-orange-500 hover:from-yellow-600 hover:via-orange-500 hover:to-orange-600 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
                       size="sm"
                     >
-                      🎟️ COMPRE AGORA (código: toca-organic)
+                      🎟️ COMPRE AGORA <span className="text-xs font-normal ml-1">(código: toca-organic)</span>
                     </Button>
                   </a>
                 </div>
