@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, PartyPopper, Sparkles, Share2, X, Instagram } from "lucide-react";
+import { MapPin, Calendar, Clock, PartyPopper, Sparkles, Share2, X, Instagram } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,6 +28,7 @@ const LOCALIDADE_ICONS = {
 export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
   const [showShare, setShowShare] = useState(false);
   const [showStoryGenerator, setShowStoryGenerator] = useState(false);
+  const [imageError, setImageError] = useState(false);
   // Parse date correctly to avoid timezone issues
   const [year, month, day] = evento.data.split('-').map(Number);
   const eventDate = new Date(year, month - 1, day);
@@ -70,6 +71,18 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
       }}
       >
         <CardContent className="p-0">
+          {/* Event Image */}
+          {evento.imagem && !imageError && (
+            <div className="relative w-full h-48 overflow-hidden">
+              <img
+                src={evento.imagem}
+                alt={evento.nome}
+                className="w-full h-full object-cover"
+                onError={() => setImageError(true)}
+              />
+            </div>
+          )}
+          
           <div className="flex flex-col sm:flex-row">
             {/* Date + Title Header Mobile */}
             <div className="sm:hidden flex items-center gap-3 p-3 border-b border-gray-800/50">
@@ -134,6 +147,25 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
 
               {evento.detalhes && (
                 <p className="text-gray-500 text-xs sm:text-sm mb-2 line-clamp-2">{evento.detalhes}</p>
+              )}
+
+              {/* Buy Button */}
+              {evento.link_compra && (
+                <div className="mb-3">
+                  <a 
+                    href={evento.link_compra} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <Button 
+                      className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold"
+                      size="sm"
+                    >
+                      🎟️ COMPRE AGORA (código: toca-organic)
+                    </Button>
+                  </a>
+                </div>
               )}
 
               <div className="flex items-center justify-between gap-2">
