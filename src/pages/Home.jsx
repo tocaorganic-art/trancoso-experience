@@ -21,7 +21,6 @@ import ABTestTracker from "@/components/tracking/ABTestTracker";
 // Lazy load non-critical components
 const PreSaveBanner = React.lazy(() => import("@/components/presave/PreSaveBanner"));
 const StickyPlayer = React.lazy(() => import("@/components/player/StickyPlayer"));
-const SmartChatbot = React.lazy(() => import("@/components/ai/SmartChatbot"));
 const FixedLogo = React.lazy(() => import("@/components/layout/FixedLogo"));
 const RotatingBanner = React.lazy(() => import("@/components/layout/RotatingBanner"));
 const FloatingSocialBar = React.lazy(() => import("@/components/layout/FloatingSocialBar"));
@@ -819,11 +818,6 @@ ${formData.mensagem || "Sem mensagem adicional"}`);
         <StickyPlayer />
       </React.Suspense>
 
-      {/* Smart AI Chatbot */}
-      <React.Suspense fallback={null}>
-        <SmartChatbot />
-      </React.Suspense>
-
       {/* Floating Social Bar */}
       <React.Suspense fallback={null}>
         <FloatingSocialBar />
@@ -833,6 +827,6 @@ ${formData.mensagem || "Sem mensagem adicional"}`);
       <React.Suspense fallback={null}>
         <NewsletterPopup />
       </React.Suspense>
-                      </div>
+            </div>
       );
       }
