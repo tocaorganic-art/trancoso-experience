@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { base44 } from "@/api/base44Client";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import MultiStepQuotationForm from "@/components/ai/MultiStepQuotationForm";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function Cotacao() {
   const { trackFormSubmission, trackWhatsAppClick } = useTracking();
@@ -354,13 +355,54 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`);
               />
             </div>
 
+            {/* LGPD Consent */}
+            <div className="space-y-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h4 className="font-semibold text-gray-800 text-sm">Consentimento e Termos</h4>
+              
+              <label className="flex items-start gap-3 cursor-pointer">
+                <Checkbox
+                  checked={consents.privacy}
+                  onCheckedChange={(checked) => setConsents({...consents, privacy: checked})}
+                />
+                <span className="text-sm text-gray-700">
+                  Concordo com a <Link to={createPageUrl("PoliticaPrivacidade")} target="_blank" className="text-blue-600 underline">Política de Privacidade</Link> *
+                </span>
+              </label>
+
+              <label className="flex items-start gap-3 cursor-pointer">
+                <Checkbox
+                  checked={consents.terms}
+                  onCheckedChange={(checked) => setConsents({...consents, terms: checked})}
+                />
+                <span className="text-sm text-gray-700">
+                  Concordo com os <Link to={createPageUrl("TermosServico")} target="_blank" className="text-blue-600 underline">Termos de Serviço</Link> *
+                </span>
+              </label>
+
+              <label className="flex items-start gap-3 cursor-pointer">
+                <Checkbox
+                  checked={consents.marketing}
+                  onCheckedChange={(checked) => setConsents({...consents, marketing: checked})}
+                />
+                <span className="text-sm text-gray-700">
+                  Desejo receber emails e mensagens sobre eventos, novidades e ofertas especiais
+                </span>
+              </label>
+            </div>
+
             <Button 
               type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white py-6 text-lg rounded-full"
+              disabled={isSubmitting || !consents.privacy || !consents.terms}
+              className="w-full bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white py-6 text-lg rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "ENVIANDO..." : "SOLICITAR COTAÇÃO"}
             </Button>
+            
+            {(!consents.privacy || !consents.terms) && (
+              <p className="text-xs text-red-600 text-center">
+                * Você precisa concordar com a Política de Privacidade e Termos de Serviço
+              </p>
+            )}
           </form>
         </motion.div>
       </div>
