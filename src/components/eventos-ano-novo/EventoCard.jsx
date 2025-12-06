@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Calendar, Clock, PartyPopper, Sparkles, Share2, X, Instagram, ExternalLink, Ticket } from "lucide-react";
+import { MapPin, PartyPopper, Sparkles, Share2, X, Instagram } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { motion, AnimatePresence } from "framer-motion";
@@ -133,48 +133,7 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
               </div>
 
               {evento.detalhes && (
-                <p className="text-gray-500 text-xs sm:text-sm mb-3 line-clamp-2">{evento.detalhes}</p>
-              )}
-
-              {/* Imagem do Evento */}
-              {evento.imagem_url && (
-                <div className="mb-3 rounded-lg overflow-hidden">
-                  <img 
-                    src={evento.imagem_url} 
-                    alt={evento.nome}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-              )}
-
-              {/* Botão de Compra */}
-              {evento.ticket_url && (
-                <a 
-                  href={evento.ticket_url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block mb-3"
-                >
-                  <Button className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-bold py-3 text-sm sm:text-base shadow-lg">
-                    <Ticket className="w-4 h-4 mr-2" />
-                    COMPRE AGORA
-                    <span className="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded">código: toca-organic</span>
-                  </Button>
-                </a>
-              )}
-
-              {/* Mapa do Local */}
-              {evento.local.includes("Fly Club") && (
-                <a
-                  href="https://maps.google.com/?q=Fly+Club+Trancoso+Praia+dos+Nativos"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300 mb-3 transition-colors"
-                >
-                  <MapPin className="w-3 h-3" />
-                  Ver no Google Maps
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                <p className="text-gray-500 text-xs sm:text-sm mb-2 line-clamp-2">{evento.detalhes}</p>
               )}
 
               <div className="flex items-center justify-between gap-2">
