@@ -7,7 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon } from "lucide-react";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 import VideoBackground from "@/components/hero/VideoBackground";
 import OptimizedImage from "@/components/ui/OptimizedImage";
@@ -170,74 +171,74 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`);
                           <FixedLogo />
                         </React.Suspense>
 
-                      {/* Sticky Categories Bar - Acima do Hero */}
+                      {/* Sticky Categories Bar - Otimizado Mobile */}
                       <div 
                         id="categories-bar"
                         className="sticky top-0 z-50 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 border-b border-gray-200 shadow-sm backdrop-blur-sm bg-opacity-95"
                       >
-                        <div className="container mx-auto px-4 py-3 pl-16 md:pl-20">
-                <div className="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide">
+                        <div className="container mx-auto px-2 py-1.5 pl-14 md:px-4 md:py-3 md:pl-20">
+                <div className="flex flex-wrap justify-center gap-1 md:gap-2 lg:gap-3 overflow-x-auto scrollbar-hide max-h-[50vh] md:max-h-none">
               <RouterLink to={createPageUrl("Ethos")}>
                 <Button 
                   variant="ghost" 
                   size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-[10px] py-1 px-2 md:text-sm md:py-2 md:px-3 whitespace-nowrap h-auto"
                 >
-                  <Sparkles className="mr-1.5 h-4 w-4" /> ETHOS
+                  <Sparkles className="mr-1 h-3 w-3 md:mr-1.5 md:h-4 md:w-4" /> ETHOS
                 </Button>
               </RouterLink>
               <RouterLink to={createPageUrl("Eventos")}>
                 <Button 
                   variant="ghost" 
                   size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-[10px] py-1 px-2 md:text-sm md:py-2 md:px-3 whitespace-nowrap h-auto"
                 >
-                  <Calendar className="mr-1.5 h-4 w-4" /> EVENTOS
+                  <Calendar className="mr-1 h-3 w-3 md:mr-1.5 md:h-4 md:w-4" /> EVENTOS
                 </Button>
               </RouterLink>
               <RouterLink to={createPageUrl("Curadoria")}>
                 <Button 
                   variant="ghost" 
                   size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-[10px] py-1 px-2 md:text-sm md:py-2 md:px-3 whitespace-nowrap h-auto"
                 >
-                  <Newspaper className="mr-1.5 h-4 w-4" /> CURADORIA
+                  <Newspaper className="mr-1 h-3 w-3 md:mr-1.5 md:h-4 md:w-4" /> CURADORIA
                 </Button>
               </RouterLink>
               <RouterLink to={createPageUrl("Cotacao")}>
                 <Button 
                   variant="ghost" 
                   size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-[10px] py-1 px-2 md:text-sm md:py-2 md:px-3 whitespace-nowrap h-auto"
                 >
-                  <CalendarIcon className="mr-1.5 h-4 w-4" /> COTAÇÃO
+                  <CalendarIcon className="mr-1 h-3 w-3 md:mr-1.5 md:h-4 md:w-4" /> COTAÇÃO
                 </Button>
               </RouterLink>
               <RouterLink to={createPageUrl("Discografia")}>
                 <Button 
                   variant="ghost" 
                   size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-[10px] py-1 px-2 md:text-sm md:py-2 md:px-3 whitespace-nowrap h-auto"
                 >
-                  <Disc3 className="mr-1.5 h-4 w-4" /> DISCOGRAFIA
+                  <Disc3 className="mr-1 h-3 w-3 md:mr-1.5 md:h-4 md:w-4" /> DISCOGRAFIA
                 </Button>
               </RouterLink>
               <RouterLink to={createPageUrl("EventosAnoNovo")}>
                                     <Button 
                                       variant="ghost" 
                                       size="sm"
-                                      className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                                      className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-[10px] py-1 px-2 md:text-sm md:py-2 md:px-3 whitespace-nowrap h-auto"
                                     >
-                                      <PartyPopper className="mr-1.5 h-4 w-4" /> ANO NOVO/TRANCOSO/CARAÍVA/ARRAIAL
+                                      <PartyPopper className="mr-1 h-3 w-3 md:mr-1.5 md:h-4 md:w-4" /> ANO NOVO
                                     </Button>
                                   </RouterLink>
               <RouterLink to={createPageUrl("LocacaoSom")}>
                 <Button 
                   variant="ghost" 
                   size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-[10px] py-1 px-2 md:text-sm md:py-2 md:px-3 whitespace-nowrap h-auto"
                 >
-                  <Music className="mr-1.5 h-4 w-4" /> LOCAÇÃO DE SOM
+                  <Music className="mr-1 h-3 w-3 md:mr-1.5 md:h-4 md:w-4" /> SOM
                 </Button>
               </RouterLink>
             </div>
