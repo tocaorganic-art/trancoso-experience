@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon } from "lucide-react";
+import LGPDConsent from "@/components/compliance/LGPDConsent";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -39,12 +40,35 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [consents, setConsents] = useState({
+    privacy: false,
+    terms: false,
+    marketing: false
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validar consentimentos LGPD
+    if (!consents.privacy || !consents.terms) {
+      toast.error("Você precisa aceitar a Política de Privacidade e os Termos de Serviço para continuar.");
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
+      // Registrar consentimento LGPD
+      await base44.entities.UserConsent.create({
+        user_email: formData.email,
+        email_marketing_consent: consents.marketing,
+        whatsapp_consent: consents.marketing,
+        sms_consent: consents.marketing,
+        phone_consent: true,
+        consent_date: new Date().toISOString(),
+        ip_address: 'web'
+      });
+
       // Criar lead no banco via API
       const response = await base44.functions.invoke('leadNotification', {
         client_name: formData.nome,
@@ -95,6 +119,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`);
         });
 
         setFormData({ nome: "", email: "", telefone: "", tipoEvento: "", data: "", orcamento: "", mensagem: "" });
+        setConsents({ privacy: false, terms: false, marketing: false });
         setErrors({});
       } else {
         toast.error("Erro ao enviar proposta. Tente novamente.");

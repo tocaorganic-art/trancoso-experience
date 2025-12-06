@@ -61,7 +61,8 @@ export default function ProductionChecklist() {
       newStatus.chatbot = chats.length >= 2;
 
       // 4. Validar UserConsent (LGPD)
-      newStatus.lgpd = true; // Entity exists
+      const consents = await base44.entities.UserConsent.list();
+      newStatus.lgpd = consents.length >= 2;
 
       // 5. Menu mobile (manual)
       newStatus.menu = true;
