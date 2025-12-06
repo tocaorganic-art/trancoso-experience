@@ -60,7 +60,7 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
     >
       <Card className={`
         bg-[#0A0A0F] border-l-4 overflow-hidden
-        hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-300
+        hover:shadow-2xl hover:shadow-pink-500/10 hover:scale-[1.01] transition-all duration-300
         ${isReveillon ? 'border-l-yellow-400 ring-1 ring-yellow-500/30' : 
           isDayAfter ? 'border-l-purple-400' : 'border-l-gradient-to-b from-orange-500 to-pink-500'}
         border border-gray-800/50

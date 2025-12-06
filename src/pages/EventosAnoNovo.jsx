@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import { motion } from "framer-motion";
-import { Calendar, Sparkles, PartyPopper, Loader2, ArrowLeft } from "lucide-react";
+import { Calendar, MapPin, Filter, Sparkles, PartyPopper, Loader2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
@@ -35,6 +35,39 @@ export default function EventosAnoNovo() {
 
   const isReveillon = (data) => data === "2025-12-31";
   const isDayAfter = (data) => data === "2026-01-01" || data === "2026-01-02";
+
+  // Dynamic Open Graph meta tags
+  useEffect(() => {
+    const totalEventos = eventosFiltrados.length;
+    
+    document.title = `Réveillon 2025/2026 - ${totalEventos} Eventos em Trancoso, Caraíva e Arraial d'Ajuda | Toca Experience`;
+    
+    const firstEventImage = eventosFiltrados[0]?.imagem || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png";
+    
+    const metaTags = [
+      { property: "og:title", content: `Réveillon 2025/2026 - ${totalEventos} Eventos | Toca Experience` },
+      { property: "og:description", content: `Confira ${totalEventos} eventos de Ano Novo em Trancoso, Caraíva e Arraial d'Ajuda. Open bar premium, DJs internacionais e experiências inesquecíveis.` },
+      { property: "og:image", content: firstEventImage },
+      { property: "og:url", content: window.location.href },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: `Réveillon 2025/2026 - Toca Experience` },
+      { name: "twitter:description", content: `${totalEventos} eventos em Trancoso, Caraíva e Arraial d'Ajuda` },
+      { name: "twitter:image", content: firstEventImage }
+    ];
+
+    metaTags.forEach(tag => {
+      const attr = tag.property ? 'property' : 'name';
+      const value = tag.property || tag.name;
+      let metaTag = document.querySelector(`meta[${attr}="${value}"]`);
+      if (!metaTag) {
+        metaTag = document.createElement('meta');
+        metaTag.setAttribute(attr, value);
+        document.head.appendChild(metaTag);
+      }
+      metaTag.content = tag.content;
+    });
+  }, [eventosFiltrados]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a0a1f] via-[#0d0d1a] to-[#050510]">
