@@ -1,11 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Calendar } from "lucide-react";
+import { ArrowLeft, Calendar, ExternalLink, PartyPopper } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
+import { useQuery } from "@tanstack/react-query";
+import { base44 } from "@/api/base44Client";
+import EventoCard from "@/components/eventos-ano-novo/EventoCard";
 
 export default function Eventos() {
+  const { data: eventosAyumar, isLoading } = useQuery({
+    queryKey: ['eventos-ayumar'],
+    queryFn: async () => {
+      const eventos = await base44.entities.EventoAnoNovo.filter({ 
+        nome: "Réveillon Ayumar 2026" 
+      });
+      return eventos.sort((a, b) => new Date(a.data) - new Date(b.data));
+    }
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 text-gray-800">
       {/* Header */}
@@ -35,6 +48,42 @@ export default function Eventos() {
           </motion.div>
         </div>
       </div>
+
+      {/* Réveillon Ayumar 2026 Section */}
+      {eventosAyumar && eventosAyumar.length > 0 && (
+        <div className="container mx-auto px-6 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <PartyPopper className="w-6 h-6 text-yellow-500" />
+                <h2 className="text-2xl font-bold text-gray-800">Réveillon Ayumar 2026</h2>
+              </div>
+              <Link to={createPageUrl("EventosAnoNovo")}>
+                <Button variant="outline" size="sm">
+                  Ver todos os eventos <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+            <p className="text-gray-600 mb-4">
+              🎉 Pacote completo de 4 dias no Fly Club Trancoso com open bar premium
+            </p>
+            <div className="grid gap-4">
+              {eventosAyumar.map((evento, index) => (
+                <EventoCard 
+                  key={evento.id} 
+                  evento={evento} 
+                  index={index}
+                  isReveillon={evento.data === "2025-12-31"}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* Iframe Container */}
       <div className="w-full" style={{ height: "calc(100vh - 180px)" }}>
