@@ -12,6 +12,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
 import TermosServico from './pages/TermosServico';
 import Documentacao from './pages/Documentacao';
+import AdminLogin from './pages/AdminLogin';
 import __Layout from './Layout.jsx';
 
 
@@ -30,6 +31,7 @@ export const PAGES = {
     "PoliticaPrivacidade": PoliticaPrivacidade,
     "TermosServico": TermosServico,
     "Documentacao": Documentacao,
+    "AdminLogin": AdminLogin,
 }
 
 export const pagesConfig = {

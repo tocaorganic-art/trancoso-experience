@@ -14,7 +14,22 @@ import RevenueChart from "@/components/analytics/RevenueChart";
 import ABTestManager from "@/components/analytics/ABTestManager";
 
 export default function AdminDashboard() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
+
+  useEffect(() => {
+    const isAdmin = localStorage.getItem("toca_admin");
+    if (!isAdmin) {
+      toast.error("Acesso não autorizado");
+      navigate(createPageUrl("AdminLogin"));
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("toca_admin");
+    toast.success("Logout realizado");
+    navigate(createPageUrl("Home"));
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
