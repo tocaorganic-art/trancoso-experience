@@ -7,7 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon } from "lucide-react";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 import VideoBackground from "@/components/hero/VideoBackground";
 import OptimizedImage from "@/components/ui/OptimizedImage";
@@ -44,79 +45,62 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
-      const tipoEventoLabels = {
-        casamento: "Casamento",
-        aniversario: "Aniversário",
-        corporativo: "Evento Corporativo",
-        festa_privada: "Festa Privada",
-        club: "Club / Boate",
-        festival: "Festival",
-        sunset: "Sunset / Pool Party",
-        reveillon: "Réveillon",
-        lancamento: "Lançamento de Produto",
-        outro: "Outro"
-      };
-
-      const orcamentoLabels = {
-        ate_5k: "Até R$ 5.000",
-        "5k_10k": "R$ 5.000 - R$ 10.000",
-        "10k_20k": "R$ 10.000 - R$ 20.000",
-        "20k_50k": "R$ 20.000 - R$ 50.000",
-        acima_50k: "Acima de R$ 50.000",
-        a_combinar: "A combinar"
-      };
-
-      const emailBody = `
-Nova proposta recebida via Toca Experience!
-
-📋 DADOS DO CLIENTE:
-Nome: ${formData.nome}
-E-mail: ${formData.email}
-Telefone: ${formData.telefone}
-
-🎉 DETALHES DO EVENTO:
-Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
-Data: ${formData.data || "Não informada"}
-Orçamento: ${orcamentoLabels[formData.orcamento] || "Não informado"}
-
-💬 MENSAGEM:
-${formData.mensagem || "Nenhuma mensagem adicional"}
-
----
-Enviado automaticamente pelo site Toca Experience
-      `.trim();
-
-      // Monta mensagem para WhatsApp
-      const whatsappMessage = encodeURIComponent(`*Nova Proposta - Toca Experience*
-
-*📋 DADOS DO CLIENTE:*
-Nome: ${formData.nome}
-E-mail: ${formData.email}
-Telefone: ${formData.telefone}
-
-*🎉 DETALHES DO EVENTO:*
-Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
-Data: ${formData.data || "Não informada"}
-Orçamento: ${orcamentoLabels[formData.orcamento] || "Não informado"}
-
-*💬 MENSAGEM:*
-${formData.mensagem || "Nenhuma mensagem adicional"}`);
-
-      // Rastrear conversão
-      trackFormSubmission(formData);
-
-      // Abre WhatsApp com a mensagem
-      trackWhatsAppClick();
-      window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
-
-      toast.success("Proposta enviada!", {
-        description: "Email enviado e WhatsApp aberto para confirmação."
+      // Criar lead no banco via API
+      const response = await base44.functions.invoke('leadNotification', {
+        client_name: formData.nome,
+        client_email: formData.email,
+        client_phone: formData.telefone,
+        event_type: formData.tipoEvento,
+        event_date: formData.data,
+        budget_requested: formData.orcamento,
+        message: formData.mensagem
       });
 
-      setFormData({ nome: "", email: "", telefone: "", tipoEvento: "", data: "", orcamento: "", mensagem: "" });
-      setErrors({});
+      if (response.data.success) {
+        // Rastrear conversão
+        trackFormSubmission(formData);
+        trackWhatsAppClick();
+
+        // Abrir WhatsApp
+        const tipoEventoLabels = {
+          casamento: "Casamento",
+          aniversario: "Aniversário",
+          corporativo: "Evento Corporativo",
+          festa_privada: "Festa Privada",
+          club: "Club / Boate",
+          festival: "Festival",
+          sunset: "Sunset / Pool Party",
+          reveillon: "Réveillon",
+          lancamento: "Lançamento de Produto",
+          outro: "Outro"
+        };
+
+        const whatsappMessage = encodeURIComponent(`*Nova Proposta - Toca Experience*
+
+*📋 CLIENTE:* ${formData.nome}
+*📧 Email:* ${formData.email}
+*📱 Telefone:* ${formData.telefone}
+
+*🎉 EVENTO:* ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
+*📅 Data:* ${formData.data || "Não informada"}
+*💰 Orçamento:* ${formData.orcamento || "A combinar"}
+
+*💬 Mensagem:*
+${formData.mensagem || "Sem mensagem adicional"}`);
+
+        window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
+
+        toast.success("Proposta enviada!", {
+          description: "Você receberá um retorno em até 2 horas."
+        });
+
+        setFormData({ nome: "", email: "", telefone: "", tipoEvento: "", data: "", orcamento: "", mensagem: "" });
+        setErrors({});
+      } else {
+        toast.error("Erro ao enviar proposta. Tente novamente.");
+      }
     } catch (error) {
-      toast.error("Erro ao preparar proposta. Tente novamente.");
+      toast.error("Erro ao enviar proposta. Tente novamente.");
     } finally {
       setIsSubmitting(false);
     }

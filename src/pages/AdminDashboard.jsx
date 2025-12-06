@@ -13,7 +13,9 @@ import ConversionFunnel from "@/components/analytics/ConversionFunnel";
 import RevenueChart from "@/components/analytics/RevenueChart";
 import ABTestManager from "@/components/analytics/ABTestManager";
 
-export default function AdminDashboard() {
+import ProtectedRoute from "@/components/admin/ProtectedRoute";
+
+function AdminDashboardContent() {
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
@@ -133,5 +135,13 @@ export default function AdminDashboard() {
         <QuickGuide />
       </div>
     </div>
+  );
+}
+
+export default function AdminDashboard() {
+  return (
+    <ProtectedRoute>
+      <AdminDashboardContent />
+    </ProtectedRoute>
   );
 }
