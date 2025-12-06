@@ -13,6 +13,7 @@ import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
 import TermosServico from './pages/TermosServico';
 import Documentacao from './pages/Documentacao';
 import TestingDashboard from './pages/TestingDashboard';
+import AdminLogin from './pages/AdminLogin';
 import __Layout from './Layout.jsx';
 
 
@@ -32,6 +33,7 @@ export const PAGES = {
     "TermosServico": TermosServico,
     "Documentacao": Documentacao,
     "TestingDashboard": TestingDashboard,
+    "AdminLogin": AdminLogin,
 }
 
 export const pagesConfig = {
