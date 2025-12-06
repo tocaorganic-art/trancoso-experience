@@ -11,6 +11,7 @@ import Cotacao from './pages/Cotacao';
 import AdminDashboard from './pages/AdminDashboard';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
 import TermosServico from './pages/TermosServico';
+import Documentacao from './pages/Documentacao';
 import __Layout from './Layout.jsx';
 
 
@@ -28,6 +29,7 @@ export const PAGES = {
     "AdminDashboard": AdminDashboard,
     "PoliticaPrivacidade": PoliticaPrivacidade,
     "TermosServico": TermosServico,
+    "Documentacao": Documentacao,
 }
 
 export const pagesConfig = {
