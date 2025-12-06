@@ -14,6 +14,7 @@ import TermosServico from './pages/TermosServico';
 import Documentacao from './pages/Documentacao';
 import TestingDashboard from './pages/TestingDashboard';
 import AdminLogin from './pages/AdminLogin';
+import ProductionChecklist from './pages/ProductionChecklist';
 import __Layout from './Layout.jsx';
 
 
@@ -34,6 +35,7 @@ export const PAGES = {
     "Documentacao": Documentacao,
     "TestingDashboard": TestingDashboard,
     "AdminLogin": AdminLogin,
+    "ProductionChecklist": ProductionChecklist,
 }
 
 export const pagesConfig = {
