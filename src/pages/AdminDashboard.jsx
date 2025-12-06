@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 import QuickStats from "@/components/admin/QuickStats";
 import QuickGuide from "@/components/admin/QuickGuide";
 import ExportCSV from "@/components/admin/ExportCSV";
@@ -36,11 +37,21 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-700 py-8 shadow-lg">
         <div className="container mx-auto px-6">
-          <Link to={createPageUrl("Home")}>
-            <Button variant="ghost" className="text-white/70 hover:text-white mb-4">
-              <ArrowLeft className="w-4 h-4 mr-2" /> Voltar ao Site
+          <div className="flex items-center justify-between mb-4">
+            <Link to={createPageUrl("Home")}>
+              <Button variant="ghost" className="text-white/70 hover:text-white">
+                <ArrowLeft className="w-4 h-4 mr-2" /> Voltar ao Site
+              </Button>
+            </Link>
+            <Button
+              variant="ghost"
+              className="text-white/70 hover:text-white"
+              onClick={handleLogout}
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Sair
             </Button>
-          </Link>
+          </div>
           
           <motion.div
             initial={{ opacity: 0, y: -20 }}
