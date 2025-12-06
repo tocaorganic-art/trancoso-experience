@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube } from "lucide-react";
+import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube, PlayCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
@@ -118,15 +118,21 @@ function AdminDashboardContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-8 grid md:grid-cols-3 gap-4"
+          className="mt-8 grid md:grid-cols-4 gap-4"
         >
+          <Link to={createPageUrl("GettingStarted")}>
+            <Button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-6">
+              <PlayCircle className="w-5 h-5 mr-2" />
+              Primeiros Passos
+            </Button>
+          </Link>
           <Button className="bg-gradient-to-r from-green-600 to-green-700 text-white py-6">
             <Mail className="w-5 h-5 mr-2" />
-            Enviar Email Marketing
+            Email Marketing
           </Button>
           <Button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-6">
             <MessageCircle className="w-5 h-5 mr-2" />
-            Enviar WhatsApp Massivo
+            WhatsApp Massivo
           </Button>
           <ExportCSV />
         </motion.div>

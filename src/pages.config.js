@@ -16,6 +16,7 @@ import TestingDashboard from './pages/TestingDashboard';
 import AdminLogin from './pages/AdminLogin';
 import ProductionChecklist from './pages/ProductionChecklist';
 import ProductionSetup from './pages/ProductionSetup';
+import GettingStarted from './pages/GettingStarted';
 import __Layout from './Layout.jsx';
 
 
@@ -38,6 +39,7 @@ export const PAGES = {
     "AdminLogin": AdminLogin,
     "ProductionChecklist": ProductionChecklist,
     "ProductionSetup": ProductionSetup,
+    "GettingStarted": GettingStarted,
 }
 
 export const pagesConfig = {
