@@ -54,7 +54,11 @@ export default function ProductionChecklist() {
 
       // 3. Validar ABTest
       const tests = await base44.entities.ABTest.list();
-      newStatus.abtests = tests.length > 0;
+      newStatus.abtests = tests.length >= 5;
+
+      // 4. Validar ChatInteraction (chatbot)
+      const chats = await base44.entities.ChatInteraction.list();
+      newStatus.chatbot = chats.length >= 2;
 
       // 4. Validar UserConsent (LGPD)
       newStatus.lgpd = true; // Entity exists
@@ -62,10 +66,7 @@ export default function ProductionChecklist() {
       // 5. Menu mobile (manual)
       newStatus.menu = true;
 
-      // 6. Chatbot (manual)
-      newStatus.chatbot = true;
-
-      // 7. Dashboard (manual)
+      // 6. Dashboard (manual)
       newStatus.dashboard = true;
 
       // 8. Triggers (aguarda GitHub Actions)
