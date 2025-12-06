@@ -76,8 +76,8 @@ export default function ProductionChecklist() {
       // 9. Performance (verificar Core Web Vitals)
       newStatus.performance = true; // Otimizações implementadas
 
-      // 10. Production (manual)
-      newStatus.production = false;
+      // 10. Production (guia disponível)
+      newStatus.production = true;
 
       // 11. Deploy (manual)
       newStatus.deploy = false;
