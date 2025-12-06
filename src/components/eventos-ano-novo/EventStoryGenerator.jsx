@@ -9,7 +9,9 @@ export default function EventStoryGenerator({ evento, isOpen, onClose }) {
   const canvasRef = useRef(null);
   const [generating, setGenerating] = useState(false);
 
-  const eventDate = new Date(evento.data);
+  // Parse date correctly to avoid timezone issues
+  const [year, month, day] = evento.data.split('-').map(Number);
+  const eventDate = new Date(year, month - 1, day);
   const dayOfMonth = format(eventDate, "dd");
   const monthName = format(eventDate, "MMMM", { locale: ptBR });
   const yearNum = format(eventDate, "yyyy");
@@ -177,8 +179,42 @@ export default function EventStoryGenerator({ evento, isOpen, onClose }) {
     link.click();
   };
 
-  const openInstagram = () => {
-    window.open('https://www.instagram.com/', '_blank');
+  const shareToInstagram = async () => {
+    await generateImage();
+    const canvas = canvasRef.current;
+    
+    try {
+      // Convert canvas to blob
+      canvas.toBlob(async (blob) => {
+        const file = new File([blob], `${evento.nome.replace(/\s+/g, '-')}-story.png`, { type: 'image/png' });
+        
+        // Check if Web Share API is available
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: evento.nome,
+              text: `${evento.nome} - ${dayOfMonth} de ${monthName} de ${yearNum} 🎉`
+            });
+          } catch (error) {
+            if (error.name !== 'AbortError') {
+              // Fallback: download image
+              downloadImage();
+            }
+          }
+        } else {
+          // Fallback: download and open Instagram
+          downloadImage();
+          setTimeout(() => {
+            window.open('https://www.instagram.com/', '_blank');
+          }, 500);
+        }
+      }, 'image/png');
+    } catch (error) {
+      console.error('Share error:', error);
+      // Final fallback: just download
+      downloadImage();
+    }
   };
 
   // Helper function for rounded rectangles
@@ -250,7 +286,7 @@ export default function EventStoryGenerator({ evento, isOpen, onClose }) {
               Baixar Imagem
             </Button>
             <Button
-              onClick={openInstagram}
+              onClick={shareToInstagram}
               variant="outline"
               className="bg-gradient-to-r from-purple-500 to-pink-500 border-0 text-white hover:opacity-90"
             >
