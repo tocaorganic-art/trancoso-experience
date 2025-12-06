@@ -4,6 +4,7 @@ import { ArrowLeft, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import ProductionGuide from "@/components/production/ProductionGuide";
+import DeployGuide from "@/components/production/DeployGuide";
 
 export default function ProductionSetup() {
   return (
@@ -33,6 +34,10 @@ export default function ProductionSetup() {
 
       <div className="container mx-auto px-6 py-12 max-w-6xl">
         <ProductionGuide />
+        
+        <div className="mt-12">
+          <DeployGuide />
+        </div>
       </div>
     </div>
   );
