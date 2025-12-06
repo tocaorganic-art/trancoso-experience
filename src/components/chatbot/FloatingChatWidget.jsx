@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, X, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -93,7 +93,7 @@ Responda de forma amigável, objetiva e útil em até 2 parágrafos. Se for sobr
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1 }}
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed bottom-24 right-6 z-50"
       >
         <Button
           onClick={() => setIsOpen(!isOpen)}
