@@ -24,7 +24,7 @@ export default function FinalReport() {
       color: "purple",
       items: [
         "✅ 8 backend functions (Deno Deploy)",
-        "✅ leadNotification - notifica leads via email",
+        "✅ leadNotification - notifica leads via eventos@tocaexperience.com.br",
         "✅ adminAuth - autenticação JWT",
         "✅ chatbotQualify - qualifica leads via IA",
         "✅ emailMarketing - sequências automatizadas",

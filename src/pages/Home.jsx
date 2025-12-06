@@ -782,7 +782,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`);
             Trancoso • Caraíva • Arraial d'Ajuda • Porto Seguro • Brasil
           </p>
           <p className="text-gray-500 text-sm mb-4">
-            <a href="mailto:tocaorganic@gmail.com" className="hover:text-gray-800 transition-colors">tocaorganic@gmail.com</a>
+            <a href="mailto:eventos@tocaexperience.com.br" className="hover:text-gray-800 transition-colors">eventos@tocaexperience.com.br</a>
           </p>
           <div className="flex justify-center gap-4 mb-4">
             <a href="https://www.instagram.com/tonyismusic" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-800 transition-colors" title="Instagram Tony">

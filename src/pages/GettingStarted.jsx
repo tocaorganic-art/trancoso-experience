@@ -276,7 +276,8 @@ export default function GettingStarted() {
               <div>
                 <h4 className="font-semibold mb-2">Suporte:</h4>
                 <ul className="text-gray-600 space-y-1">
-                  <li>📧 Email: tocaorganic@gmail.com</li>
+                  <li>📧 Eventos: eventos@tocaexperience.com.br</li>
+                  <li>📧 Suporte: contato@tocaexperience.com.br</li>
                   <li>💬 WhatsApp: +55 21 99773-1321</li>
                   <li>📱 Instagram: @tonyismusic</li>
                 </ul>
