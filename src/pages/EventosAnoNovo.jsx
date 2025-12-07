@@ -11,6 +11,8 @@ import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import EventoCard from "@/components/eventos-ano-novo/EventoCard";
 
+const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
+
 const LOCALIDADES = ["Todas", "Caraíva", "Trancoso", "Arraial d'Ajuda"];
 
 export default function EventosAnoNovo() {
@@ -24,6 +26,12 @@ export default function EventosAnoNovo() {
   const eventosFiltrados = filtroLocalidade === "Todas" 
     ? eventos 
     : eventos.filter(e => e.localidade === filtroLocalidade);
+
+  // Count eventos por localidade
+  const eventosCount = eventos.reduce((acc, evento) => {
+    acc[evento.localidade] = (acc[evento.localidade] || 0) + 1;
+    return acc;
+  }, {});
 
   // Agrupar por data
   const eventosPorData = eventosFiltrados.reduce((acc, evento) => {
@@ -110,6 +118,21 @@ export default function EventosAnoNovo() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 relative">
+        {/* Mapa Interativo */}
+        <div className="mb-8">
+          <React.Suspense fallback={
+            <Card className="bg-gray-900/50 border-white/10 p-8 text-center">
+              <Loader2 className="w-8 h-8 animate-spin text-pink-400 mx-auto mb-2" />
+              <p className="text-gray-400 text-sm">Carregando mapa...</p>
+            </Card>
+          }>
+            <MapaEventos 
+              onLocalidadeClick={(loc) => setFiltroLocalidade(loc)}
+              eventosCount={eventosCount}
+            />
+          </React.Suspense>
+        </div>
+
         {/* Filtros */}
         <div className="flex flex-wrap gap-2 mb-6 sm:mb-8 justify-center">
           {LOCALIDADES.map((loc) => (
