@@ -10,6 +10,7 @@ import { createPageUrl } from "@/utils";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import EventoCard from "@/components/eventos-ano-novo/EventoCard";
+import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
 
 const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
 
@@ -134,7 +135,7 @@ export default function EventosAnoNovo() {
         </div>
 
         {/* Filtros */}
-        <div className="flex flex-wrap gap-2 mb-6 sm:mb-8 justify-center">
+        <div className="flex flex-wrap gap-2 mb-6 sm:mb-8 justify-center items-center">
           {LOCALIDADES.map((loc) => (
             <Button
               key={loc}
@@ -155,6 +156,10 @@ export default function EventosAnoNovo() {
               <span className="sm:hidden">{loc === "Arraial d'Ajuda" ? "Arraial" : loc === "Todas" ? "Todas" : ""}</span>
             </Button>
           ))}
+          
+          <div className="w-px h-6 bg-white/20 hidden sm:block" />
+          
+          <CompartilharTodos eventos={eventos} />
         </div>
 
         {/* Legenda */}
