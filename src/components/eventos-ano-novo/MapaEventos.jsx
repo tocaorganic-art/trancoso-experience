@@ -1,18 +1,34 @@
-import React from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import React, { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
 
-// Fix for default markers
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-});
+let MapContainer, TileLayer, Marker, Popup, L;
+
+// Lazy load Leaflet to avoid SSR issues
+const loadLeaflet = async () => {
+  if (typeof window === "undefined") return;
+  
+  const leaflet = await import("leaflet");
+  L = leaflet.default;
+  
+  const reactLeaflet = await import("react-leaflet");
+  MapContainer = reactLeaflet.MapContainer;
+  TileLayer = reactLeaflet.TileLayer;
+  Marker = reactLeaflet.Marker;
+  Popup = reactLeaflet.Popup;
+  
+  // Import CSS
+  await import("leaflet/dist/leaflet.css");
+  
+  // Fix for default markers
+  delete L.Icon.Default.prototype._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+    iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  });
+};
 
 const localidades = [
   {
@@ -36,7 +52,14 @@ const localidades = [
 ];
 
 function MapaEventos({ onLocalidadeClick, eventosCount }) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    loadLeaflet().then(() => setLoaded(true));
+  }, []);
+
   const createCustomIcon = (icon, nome) => {
+    if (!L) return null;
     return L.divIcon({
       html: `
         <div class="relative group cursor-pointer">
@@ -53,6 +76,18 @@ function MapaEventos({ onLocalidadeClick, eventosCount }) {
       iconAnchor: [20, 40],
     });
   };
+
+  if (!loaded || !MapContainer) {
+    return (
+      <Card className="bg-gray-900/50 border-white/10 p-8 text-center">
+        <div className="animate-pulse">
+          <div className="h-[400px] bg-gray-800/50 rounded-lg flex items-center justify-center">
+            <p className="text-gray-400">Carregando mapa interativo...</p>
+          </div>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className="bg-gray-900/50 border-white/10 overflow-hidden">

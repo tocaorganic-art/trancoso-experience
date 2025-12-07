@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Filter, Sparkles, PartyPopper, Loader2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { format } from "date-fns";
