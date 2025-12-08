@@ -74,7 +74,8 @@ ${formData.mensagem || ""}
       `.trim();
 
       // Usa a função leadNotification que envia email automaticamente
-      await base44.functions.invoke('leadNotification', {
+      console.log('Enviando dados para leadNotification...');
+      const response = await base44.functions.invoke('leadNotification', {
         client_name: formData.nome,
         client_email: formData.email,
         client_phone: formData.telefone,
@@ -83,6 +84,8 @@ ${formData.mensagem || ""}
         budget_requested: orcamentoLabels[formData.orcamento] || "A combinar",
         message: messageDetails
       });
+      
+      console.log('Resposta completa:', response);
 
       // 4. Rastrear conversão e mostrar sucesso
       trackFormSubmission(formData);
@@ -108,7 +111,9 @@ ${formData.mensagem || ""}
       });
     } catch (error) {
       console.error("Erro ao enviar cotação:", error);
-      toast.error("Erro ao enviar cotação. Tente novamente.");
+      console.error("Detalhes completos do erro:", JSON.stringify(error, null, 2));
+      console.error("Response data:", error.response?.data);
+      toast.error(`Erro: ${error.message || 'Tente novamente'}`);
     } finally {
       setIsSubmitting(false);
     }
