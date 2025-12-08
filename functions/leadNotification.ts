@@ -65,6 +65,33 @@ Deno.serve(async (req) => {
       `
     });
 
+    // Enviar WhatsApp automaticamente (sem abrir interface)
+    try {
+      const whatsappText = `*Novo Lead - Toca Experience*
+
+*👤 CONTATO:*
+Nome: ${data.client_name}
+Email: ${data.client_email}
+Telefone: ${data.client_phone}
+
+*🎉 EVENTO:*
+Tipo: ${data.event_type || "Não especificado"}
+Data: ${data.event_date || "Não informada"}
+Orçamento: ${data.budget_requested || "A combinar"}
+
+*💬 MENSAGEM:*
+${data.message || "Sem mensagem"}
+
+*📊 Score:* ${leadScore} ${leadScore >= 80 ? '🔥' : leadScore >= 60 ? '🌡️' : '❄️'}`;
+
+      await base44.asServiceRole.functions.invoke('sendWhatsApp', {
+        phone: '5521972824659',
+        message: whatsappText
+      });
+    } catch (whatsappError) {
+      console.warn("WhatsApp API não configurada:", whatsappError);
+    }
+
     // Enviar email de confirmação ao cliente
     await base44.asServiceRole.integrations.Core.SendEmail({
       to: data.client_email,
