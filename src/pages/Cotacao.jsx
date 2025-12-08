@@ -62,14 +62,8 @@ export default function Cotacao() {
         a_combinar: "A combinar"
       };
 
-      const whatsappMessage = encodeURIComponent(`*Solicitação de Cotação - Toca Experience*
-
-*📋 DADOS DO CLIENTE:*
-Nome: ${formData.nome}
-E-mail: ${formData.email}
-Telefone: ${formData.telefone}
-
-*🎉 DETALHES DO EVENTO:*
+      // 1. Cria registro no banco PRIMEIRO
+      const messageDetails = `
 Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
 Data: ${formData.data || "Não informada"}
 Horário: ${formData.horarioInicio || "Não informado"}
@@ -79,11 +73,23 @@ Nº Convidados: ${formData.numeroConvidados || "Não informado"}
 Orçamento: ${orcamentoLabels[formData.orcamento] || "Não informado"}
 Estrutura: ${formData.estrutura || "Não informada"}
 
-*💬 MENSAGEM:*
-${formData.mensagem || "Nenhuma mensagem adicional"}`);
+Mensagem: ${formData.mensagem || "Nenhuma mensagem adicional"}
+      `.trim();
 
-      // Envia email via Brevo
-      await base44.integrations.Core.SendEmail({
+      await base44.entities.EventData.create({
+        client_name: formData.nome,
+        client_email: formData.email,
+        client_phone: formData.telefone,
+        event_type: tipoEventoLabels[formData.tipoEvento] || "Não informado",
+        event_date: formData.data || null,
+        budget_requested: orcamentoLabels[formData.orcamento] || "A combinar",
+        message: messageDetails,
+        conversion_status: "pending",
+        source: "website_cotacao"
+      });
+
+      // 2. Tenta enviar email (não bloqueia se falhar)
+      base44.integrations.Core.SendEmail({
         to: "eventos@tocaexperience.com.br",
         subject: "Nova Solicitação de Cotação - Toca Experience",
         body: `
@@ -106,11 +112,10 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`);
           <h3>Mensagem:</h3>
           <p>${formData.mensagem || "Nenhuma mensagem adicional"}</p>
         `
-      });
+      }).catch(err => console.warn("Email falhou:", err));
 
-      // Envia WhatsApp automaticamente (sem abrir interface)
-      try {
-        const whatsappText = `*Solicitação de Cotação - Toca Experience*
+      // 3. Tenta enviar WhatsApp (não bloqueia se falhar)
+      const whatsappText = `*Solicitação de Cotação - Toca Experience*
 
 *📋 DADOS DO CLIENTE:*
 Nome: ${formData.nome}
@@ -130,15 +135,12 @@ Estrutura: ${formData.estrutura || "Não informada"}
 *💬 MENSAGEM:*
 ${formData.mensagem || "Nenhuma mensagem adicional"}`;
 
-        await base44.functions.invoke('sendWhatsApp', {
-          phone: '5521972824659',
-          message: whatsappText
-        }).catch(err => console.warn("WhatsApp não configurado:", err));
-      } catch (whatsappError) {
-        console.warn("WhatsApp API não configurada:", whatsappError);
-      }
+      base44.functions.invoke('sendWhatsApp', {
+        phone: '5521972824659',
+        message: whatsappText
+      }).catch(err => console.warn("WhatsApp não configurado:", err));
 
-      // Rastrear conversão
+      // 4. Rastrear conversão e mostrar sucesso
       trackFormSubmission(formData);
       trackWhatsAppClick();
 
@@ -161,7 +163,8 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`;
         mensagem: ""
       });
     } catch (error) {
-      toast.error("Erro ao preparar cotação. Tente novamente.");
+      console.error("Erro ao enviar cotação:", error);
+      toast.error("Erro ao enviar cotação. Tente novamente.");
     } finally {
       setIsSubmitting(false);
     }
