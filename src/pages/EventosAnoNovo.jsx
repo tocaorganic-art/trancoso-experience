@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Filter, Sparkles, PartyPopper, Loader2, ArrowLeft } from "lucide-react";
+import { Calendar, MapPin, Filter, Sparkles, PartyPopper, Loader2, ArrowLeft, Users, Music, MessageCircle, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -124,6 +124,79 @@ export default function EventosAnoNovo() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a0a1f] via-[#0d0d1a] to-[#050510]">
+      {/* Conversion Block - Services CTA */}
+      <section className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 py-12 relative z-10">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center text-white"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm mb-6">
+              <Sparkles className="w-4 h-4" />
+              Serviços Exclusivos para Réveillon
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Transforme sua Festa em um Evento Exclusivo
+            </h2>
+            <p className="text-xl mb-8 text-white/90 max-w-3xl mx-auto">
+              Contrate Nossos DJs ou Alugue Equipamentos Pioneer para sua Residência!
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to={createPageUrl("CasamentosTrancoso")}>
+                <Button 
+                  size="lg"
+                  className="bg-white text-purple-600 hover:bg-gray-100 font-bold px-8 py-6"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Contratar DJ para Evento Privado
+                </Button>
+              </Link>
+              
+              <Link to={createPageUrl("AluguelEquipamentos")}>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
+                >
+                  <Music className="w-5 h-5 mr-2" />
+                  Alugar Som Profissional
+                </Button>
+              </Link>
+              
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
+                onClick={() => window.open('https://wa.me/5521972824659?text=Olá! Gostaria de um orçamento para Réveillon em Trancoso', '_blank')}
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp Direto
+              </Button>
+            </div>
+
+            <div className="mt-8 grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <CheckCircle className="w-8 h-8 mb-3" />
+                <h3 className="font-bold mb-2">Equipamento Pioneer Premium</h3>
+                <p className="text-sm text-white/80">CDJ-3000, DJM-V10, Funktion-One</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <CheckCircle className="w-8 h-8 mb-3" />
+                <h3 className="font-bold mb-2">DJs Experientes</h3>
+                <p className="text-sm text-white/80">500 mil+ streams, turnês internacionais</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <CheckCircle className="w-8 h-8 mb-3" />
+                <h3 className="font-bold mb-2">Serviço Completo</h3>
+                <p className="text-sm text-white/80">Instalação, suporte técnico e backup</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Efeito de brilho - Luxo Moderno */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/10 to-yellow-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
