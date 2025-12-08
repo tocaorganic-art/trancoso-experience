@@ -133,7 +133,7 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`;
         await base44.functions.invoke('sendWhatsApp', {
           phone: '5521972824659',
           message: whatsappText
-        });
+        }).catch(err => console.warn("WhatsApp não configurado:", err));
       } catch (whatsappError) {
         console.warn("WhatsApp API não configurada:", whatsappError);
       }
@@ -143,7 +143,7 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`;
       trackWhatsAppClick();
 
       toast.success("Cotação enviada!", {
-        description: "E-mail enviado e WhatsApp aberto para confirmação."
+        description: "Você receberá um retorno em até 2 horas."
       });
 
       setFormData({
