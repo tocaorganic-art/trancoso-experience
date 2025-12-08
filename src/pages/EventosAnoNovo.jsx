@@ -62,7 +62,7 @@ export default function EventosAnoNovo() {
       { property: "og:image", content: firstEventImage },
       { property: "og:url", content: window.location.href },
       { property: "og:type", content: "website" },
-      { name: "description", content: `Guia completo com ${totalEventos} eventos de Réveillon em Trancoso, Caraíva e Arraial d'Ajuda. Open bar premium, DJs renomados e festas de luxo para celebrar 2025/2026.` },
+      { name: "description", content: `Confira a programação completa e exclusiva do Réveillon 2025! Festas e eventos de Ano Novo em Trancoso, Caraíva e Arraial d'Ajuda. Garanta seus ingressos e viva uma experiência inesquecível.` },
       { name: "keywords", content: "dj reveillon trancoso luxo, festa ano novo trancoso, reveillon caraiva 2026, eventos fim de ano trancoso, festa premium arraial ajuda" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: `DJ Réveillon Trancoso Luxo 2025/2026` },
