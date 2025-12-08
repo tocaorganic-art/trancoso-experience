@@ -19,6 +19,9 @@ import ProductionSetup from './pages/ProductionSetup';
 import GettingStarted from './pages/GettingStarted';
 import RelatorioFinal from './pages/RelatorioFinal';
 import PreLaunchChecklist from './pages/PreLaunchChecklist';
+import CasamentosTrancoso from './pages/CasamentosTrancoso';
+import AluguelEquipamentos from './pages/AluguelEquipamentos';
+import EventosCorporativos from './pages/EventosCorporativos';
 import __Layout from './Layout.jsx';
 
 
@@ -44,6 +47,9 @@ export const PAGES = {
     "GettingStarted": GettingStarted,
     "RelatorioFinal": RelatorioFinal,
     "PreLaunchChecklist": PreLaunchChecklist,
+    "CasamentosTrancoso": CasamentosTrancoso,
+    "AluguelEquipamentos": AluguelEquipamentos,
+    "EventosCorporativos": EventosCorporativos,
 }
 
 export const pagesConfig = {

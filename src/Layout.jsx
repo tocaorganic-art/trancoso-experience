@@ -22,21 +22,34 @@ export default function Layout({ children, currentPageName }) {
       }
     });
 
-    // SEO Meta Tags
-    document.title = currentPageName === "Agenda" 
-      ? "Agenda de Eventos | Toca Experience - Tony Monteiro & Enzo Furtado"
-      : "Toca Experience | DJs Tony Monteiro & Enzo Furtado - Afro House & Organic House";
-    
-    // Meta Description
+    // SEO Meta Tags - Otimizado para conversão
+    const pageTitles = {
+      "Home": "DJ para Casamento e Eventos de Luxo em Trancoso | Toca Experience",
+      "Agenda": "Agenda de Eventos | Toca Experience - Tony Monteiro & Enzo Furtado",
+      "CasamentosTrancoso": "DJ para Casamento em Trancoso | Música Exclusiva para Seu Grande Dia",
+      "AluguelEquipamentos": "Aluguel de Equipamentos DJ Pioneer em Trancoso | CDJ, Controladoras e Som",
+      "EventosCorporativos": "DJ para Eventos Corporativos em Trancoso | Festas Empresariais Exclusivas"
+    };
+
+    document.title = pageTitles[currentPageName] || "Toca Experience | DJs Tony Monteiro & Enzo Furtado - Afro House & Organic House";
+
+    // Meta Description - Otimizada com palavras-chave de cauda longa
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
       metaDescription.name = "description";
       document.head.appendChild(metaDescription);
     }
-    metaDescription.content = currentPageName === "Agenda"
-      ? "Confira a agenda de eventos e próximas apresentações dos DJs Tony Monteiro e Enzo Furtado. Afro House, Organic House e House music em festivais, clubs e eventos privados."
-      : "Toca Experience apresenta Tony Monteiro & Enzo Furtado - duo de DJs especialistas em Afro House, Organic House e House. Contrate para casamentos, festivais, eventos corporativos e festas privadas.";
+
+    const pageDescriptions = {
+      "Home": "Experiências musicais exclusivas em Trancoso. DJs Tony Monteiro & Enzo Furtado. Aluguel de som profissional (CDJ, Controladoras, Caixas de Som) para festas e casamentos.",
+      "Agenda": "Confira a agenda de eventos e próximas apresentações dos DJs Tony Monteiro e Enzo Furtado. Afro House, Organic House e House music em festivais, clubs e eventos privados.",
+      "CasamentosTrancoso": "DJ especializado em casamentos de luxo em Trancoso. Som profissional Pioneer, trilha personalizada e experiência inesquecível para seu grande dia.",
+      "AluguelEquipamentos": "Aluguel de equipamentos DJ profissionais em Trancoso: Pioneer CDJ-3000, Controladoras DDJ, caixas de som e iluminação para festas e eventos.",
+      "EventosCorporativos": "DJs para eventos corporativos em Trancoso. Festas empresariais, lançamentos de produtos e confraternizações com música de alta qualidade."
+    };
+
+    metaDescription.content = pageDescriptions[currentPageName] || "Toca Experience apresenta Tony Monteiro & Enzo Furtado - duo de DJs especialistas em Afro House, Organic House e House. Contrate para casamentos, festivais, eventos corporativos e festas privadas.";
 
     // Meta Keywords
     let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -75,15 +88,102 @@ export default function Layout({ children, currentPageName }) {
       metaTag.content = tag.content;
     });
 
-    // Schema.org JSON-LD for Organization
-    let schemaScript = document.querySelector('script[data-schema="organization"]');
-    if (!schemaScript) {
-      schemaScript = document.createElement('script');
-      schemaScript.type = "application/ld+json";
-      schemaScript.setAttribute('data-schema', 'organization');
-      document.head.appendChild(schemaScript);
+    // Schema.org JSON-LD - Múltiplos schemas para melhor SEO
+
+    // LocalBusiness Schema
+    let localBusinessSchema = document.querySelector('script[data-schema="localbusiness"]');
+    if (!localBusinessSchema) {
+      localBusinessSchema = document.createElement('script');
+      localBusinessSchema.type = "application/ld+json";
+      localBusinessSchema.setAttribute('data-schema', 'localbusiness');
+      document.head.appendChild(localBusinessSchema);
     }
-    schemaScript.textContent = JSON.stringify({
+    localBusinessSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Toca Experience",
+      "description": "DJs profissionais e aluguel de equipamentos de som em Trancoso",
+      "url": "https://www.tocaexperience.com.br",
+      "telephone": "+55-21-99773-1321",
+      "email": "eventos@tocaexperience.com.br",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Trancoso",
+        "addressRegion": "BA",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-16.5917",
+        "longitude": "-39.0736"
+      },
+      "priceRange": "$$$$",
+      "openingHours": "Mo-Su 00:00-23:59",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "47"
+      }
+    });
+
+    // Service Schema
+    let serviceSchema = document.querySelector('script[data-schema="service"]');
+    if (!serviceSchema) {
+      serviceSchema = document.createElement('script');
+      serviceSchema.type = "application/ld+json";
+      serviceSchema.setAttribute('data-schema', 'service');
+      document.head.appendChild(serviceSchema);
+    }
+    serviceSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "DJ Services & Equipment Rental",
+      "provider": {
+        "@type": "Organization",
+        "name": "Toca Experience"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Trancoso"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "DJ e Aluguel de Equipamentos",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "DJ para Casamento"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Aluguel de Equipamentos DJ Pioneer"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "DJ para Eventos Corporativos"
+            }
+          }
+        ]
+      }
+    });
+
+    // MusicGroup Schema
+    let musicGroupSchema = document.querySelector('script[data-schema="musicgroup"]');
+    if (!musicGroupSchema) {
+      musicGroupSchema = document.createElement('script');
+      musicGroupSchema.type = "application/ld+json";
+      musicGroupSchema.setAttribute('data-schema', 'musicgroup');
+      document.head.appendChild(musicGroupSchema);
+    }
+    musicGroupSchema.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "MusicGroup",
       "name": "Toca Experience",
