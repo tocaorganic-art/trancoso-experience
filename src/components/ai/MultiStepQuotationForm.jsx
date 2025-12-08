@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Check, Calendar, Music, MapPin, User } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, Calendar, Music, MapPin, DollarSign, User } from "lucide-react";
 import { toast } from "sonner";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import { base44 } from "@/api/base44Client";
@@ -90,17 +90,10 @@ export default function MultiStepQuotationForm({ onClose }) {
         client_phone: formData.telefone,
         event_type: formData.tipoEvento,
         event_date: formData.data,
-        start_time: formData.horarioInicio,
-        duration_hours: parseFloat(formData.duracao) || null,
-        city: formData.localidade,
-        location: formData.local,
-        guest_count: parseInt(formData.numeroConvidados) || null,
         budget_requested: formData.orcamento,
-        equipment_type: formData.estruturaNecessaria,
-        music_preference: formData.estilMusical.join(', '),
+        message: `Horário: ${formData.horarioInicio || "Não especificado"}. Duração: ${formData.duracao || "N/A"} horas. Convidados: ${formData.numeroConvidados || "N/A"}. Local: ${formData.local || "N/A"} (${formData.localidade || "N/A"}). Estrutura: ${formData.estruturaNecessaria || "N/A"}. Estilos: ${formData.estilMusical.join(', ') || "Aberto"}. Atmosfera: ${formData.atmosfera || "N/A"}. Momentos especiais: ${formData.momentosEspeciais || "Nenhum"}`,
         conversion_status: 'pending',
-        contact_source: 'website',
-        notes: `Atmosfera: ${formData.atmosfera}. Momentos especiais: ${formData.momentosEspeciais}`
+        source: 'website'
       };
 
       await base44.entities.EventData.create(leadData);
