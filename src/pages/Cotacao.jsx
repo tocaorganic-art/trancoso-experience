@@ -83,41 +83,64 @@ Estrutura: ${formData.estrutura || "Não informada"}
 ${formData.mensagem || "Nenhuma mensagem adicional"}`);
 
       // Envia email via Brevo
+      await base44.integrations.Core.SendEmail({
+        to: "eventos@tocaexperience.com.br",
+        subject: "Nova Solicitação de Cotação - Toca Experience",
+        body: `
+          <h2>Nova Solicitação de Cotação</h2>
+          <h3>Dados do Cliente:</h3>
+          <p><strong>Nome:</strong> ${formData.nome}</p>
+          <p><strong>E-mail:</strong> ${formData.email}</p>
+          <p><strong>Telefone:</strong> ${formData.telefone}</p>
+          
+          <h3>Detalhes do Evento:</h3>
+          <p><strong>Tipo:</strong> ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}</p>
+          <p><strong>Data:</strong> ${formData.data || "Não informada"}</p>
+          <p><strong>Horário:</strong> ${formData.horarioInicio || "Não informado"}</p>
+          <p><strong>Duração:</strong> ${formData.duracao || "Não informada"}</p>
+          <p><strong>Local:</strong> ${formData.local || "Não informado"}</p>
+          <p><strong>Nº Convidados:</strong> ${formData.numeroConvidados || "Não informado"}</p>
+          <p><strong>Orçamento:</strong> ${orcamentoLabels[formData.orcamento] || "Não informado"}</p>
+          <p><strong>Estrutura:</strong> ${formData.estrutura || "Não informada"}</p>
+          
+          <h3>Mensagem:</h3>
+          <p>${formData.mensagem || "Nenhuma mensagem adicional"}</p>
+        `
+      });
+
+      // Envia WhatsApp automaticamente (sem abrir interface)
       try {
-        await base44.integrations.Core.SendEmail({
-          to: "tocaorganic@gmail.com",
-          subject: "Nova Solicitação de Cotação - Toca Experience",
-          body: `
-            <h2>Nova Solicitação de Cotação</h2>
-            <h3>Dados do Cliente:</h3>
-            <p><strong>Nome:</strong> ${formData.nome}</p>
-            <p><strong>E-mail:</strong> ${formData.email}</p>
-            <p><strong>Telefone:</strong> ${formData.telefone}</p>
-            
-            <h3>Detalhes do Evento:</h3>
-            <p><strong>Tipo:</strong> ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}</p>
-            <p><strong>Data:</strong> ${formData.data || "Não informada"}</p>
-            <p><strong>Horário:</strong> ${formData.horarioInicio || "Não informado"}</p>
-            <p><strong>Duração:</strong> ${formData.duracao || "Não informada"}</p>
-            <p><strong>Local:</strong> ${formData.local || "Não informado"}</p>
-            <p><strong>Nº Convidados:</strong> ${formData.numeroConvidados || "Não informado"}</p>
-            <p><strong>Orçamento:</strong> ${orcamentoLabels[formData.orcamento] || "Não informado"}</p>
-            <p><strong>Estrutura:</strong> ${formData.estrutura || "Não informada"}</p>
-            
-            <h3>Mensagem:</h3>
-            <p>${formData.mensagem || "Nenhuma mensagem adicional"}</p>
-          `
+        const whatsappText = `*Solicitação de Cotação - Toca Experience*
+
+*📋 DADOS DO CLIENTE:*
+Nome: ${formData.nome}
+E-mail: ${formData.email}
+Telefone: ${formData.telefone}
+
+*🎉 DETALHES DO EVENTO:*
+Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
+Data: ${formData.data || "Não informada"}
+Horário: ${formData.horarioInicio || "Não informado"}
+Duração: ${formData.duracao || "Não informada"}
+Local: ${formData.local || "Não informado"}
+Nº Convidados: ${formData.numeroConvidados || "Não informado"}
+Orçamento: ${orcamentoLabels[formData.orcamento] || "Não informado"}
+Estrutura: ${formData.estrutura || "Não informada"}
+
+*💬 MENSAGEM:*
+${formData.mensagem || "Nenhuma mensagem adicional"}`;
+
+        await base44.functions.invoke('sendWhatsApp', {
+          phone: '5521972824659',
+          message: whatsappText
         });
-      } catch (emailError) {
-        console.error("Erro ao enviar email:", emailError);
-        }
+      } catch (whatsappError) {
+        console.warn("WhatsApp API não configurada:", whatsappError);
+      }
 
-        // Rastrear conversão
-        trackFormSubmission(formData);
-
-        // Abre WhatsApp
-        trackWhatsAppClick();
-        window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
+      // Rastrear conversão
+      trackFormSubmission(formData);
+      trackWhatsAppClick();
 
       toast.success("Cotação enviada!", {
         description: "E-mail enviado e WhatsApp aberto para confirmação."

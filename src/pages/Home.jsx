@@ -84,35 +84,6 @@ export default function Home() {
         trackFormSubmission(formData);
         trackWhatsAppClick();
 
-        // Abrir WhatsApp
-        const tipoEventoLabels = {
-          casamento: "Casamento",
-          aniversario: "Aniversário",
-          corporativo: "Evento Corporativo",
-          festa_privada: "Festa Privada",
-          club: "Club / Boate",
-          festival: "Festival",
-          sunset: "Sunset / Pool Party",
-          reveillon: "Réveillon",
-          lancamento: "Lançamento de Produto",
-          outro: "Outro"
-        };
-
-        const whatsappMessage = encodeURIComponent(`*Nova Proposta - Toca Experience*
-
-*📋 CLIENTE:* ${formData.nome}
-*📧 Email:* ${formData.email}
-*📱 Telefone:* ${formData.telefone}
-
-*🎉 EVENTO:* ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
-*📅 Data:* ${formData.data || "Não informada"}
-*💰 Orçamento:* ${formData.orcamento || "A combinar"}
-
-*💬 Mensagem:*
-${formData.mensagem || "Sem mensagem adicional"}`);
-
-        window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
-
         toast.success("Proposta enviada!", {
           description: "Você receberá um retorno em até 2 horas."
         });
