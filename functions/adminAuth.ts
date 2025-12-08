@@ -1,15 +1,12 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.4';
 import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.1/mod.ts';
 
-/**
- * Autenticação de Administradores
- * Endpoints: /login, /verify, /create-default-admin
- */
-
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
     const { action, email, password, token } = await req.json();
+
+    console.log('adminAuth called:', { action, email: email || 'N/A' });
 
     switch (action) {
       case 'login':
@@ -35,29 +32,33 @@ async function handleLogin(base44, email, password) {
     return Response.json({ error: 'Email e senha são obrigatórios' }, { status: 400 });
   }
 
+  console.log('Tentando login para:', email);
+
   // Buscar admin
-  let admins = await base44.asServiceRole.entities.AdminUser.filter({ email, is_active: true });
+  const admins = await base44.asServiceRole.entities.AdminUser.filter({ email });
   
-  // Se não encontrou nenhum admin, criar automaticamente com a senha fornecida
+  console.log('Admins encontrados:', admins.length);
+
   if (admins.length === 0) {
-    const passwordHash = await bcrypt.hash(password);
-    
-    const newAdmin = await base44.asServiceRole.entities.AdminUser.create({
-      email: email,
-      password_hash: passwordHash,
-      full_name: email.split('@')[0],
-      role: 'super_admin',
-      is_active: true
-    });
-    
-    admins = [newAdmin];
+    console.log('Nenhum admin encontrado para:', email);
+    return Response.json({ error: 'Credenciais inválidas' }, { status: 401 });
   }
 
   const admin = admins[0];
 
+  console.log('Admin encontrado:', { id: admin.id, email: admin.email, is_active: admin.is_active });
+
+  if (!admin.is_active) {
+    console.log('Admin inativo');
+    return Response.json({ error: 'Conta desativada' }, { status: 401 });
+  }
+
   // Verificar senha
+  console.log('Verificando senha...');
   const isValid = await bcrypt.compare(password, admin.password_hash);
   
+  console.log('Senha válida:', isValid);
+
   if (!isValid) {
     return Response.json({ error: 'Credenciais inválidas' }, { status: 401 });
   }
@@ -67,13 +68,15 @@ async function handleLogin(base44, email, password) {
     last_login: new Date().toISOString()
   });
 
-  // Gerar token (simples - em produção usar JWT real)
+  // Gerar token
   const token = btoa(JSON.stringify({
     id: admin.id,
     email: admin.email,
     role: admin.role,
-    exp: Date.now() + (24 * 60 * 60 * 1000) // 24h
+    exp: Date.now() + (24 * 60 * 60 * 1000)
   }));
+
+  console.log('Login bem-sucedido para:', email);
 
   return Response.json({
     success: true,
@@ -95,12 +98,10 @@ async function handleVerify(base44, token) {
   try {
     const decoded = JSON.parse(atob(token));
     
-    // Verificar expiração
     if (decoded.exp < Date.now()) {
       return Response.json({ error: 'Token expirado' }, { status: 401 });
     }
 
-    // Verificar se admin ainda existe e está ativo
     const admins = await base44.asServiceRole.entities.AdminUser.filter({ 
       id: decoded.id,
       is_active: true 
@@ -124,7 +125,6 @@ async function handleVerify(base44, token) {
 }
 
 async function createDefaultAdmin(base44) {
-  // Verificar se já existe
   const existing = await base44.asServiceRole.entities.AdminUser.filter({ 
     email: 'admin@tocaexperience.com' 
   });
@@ -136,7 +136,6 @@ async function createDefaultAdmin(base44) {
     });
   }
 
-  // Criar admin padrão
   const passwordHash = await bcrypt.hash('TocaAdmin2024!');
   
   await base44.asServiceRole.entities.AdminUser.create({
@@ -152,7 +151,7 @@ async function createDefaultAdmin(base44) {
     message: 'Admin padrão criado com sucesso',
     credentials: {
       email: 'admin@tocaexperience.com',
-      password: 'TocaAdmin2024!' // Apenas para primeira vez
+      password: 'TocaAdmin2024!'
     }
   });
 }
