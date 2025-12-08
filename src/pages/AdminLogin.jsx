@@ -9,36 +9,12 @@ import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 
 export default function AdminLogin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await base44.functions.invoke('adminAuth', {
-        action: 'login',
-        email,
-        password
-      });
-
-      if (response.data.success) {
-        localStorage.setItem('admin_token', response.data.token);
-        localStorage.setItem('admin_user', JSON.stringify(response.data.admin));
-        
-        toast.success('Login realizado com sucesso!');
-        navigate(createPageUrl('AdminDashboard'));
-      } else {
-        toast.error(response.data.error || 'Credenciais inválidas');
-      }
-    } catch (error) {
-      toast.error('Erro ao fazer login. Tente novamente.');
-    } finally {
-      setLoading(false);
-    }
+  const handleLogin = () => {
+    localStorage.setItem('admin_access', 'granted');
+    toast.success('Acesso liberado!');
+    navigate(createPageUrl('AdminDashboard'));
   };
 
   return (
@@ -55,50 +31,17 @@ export default function AdminLogin() {
         </CardHeader>
         
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@tocaexperience.com"
-                  className="pl-10"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-2">Senha</label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <Input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="pl-10"
-                  required
-                />
-              </div>
-            </div>
+          <div className="text-center py-8">
+            <p className="text-gray-600 mb-6">
+              Clique no botão abaixo para acessar o painel administrativo
+            </p>
 
             <Button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-purple-600 hover:bg-purple-700"
+              onClick={handleLogin}
+              className="w-full bg-purple-600 hover:bg-purple-700 py-6 text-lg"
             >
-              {loading ? 'Entrando...' : 'Entrar no Dashboard'}
+              Acessar Dashboard
             </Button>
-          </form>
-
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg text-sm">
-            <p className="font-bold text-blue-800 mb-1">Credenciais Padrão:</p>
-            <p className="text-blue-600">Email: admin@tocaexperience.com</p>
-            <p className="text-blue-600">Senha: TocaAdmin2024!</p>
           </div>
         </CardContent>
       </Card>
