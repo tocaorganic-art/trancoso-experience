@@ -36,7 +36,22 @@ async function handleLogin(base44, email, password) {
   }
 
   // Buscar admin
-  const admins = await base44.asServiceRole.entities.AdminUser.filter({ email, is_active: true });
+  let admins = await base44.asServiceRole.entities.AdminUser.filter({ email, is_active: true });
+  
+  // Se não encontrou nenhum admin E as credenciais são as padrão, criar admin padrão
+  if (admins.length === 0 && email === 'admin@tocaexperience.com' && password === 'TocaAdmin2024!') {
+    const passwordHash = await bcrypt.hash('TocaAdmin2024!');
+    
+    const newAdmin = await base44.asServiceRole.entities.AdminUser.create({
+      email: 'admin@tocaexperience.com',
+      password_hash: passwordHash,
+      full_name: 'Administrador Toca',
+      role: 'super_admin',
+      is_active: true
+    });
+    
+    admins = [newAdmin];
+  }
   
   if (admins.length === 0) {
     return Response.json({ error: 'Credenciais inválidas' }, { status: 401 });
