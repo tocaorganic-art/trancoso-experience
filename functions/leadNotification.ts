@@ -34,9 +34,8 @@ Deno.serve(async (req) => {
       source: 'website'
     });
 
-    // Enviar email para equipe
-    await base44.asServiceRole.integrations.Core.SendEmail({
-      to: 'eventos@tocaexperience.com.br',
+    // Enviar email para equipe via Brevo
+    await base44.asServiceRole.functions.invoke('sendEmailBrevo', {
       subject: `🔥 Novo Lead: ${data.client_name} (Score: ${leadScore})`,
       body: `
         <h2>Novo Lead Recebido!</h2>
@@ -92,9 +91,8 @@ ${data.message || "Sem mensagem"}
       console.warn("WhatsApp API não configurada:", whatsappError);
     }
 
-    // Enviar email de confirmação ao cliente
-    await base44.asServiceRole.integrations.Core.SendEmail({
-      to: data.client_email,
+    // Enviar email de confirmação ao cliente via Brevo
+    await base44.asServiceRole.functions.invoke('sendEmailBrevo', {
       subject: '✅ Proposta Recebida - Toca Experience',
       body: `
         <h2>Olá ${data.client_name}!</h2>
@@ -112,7 +110,8 @@ ${data.message || "Sem mensagem"}
         <p>WhatsApp: (21) 97282-4659<br/>Email: eventos@tocaexperience.com.br</p>
 
         <p>Atenciosamente,<br/><strong>Toca Experience</strong></p>
-      `
+      `,
+      cc: data.client_email
     });
 
     // Criar registro de follow-up
