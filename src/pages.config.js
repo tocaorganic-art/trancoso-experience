@@ -18,6 +18,7 @@ import ProductionChecklist from './pages/ProductionChecklist';
 import ProductionSetup from './pages/ProductionSetup';
 import GettingStarted from './pages/GettingStarted';
 import RelatorioFinal from './pages/RelatorioFinal';
+import PreLaunchChecklist from './pages/PreLaunchChecklist';
 import __Layout from './Layout.jsx';
 
 
@@ -42,6 +43,7 @@ export const PAGES = {
     "ProductionSetup": ProductionSetup,
     "GettingStarted": GettingStarted,
     "RelatorioFinal": RelatorioFinal,
+    "PreLaunchChecklist": PreLaunchChecklist,
 }
 
 export const pagesConfig = {
