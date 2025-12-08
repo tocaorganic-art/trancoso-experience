@@ -118,8 +118,14 @@ function AdminDashboardContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-8 grid md:grid-cols-4 gap-4"
+          className="mt-8 grid md:grid-cols-2 lg:grid-cols-5 gap-4"
         >
+          <Link to={createPageUrl("PreLaunchChecklist")}>
+            <Button className="w-full bg-gradient-to-r from-orange-600 to-red-700 text-white py-6">
+              <TestTube className="w-5 h-5 mr-2" />
+              Checklist Pré-Lançamento
+            </Button>
+          </Link>
           <Link to={createPageUrl("GettingStarted")}>
             <Button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-6">
               <PlayCircle className="w-5 h-5 mr-2" />
