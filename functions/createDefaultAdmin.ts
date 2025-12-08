@@ -5,19 +5,20 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
 
-    // Deletar todos os admins existentes
-    const existingAdmins = await base44.asServiceRole.entities.AdminUser.list();
-    for (const admin of existingAdmins) {
+    // Deletar todos os admins existentes primeiro
+    const existing = await base44.asServiceRole.entities.AdminUser.list();
+    for (const admin of existing) {
       await base44.asServiceRole.entities.AdminUser.delete(admin.id);
     }
 
-    console.log('Admins antigos deletados');
+    console.log('Admins anteriores deletados');
 
-    // Criar novo admin com hash correto
+    // Gerar hash da senha corretamente
     const passwordHash = await bcrypt.hash('TocaAdmin2024!');
     
-    console.log('Hash gerado:', passwordHash);
+    console.log('Hash gerado para TocaAdmin2024!');
 
+    // Criar novo admin
     const newAdmin = await base44.asServiceRole.entities.AdminUser.create({
       email: 'admin@tocaexperience.com',
       password_hash: passwordHash,
@@ -26,11 +27,11 @@ Deno.serve(async (req) => {
       is_active: true
     });
 
-    console.log('Admin criado:', newAdmin);
+    console.log('Admin criado:', newAdmin.id);
 
     return Response.json({
       success: true,
-      message: 'Admin criado com sucesso',
+      message: 'Admin padrão criado com sucesso',
       credentials: {
         email: 'admin@tocaexperience.com',
         password: 'TocaAdmin2024!'
@@ -42,6 +43,9 @@ Deno.serve(async (req) => {
     });
   } catch (error) {
     console.error('Erro ao criar admin:', error);
-    return Response.json({ error: error.message }, { status: 500 });
+    return Response.json({ 
+      error: error.message,
+      stack: error.stack 
+    }, { status: 500 });
   }
 });
