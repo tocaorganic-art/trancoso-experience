@@ -22,6 +22,7 @@ import PreLaunchChecklist from './pages/PreLaunchChecklist';
 import CasamentosTrancoso from './pages/CasamentosTrancoso';
 import AluguelEquipamentos from './pages/AluguelEquipamentos';
 import EventosCorporativos from './pages/EventosCorporativos';
+import DestinationWedding from './pages/DestinationWedding';
 import __Layout from './Layout.jsx';
 
 
@@ -50,6 +51,7 @@ export const PAGES = {
     "CasamentosTrancoso": CasamentosTrancoso,
     "AluguelEquipamentos": AluguelEquipamentos,
     "EventosCorporativos": EventosCorporativos,
+    "DestinationWedding": DestinationWedding,
 }
 
 export const pagesConfig = {

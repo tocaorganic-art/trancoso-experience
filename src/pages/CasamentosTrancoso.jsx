@@ -283,27 +283,43 @@ export default function CasamentosTrancoso() {
           </Card>
         </section>
 
-        {/* FAQ */}
+        {/* FAQ com Schema Markup */}
         <section className="mt-20 max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Perguntas Frequentes</h2>
           
           <div className="space-y-6">
             {[
               {
+                q: "Qual o custo de um DJ para casamento em Trancoso?",
+                a: "O investimento varia de R$ 8.000 a R$ 25.000, dependendo da duração, equipamentos e serviços adicionais. Entre em contato para um orçamento personalizado considerando data, local e número de convidados."
+              },
+              {
+                q: "Como funciona a logística de som e luz em Trancoso?",
+                a: "Cuidamos de toda a logística: transporte de equipamentos Pioneer profissionais, montagem no local, teste de som pré-evento e desmontagem. Incluímos técnico de som durante todo o evento e equipamento backup."
+              },
+              {
+                q: "Quais estilos musicais são mais pedidos em casamentos?",
+                a: "Os estilos mais solicitados incluem Organic House, Afro House para o sunset, MPB contemporânea para cerimônia e jantar, e House/Deep House para a pista de dança. Personalizamos a trilha conforme o perfil dos noivos."
+              },
+              {
                 q: "Com quantos meses de antecedência devo contratar?",
-                a: "Recomendamos de 6 a 12 meses de antecedência, especialmente para datas de alta temporada em Trancoso (dezembro a março)."
+                a: "Recomendamos de 6 a 12 meses de antecedência, especialmente para datas de alta temporada em Trancoso (dezembro a março, julho e festas de fim de ano)."
               },
               {
                 q: "Vocês atendem casamentos fora de Trancoso?",
-                a: "Sim! Atendemos toda a Costa do Descobrimento (Caraíva, Arraial d'Ajuda, Porto Seguro) e realizamos projetos personalizados em outras localidades."
+                a: "Sim! Atendemos toda a Costa do Descobrimento (Caraíva, Arraial d'Ajuda, Porto Seguro) e realizamos projetos personalizados em outras localidades do Brasil e exterior."
               },
               {
                 q: "Qual o tempo de duração do serviço?",
-                a: "O padrão é de 6 a 8 horas, podendo ser ajustado conforme a necessidade do evento."
+                a: "O padrão é de 6 a 8 horas, podendo ser ajustado conforme a necessidade do evento. Oferecemos pacotes estendidos para casamentos que incluem cerimônia, coquetel, jantar e festa."
               },
               {
                 q: "Vocês fornecem equipamento de som completo?",
-                a: "Sim, fornecemos equipamento Pioneer profissional completo, incluindo CDJs, mixer, caixas de som e iluminação ambiente."
+                a: "Sim, fornecemos equipamento Pioneer profissional completo: CDJ-3000, mixer DJM-V10, caixas de som Funktion-One ou QSC, subwoofers, iluminação LED ambiente e todos os cabos necessários."
+              },
+              {
+                q: "É possível fazer uma consultoria musical antes do casamento?",
+                a: "Sim! Incluímos uma consultoria musical de 2 horas para definir playlist, momentos especiais (entrada dos noivos, primeira dança), e entender o perfil musical dos convidados."
               }
             ].map((faq, index) => (
               <Card key={index}>
@@ -314,6 +330,43 @@ export default function CasamentosTrancoso() {
               </Card>
             ))}
           </div>
+
+          {/* FAQ Schema Markup */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Qual o custo de um DJ para casamento em Trancoso?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "O investimento varia de R$ 8.000 a R$ 25.000, dependendo da duração, equipamentos e serviços adicionais."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Como funciona a logística de som e luz em Trancoso?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Cuidamos de toda a logística: transporte de equipamentos Pioneer profissionais, montagem no local, teste de som pré-evento e desmontagem."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Quais estilos musicais são mais pedidos em casamentos?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Os estilos mais solicitados incluem Organic House, Afro House para o sunset, MPB contemporânea para cerimônia e jantar, e House/Deep House para a pista de dança."
+                    }
+                  }
+                ]
+              })
+            }}
+          />
         </section>
 
         {/* CTA Final */}

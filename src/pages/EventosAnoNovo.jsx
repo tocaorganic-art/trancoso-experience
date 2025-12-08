@@ -46,23 +46,27 @@ export default function EventosAnoNovo() {
   const isReveillon = (data) => data === "2025-12-31";
   const isDayAfter = (data) => data === "2026-01-01" || data === "2026-01-02";
 
-  // Dynamic Open Graph meta tags
+  // SEO Optimization - Dynamic meta tags + Schema
   useEffect(() => {
     const totalEventos = eventosFiltrados.length;
-    
-    document.title = `Réveillon 2025/2026 - ${totalEventos} Eventos em Trancoso, Caraíva e Arraial d'Ajuda | Toca Experience`;
-    
+
+    // Title otimizado para palavra-chave alvo
+    document.title = `DJ para Réveillon Trancoso Luxo 2025/2026 | ${totalEventos} Eventos Exclusivos`;
+
     const firstEventImage = eventosFiltrados[0]?.imagem || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png";
-    
+
+    // Meta tags otimizadas
     const metaTags = [
-      { property: "og:title", content: `Réveillon 2025/2026 - ${totalEventos} Eventos | Toca Experience` },
-      { property: "og:description", content: `Confira ${totalEventos} eventos de Ano Novo em Trancoso, Caraíva e Arraial d'Ajuda. Open bar premium, DJs internacionais e experiências inesquecíveis.` },
+      { property: "og:title", content: `DJ Réveillon Trancoso Luxo 2025/2026 | ${totalEventos} Eventos Premium` },
+      { property: "og:description", content: `${totalEventos} eventos de Réveillon de alto padrão em Trancoso, Caraíva e Arraial d'Ajuda. DJs internacionais, open bar premium, festas exclusivas.` },
       { property: "og:image", content: firstEventImage },
       { property: "og:url", content: window.location.href },
       { property: "og:type", content: "website" },
+      { name: "description", content: `Guia completo com ${totalEventos} eventos de Réveillon em Trancoso, Caraíva e Arraial d'Ajuda. Open bar premium, DJs renomados e festas de luxo para celebrar 2025/2026.` },
+      { name: "keywords", content: "dj reveillon trancoso luxo, festa ano novo trancoso, reveillon caraiva 2026, eventos fim de ano trancoso, festa premium arraial ajuda" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: `Réveillon 2025/2026 - Toca Experience` },
-      { name: "twitter:description", content: `${totalEventos} eventos em Trancoso, Caraíva e Arraial d'Ajuda` },
+      { name: "twitter:title", content: `DJ Réveillon Trancoso Luxo 2025/2026` },
+      { name: "twitter:description", content: `${totalEventos} eventos premium de Ano Novo` },
       { name: "twitter:image", content: firstEventImage }
     ];
 
@@ -77,6 +81,45 @@ export default function EventosAnoNovo() {
       }
       metaTag.content = tag.content;
     });
+
+    // Event Schema Markup para rich snippets
+    const eventSchemas = eventosFiltrados.slice(0, 5).map(evento => ({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": evento.nome,
+      "startDate": evento.data,
+      "location": {
+        "@type": "Place",
+        "name": evento.local,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": evento.localidade,
+          "addressRegion": "BA",
+          "addressCountry": "BR"
+        }
+      },
+      "image": evento.imagem,
+      "description": evento.detalhes,
+      "offers": {
+        "@type": "Offer",
+        "url": evento.link_compra
+      }
+    }));
+
+    let schemaScript = document.querySelector('script[data-schema="reveillon-events"]');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.type = 'application/ld+json';
+      schemaScript.setAttribute('data-schema', 'reveillon-events');
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(eventSchemas);
+
+    return () => {
+      if (schemaScript) {
+        document.head.removeChild(schemaScript);
+      }
+    };
   }, [eventosFiltrados]);
 
   return (
