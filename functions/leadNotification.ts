@@ -7,11 +7,14 @@ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.4';
 
 Deno.serve(async (req) => {
   try {
+    console.log('=== INICIANDO leadNotification ===');
     const base44 = createClientFromRequest(req);
     const data = await req.json();
+    console.log('Dados recebidos:', JSON.stringify(data, null, 2));
 
     // Validar dados obrigatórios
     if (!data.client_name || !data.client_email || !data.client_phone) {
+      console.error('Validação falhou: dados obrigatórios ausentes');
       return Response.json({ 
         error: 'Nome, email e telefone são obrigatórios' 
       }, { status: 400 });
@@ -19,8 +22,10 @@ Deno.serve(async (req) => {
 
     // Calcular lead score
     const leadScore = calculateLeadScore(data);
+    console.log('Lead score calculado:', leadScore);
 
     // Criar lead no banco
+    console.log('Criando lead no banco...');
     const lead = await base44.asServiceRole.entities.EventData.create({
       client_name: data.client_name,
       client_email: data.client_email,
@@ -34,8 +39,11 @@ Deno.serve(async (req) => {
       source: 'website'
     });
 
+    console.log('Lead criado com ID:', lead.id);
+
     // Enviar email para equipe via Brevo
-    await base44.asServiceRole.functions.invoke('sendEmailBrevo', {
+    console.log('Invocando sendEmailBrevo...');
+    const emailResult = await base44.asServiceRole.functions.invoke('sendEmailBrevo', {
       subject: `🔥 Novo Lead: ${data.client_name} (Score: ${leadScore})`,
       body: `
         <h2>Novo Lead Recebido!</h2>
@@ -63,6 +71,7 @@ Deno.serve(async (req) => {
         </a>
       `
     });
+    console.log('Email enviado via Brevo:', emailResult.data);
 
     // Enviar WhatsApp automaticamente (sem abrir interface)
     try {
@@ -113,8 +122,13 @@ ${data.message || "Sem mensagem"}
     });
 
   } catch (error) {
-    console.error('Erro em leadNotification:', error);
-    return Response.json({ error: error.message }, { status: 500 });
+    console.error('❌ ERRO CRÍTICO em leadNotification:', error);
+    console.error('Stack trace:', error.stack);
+    return Response.json({ 
+      error: error.message,
+      stack: error.stack,
+      details: 'Erro detalhado no console do servidor'
+    }, { status: 500 });
   }
 });
 
