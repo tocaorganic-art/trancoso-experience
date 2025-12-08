@@ -22,24 +22,18 @@ Deno.serve(async (req) => {
       throw new Error('BREVO_API_KEY não configurada');
     }
 
-    // Configuração do email
+    // Configuração do email - sender SEMPRE fixo (não usar email do cliente)
     const emailPayload = {
       sender: {
         name: "Toca Experience",
-        email: "noreply@tocaexperience.com.br"
+        email: "contato@tocaexperience.com.br"
       },
       to: [{
-        email: "eventos@tocaexperience.com.br",
-        name: "Equipe Toca Experience"
+        email: "eventos@tocaexperience.com.br"
       }],
       subject: data.subject,
       htmlContent: data.body
     };
-
-    // Adicionar CC se fornecido
-    if (data.cc) {
-      emailPayload.cc = [{ email: data.cc }];
-    }
 
     // Função de envio com retry
     const sendWithRetry = async (attempt = 1, maxAttempts = 3) => {
@@ -57,6 +51,7 @@ Deno.serve(async (req) => {
         const result = await response.json();
 
         if (!response.ok) {
+          console.error('Brevo API Error Response:', result);
           throw new Error(`Brevo API Error: ${result.message || response.statusText}`);
         }
 
@@ -82,11 +77,13 @@ Deno.serve(async (req) => {
 
   } catch (error) {
     console.error('Erro ao enviar email via Brevo:', error);
+    console.error('Error details:', error.response?.data || error);
     
     // Notificar erro técnico (opcional)
     return Response.json({ 
       error: error.message,
-      details: 'Falha ao enviar email após 3 tentativas'
+      details: 'Falha ao enviar email após 3 tentativas',
+      brevoError: error.response?.data
     }, { status: 500 });
   }
 });

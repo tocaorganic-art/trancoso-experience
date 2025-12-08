@@ -91,28 +91,8 @@ ${data.message || "Sem mensagem"}
       console.warn("WhatsApp API não configurada:", whatsappError);
     }
 
-    // Enviar email de confirmação ao cliente via Brevo
-    await base44.asServiceRole.functions.invoke('sendEmailBrevo', {
-      subject: '✅ Proposta Recebida - Toca Experience',
-      body: `
-        <h2>Olá ${data.client_name}!</h2>
-        <p>Recebemos sua solicitação para <strong>${data.event_type || 'seu evento'}</strong>.</p>
-        <p>Nossa equipe entrará em contato em até 2 horas com uma proposta personalizada.</p>
-        
-        <p><strong>Próximos passos:</strong></p>
-        <ul>
-          <li>Análise das suas necessidades (hoje)</li>
-          <li>Envio da proposta detalhada (até 24h)</li>
-          <li>Alinhamento de detalhes (após aprovação)</li>
-        </ul>
-
-        <p>Qualquer dúvida:</p>
-        <p>WhatsApp: (21) 97282-4659<br/>Email: eventos@tocaexperience.com.br</p>
-
-        <p>Atenciosamente,<br/><strong>Toca Experience</strong></p>
-      `,
-      cc: data.client_email
-    });
+    // Nota: Email de confirmação não é enviado ao cliente para evitar problemas com Brevo
+    // O cliente receberá resposta via WhatsApp conforme processo definido
 
     // Criar registro de follow-up
     await base44.asServiceRole.entities.LeadFollowUp.create({
