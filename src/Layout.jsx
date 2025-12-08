@@ -3,13 +3,34 @@ import { Toaster } from "sonner";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 
 const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
+const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 
 export default function Layout({ children, currentPageName }) {
   useEffect(() => {
+    // Preload Critical Fonts for better Core Web Vitals (FCP, LCP)
+    const fonts = [
+      { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2', type: 'font/woff2' },
+      { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2', type: 'font/woff2' }
+    ];
+
+    fonts.forEach(font => {
+      let preloadLink = document.querySelector(`link[rel="preload"][href="${font.href}"]`);
+      if (!preloadLink) {
+        preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.as = 'font';
+        preloadLink.type = font.type;
+        preloadLink.href = font.href;
+        preloadLink.crossOrigin = 'anonymous';
+        document.head.appendChild(preloadLink);
+      }
+    });
+
     // Resource Hints - DNS prefetch only (lighter than preconnect)
     const prefetchDomains = [
       'https://base44.app',
-      'https://qtrypzzcjebvfcihiynt.supabase.co'
+      'https://qtrypzzcjebvfcihiynt.supabase.co',
+      'https://fonts.gstatic.com'
     ];
 
     prefetchDomains.forEach(domain => {
@@ -221,6 +242,11 @@ export default function Layout({ children, currentPageName }) {
   return (
     <TrackingProvider>
       <div className="min-h-screen">
+        {/* Réveillon CTA Banner */}
+        <React.Suspense fallback={null}>
+          <ReveillonCTA />
+        </React.Suspense>
+        
         <Toaster position="top-center" richColors />
         {children}
         

@@ -23,6 +23,7 @@ import CasamentosTrancoso from './pages/CasamentosTrancoso';
 import AluguelEquipamentos from './pages/AluguelEquipamentos';
 import EventosCorporativos from './pages/EventosCorporativos';
 import DestinationWedding from './pages/DestinationWedding';
+import CampanhaReveillon from './pages/CampanhaReveillon';
 import __Layout from './Layout.jsx';
 
 
@@ -52,6 +53,7 @@ export const PAGES = {
     "AluguelEquipamentos": AluguelEquipamentos,
     "EventosCorporativos": EventosCorporativos,
     "DestinationWedding": DestinationWedding,
+    "CampanhaReveillon": CampanhaReveillon,
 }
 
 export const pagesConfig = {
