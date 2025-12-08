@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +10,17 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
 export default function Ethos() {
+  useEffect(() => {
+    document.title = "Ethos | Missão, Valores e Cultura da Toca Experience";
+    
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = "description";
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = "Conheça o Ethos da Toca Experience: nossa missão, visão e valores inegociáveis. Descubra como a cultura e a música se unem para criar experiências únicas e transformadoras em nossos eventos.";
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 text-gray-800">
       {/* Header */}
