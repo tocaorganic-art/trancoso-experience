@@ -334,7 +334,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
                       trackClick();
                       scrollToForm();
                     }}
-                    className="bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white px-8 py-6 text-lg rounded-full shadow-lg transition-all hover:scale-105"
+                    className="bg-white/20 backdrop-blur-xl border-2 border-white/30 text-gray-900 font-bold px-8 py-6 text-lg rounded-full shadow-2xl transition-all hover:scale-105 hover:bg-white/30 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.37)]"
                   >
                     {variant === 'A' ? 'SOLICITAR PROPOSTA' : 'AGENDAR CONSULTA'}
                   </Button>
@@ -343,7 +343,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               <Button 
                 variant="outline" 
                 onClick={scrollToAbout}
-                className="border-gray-400 text-gray-600 hover:bg-gray-100 px-6 py-6 text-lg rounded-full"
+                className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
               >
                 SAIBA MAIS <ChevronDown className="ml-2 h-5 w-5" />
               </Button>
@@ -351,7 +351,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               <RouterLink to={createPageUrl("Curadoria")}>
                 <Button 
                   variant="outline" 
-                  className="border-gray-400 text-gray-600 hover:bg-gray-100 px-6 py-6 text-lg rounded-full"
+                  className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
                 >
                   <Newspaper className="mr-2 h-5 w-5" /> CURADORIA
                 </Button>
@@ -359,7 +359,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               <RouterLink to={createPageUrl("Discografia")}>
                                     <Button 
                                       variant="outline" 
-                                      className="border-gray-400 text-gray-600 hover:bg-gray-100 px-6 py-6 text-lg rounded-full"
+                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
                                     >
                                       <Disc3 className="mr-2 h-5 w-5" /> DISCOGRAFIA
                                     </Button>
@@ -367,7 +367,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
                                   <RouterLink to={createPageUrl("EventosAnoNovo")}>
                                     <Button 
                                       variant="outline" 
-                                      className="border-gray-400 text-gray-600 hover:bg-gray-100 px-6 py-6 text-lg rounded-full"
+                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
                                     >
                                       <PartyPopper className="mr-2 h-5 w-5" /> ANO NOVO
                                     </Button>
@@ -375,7 +375,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
                                   <RouterLink to={createPageUrl("LocacaoSom")}>
                                     <Button 
                                       variant="outline" 
-                                      className="border-gray-400 text-gray-600 hover:bg-gray-100 px-6 py-6 text-lg rounded-full"
+                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
                                     >
                                       <Music className="mr-2 h-5 w-5" /> LOCAÇÃO DE SOM
                                     </Button>
