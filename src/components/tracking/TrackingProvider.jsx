@@ -7,9 +7,8 @@ import MetaPixel from "./MetaPixel";
  * IDs devem ser configurados aqui
  */
 export default function TrackingProvider({ children }) {
-  // TODO: Substituir pelos IDs reais após configuração
-  const GTM_ID = "GTM-XXXXXXX"; // Substituir pelo ID real do GTM
-  const META_PIXEL_ID = "YOUR_PIXEL_ID"; // Substituir pelo ID real do Meta Pixel
+  const GTM_ID = "GTM-M6JSFD39";
+  const META_PIXEL_ID = "1204913388179659";
 
   return (
     <>
