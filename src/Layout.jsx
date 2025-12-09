@@ -7,6 +7,21 @@ const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCT
 
 export default function Layout({ children, currentPageName }) {
   useEffect(() => {
+    // Google Ads Tag (gtag.js)
+    const gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17649743667';
+    document.head.appendChild(gtagScript);
+
+    const gtagConfigScript = document.createElement('script');
+    gtagConfigScript.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17649743667');
+    `;
+    document.head.appendChild(gtagConfigScript);
+
     // Preload Critical Fonts for better Core Web Vitals (FCP, LCP)
     const fonts = [
       { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2', type: 'font/woff2' },
