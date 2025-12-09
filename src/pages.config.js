@@ -26,6 +26,7 @@ import DestinationWedding from './pages/DestinationWedding';
 import CampanhaReveillon from './pages/CampanhaReveillon';
 import DocumentacaoWhatsApp from './pages/DocumentacaoWhatsApp';
 import RelatorioSEO from './pages/RelatorioSEO';
+import Obrigado from './pages/Obrigado';
 import __Layout from './Layout.jsx';
 
 
@@ -58,6 +59,7 @@ export const PAGES = {
     "CampanhaReveillon": CampanhaReveillon,
     "DocumentacaoWhatsApp": DocumentacaoWhatsApp,
     "RelatorioSEO": RelatorioSEO,
+    "Obrigado": Obrigado,
 }
 
 export const pagesConfig = {

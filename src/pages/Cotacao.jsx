@@ -87,34 +87,20 @@ ${formData.estrutura || "Não informada"}
 💬 *MENSAGEM ADICIONAL:*
 ${formData.mensagem || "Nenhuma mensagem adicional"}`;
 
-      // Redirecionar para WhatsApp
-      const whatsappURL = `https://wa.me/557398283579?text=${encodeURIComponent(whatsappMessage)}`;
-      
+      // Salvar dados no localStorage para WhatsApp posterior
+      localStorage.setItem('whatsapp_message', whatsappMessage);
+
       trackFormSubmission(formData);
       trackWhatsAppClick();
 
-      toast.success("Redirecionando para WhatsApp...", {
-        description: "Você será direcionado para conversar conosco!"
+      toast.success("Proposta enviada com sucesso!", {
+        description: "Redirecionando para página de confirmação..."
       });
 
-      // Abrir WhatsApp
-      window.open(whatsappURL, '_blank');
-
-      // Limpar formulário
-      setFormData({
-        nome: "",
-        email: "",
-        telefone: "",
-        tipoEvento: "",
-        data: "",
-        horarioInicio: "",
-        duracao: "",
-        local: "",
-        numeroConvidados: "",
-        orcamento: "",
-        estrutura: "",
-        mensagem: ""
-      });
+      // Redirecionar para página de agradecimento (dispara conversão)
+      setTimeout(() => {
+        window.location.href = createPageUrl("Obrigado");
+      }, 800);
     } catch (error) {
       console.error("Erro ao processar cotação:", error);
       toast.error("Erro ao processar cotação. Tente novamente.");
