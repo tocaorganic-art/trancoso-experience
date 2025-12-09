@@ -25,6 +25,7 @@ import EventosCorporativos from './pages/EventosCorporativos';
 import DestinationWedding from './pages/DestinationWedding';
 import CampanhaReveillon from './pages/CampanhaReveillon';
 import DocumentacaoWhatsApp from './pages/DocumentacaoWhatsApp';
+import RelatorioSEO from './pages/RelatorioSEO';
 import __Layout from './Layout.jsx';
 
 
@@ -56,6 +57,7 @@ export const PAGES = {
     "DestinationWedding": DestinationWedding,
     "CampanhaReveillon": CampanhaReveillon,
     "DocumentacaoWhatsApp": DocumentacaoWhatsApp,
+    "RelatorioSEO": RelatorioSEO,
 }
 
 export const pagesConfig = {
