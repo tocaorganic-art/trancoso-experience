@@ -6,24 +6,38 @@ const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/Floatin
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 
 export default function Layout({ children, currentPageName }) {
-  // Google Ads Tag - Executar ANTES de qualquer renderização
+  // Google Tag Manager - Carregar ANTES de tudo
   React.useLayoutEffect(() => {
-    // Verificar se já existe para evitar duplicação
-    if (!window.gtag) {
-      const script1 = document.createElement('script');
-      script1.async = true;
-      script1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17649743667';
-      document.head.insertBefore(script1, document.head.firstChild);
+    // Verificar se GTM já foi carregado
+    if (window.dataLayer && window.dataLayer.length > 0) return;
 
-      const script2 = document.createElement('script');
-      script2.innerHTML = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-17649743667');
-      `;
-      document.head.insertBefore(script2, document.head.firstChild);
-    }
+    // Inicializar dataLayer
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js'
+    });
+
+    // Carregar GTM script
+    const gtmScript = document.createElement('script');
+    gtmScript.async = true;
+    gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-M6JSFD39';
+    document.head.insertBefore(gtmScript, document.head.firstChild);
+
+    // Google Ads Tag (backup direto)
+    const gtagScript1 = document.createElement('script');
+    gtagScript1.async = true;
+    gtagScript1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17649743667';
+    document.head.appendChild(gtagScript1);
+
+    const gtagScript2 = document.createElement('script');
+    gtagScript2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17649743667');
+    `;
+    document.head.appendChild(gtagScript2);
   }, []);
 
   useEffect(() => {
@@ -261,6 +275,16 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <TrackingProvider>
+      {/* Google Tag Manager (noscript) */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-M6JSFD39"
+          height="0"
+          width="0"
+          style={{ display: 'none', visibility: 'hidden' }}
+        />
+      </noscript>
+
       <div className="min-h-screen">
         {/* Réveillon CTA Banner */}
         <React.Suspense fallback={null}>
