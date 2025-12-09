@@ -6,22 +6,27 @@ const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/Floatin
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 
 export default function Layout({ children, currentPageName }) {
+  // Google Ads Tag - Executar ANTES de qualquer renderização
+  React.useLayoutEffect(() => {
+    // Verificar se já existe para evitar duplicação
+    if (!window.gtag) {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17649743667';
+      document.head.insertBefore(script1, document.head.firstChild);
+
+      const script2 = document.createElement('script');
+      script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17649743667');
+      `;
+      document.head.insertBefore(script2, document.head.firstChild);
+    }
+  }, []);
+
   useEffect(() => {
-    // Google Ads Tag (gtag.js)
-    const gtagScript = document.createElement('script');
-    gtagScript.async = true;
-    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17649743667';
-    document.head.appendChild(gtagScript);
-
-    const gtagConfigScript = document.createElement('script');
-    gtagConfigScript.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17649743667');
-    `;
-    document.head.appendChild(gtagConfigScript);
-
     // Preload Critical Fonts for better Core Web Vitals (FCP, LCP)
     const fonts = [
       { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2', type: 'font/woff2' },
