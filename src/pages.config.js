@@ -27,6 +27,7 @@ import CampanhaReveillon from './pages/CampanhaReveillon';
 import DocumentacaoWhatsApp from './pages/DocumentacaoWhatsApp';
 import RelatorioSEO from './pages/RelatorioSEO';
 import Obrigado from './pages/Obrigado';
+import SEOStatus from './pages/SEOStatus';
 import __Layout from './Layout.jsx';
 
 
@@ -60,6 +61,7 @@ export const PAGES = {
     "DocumentacaoWhatsApp": DocumentacaoWhatsApp,
     "RelatorioSEO": RelatorioSEO,
     "Obrigado": Obrigado,
+    "SEOStatus": SEOStatus,
 }
 
 export const pagesConfig = {
