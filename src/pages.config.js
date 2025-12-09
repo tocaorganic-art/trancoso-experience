@@ -29,6 +29,7 @@ import RelatorioSEO from './pages/RelatorioSEO';
 import Obrigado from './pages/Obrigado';
 import SEOStatus from './pages/SEOStatus';
 import RelatorioRastreamento from './pages/RelatorioRastreamento';
+import TesteRastreamento from './pages/TesteRastreamento';
 import __Layout from './Layout.jsx';
 
 
@@ -64,6 +65,7 @@ export const PAGES = {
     "Obrigado": Obrigado,
     "SEOStatus": SEOStatus,
     "RelatorioRastreamento": RelatorioRastreamento,
+    "TesteRastreamento": TesteRastreamento,
 }
 
 export const pagesConfig = {
