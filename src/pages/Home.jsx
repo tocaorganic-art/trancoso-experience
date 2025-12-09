@@ -57,45 +57,66 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
-      // Registrar consentimento LGPD
-      await base44.entities.UserConsent.create({
-        user_email: formData.email,
-        email_marketing_consent: consents.marketing,
-        whatsapp_consent: consents.marketing,
-        sms_consent: consents.marketing,
-        phone_consent: true,
-        consent_date: new Date().toISOString(),
-        ip_address: 'web'
+      // Mensagem para WhatsApp
+      const tipoEventoLabels = {
+        casamento: "Casamento",
+        aniversario: "Aniversário",
+        corporativo: "Evento Corporativo",
+        festa_privada: "Festa Privada",
+        club: "Club / Boate",
+        festival: "Festival",
+        sunset: "Sunset / Pool Party",
+        reveillon: "Réveillon",
+        lancamento: "Lançamento de Produto",
+        outro: "Outro"
+      };
+
+      const orcamentoLabels = {
+        ate_5k: "Até R$ 5.000",
+        "5k_10k": "R$ 5.000 - R$ 10.000",
+        "10k_20k": "R$ 10.000 - R$ 20.000",
+        "20k_50k": "R$ 20.000 - R$ 50.000",
+        acima_50k: "Acima de R$ 50.000",
+        a_combinar: "A combinar"
+      };
+
+      const whatsappMessage = `*NOVA PROPOSTA - Toca Experience*
+
+📋 *DADOS DO CLIENTE:*
+Nome: ${formData.nome}
+Email: ${formData.email}
+Telefone: ${formData.telefone}
+
+🎉 *EVENTO:*
+Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não especificado"}
+Data: ${formData.data || "Não informada"}
+
+💰 *ORÇAMENTO:*
+${orcamentoLabels[formData.orcamento] || "A combinar"}
+
+💬 *MENSAGEM:*
+${formData.mensagem || "Sem mensagem adicional"}`;
+
+      // Redirecionar para WhatsApp
+      const whatsappURL = `https://wa.me/557398283579?text=${encodeURIComponent(whatsappMessage)}`;
+      
+      trackFormSubmission(formData);
+      trackWhatsAppClick();
+
+      toast.success("Redirecionando para WhatsApp...", {
+        description: "Você será direcionado para conversar conosco!"
       });
 
-      // Criar lead no banco via API
-      const response = await base44.functions.invoke('leadNotification', {
-        client_name: formData.nome,
-        client_email: formData.email,
-        client_phone: formData.telefone,
-        event_type: formData.tipoEvento,
-        event_date: formData.data,
-        budget_requested: formData.orcamento,
-        message: formData.mensagem
-      });
+      // Abrir WhatsApp
+      window.open(whatsappURL, '_blank');
 
-      if (response.data.success) {
-        // Rastrear conversão
-        trackFormSubmission(formData);
-        trackWhatsAppClick();
-
-        toast.success("Proposta enviada!", {
-          description: "Você receberá um retorno em até 2 horas."
-        });
-
-        setFormData({ nome: "", email: "", telefone: "", tipoEvento: "", data: "", orcamento: "", mensagem: "" });
-        setConsents({ privacy: false, terms: false, marketing: false });
-        setErrors({});
-      } else {
-        toast.error("Erro ao enviar proposta. Tente novamente.");
-      }
+      // Limpar formulário
+      setFormData({ nome: "", email: "", telefone: "", tipoEvento: "", data: "", orcamento: "", mensagem: "" });
+      setConsents({ privacy: false, terms: false, marketing: false });
+      setErrors({});
     } catch (error) {
-      toast.error("Erro ao enviar proposta. Tente novamente.");
+      console.error("Erro ao processar proposta:", error);
+      toast.error("Erro ao processar proposta. Tente novamente.");
     } finally {
       setIsSubmitting(false);
     }

@@ -62,39 +62,45 @@ export default function Cotacao() {
         a_combinar: "A combinar"
       };
 
-      // Prepara mensagem detalhada
-      const messageDetails = `
+      // Mensagem para WhatsApp
+      const whatsappMessage = `*NOVA COTAÇÃO - Toca Experience*
+
+📋 *DADOS DO CLIENTE:*
+Nome: ${formData.nome}
+Email: ${formData.email}
+Telefone: ${formData.telefone}
+
+🎉 *DETALHES DO EVENTO:*
+Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
+Data: ${formData.data || "Não informada"}
 Horário: ${formData.horarioInicio || "Não informado"}
-Duração: ${formData.duracao || "Não informada"}
+Duração: ${formData.duracao ? formData.duracao + "h" : "Não informada"}
 Local: ${formData.local || "Não informado"}
-Nº Convidados: ${formData.numeroConvidados || "Não informado"}
-Estrutura: ${formData.estrutura || "Não informada"}
+Convidados: ${formData.numeroConvidados || "Não informado"}
 
-${formData.mensagem || ""}
-      `.trim();
+💰 *ORÇAMENTO:*
+${orcamentoLabels[formData.orcamento] || "A combinar"}
 
-      // Usa a função leadNotification que envia email automaticamente
-      console.log('Enviando dados para leadNotification...');
-      const response = await base44.functions.invoke('leadNotification', {
-        client_name: formData.nome,
-        client_email: formData.email,
-        client_phone: formData.telefone,
-        event_type: tipoEventoLabels[formData.tipoEvento] || "Não informado",
-        event_date: formData.data || null,
-        budget_requested: orcamentoLabels[formData.orcamento] || "A combinar",
-        message: messageDetails
-      });
+🎛️ *ESTRUTURA:*
+${formData.estrutura || "Não informada"}
+
+💬 *MENSAGEM ADICIONAL:*
+${formData.mensagem || "Nenhuma mensagem adicional"}`;
+
+      // Redirecionar para WhatsApp
+      const whatsappURL = `https://wa.me/557398283579?text=${encodeURIComponent(whatsappMessage)}`;
       
-      console.log('Resposta completa:', response);
-
-      // 4. Rastrear conversão e mostrar sucesso
       trackFormSubmission(formData);
       trackWhatsAppClick();
 
-      toast.success("Cotação enviada!", {
-        description: "Você receberá um retorno em até 2 horas."
+      toast.success("Redirecionando para WhatsApp...", {
+        description: "Você será direcionado para conversar conosco!"
       });
 
+      // Abrir WhatsApp
+      window.open(whatsappURL, '_blank');
+
+      // Limpar formulário
       setFormData({
         nome: "",
         email: "",
@@ -110,10 +116,8 @@ ${formData.mensagem || ""}
         mensagem: ""
       });
     } catch (error) {
-      console.error("Erro ao enviar cotação:", error);
-      console.error("Detalhes completos do erro:", JSON.stringify(error, null, 2));
-      console.error("Response data:", error.response?.data);
-      toast.error(`Erro: ${error.message || 'Tente novamente'}`);
+      console.error("Erro ao processar cotação:", error);
+      toast.error("Erro ao processar cotação. Tente novamente.");
     } finally {
       setIsSubmitting(false);
     }
