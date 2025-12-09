@@ -28,6 +28,7 @@ import DocumentacaoWhatsApp from './pages/DocumentacaoWhatsApp';
 import RelatorioSEO from './pages/RelatorioSEO';
 import Obrigado from './pages/Obrigado';
 import SEOStatus from './pages/SEOStatus';
+import RelatorioRastreamento from './pages/RelatorioRastreamento';
 import __Layout from './Layout.jsx';
 
 
@@ -62,6 +63,7 @@ export const PAGES = {
     "RelatorioSEO": RelatorioSEO,
     "Obrigado": Obrigado,
     "SEOStatus": SEOStatus,
+    "RelatorioRastreamento": RelatorioRastreamento,
 }
 
 export const pagesConfig = {
