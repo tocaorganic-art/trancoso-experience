@@ -93,7 +93,7 @@ Responda de forma amigável, objetiva e útil em até 2 parágrafos. Se for sobr
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1 }}
-        className="fixed bottom-24 right-6 z-50"
+        className="fixed bottom-6 right-6 z-50 md:bottom-24"
       >
         <Button
           onClick={() => setIsOpen(!isOpen)}
@@ -114,7 +114,7 @@ Responda de forma amigável, objetiva e útil em até 2 parágrafos. Se for sobr
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-200"
+            className="fixed bottom-20 right-6 w-[90vw] max-w-[380px] h-[70vh] max-h-[600px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-200 md:bottom-24"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 text-white">
