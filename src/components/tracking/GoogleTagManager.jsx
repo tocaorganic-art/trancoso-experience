@@ -6,31 +6,24 @@ import React from "react";
  */
 export default function GoogleTagManager({ gtmId = "GTM-XXXXXXX" }) {
   React.useEffect(() => {
-    // Verificar se GTM já foi carregado
-    if (window.dataLayer) return;
+    // Verificar se GTM já foi carregado (verificar pela tag script)
+    if (document.querySelector(`script[src*="${gtmId}"]`)) return;
 
-    // Inicializar dataLayer
+    // Inicializar dataLayer IMEDIATAMENTE
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       'gtm.start': new Date().getTime(),
       event: 'gtm.js'
     });
 
-    // Carregar GTM de forma assíncrona
+    // Carregar GTM IMEDIATAMENTE (sem delay para permitir detecção pelo Tag Assistant)
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
-    
-    // Carregar após idle ou após 2s
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        document.head.appendChild(script);
-      });
-    } else {
-      setTimeout(() => {
-        document.head.appendChild(script);
-      }, 2000);
-    }
+    document.head.insertBefore(script, document.head.firstChild);
+
+    // Log para debug
+    console.log(`[GTM] Installed: ${gtmId}`);
 
     return () => {
       // Cleanup não é necessário pois GTM persiste entre navegações
