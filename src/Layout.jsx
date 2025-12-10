@@ -6,58 +6,6 @@ const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/Floatin
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 
 export default function Layout({ children, currentPageName }) {
-  // Google Tag Manager - Carregar ANTES de tudo (sincronamente, sem delay)
-  React.useLayoutEffect(() => {
-    // Verificar se GTM já foi carregado (verificar script existente)
-    if (document.querySelector('script[src*="GTM-M6JSFD39"]')) {
-      console.log('[Layout] GTM já instalado');
-      return;
-    }
-
-    // Inicializar dataLayer
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      'gtm.start': new Date().getTime(),
-      event: 'gtm.js'
-    });
-
-    // Carregar GTM script IMEDIATAMENTE (sem async para garantir detecção)
-    const gtmScript = document.createElement('script');
-    gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-M6JSFD39';
-    document.head.insertBefore(gtmScript, document.head.firstChild);
-
-    // Google Analytics 4 (GA4) - também imediato
-    const ga4Script1 = document.createElement('script');
-    ga4Script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-DJK0KWJ2MH';
-    document.head.appendChild(ga4Script1);
-
-    const ga4Script2 = document.createElement('script');
-    ga4Script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-DJK0KWJ2MH');
-    `;
-    document.head.appendChild(ga4Script2);
-
-    // Google Ads Tag (backup direto)
-    const gtagScript1 = document.createElement('script');
-    gtagScript1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17649743667';
-    document.head.appendChild(gtagScript1);
-
-    const gtagScript2 = document.createElement('script');
-    gtagScript2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17649743667');
-    `;
-    document.head.appendChild(gtagScript2);
-
-    // Log para confirmação
-    console.log('[Layout] GTM, GA4 e Google Ads instalados');
-  }, []);
-
   useEffect(() => {
     // Preload Critical Fonts for better Core Web Vitals (FCP, LCP)
     const fonts = [
