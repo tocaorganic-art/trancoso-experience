@@ -273,7 +273,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               transition={{ duration: 0.8, delay: 0.35 }}
               className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-8"
             >
-              Paraíso exclusivo para seus eventos. Trancoso é o cenário perfeito para momentos inesquecíveis com a trilha sonora ideal.
+              Todos os Eventos de Ano Novo em Trancoso, Caraíva e Arraial d'Ajuda
             </motion.p>
 
             <motion.div
@@ -493,26 +493,17 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex items-center justify-center gap-8 md:gap-12 mb-12"
+              className="flex items-center justify-center mb-12"
             >
               <img 
-                                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/26d2bba55_CpiadeENZOSIMBOLOSEMFUNDO.png?width=120&quality=80&format=webp" 
-                                  alt="Enzo Furtado" 
-                                  className="w-[80px] md:w-[100px] lg:w-[120px]"
-                                  loading="eager"
-                                  decoding="async"
-                                  width="120"
-                                  height="120"
-                                />
-                                <img 
-                                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=120&quality=80&format=webp" 
-                                  alt="Tony Monteiro" 
-                                  className="w-[80px] md:w-[100px] lg:w-[120px]"
-                                  loading="eager"
-                                  decoding="async"
-                                  width="120"
-                                  height="120"
-                                />
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=120&quality=80&format=webp" 
+                alt="Tony Monteiro" 
+                className="w-[80px] md:w-[100px] lg:w-[120px]"
+                loading="eager"
+                decoding="async"
+                width="120"
+                height="120"
+              />
             </motion.div>
 
             <motion.div
@@ -612,7 +603,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="max-w-3xl mx-auto">
             {/* Tony Monteiro */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -668,51 +659,7 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               </div>
             </motion.div>
 
-            {/* Enzo Furtado */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <img 
-                                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/17f05bd54_1b237d14-f085-43a3-a137-1198713a2146.jpg?width=64&quality=80&format=webp" 
-                                      alt="Enzo Furtado"
-                                      className="w-16 h-16 rounded-full object-cover"
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="64"
-                                      height="64"
-                                    />
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800">Enzo Furtado</h3>
-                  <p className="text-gray-500">A Vibe Orgânica</p>
-                </div>
-              </div>
 
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Foram cinco anos transformando pistas em <strong className="text-gray-800">Trancoso</strong>, do Zé Barbudo ao Estrela D'Água, marcando presença nos endereços mais desejados do litoral baiano. Há um ano, mudou-se para São Paulo para se aprofundar nos estudos e expandir sua visão musical.
-              </p>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Hoje, mais maduro e focado em sua identidade artística, entrega sets que exploram o <strong className="text-gray-800">Afro House</strong> e <span className="text-gray-700">texturas orgânicas</span> capazes de fazer o corpo se mover antes mesmo que a mente compreenda. Uma experiência que conecta ritmo, sensibilidade e presença.
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                <a href="https://wa.me/5573999752005" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-green-100 text-gray-600 hover:text-green-600 transition-colors" title="WhatsApp">
-                  <MessageCircle className="w-5 h-5" />
-                </a>
-                <a href="https://www.instagram.com/enzofurtado/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-pink-100 text-gray-600 hover:text-pink-600 transition-colors" title="Instagram">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="https://open.spotify.com/user/21653dr5mtlrcarl5m7n3vo2i" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-green-100 text-gray-600 hover:text-green-600 transition-colors" title="Spotify">
-                  <Music2 className="w-5 h-5" />
-                </a>
-                <a href="https://soundcloud.com/enzofurtado" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-orange-100 text-gray-600 hover:text-orange-600 transition-colors" title="SoundCloud">
-                  <Headphones className="w-5 h-5" />
-                </a>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
