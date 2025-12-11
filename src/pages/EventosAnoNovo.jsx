@@ -333,13 +333,20 @@ export default function EventosAnoNovo() {
                   {/* Eventos Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {eventosData.map((evento, idx) => (
-                      <EventoCard 
-                        key={evento.id} 
-                        evento={evento} 
-                        index={idx}
-                        isReveillon={isRev}
-                        isDayAfter={isDay}
-                      />
+                      <motion.div
+                        key={evento.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.05 }}
+                      >
+                        <EventoCard 
+                          evento={evento} 
+                          index={idx}
+                          isReveillon={isRev}
+                          isDayAfter={isDay}
+                        />
+                      </motion.div>
                     ))}
                   </div>
                 </div>
