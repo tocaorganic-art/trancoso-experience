@@ -323,6 +323,21 @@ export default function EventosAnoNovo() {
             <p className="text-gray-400 text-sm">Pacotes de Festas</p>
           </div>
         </div>
+
+        {/* Mapa Interativo - Movido para o final */}
+        <div className="mt-12">
+          <React.Suspense fallback={
+            <Card className="bg-gray-900/50 border-white/10 p-8 text-center">
+              <Loader2 className="w-8 h-8 animate-spin text-pink-400 mx-auto mb-2" />
+              <p className="text-gray-400 text-sm">Carregando mapa...</p>
+            </Card>
+          }>
+            <MapaEventos 
+              onLocalidadeClick={(loc) => setFiltroLocalidade(loc)}
+              eventosCount={eventosCount}
+            />
+          </React.Suspense>
+        </div>
       </div>
 
       {/* Footer */}

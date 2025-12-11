@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon } from "lucide-react";
+import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon, ArrowRight } from "lucide-react";
 import LGPDConsent from "@/components/compliance/LGPDConsent";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";

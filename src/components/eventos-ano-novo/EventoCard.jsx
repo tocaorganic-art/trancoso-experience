@@ -73,7 +73,7 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
         <CardContent className="p-0">
           {/* Event Image */}
           {evento.imagem && !imageError && (
-            <div className="relative w-full h-48 overflow-hidden group">
+            <div className="relative w-full h-32 sm:h-40 overflow-hidden group">
               <img
                 src={evento.imagem}
                 alt={`${evento.nome} - ${evento.data} em ${evento.local}, ${evento.localidade}`}
@@ -125,10 +125,10 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
             </div>
 
             {/* Content */}
-            <div className="flex-1 p-3 sm:p-4">
+            <div className="flex-1 p-2 sm:p-3">
               {/* Title Desktop */}
-              <div className="hidden sm:flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-bold text-white text-lg leading-tight tracking-wide group-hover:text-[#A00000] transition-colors" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>{evento.nome}</h3>
+              <div className="hidden sm:flex items-start justify-between gap-2 mb-1.5">
+                <h3 className="font-bold text-white text-base leading-tight tracking-wide group-hover:text-[#A00000] transition-colors" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>{evento.nome}</h3>
                 {evento.status === "A confirmar" && (
                   <Badge variant="outline" className="text-xs bg-amber-500/10 text-amber-400 border-amber-500/30 flex-shrink-0">
                     A confirmar
@@ -136,24 +136,24 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
                 )}
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-sm text-gray-400 mb-2">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-3 text-xs text-gray-400 mb-1.5">
                 <div className="flex items-center gap-1">
-                  <span>{LOCALIDADE_ICONS[evento.localidade]}</span>
+                  <span className="text-sm">{LOCALIDADE_ICONS[evento.localidade]}</span>
                   <span>{evento.localidade}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <MapPin className="w-3 h-3 flex-shrink-0" />
-                  <span className="truncate text-xs sm:text-sm">{evento.local}</span>
+                  <span className="truncate">{evento.local}</span>
                 </div>
               </div>
 
               {evento.detalhes && (
-                <p className="text-gray-500 text-xs sm:text-sm mb-2 line-clamp-2">{evento.detalhes}</p>
+                <p className="text-gray-500 text-xs mb-1.5 line-clamp-2">{evento.detalhes}</p>
               )}
 
               {/* Buy Button */}
               {evento.link_compra && (
-                <div className="mb-3">
+                <div className="mb-2">
                   <a 
                     href={evento.link_compra} 
                     target="_blank" 
@@ -162,10 +162,10 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
                     aria-label={`Comprar ingressos para ${evento.nome} com código de desconto toca-organic`}
                   >
                     <Button 
-                      className="w-full bg-[#A00000] hover:bg-[#8B0000] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="w-full bg-[#A00000] hover:bg-[#8B0000] text-white font-semibold text-xs py-2"
                       size="sm"
                     >
-                      🎟️ Ver Ingressos <span className="text-xs font-normal ml-1">(código: toca-organic)</span>
+                      🎟️ Ver Ingressos
                     </Button>
                   </a>
                 </div>
