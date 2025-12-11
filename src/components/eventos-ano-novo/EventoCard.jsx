@@ -147,8 +147,28 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
                 </div>
               </div>
 
+              {evento.lineup && (
+                <p className="text-gray-400 text-xs mb-1 flex items-center gap-1">
+                  <span className="font-semibold">🎵</span>
+                  {evento.lineup}
+                </p>
+              )}
+
               {evento.detalhes && (
                 <p className="text-gray-500 text-xs mb-1.5 line-clamp-2">{evento.detalhes}</p>
+              )}
+
+              {/* Instagram Link */}
+              {evento.instagram && (
+                <a 
+                  href={evento.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs text-pink-400 hover:text-pink-300 mb-2 transition-colors"
+                >
+                  <Instagram className="w-3 h-3" />
+                  <span>@{evento.instagram.split('/').pop()}</span>
+                </a>
               )}
 
               {/* Buy Button */}
