@@ -59,10 +59,10 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
       transition={{ delay: index * 0.03 }}
     >
       <Card className={`
-        bg-[#0A0A0F] border-l-4 overflow-hidden group
-        hover:shadow-2xl hover:-translate-y-1 transition-all duration-300
-        ${isReveillon ? 'border-l-[#A00000] ring-1 ring-[#A00000]/30 hover:shadow-[#A00000]/10' : 
-          isDayAfter ? 'border-l-purple-400 hover:shadow-purple-500/10' : 'border-l-white/20 hover:shadow-white/5'}
+        bg-[#0A0A0F] border-l-4 overflow-hidden
+        hover:shadow-2xl hover:shadow-pink-500/10 hover:scale-[1.01] transition-all duration-300
+        ${isReveillon ? 'border-l-yellow-400 ring-1 ring-yellow-500/30' : 
+          isDayAfter ? 'border-l-purple-400' : 'border-l-gradient-to-b from-orange-500 to-pink-500'}
         border border-gray-800/50
       `}
       style={{
@@ -128,7 +128,7 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
             <div className="flex-1 p-3 sm:p-4">
               {/* Title Desktop */}
               <div className="hidden sm:flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-bold text-white text-lg leading-tight tracking-wide group-hover:text-[#A00000] transition-colors" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>{evento.nome}</h3>
+                <h3 className="font-bold text-white text-lg leading-tight tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>{evento.nome}</h3>
                 {evento.status === "A confirmar" && (
                   <Badge variant="outline" className="text-xs bg-amber-500/10 text-amber-400 border-amber-500/30 flex-shrink-0">
                     A confirmar
@@ -162,10 +162,10 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
                     aria-label={`Comprar ingressos para ${evento.nome} com código de desconto toca-organic`}
                   >
                     <Button 
-                      className="w-full bg-[#A00000] hover:bg-[#8B0000] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="w-full bg-gradient-to-r from-yellow-500 via-yellow-600 to-orange-500 hover:from-yellow-600 hover:via-orange-500 hover:to-orange-600 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
                       size="sm"
                     >
-                      🎟️ Ver Ingressos <span className="text-xs font-normal ml-1">(código: toca-organic)</span>
+                      🎟️ COMPRE AGORA <span className="text-xs font-normal ml-1">(código: toca-organic)</span>
                     </Button>
                   </a>
                 </div>
