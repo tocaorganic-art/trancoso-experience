@@ -31,6 +31,7 @@ import SEOStatus from './pages/SEOStatus';
 import RelatorioRastreamento from './pages/RelatorioRastreamento';
 import TesteRastreamento from './pages/TesteRastreamento';
 import EventosDestaque from './pages/EventosDestaque';
+import AdminImportEventos from './pages/AdminImportEventos';
 import __Layout from './Layout.jsx';
 
 
@@ -68,6 +69,7 @@ export const PAGES = {
     "RelatorioRastreamento": RelatorioRastreamento,
     "TesteRastreamento": TesteRastreamento,
     "EventosDestaque": EventosDestaque,
+    "AdminImportEventos": AdminImportEventos,
 }
 
 export const pagesConfig = {
