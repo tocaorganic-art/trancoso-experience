@@ -124,38 +124,76 @@ export default function EventosAnoNovo() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a0a1f] via-[#0d0d1a] to-[#050510]">
-      {/* Conversion Block - Services CTA - Versão Compacta */}
-      <section className="bg-[#0A0A0F] border-y border-white/5 py-6 relative z-10">
+      {/* Conversion Block - Services CTA */}
+      <section className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 py-12 relative z-10">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-white">
-            <div className="text-center md:text-left">
-              <p className="text-gray-400 text-sm mb-1">Precisa de DJ ou equipamento para sua festa?</p>
-              <h3 className="text-lg font-bold">Serviços Exclusivos para Réveillon</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center text-white"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm mb-6">
+              <Sparkles className="w-4 h-4" />
+              Serviços Exclusivos para Réveillon
             </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Transforme sua Festa em um Evento Exclusivo
+            </h2>
+            <p className="text-xl mb-8 text-white/90 max-w-3xl mx-auto">
+              Contrate Nossos DJs ou Alugue Equipamentos Pioneer para sua Residência!
+            </p>
             
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-4">
               <Link to={createPageUrl("CasamentosTrancoso")}>
                 <Button 
-                  size="sm"
-                  className="bg-white text-black hover:bg-gray-200 font-semibold"
+                  size="lg"
+                  className="bg-white text-purple-600 hover:bg-gray-100 font-bold px-8 py-6"
                 >
-                  <Users className="w-4 h-4 mr-2" />
-                  Contratar DJ
+                  <Users className="w-5 h-5 mr-2" />
+                  Contratar DJ para Evento Privado
                 </Button>
               </Link>
               
               <Link to={createPageUrl("AluguelEquipamentos")}>
                 <Button 
-                  size="sm"
+                  size="lg"
                   variant="outline"
-                  className="border-white/20 text-white hover:bg-white/10"
+                  className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
                 >
-                  <Music className="w-4 h-4 mr-2" />
-                  Alugar Som
+                  <Music className="w-5 h-5 mr-2" />
+                  Alugar Som Profissional
                 </Button>
               </Link>
+              
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
+                onClick={() => window.open('https://wa.me/5521972824659?text=Olá! Gostaria de um orçamento para Réveillon em Trancoso', '_blank')}
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp Direto
+              </Button>
             </div>
-          </div>
+
+            <div className="mt-8 grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <CheckCircle className="w-8 h-8 mb-3" />
+                <h3 className="font-bold mb-2">Equipamento Pioneer Premium</h3>
+                <p className="text-sm text-white/80">CDJ-3000, DJM-V10, Funktion-One</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <CheckCircle className="w-8 h-8 mb-3" />
+                <h3 className="font-bold mb-2">DJs Experientes</h3>
+                <p className="text-sm text-white/80">500 mil+ streams, turnês internacionais</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <CheckCircle className="w-8 h-8 mb-3" />
+                <h3 className="font-bold mb-2">Serviço Completo</h3>
+                <p className="text-sm text-white/80">Instalação, suporte técnico e backup</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -198,7 +236,20 @@ export default function EventosAnoNovo() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 relative">
-
+        {/* Mapa Interativo */}
+        <div className="mb-8">
+          <React.Suspense fallback={
+            <Card className="bg-gray-900/50 border-white/10 p-8 text-center">
+              <Loader2 className="w-8 h-8 animate-spin text-pink-400 mx-auto mb-2" />
+              <p className="text-gray-400 text-sm">Carregando mapa...</p>
+            </Card>
+          }>
+            <MapaEventos 
+              onLocalidadeClick={(loc) => setFiltroLocalidade(loc)}
+              eventosCount={eventosCount}
+            />
+          </React.Suspense>
+        </div>
 
         {/* Filtros */}
         <div className="flex flex-wrap gap-2 mb-6 sm:mb-8 justify-center items-center">
@@ -279,8 +330,8 @@ export default function EventosAnoNovo() {
                     </Badge>
                   </div>
 
-                  {/* Eventos Grid - Layout otimizado */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+                  {/* Eventos Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {eventosData.map((evento, idx) => (
                       <motion.div
                         key={evento.id}
@@ -322,21 +373,6 @@ export default function EventosAnoNovo() {
             <p className="text-3xl font-bold text-white">{eventos.filter(e => e.tags?.includes("Pacote de festas")).length}</p>
             <p className="text-gray-400 text-sm">Pacotes de Festas</p>
           </div>
-        </div>
-
-        {/* Mapa Interativo - Movido para o final */}
-        <div className="mt-12">
-          <React.Suspense fallback={
-            <Card className="bg-gray-900/50 border-white/10 p-8 text-center">
-              <Loader2 className="w-8 h-8 animate-spin text-pink-400 mx-auto mb-2" />
-              <p className="text-gray-400 text-sm">Carregando mapa...</p>
-            </Card>
-          }>
-            <MapaEventos 
-              onLocalidadeClick={(loc) => setFiltroLocalidade(loc)}
-              eventosCount={eventosCount}
-            />
-          </React.Suspense>
         </div>
       </div>
 

@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon, ArrowRight } from "lucide-react";
+import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon } from "lucide-react";
 import LGPDConsent from "@/components/compliance/LGPDConsent";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";
@@ -173,55 +173,73 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
                         className="sticky top-0 z-50 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 border-b border-gray-200 shadow-sm backdrop-blur-sm bg-opacity-95"
                       >
                         <div className="container mx-auto px-4 py-3 pl-16 md:pl-20">
-                          <div className="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide">
-                            <RouterLink to={createPageUrl("EventosAnoNovo")}>
-                              <Button 
-                                variant="ghost" 
-                                size="sm"
-                                className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                              >
-                                <PartyPopper className="mr-1.5 h-4 w-4" /> RÉVEILLON 2026
-                              </Button>
-                            </RouterLink>
-                            <RouterLink to={createPageUrl("Curadoria")}>
-                              <Button 
-                                variant="ghost" 
-                                size="sm"
-                                className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                              >
-                                <Newspaper className="mr-1.5 h-4 w-4" /> MÚSICA
-                              </Button>
-                            </RouterLink>
-                            <RouterLink to={createPageUrl("Cotacao")}>
-                              <Button 
-                                variant="ghost" 
-                                size="sm"
-                                className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                              >
-                                <CalendarIcon className="mr-1.5 h-4 w-4" /> CONTRATAR
-                              </Button>
-                            </RouterLink>
-                            <RouterLink to={createPageUrl("LocacaoSom")}>
-                              <Button 
-                                variant="ghost" 
-                                size="sm"
-                                className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                              >
-                                <Music className="mr-1.5 h-4 w-4" /> EQUIPAMENTOS
-                              </Button>
-                            </RouterLink>
-                            <RouterLink to={createPageUrl("Ethos")}>
-                              <Button 
-                                variant="ghost" 
-                                size="sm"
-                                className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                              >
-                                <Sparkles className="mr-1.5 h-4 w-4" /> SOBRE
-                              </Button>
-                            </RouterLink>
-                          </div>
-                        </div>
-                      </div>
+                <div className="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide">
+              <RouterLink to={createPageUrl("Ethos")}>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                >
+                  <Sparkles className="mr-1.5 h-4 w-4" /> ETHOS
+                </Button>
+              </RouterLink>
+              <RouterLink to={createPageUrl("Eventos")}>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                >
+                  <Calendar className="mr-1.5 h-4 w-4" /> EVENTOS
+                </Button>
+              </RouterLink>
+              <RouterLink to={createPageUrl("Curadoria")}>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                >
+                  <Newspaper className="mr-1.5 h-4 w-4" /> CURADORIA
+                </Button>
+              </RouterLink>
+              <RouterLink to={createPageUrl("Cotacao")}>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                >
+                  <CalendarIcon className="mr-1.5 h-4 w-4" /> COTAÇÃO
+                </Button>
+              </RouterLink>
+              <RouterLink to={createPageUrl("Discografia")}>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                >
+                  <Disc3 className="mr-1.5 h-4 w-4" /> DISCOGRAFIA
+                </Button>
+              </RouterLink>
+              <RouterLink to={createPageUrl("EventosAnoNovo")}>
+                                    <Button 
+                                      variant="ghost" 
+                                      size="sm"
+                                      className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                                    >
+                                      <PartyPopper className="mr-1.5 h-4 w-4" /> ANO NOVO/TRANCOSO/CARAÍVA/ARRAIAL
+                                    </Button>
+                                  </RouterLink>
+              <RouterLink to={createPageUrl("LocacaoSom")}>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
+                >
+                  <Music className="mr-1.5 h-4 w-4" /> LOCAÇÃO DE SOM
+                </Button>
+              </RouterLink>
+            </div>
+          </div>
+        </div>
 
         {/* Hero Section */}
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -515,7 +533,38 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
                 SAIBA MAIS <ChevronDown className="ml-2 h-5 w-5" />
               </Button>
 
-
+              <RouterLink to={createPageUrl("Curadoria")}>
+                <Button 
+                  variant="outline" 
+                  className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
+                >
+                  <Newspaper className="mr-2 h-5 w-5" /> CURADORIA
+                </Button>
+              </RouterLink>
+              <RouterLink to={createPageUrl("Discografia")}>
+                                    <Button 
+                                      variant="outline" 
+                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
+                                    >
+                                      <Disc3 className="mr-2 h-5 w-5" /> DISCOGRAFIA
+                                    </Button>
+                                  </RouterLink>
+                                  <RouterLink to={createPageUrl("EventosAnoNovo")}>
+                                    <Button 
+                                      variant="outline" 
+                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
+                                    >
+                                      <PartyPopper className="mr-2 h-5 w-5" /> ANO NOVO
+                                    </Button>
+                                  </RouterLink>
+                                  <RouterLink to={createPageUrl("LocacaoSom")}>
+                                    <Button 
+                                      variant="outline" 
+                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
+                                    >
+                                      <Music className="mr-2 h-5 w-5" /> LOCAÇÃO DE SOM
+                                    </Button>
+                                  </RouterLink>
                                   </motion.div>
               </div>
               </section>
@@ -877,25 +926,17 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               <MessageCircle className="w-5 h-5" />
             </a>
           </div>
-          <div className="flex flex-wrap justify-center gap-3 mb-4 text-xs">
-            <RouterLink to={createPageUrl("Curadoria")} className="text-gray-500 hover:text-gray-800">
-              Música
+          <div className="flex justify-center gap-3 mb-4 text-xs">
+            <RouterLink to={createPageUrl("PoliticaPrivacidade")} className="text-gray-500 hover:text-gray-800 underline">
+              Política de Privacidade
             </RouterLink>
             <span className="text-gray-400">•</span>
-            <RouterLink to={createPageUrl("Discografia")} className="text-gray-500 hover:text-gray-800">
-              Discografia
+            <RouterLink to={createPageUrl("TermosServico")} className="text-gray-500 hover:text-gray-800 underline">
+              Termos de Serviço
             </RouterLink>
             <span className="text-gray-400">•</span>
-            <RouterLink to={createPageUrl("LocacaoSom")} className="text-gray-500 hover:text-gray-800">
-              Locação de Som
-            </RouterLink>
-            <span className="text-gray-400">•</span>
-            <RouterLink to={createPageUrl("PoliticaPrivacidade")} className="text-gray-500 hover:text-gray-800">
-              Privacidade
-            </RouterLink>
-            <span className="text-gray-400">•</span>
-            <RouterLink to={createPageUrl("TermosServico")} className="text-gray-500 hover:text-gray-800">
-              Termos
+            <RouterLink to={createPageUrl("AdminDashboard")} className="text-gray-500 hover:text-gray-800 underline">
+              Admin
             </RouterLink>
           </div>
           <p className="text-gray-400 text-xs">
