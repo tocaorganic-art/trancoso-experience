@@ -17,6 +17,7 @@ import CriticalCSS from "@/components/performance/CriticalCSS";
 import DeferredResources from "@/components/performance/DeferredResources";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import ABTestTracker from "@/components/tracking/ABTestTracker";
+import EventosAnoNovoCompact from "@/components/eventos/EventosAnoNovoCompact";
 
 // Lazy load non-critical components
 const PreSaveBanner = React.lazy(() => import("@/components/presave/PreSaveBanner"));
@@ -279,25 +280,6 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8"
-            >
-              <div className="w-[280px] md:w-[400px] lg:w-[500px] mx-auto rounded-2xl shadow-xl overflow-hidden">
-                                  <OptimizedImage 
-                                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png?width=500&quality=85&format=webp" 
-                                    alt="Tony Monteiro & Enzo Furtado" 
-                                    className="scale-[1.02]"
-                                    containerClassName="w-full h-full"
-                                    priority={true}
-                                    width="500"
-                                    height="500"
-                                  />
-                                </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
               className="flex items-center justify-center gap-8 md:gap-12 mb-12"
             >
@@ -384,8 +366,11 @@ ${formData.mensagem || "Sem mensagem adicional"}`;
               </div>
               </section>
 
-      {/* Pre-Save Banner */}
-      <section className="py-12 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+              {/* Eventos Ano Novo Compact */}
+              <EventosAnoNovoCompact />
+
+              {/* Pre-Save Banner */}
+              <section className="py-12 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
         <div className="container mx-auto px-6">
           <React.Suspense fallback={<div className="h-64" />}>
             <PreSaveBanner />
