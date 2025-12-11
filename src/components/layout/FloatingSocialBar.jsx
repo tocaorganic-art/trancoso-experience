@@ -120,7 +120,7 @@ export default function FloatingSocialBar() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
-          transition={{ duration: 0.3 }} className="bg-slate-300 text-blue-50 p-2 rounded-l-2xl flex flex-col gap-1 backdrop-blur-xl border border-r-0 border-white/20 shadow-2xl"
+          transition={{ duration: 0.3 }} className="bg-emerald-100 text-black p-2 rounded-l-2xl flex flex-col gap-1 backdrop-blur-xl border border-r-0 border-white/20 shadow-2xl"
 
           style={{
             background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
