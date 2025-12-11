@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
+import { 
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   AreaChart, Area, PieChart, Pie, Cell, Legend, BarChart, Bar
 } from "recharts";
-import { Eye, Clock, MousePointer, Users, Loader2, Sparkles } from "lucide-react";
+import { Eye, Clock, MousePointer, Users, TrendingUp, Loader2, Sparkles } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 

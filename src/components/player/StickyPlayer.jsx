@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { X, Music2, ExternalLink } from "lucide-react";
+import { Play, Pause, X, Music2, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function StickyPlayer() {

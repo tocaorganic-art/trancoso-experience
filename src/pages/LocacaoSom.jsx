@@ -8,7 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Music, Speaker, Lightbulb, Check, ArrowLeft, ChevronDown,
-  Disc3, Volume2, Zap, Star, Clock, Truck, Shield
+  Disc3, Volume2, Zap, Star, MessageCircle, Clock, Truck, Shield
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";

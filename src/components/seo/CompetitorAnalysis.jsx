@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from "recharts";
-import { Search, Loader2, Globe, TrendingUp } from "lucide-react";
+import { Search, Loader2, Globe, ExternalLink, TrendingUp } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 
