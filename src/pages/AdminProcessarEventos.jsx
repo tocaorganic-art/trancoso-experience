@@ -363,9 +363,8 @@ A descrição deve:
           nome: evento.nome,
           data: evento.data_inicio,
           localidade: evento.cidade,
-          local: evento.lineup || evento.cidade,
-          lineup: evento.lineup,
-          detalhes: descricao || '',
+          local: evento.url_social ? `Instagram: @${evento.url_social.split('/').pop()}` : evento.cidade,
+          detalhes: descricao || `${evento.lineup}`,
           tipo: "Evento de Ano Novo",
           status: "Confirmado",
           tags: [
@@ -373,8 +372,7 @@ A descrição deve:
             "Réveillon",
             evento.cidade
           ].filter(Boolean),
-          link_compra: evento.url_compra || undefined,
-          instagram: evento.url_social || undefined
+          link_compra: evento.url_compra || undefined
         };
 
         // Verificar se já existe
