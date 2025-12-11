@@ -453,6 +453,24 @@ A descrição deve:
               )}
             </Button>
 
+            {/* Update Images Button */}
+            <Button
+              onClick={async () => {
+                try {
+                  toast.info('Atualizando imagens...');
+                  const response = await base44.functions.invoke('updateEventosImagens');
+                  toast.success(response.data.message);
+                } catch (error) {
+                  toast.error('Erro ao atualizar imagens: ' + error.message);
+                }
+              }}
+              variant="outline"
+              className="w-full border-purple-600 text-purple-400 hover:bg-purple-600/10"
+            >
+              <ImageIcon className="w-5 h-5 mr-2" />
+              Adicionar Imagens Genéricas (Unsplash)
+            </Button>
+
             {/* Progress */}
             {processing && (
               <div className="bg-gray-900 rounded p-4">
