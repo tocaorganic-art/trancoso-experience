@@ -10,7 +10,8 @@ export default function Obrigado() {
     // Google Ads Conversion Event - Enviar formulário de lead
     if (window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-17649743667/Px_YCKCb3s4bELPuhuBB',
+        'send_to': 'AW-17589027735/Kw7xCKfd988bEJeHjcNB',
+        'transaction_id': '',
         'value': 1.0,
         'currency': 'BRL'
       });
