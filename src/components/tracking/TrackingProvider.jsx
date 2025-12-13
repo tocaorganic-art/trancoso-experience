@@ -16,8 +16,8 @@ export default function TrackingProvider({ children }) {
       {/* Google Tag Manager */}
       <GoogleTagManager gtmId={GTM_ID} />
       
-      {/* Google Analytics 4 */}
-      <GoogleAnalytics4 measurementId="G-DJK0KWJ2MH" />
+      {/* Google Analytics 4 + Google Ads */}
+      <GoogleAnalytics4 measurementId="G-8HTCZ1069J" />
       
       {/* Meta Pixel (Facebook/Instagram) */}
       <MetaPixel pixelId={META_PIXEL_ID} />

@@ -2,18 +2,27 @@ import React from "react";
 
 /**
  * Google Analytics 4 Component
- * Carrega GA4 de forma assíncrona via GTM
+ * Carrega GA4 + Google Ads com gtag.js
  */
-export default function GoogleAnalytics4({ measurementId = "G-DJK0KWJ2MH" }) {
+export default function GoogleAnalytics4({ measurementId = "G-8HTCZ1069J" }) {
   React.useEffect(() => {
-    // GA4 será carregado via GTM
-    // Este componente apenas garante que o dataLayer está pronto
+    // Criar script gtag.js
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.appendChild(script);
+
+    // Inicializar dataLayer e gtag
     window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
     
-    // Push de configuração inicial
-    if (window.gtag) {
-      window.gtag('config', measurementId);
-    }
+    // Configurar Google Analytics
+    gtag('config', measurementId);
+    
+    // Configurar Google Ads Conversion Tracking
+    gtag('config', 'AW-17589027735');
 
     return () => {
       // Cleanup não é necessário
