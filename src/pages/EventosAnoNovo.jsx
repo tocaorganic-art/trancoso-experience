@@ -14,6 +14,8 @@ import EventoCard from "@/components/eventos-ano-novo/EventoCard";
 import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
 
 const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
+const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
+const StructuredDataEvents = React.lazy(() => import("@/components/seo/StructuredDataEvents"));
 
 const LOCALIDADES = ["Todas", "Caraíva", "Trancoso", "Arraial d'Ajuda"];
 
@@ -124,6 +126,11 @@ export default function EventosAnoNovo() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a0a1f] via-[#0d0d1a] to-[#050510]">
+      {/* Structured Data for Events */}
+      <React.Suspense fallback={null}>
+        <StructuredDataEvents eventos={eventosFiltrados} />
+      </React.Suspense>
+
       {/* Conversion Block - Services CTA */}
       <section className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 py-12 relative z-10">
         <div className="container mx-auto px-6">
@@ -236,6 +243,13 @@ export default function EventosAnoNovo() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 relative">
+        {/* Breadcrumbs */}
+        <React.Suspense fallback={null}>
+          <Breadcrumbs items={[
+            { label: "Eventos de Ano Novo", page: "EventosAnoNovo" }
+          ]} />
+        </React.Suspense>
+
         {/* Mapa Interativo */}
         <div className="mb-8">
           <React.Suspense fallback={

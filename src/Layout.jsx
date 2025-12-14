@@ -7,6 +7,50 @@ const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCT
 
 export default function Layout({ children, currentPageName }) {
   useEffect(() => {
+    // Canonical URL - Evita conteúdo duplicado
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    const baseUrl = 'https://tocaexperience.com.br';
+    const pageUrls = {
+      "Home": baseUrl,
+      "EventosAnoNovo": `${baseUrl}/EventosAnoNovo`,
+      "CasamentosTrancoso": `${baseUrl}/CasamentosTrancoso`,
+      "AluguelEquipamentos": `${baseUrl}/AluguelEquipamentos`,
+      "EventosCorporativos": `${baseUrl}/EventosCorporativos`,
+      "Curadoria": `${baseUrl}/Curadoria`,
+      "Discografia": `${baseUrl}/Discografia`,
+      "LocacaoSom": `${baseUrl}/LocacaoSom`,
+      "Cotacao": `${baseUrl}/Cotacao`,
+      "Ethos": `${baseUrl}/Ethos`
+    };
+    canonicalLink.href = pageUrls[currentPageName] || baseUrl;
+
+    // Hreflang para SEO internacional
+    let hreflangPtBr = document.querySelector('link[rel="alternate"][hreflang="pt-BR"]');
+    if (!hreflangPtBr) {
+      hreflangPtBr = document.createElement('link');
+      hreflangPtBr.rel = 'alternate';
+      hreflangPtBr.hreflang = 'pt-BR';
+      document.head.appendChild(hreflangPtBr);
+    }
+    hreflangPtBr.href = canonicalLink.href;
+
+    // Robots meta tag - controle de indexação
+    let robotsMeta = document.querySelector('meta[name="robots"]');
+    if (!robotsMeta) {
+      robotsMeta = document.createElement('meta');
+      robotsMeta.name = 'robots';
+      document.head.appendChild(robotsMeta);
+    }
+    const noIndexPages = ["AdminDashboard", "AdminLogin", "RelatorioImplementacao"];
+    robotsMeta.content = noIndexPages.includes(currentPageName) 
+      ? 'noindex, nofollow' 
+      : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+
     // Preload Critical Fonts for better Core Web Vitals (FCP, LCP)
     const fonts = [
       { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2', type: 'font/woff2' },
@@ -43,13 +87,20 @@ export default function Layout({ children, currentPageName }) {
       }
     });
 
-    // SEO Meta Tags - Otimizado para conversão
+    // SEO Meta Tags - Otimizado para conversão + Long-tail keywords
     const pageTitles = {
       "Home": "DJ para Casamento e Eventos de Luxo em Trancoso | Toca Experience",
       "Agenda": "Agenda de Eventos | Toca Experience - Tony Monteiro & Enzo Furtado",
       "CasamentosTrancoso": "DJ para Casamento em Trancoso | Música Exclusiva para Seu Grande Dia",
       "AluguelEquipamentos": "Aluguel de Equipamentos DJ Pioneer em Trancoso | CDJ, Controladoras e Som",
-      "EventosCorporativos": "DJ para Eventos Corporativos em Trancoso | Festas Empresariais Exclusivas"
+      "EventosCorporativos": "DJ para Eventos Corporativos em Trancoso | Festas Empresariais Exclusivas",
+      "EventosAnoNovo": "Réveillon Trancoso 2025/2026 | Festas de Ano Novo Premium em Caraíva e Arraial",
+      "LocacaoSom": "Locação de Som Profissional em Trancoso | Aluguel Pioneer CDJ-3000 e Funktion-One",
+      "Curadoria": "Curadoria Musical Afro House & Organic House | Playlists e Sets Exclusivos",
+      "Discografia": "Discografia Tony Monteiro & Enzo Furtado | Releases Afro House e Organic House",
+      "Ethos": "Sobre Toca Experience | Filosofia e Valores dos DJs Tony Monteiro e Enzo Furtado",
+      "Cotacao": "Solicitar Orçamento DJ Trancoso | Cotação Personalizada para Eventos",
+      "Obrigado": "Cotação Recebida | Toca Experience - Aguarde Nosso Contato"
     };
 
     document.title = pageTitles[currentPageName] || "Toca Experience | DJs Tony Monteiro & Enzo Furtado - Afro House & Organic House";
@@ -67,34 +118,86 @@ export default function Layout({ children, currentPageName }) {
       "Agenda": "Confira a agenda de eventos e próximas apresentações dos DJs Tony Monteiro e Enzo Furtado. Afro House, Organic House e House music em festivais, clubs e eventos privados.",
       "CasamentosTrancoso": "DJ especializado em casamentos de luxo em Trancoso. Som profissional Pioneer, trilha personalizada e experiência inesquecível para seu grande dia.",
       "AluguelEquipamentos": "Aluguel de equipamentos DJ profissionais em Trancoso: Pioneer CDJ-3000, Controladoras DDJ, caixas de som e iluminação para festas e eventos.",
-      "EventosCorporativos": "DJs para eventos corporativos em Trancoso. Festas empresariais, lançamentos de produtos e confraternizações com música de alta qualidade."
+      "EventosCorporativos": "DJs para eventos corporativos em Trancoso. Festas empresariais, lançamentos de produtos e confraternizações com música de alta qualidade.",
+      "EventosAnoNovo": "Guia completo de festas e eventos de Réveillon 2025/2026 em Trancoso, Caraíva e Arraial d'Ajuda. Mais de 40 opções de festas premium, open bar, DJs internacionais. Ingressos e reservas disponíveis.",
+      "LocacaoSom": "Locação de equipamentos de som profissional em Trancoso: Pioneer CDJ-3000, DJM-V10, Funktion-One, iluminação LED. Instalação e suporte técnico inclusos. Ideal para casamentos, festas e eventos.",
+      "Curadoria": "Curadoria musical especializada em Afro House, Organic House e House Music. Playlists exclusivas, sets ao vivo e conteúdo selecionado por Tony Monteiro e Enzo Furtado.",
+      "Discografia": "Discografia completa de Tony Monteiro e Enzo Furtado. Ouça lançamentos, remixes e produções originais de Afro House e Organic House. Disponível no Spotify, SoundCloud e Apple Music.",
+      "Ethos": "Conheça a filosofia da Toca Experience: música como linguagem universal, fusão de brasilidades com eletrônica contemporânea, e excelência técnica em cada apresentação.",
+      "Cotacao": "Solicite um orçamento personalizado para DJ em casamentos, eventos corporativos, festas privadas e Réveillon em Trancoso. Resposta em até 24 horas.",
+      "Obrigado": "Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo."
     };
 
     metaDescription.content = pageDescriptions[currentPageName] || "Toca Experience apresenta Tony Monteiro & Enzo Furtado - duo de DJs especialistas em Afro House, Organic House e House. Contrate para casamentos, festivais, eventos corporativos e festas privadas.";
 
-    // Meta Keywords
+    // Meta Keywords - Long-tail SEO
     let metaKeywords = document.querySelector('meta[name="keywords"]');
     if (!metaKeywords) {
       metaKeywords = document.createElement('meta');
       metaKeywords.name = "keywords";
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.content = "DJ, Afro House, Organic House, House Music, Tony Monteiro, Enzo Furtado, Toca Experience, DJ para casamento, DJ para evento, DJ Rio de Janeiro, DJ São Paulo, DJ Trancoso, festival, sunset, pool party";
+    const pageKeywords = {
+      "Home": "DJ para casamento Trancoso, DJ eventos luxo, aluguel som profissional Trancoso, Afro House Brasil, DJ casamento praia",
+      "EventosAnoNovo": "reveillon trancoso 2026, festa ano novo caraiva, eventos premium arraial ajuda, ingressos reveillon bahia, festas fim de ano trancoso",
+      "CasamentosTrancoso": "DJ casamento Trancoso, musica casamento praia, DJ destination wedding, som casamento luxo, playlist casamento exclusiva",
+      "AluguelEquipamentos": "aluguel Pioneer CDJ Trancoso, locação equipamento DJ, som profissional eventos, Funktion-One aluguel, iluminação festa",
+      "LocacaoSom": "locação som profissional Trancoso, aluguel caixa de som eventos, equipamento DJ Bahia, sistema de som casamento",
+      "EventosCorporativos": "DJ evento corporativo Trancoso, festa empresa exclusiva, confraternização empresarial musica, evento corporativo premium",
+      "Curadoria": "curadoria musical Afro House, playlist Organic House, sets exclusivos house music, seleção musical profissional",
+      "Discografia": "Tony Monteiro Spotify, lancamentos Afro House Brasil, producoes Organic House, artistas house music brasileiros"
+    };
+    metaKeywords.content = pageKeywords[currentPageName] || "DJ, Afro House, Organic House, House Music, Tony Monteiro, Enzo Furtado, Toca Experience, DJ para casamento, DJ para evento, DJ Trancoso, festival, sunset, pool party";
 
-    // Open Graph Tags
+    // Open Graph Tags - Dinâmico por página
+    const defaultOgImage = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/45fbf25d5_anima_o_ultra_realista_e_ultra_hd_estilo.jpg";
+    
+    const pageOgData = {
+      "Home": {
+        title: "Toca Experience | DJs Premium para Casamentos e Eventos de Luxo em Trancoso",
+        description: "DJs profissionais Tony Monteiro & Enzo Furtado. Especializados em Afro House, Organic House. Aluguel de equipamentos Pioneer. Atendemos Trancoso, Caraíva e região.",
+        type: "website"
+      },
+      "EventosAnoNovo": {
+        title: "Réveillon Trancoso 2025/2026 | Guia Completo de Festas de Ano Novo Premium",
+        description: "Mais de 40 eventos exclusivos de Réveillon em Trancoso, Caraíva e Arraial d'Ajuda. DJs internacionais, open bar premium, festas na praia.",
+        type: "website"
+      },
+      "CasamentosTrancoso": {
+        title: "DJ para Casamento em Trancoso | Som Pioneer e Curadoria Musical Exclusiva",
+        description: "DJ especializado em casamentos de luxo. Equipamentos Pioneer de última geração, playlist personalizada, experiência inesquecível na praia.",
+        type: "website"
+      },
+      "Discografia": {
+        title: "True To Myself - Tony Monteiro | Já Disponível",
+        description: "🎵 Novo single 'True To Myself' de Tony Monteiro já disponível! Ouça agora na sua playlist favorita.",
+        type: "music.song",
+        url: "https://ffm.to/truetomyself"
+      }
+    };
+
+    const ogData = pageOgData[currentPageName] || {
+      title: document.title,
+      description: metaDescription.content,
+      type: "website"
+    };
+
     const ogTags = [
-      { property: "og:title", content: "True To Myself - Tony Monteiro | Já Disponível" },
-      { property: "og:description", content: "🎵 Novo single 'True To Myself' de Tony Monteiro já disponível! Ouça agora na sua playlist favorita." },
-      { property: "og:image", content: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/45fbf25d5_anima_o_ultra_realista_e_ultra_hd_estilo.jpg" },
+      { property: "og:title", content: ogData.title },
+      { property: "og:description", content: ogData.description },
+      { property: "og:image", content: defaultOgImage },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "1200" },
-      { property: "og:type", content: "music.song" },
+      { property: "og:type", content: ogData.type },
       { property: "og:locale", content: "pt_BR" },
-      { property: "og:url", content: "https://ffm.to/truetomyself" },
+      { property: "og:url", content: ogData.url || canonicalLink.href },
+      { property: "og:site_name", content: "Toca Experience" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "True To Myself - Tony Monteiro" },
-      { name: "twitter:description", content: "Novo single já disponível! Ouça agora 🎵" },
-      { name: "twitter:image", content: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/45fbf25d5_anima_o_ultra_realista_e_ultra_hd_estilo.jpg" }
+      { name: "twitter:title", content: ogData.title },
+      { name: "twitter:description", content: ogData.description },
+      { name: "twitter:image", content: defaultOgImage },
+      { name: "twitter:site", content: "@tonyismusic" },
+      { name: "twitter:creator", content: "@tonyismusic" }
     ];
 
     ogTags.forEach(tag => {
@@ -208,21 +311,32 @@ export default function Layout({ children, currentPageName }) {
       "@context": "https://schema.org",
       "@type": "MusicGroup",
       "name": "Toca Experience",
+      "alternateName": "Tony Monteiro & Enzo Furtado",
       "description": "Duo de DJs Tony Monteiro e Enzo Furtado, especialistas em Afro House, Organic House e House Music.",
-      "genre": ["Afro House", "Organic House", "House Music"],
+      "genre": ["Afro House", "Organic House", "House Music", "Electronic Dance Music"],
+      "foundingDate": "2015",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Trancoso, Bahia, Brasil"
+      },
       "member": [
         {
           "@type": "Person",
           "name": "Tony Monteiro",
+          "jobTitle": "DJ & Music Producer",
+          "description": "DJ internacional especializado em Afro House, Organic House e MPB Rock Club",
           "sameAs": [
             "https://www.instagram.com/tonyismusic",
             "https://open.spotify.com/artist/2r4S2RPdfnx7UPL73jJWlQ",
-            "https://soundcloud.com/YjRNAgQXyfWcPrfAX1"
+            "https://soundcloud.com/YjRNAgQXyfWcPrfAX1",
+            "https://music.apple.com/br/artist/tony-monteiro/373816598"
           ]
         },
         {
           "@type": "Person",
           "name": "Enzo Furtado",
+          "jobTitle": "DJ & Music Producer",
+          "description": "DJ residente especializado em Organic House e vibes tropicais de Trancoso",
           "sameAs": [
             "https://www.instagram.com/enzofurtado/",
             "https://open.spotify.com/user/21653dr5mtlrcarl5m7n3vo2i",
@@ -236,6 +350,98 @@ export default function Layout({ children, currentPageName }) {
         "https://linktr.ee/tocamusiccrew"
       ]
     });
+
+    // Breadcrumb Schema
+    const breadcrumbPaths = {
+      "EventosAnoNovo": ["Home", "Eventos de Ano Novo"],
+      "CasamentosTrancoso": ["Home", "Serviços", "Casamentos"],
+      "AluguelEquipamentos": ["Home", "Serviços", "Aluguel de Equipamentos"],
+      "LocacaoSom": ["Home", "Serviços", "Locação de Som"],
+      "EventosCorporativos": ["Home", "Serviços", "Eventos Corporativos"],
+      "Curadoria": ["Home", "Curadoria Musical"],
+      "Discografia": ["Home", "Discografia"],
+      "Cotacao": ["Home", "Solicitar Cotação"]
+    };
+
+    if (breadcrumbPaths[currentPageName]) {
+      let breadcrumbSchema = document.querySelector('script[data-schema="breadcrumb"]');
+      if (!breadcrumbSchema) {
+        breadcrumbSchema = document.createElement('script');
+        breadcrumbSchema.type = "application/ld+json";
+        breadcrumbSchema.setAttribute('data-schema', 'breadcrumb');
+        document.head.appendChild(breadcrumbSchema);
+      }
+      
+      const itemListElement = breadcrumbPaths[currentPageName].map((name, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": name,
+        "item": index === 0 ? baseUrl : `${baseUrl}/${currentPageName}`
+      }));
+
+      breadcrumbSchema.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": itemListElement
+      });
+    }
+
+    // FAQ Schema para páginas de serviço
+    if (currentPageName === "CasamentosTrancoso" || currentPageName === "LocacaoSom") {
+      let faqSchema = document.querySelector('script[data-schema="faq"]');
+      if (!faqSchema) {
+        faqSchema = document.createElement('script');
+        faqSchema.type = "application/ld+json";
+        faqSchema.setAttribute('data-schema', 'faq');
+        document.head.appendChild(faqSchema);
+      }
+      
+      const faqData = {
+        "CasamentosTrancoso": [
+          {
+            question: "Quanto custa um DJ para casamento em Trancoso?",
+            answer: "Os valores variam de R$ 15.000 a R$ 50.000+ dependendo da duração, equipamentos e personalização. Entre em contato para orçamento personalizado."
+          },
+          {
+            question: "Vocês fornecem equipamento de som?",
+            answer: "Sim! Trabalhamos com equipamentos Pioneer de última geração (CDJ-3000, DJM-V10) e sistemas de som Funktion-One."
+          },
+          {
+            question: "Qual o estilo musical?",
+            answer: "Especializados em Afro House, Organic House e House Music. Também criamos playlists personalizadas incluindo MPB, Bossa Nova e outros estilos conforme preferência do casal."
+          }
+        ],
+        "LocacaoSom": [
+          {
+            question: "Quais equipamentos estão disponíveis para aluguel?",
+            answer: "Pioneer CDJ-3000, DJM-V10, controladoras DDJ, caixas de som Funktion-One, iluminação LED profissional e microfones sem fio."
+          },
+          {
+            question: "A instalação está incluída?",
+            answer: "Sim! Instalação, configuração e suporte técnico durante o evento estão inclusos no aluguel."
+          },
+          {
+            question: "Vocês atendem eventos residenciais?",
+            answer: "Sim! Atendemos casamentos, festas privadas, eventos corporativos e residenciais em Trancoso e região."
+          }
+        ]
+      };
+
+      if (faqData[currentPageName]) {
+        faqSchema.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqData[currentPageName].map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.answer
+            }
+          }))
+        });
+      }
+    }
 
   }, [currentPageName]);
 

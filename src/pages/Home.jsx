@@ -19,6 +19,7 @@ import { useTracking } from "@/components/tracking/TrackingProvider";
 import ABTestTracker from "@/components/tracking/ABTestTracker";
 
 // Lazy load non-critical components
+const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
 const PreSaveBanner = React.lazy(() => import("@/components/presave/PreSaveBanner"));
 const StickyPlayer = React.lazy(() => import("@/components/player/StickyPlayer"));
 const FixedLogo = React.lazy(() => import("@/components/layout/FixedLogo"));
@@ -28,6 +29,51 @@ const NewsletterPopup = React.lazy(() => import("@/components/layout/NewsletterP
 
 export default function Home() {
   const { trackFormSubmission, trackWhatsAppClick } = useTracking();
+
+  // SEO - Reviews Schema
+  React.useEffect(() => {
+    let reviewSchema = document.querySelector('script[data-schema="reviews"]');
+    if (!reviewSchema) {
+      reviewSchema = document.createElement('script');
+      reviewSchema.type = "application/ld+json";
+      reviewSchema.setAttribute('data-schema', 'reviews');
+      document.head.appendChild(reviewSchema);
+    }
+    reviewSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Toca Experience",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "47",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Marina & Pedro S." },
+          "datePublished": "2024-12-01",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Exclusividade e luxo em um paraíso. A Toca Experience transformou nosso casamento em Trancoso em algo mágico. A energia da música foi perfeita do sunset até o amanhecer!"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Carlos R." },
+          "datePublished": "2024-11-15",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Desde 2015, acompanho a trajetória do Tony. A busca constante pela excelência artística e a energia tropical que ele traz são incomparáveis."
+        }
+      ]
+    });
+
+    return () => {
+      if (reviewSchema && reviewSchema.parentNode) {
+        reviewSchema.parentNode.removeChild(reviewSchema);
+      }
+    };
+  }, []);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
