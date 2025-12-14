@@ -35,6 +35,7 @@ import RelatorioImplementacao from './pages/RelatorioImplementacao';
 import ConfiguracaoGoogleAds from './pages/ConfiguracaoGoogleAds';
 import ProximasTarefas from './pages/ProximasTarefas';
 import RelatorioPresencaDigital from './pages/RelatorioPresencaDigital';
+import EventCardShowcase from './pages/EventCardShowcase';
 import __Layout from './Layout.jsx';
 
 
@@ -76,6 +77,7 @@ export const PAGES = {
     "ConfiguracaoGoogleAds": ConfiguracaoGoogleAds,
     "ProximasTarefas": ProximasTarefas,
     "RelatorioPresencaDigital": RelatorioPresencaDigital,
+    "EventCardShowcase": EventCardShowcase,
 }
 
 export const pagesConfig = {
