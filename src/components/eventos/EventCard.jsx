@@ -1,5 +1,5 @@
 import React from "react";
-import "./EventCard.css";
+import "./EventCard";
 
 /**
  * EventCard - Card de evento com glassmorphism premium
