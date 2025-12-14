@@ -111,7 +111,7 @@ export default function EventCardShowcase() {
                 month={evento.month}
                 title={evento.title}
                 location={evento.location}
-                tags={evento.tags}
+                tags={[evento.tags[evento.tags.length - 1]]}
               />
             ))}
           </div>
