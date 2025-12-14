@@ -7,13 +7,10 @@ import { motion } from "framer-motion";
 
 export default function Obrigado() {
   useEffect(() => {
-    // Google Ads Conversion Event - Enviar formulário de lead
+    // Google Ads Lead Form Submit Event
     if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17589027735/Kw7xCKfd988bEJeHjcNB',
-        'transaction_id': '',
-        'value': 1.0,
-        'currency': 'BRL'
+      window.gtag('event', 'lead_form_submit', {
+        'send_to': 'AW-17589027735/Kw7xCKfd988bEJeHjcNB'
       });
     }
 

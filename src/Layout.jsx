@@ -241,6 +241,16 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <TrackingProvider>
+      {/* Google Ads Tag (gtag.js) */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HTCZ1069J"></script>
+      <script dangerouslySetInnerHTML={{__html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8HTCZ1069J');
+        gtag('config', 'AW-17589027735');
+      `}} />
+
       {/* Google Tag Manager (noscript) */}
       <noscript>
         <iframe
