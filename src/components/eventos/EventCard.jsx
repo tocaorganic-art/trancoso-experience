@@ -143,7 +143,7 @@ export default function EventCard({
             size="sm"
           >
             <Ticket className="w-4 h-4 mr-2" />
-            Comprar Ingresso
+            Comprar Ingresso com Desconto
             <ExternalLink className="w-3 h-3 ml-2" />
           </Button>
         </div>
