@@ -455,6 +455,7 @@ export default function Layout({ children, currentPageName }) {
         gtag('js', new Date());
         gtag('config', 'G-8HTCZ1069J');
         gtag('config', 'AW-17589027735');
+        gtag('config', 'AW-17649743667');
       `}} />
 
       {/* Google Tag Manager (noscript) */}
