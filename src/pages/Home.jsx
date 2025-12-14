@@ -277,15 +277,6 @@ export default function Home() {
                   <Disc3 className="mr-1.5 h-4 w-4" /> DISCOGRAFIA
                 </Button>
               </RouterLink>
-              <RouterLink to={createPageUrl("EventosAnoNovo")}>
-                                    <Button 
-                                      variant="ghost" 
-                                      size="sm"
-                                      className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                                    >
-                                      <PartyPopper className="mr-1.5 h-4 w-4" /> ANO NOVO/TRANCOSO/CARAÍVA/ARRAIAL
-                                    </Button>
-                                  </RouterLink>
               <RouterLink to={createPageUrl("LocacaoSom")}>
                 <Button 
                   variant="ghost" 
