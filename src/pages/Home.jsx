@@ -18,6 +18,7 @@ import DeferredResources from "@/components/performance/DeferredResources";
 import PerformanceOptimizer from "@/components/performance/PerformanceOptimizer";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import ABTestTracker from "@/components/tracking/ABTestTracker";
+import EventCard from "@/components/eventos/EventCard";
 
 // Lazy load non-critical components
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
@@ -337,212 +338,72 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8 w-full max-w-[90vw] md:max-w-[600px] lg:max-w-[700px] mx-auto"
+              className="mb-8 w-full max-w-[90vw] md:max-w-[800px] lg:max-w-[900px] mx-auto"
             >
-              {/* Container de Eventos com Scroll */}
-              <div 
-                style={{
-                  width: '100%',
-                  maxWidth: '100%',
-                  height: '480px',
-                  overflowY: 'auto',
-                  overflowX: 'hidden',
-                  paddingRight: '10px',
-                  scrollbarWidth: 'thin',
-                  background: 'transparent'
-                }}
-                className="eventos-scroll-wrapper"
-              >
-                <style dangerouslySetInnerHTML={{__html: `
-                  .eventos-lista {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 22px;
-                    width: 100%;
-                  }
-                  .card-evento-toca {
-                    background: #ffffff;
-                    border-radius: 14px;
-                    border: 1px solid #e5e5e5;
-                    padding: 18px 20px;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 18px;
-                    align-items: center;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-                    width: 100%;
-                  }
-                  .card-evento-toca .data-box {
-                    width: 70px;
-                    min-width: 70px;
-                    height: 70px;
-                    border-radius: 12px;
-                    background: #f4f4f4;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    font-weight: bold;
-                    color: #333;
-                    font-size: 18px;
-                    line-height: 1.2;
-                  }
-                  .card-evento-toca .conteudo {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    gap: 4px;
-                    width: 100%;
-                  }
-                  .card-evento-toca .titulo {
-                    font-size: 18px;
-                    font-weight: 700;
-                    color: #222;
-                    line-height: 1.3;
-                  }
-                  .card-evento-toca .local {
-                    font-size: 14px;
-                    color: #666;
-                    line-height: 1.25;
-                  }
-                  .card-evento-toca .tags {
-                    margin-top: 6px;
-                    display: flex;
-                    gap: 6px;
-                    flex-wrap: wrap;
-                  }
-                  .tag-item {
-                    background: #222;
-                    color: #fff;
-                    padding: 3px 8px;
-                    border-radius: 6px;
-                    font-size: 12px;
-                    white-space: nowrap;
-                  }
-                  .eventos-scroll-wrapper::-webkit-scrollbar {
-                    width: 8px;
-                  }
-                  .eventos-scroll-wrapper::-webkit-scrollbar-thumb {
-                    background: #999;
-                    border-radius: 4px;
-                  }
-                  @media (max-width: 600px) {
-                    .eventos-scroll-wrapper {
-                      height: 380px !important;
-                      padding-right: 6px !important;
-                    }
-                    .card-evento-toca {
-                      flex-direction: row;
-                      gap: 14px;
-                      padding: 14px 16px;
-                    }
-                    .card-evento-toca .data-box {
-                      width: 60px;
-                      min-width: 60px;
-                      height: 60px;
-                      font-size: 16px;
-                    }
-                    .card-evento-toca .titulo {
-                      font-size: 16px;
-                    }
-                    .card-evento-toca .local {
-                      font-size: 13px;
-                    }
-                    .tag-item {
-                      font-size: 11px;
-                      padding: 2px 6px;
-                    }
-                  }
-                  @media (max-width: 420px) {
-                    .eventos-scroll-wrapper {
-                      height: 320px !important;
-                    }
-                    .card-evento-toca {
-                      flex-direction: row;
-                      padding: 12px 14px;
-                    }
-                    .card-evento-toca .data-box {
-                      width: 55px;
-                      min-width: 55px;
-                      height: 55px;
-                      font-size: 15px;
-                    }
-                    .card-evento-toca .titulo {
-                      font-size: 15px;
-                    }
-                    .card-evento-toca .local {
-                      font-size: 12px;
-                    }
-                  }
-                `}} />
+              {/* Grid de EventCards Premium */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto px-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+                <EventCard
+                  variant="reveillon"
+                  day="31"
+                  month="DEZ"
+                  title="Réveillon Trancoso 2026"
+                  location="Trancoso • Quadrado"
+                  tags={["Réveillon", "Open Bar", "Live DJ"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="casamento"
+                  day="15"
+                  month="MAR"
+                  title="Casamento Premium"
+                  location="Praia do Espelho"
+                  tags={["Destination Wedding", "Som Premium"]}
+                  onClick={() => window.location.href = createPageUrl("CasamentosTrancoso")}
+                />
+                <EventCard
+                  variant="afrohouse"
+                  day="20"
+                  month="JAN"
+                  title="Afro House Sunset"
+                  location="Trancoso Beach Club"
+                  tags={["Afro House", "Organic", "Live DJ"]}
+                />
+                <EventCard
+                  variant="corporativo"
+                  day="05"
+                  month="FEV"
+                  title="Evento Corporativo"
+                  location="Arraial d'Ajuda"
+                  tags={["Empresarial", "Networking"]}
+                  onClick={() => window.location.href = createPageUrl("EventosCorporativos")}
+                />
+                <EventCard
+                  variant="gastronomia"
+                  day="10"
+                  month="FEV"
+                  title="Jantar Harmonizado"
+                  location="Caraíva • Restaurante Vista Mar"
+                  tags={["Gastronomia", "Live Music"]}
+                />
+                <EventCard
+                  variant="reveillon"
+                  day="01"
+                  month="JAN"
+                  title="Day After Caraíva"
+                  location="Caraíva Beach"
+                  tags={["Pool Party", "Day After"]}
+                />
+              </div>
 
-                <div className="eventos-lista">
-                  {[
-                    {data: "26", mes: "DEZ", titulo: "Alta Classe — Bem-vindo", local: "Trancoso • Local a confirmar", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "27", mes: "DEZ", titulo: "AWÊ Réveillon Caraíva 2026", local: "Caraíva • Casa Incrível", tags: ["Festival", "Ano Novo", "Caraíva"]},
-                    {data: "27", mes: "DEZ", titulo: "Réveillon Sal de Caraíva 2026", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "27", mes: "DEZ", titulo: "Réveillon Elemental Trancoso 2026", local: "Trancoso • Almar Trancoso (a confirmar)", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "27", mes: "DEZ", titulo: "GoodTimes por Illusionize", local: "Caraíva • Praia Incrível", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "27", mes: "DEZ", titulo: "Alta - dhb", local: "Trancoso (a confirmar)", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "28", mes: "DEZ", titulo: "Réveillon Sal de Caraíva 2026", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "28", mes: "DEZ", titulo: "Réveillon Ayumar 2026", local: "Trancoso • Clube de Voo", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "28", mes: "DEZ", titulo: "Réveillon Elemental Trancoso 2026", local: "Trancoso • Almar Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "28", mes: "DEZ", titulo: "Alta Costura - Nós Amamos", local: "Trancoso (a confirmar)", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "28", mes: "DEZ", titulo: "Festival de Sundance 2026", local: "Arraial d'Ajuda", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "29", mes: "DEZ", titulo: "Réveillon Sal de Caraíva 2026", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "29", mes: "DEZ", titulo: "Réveillon Elemental Trancoso 2026", local: "Trancoso • Almar Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "29", mes: "DEZ", titulo: "Alta - Saravá", local: "Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "29", mes: "DEZ", titulo: "Sundance - Réveillon Arraial 2026", local: "Arraial d'Ajuda", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "30", mes: "DEZ", titulo: "AWÊ Réveillon Caraíva 2026", local: "Caraíva • Casa Incrível", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "30", mes: "DEZ", titulo: "O Telhado", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "30", mes: "DEZ", titulo: "Réveillon Ayumar 2026", local: "Trancoso • Clube de Voo", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "30", mes: "DEZ", titulo: "Réveillon Elemental Trancoso 2026", local: "Trancoso • Almar Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "30", mes: "DEZ", titulo: "Alto - Oboé", local: "Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "30", mes: "DEZ", titulo: "Mahal Zé Barbudo", local: "Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "30", mes: "DEZ", titulo: "Festival de Sundance 2026", local: "Arraial d'Ajuda", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "30", mes: "DEZ", titulo: "Réveillon Só Coisas Boas", local: "Arraial d'Ajuda • Hayô Praia", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "31", mes: "DEZ", titulo: "AWÊ Réveillon Caraíva 2026", local: "Caraíva • Casa Incrível", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "31", mes: "DEZ", titulo: "Réveillon Elemental Trancoso 2026", local: "Trancoso • Almar Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "31", mes: "DEZ", titulo: "Réveillon Sal de Caraíva 2026", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "31", mes: "DEZ", titulo: "VIVA Caraíva 2026", local: "Caraíva • Frente Mar", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "31", mes: "DEZ", titulo: "Réveillon Ayumar 2026", local: "Trancoso • Clube de Voo", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "31", mes: "DEZ", titulo: "Réveillon Aura Trancoso 2026", local: "Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "31", mes: "DEZ", titulo: "Réveillon Corujão 2026", local: "Arraial d'Ajuda • Corujão", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "31", mes: "DEZ", titulo: "Sundance - Réveillon 2026", local: "Arraial d'Ajuda", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "31", mes: "DEZ", titulo: "Réveillon Só Coisas Boas", local: "Arraial d'Ajuda • Hayô Praia", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "31", mes: "DEZ", titulo: "Réveillon Beat Beach 2026", local: "Arraial d'Ajuda • Beat Beach", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "31", mes: "DEZ", titulo: "Alta - Taipei", local: "Trancoso • Praia do Taipe", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "01", mes: "JAN", titulo: "Réveillon Elemental Trancoso 2026", local: "Trancoso • Almar Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "02", mes: "JAN", titulo: "Réveillon Ayumar 2026", local: "Trancoso • Clube de Voo", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "02", mes: "JAN", titulo: "Verão PDX Caraíva", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "02", mes: "JAN", titulo: "Réveillon Elemental Trancoso 2026", local: "Trancoso • Almar Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "02", mes: "JAN", titulo: "Festival de Sundance 2026", local: "Arraial d'Ajuda", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "02", mes: "JAN", titulo: "Alta - Maracutaia", local: "Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "03", mes: "JAN", titulo: "AWÊ Réveillon Caraíva 2026", local: "Caraíva • Casa Incrível", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "03", mes: "JAN", titulo: "Réveillon Sal de Caraíva 2026", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "03", mes: "JAN", titulo: "Aura Sunset", local: "Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]},
-                    {data: "03", mes: "JAN", titulo: "SANTO VERÃO 2026", local: "Arraial d'Ajuda • UIKI", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "03", mes: "JAN", titulo: "Réveillon Só Coisas Boas", local: "Arraial d'Ajuda • Hayô Praia", tags: ["Ano Novo", "Réveillon", "Arraial"]},
-                    {data: "07", mes: "JAN", titulo: "O Telhado", local: "Caraíva", tags: ["Ano Novo", "Réveillon", "Caraíva"]},
-                    {data: "10", mes: "JAN", titulo: "Alta Classe - Fim de Temporada", local: "Trancoso", tags: ["Ano Novo", "Réveillon", "Trancoso"]}
-                  ].map((evento, idx) => (
-                    <div key={idx} className="card-evento-toca">
-                      <div className="data-box">
-                        {evento.data}<br />
-                        <span style={{fontSize: '12px'}}>{evento.mes}</span>
-                      </div>
-                      <div className="conteudo">
-                        <div className="titulo">{evento.titulo}</div>
-                        <div className="local">{evento.local}</div>
-                        <div className="tags">
-                          {evento.tags.map((tag, i) => (
-                            <span key={i} className="tag-item">{tag}</span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="text-center mt-6">
+                <RouterLink to={createPageUrl("EventosAnoNovo")}>
+                  <Button 
+                    variant="outline"
+                    className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-8 py-4 rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
+                  >
+                    Ver Todos os Eventos de Ano Novo
+                  </Button>
+                </RouterLink>
               </div>
             </motion.div>
 

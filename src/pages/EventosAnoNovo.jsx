@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import EventoCard from "@/components/eventos-ano-novo/EventoCard";
+import EventCard from "@/components/eventos/EventCard";
 import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
 
 const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
@@ -346,15 +346,32 @@ export default function EventosAnoNovo() {
 
                   {/* Eventos Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {eventosData.map((evento, idx) => (
-                      <EventoCard 
-                        key={evento.id} 
-                        evento={evento} 
-                        index={idx}
-                        isReveillon={isRev}
-                        isDayAfter={isDay}
-                      />
-                    ))}
+                    {eventosData.map((evento, idx) => {
+                      const eventDate = new Date(evento.data);
+                      const day = eventDate.getDate().toString();
+                      const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
+                      
+                      // Determinar variante baseado em tags ou tipo
+                      let variant = "reveillon";
+                      if (evento.tags?.includes("Gastronomia")) variant = "gastronomia";
+                      else if (evento.tags?.includes("Afro House")) variant = "afrohouse";
+                      else if (evento.tags?.includes("Corporativo")) variant = "corporativo";
+                      else if (isDay) variant = "afrohouse";
+                      
+                      return (
+                        <EventCard
+                          key={evento.id}
+                          variant={variant}
+                          day={day}
+                          month={month}
+                          title={evento.nome}
+                          location={`${evento.localidade} • ${evento.local}`}
+                          tags={evento.tags || []}
+                          backgroundImage={evento.imagem}
+                          onClick={() => evento.link_compra && window.open(evento.link_compra, '_blank')}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               );
