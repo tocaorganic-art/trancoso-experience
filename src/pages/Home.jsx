@@ -15,6 +15,7 @@ import VideoBackground from "@/components/hero/VideoBackground";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 import CriticalCSS from "@/components/performance/CriticalCSS";
 import DeferredResources from "@/components/performance/DeferredResources";
+import PerformanceOptimizer from "@/components/performance/PerformanceOptimizer";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import ABTestTracker from "@/components/tracking/ABTestTracker";
 
@@ -213,9 +214,10 @@ export default function Home() {
 
   return (
           <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 text-gray-800">
-              {/* Critical CSS */}
+              {/* Performance Optimizations */}
               <CriticalCSS />
               <DeferredResources />
+              <PerformanceOptimizer />
 
               {/* Logo Fixa */}
                         <React.Suspense fallback={<div />}>
@@ -551,10 +553,12 @@ export default function Home() {
               className="flex items-center justify-center mb-12"
             >
               <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=120&quality=80&format=webp" 
-                alt="Tony Monteiro" 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=240&quality=85&format=webp" 
+                srcSet="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=120&quality=85&format=webp 1x,
+                        https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=240&quality=85&format=webp 2x"
+                alt="Tony Monteiro Logo" 
                 className="w-[80px] md:w-[100px] lg:w-[120px]"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 width="120"
                 height="120"
@@ -668,8 +672,10 @@ export default function Home() {
             >
               <div className="flex items-center gap-4 mb-6">
                 <img 
-                                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=64&quality=80&format=webp" 
-                                      alt="Tony Monteiro"
+                                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=128&quality=85&format=webp" 
+                                      srcSet="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=64&quality=85&format=webp 1x,
+                                              https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=128&quality=85&format=webp 2x"
+                                      alt="Tony Monteiro - DJ Afro House"
                                       className="w-16 h-16 rounded-full object-cover"
                                       loading="lazy"
                                       decoding="async"

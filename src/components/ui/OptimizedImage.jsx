@@ -61,14 +61,22 @@ export default function OptimizedImage({
     onError?.(e);
   };
 
-  // Adiciona parâmetros de otimização para URLs do Unsplash
+  // Adiciona parâmetros de otimização para URLs - Supabase + Unsplash
   const getOptimizedSrc = (url) => {
     if (!url) return fallbackSrc;
+    
+    // Para imagens do Supabase Storage, adiciona parâmetros de otimização
+    if (url.includes("supabase.co/storage")) {
+      const separator = url.includes("?") ? "&" : "?";
+      const widthParam = width ? `width=${width}` : 'width=800';
+      return `${url}${separator}${widthParam}&quality=80&format=webp`;
+    }
     
     // Para imagens do Unsplash, adiciona parâmetros de otimização
     if (url.includes("unsplash.com")) {
       const separator = url.includes("?") ? "&" : "?";
-      return `${url}${separator}auto=format&fit=crop&q=75`;
+      const widthParam = width ? `w=${width}` : 'w=800';
+      return `${url}${separator}${widthParam}&auto=format&fit=crop&q=75&fm=webp`;
     }
     
     return url;

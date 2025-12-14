@@ -70,19 +70,39 @@ export default function Layout({ children, currentPageName }) {
       }
     });
 
-    // Resource Hints - DNS prefetch only (lighter than preconnect)
+    // Resource Hints - DNS prefetch + Preconnect para CDNs críticos
     const prefetchDomains = [
       'https://base44.app',
       'https://qtrypzzcjebvfcihiynt.supabase.co',
-      'https://fonts.gstatic.com'
+      'https://fonts.gstatic.com',
+      'https://www.googletagmanager.com',
+      'https://connect.facebook.net'
     ];
 
+    const preconnectDomains = [
+      'https://qtrypzzcjebvfcihiynt.supabase.co', // CDN de imagens
+      'https://fonts.gstatic.com' // CDN de fonts
+    ];
+
+    // DNS Prefetch para todos os domínios
     prefetchDomains.forEach(domain => {
       let link = document.querySelector(`link[rel="dns-prefetch"][href="${domain}"]`);
       if (!link) {
         link = document.createElement('link');
         link.rel = 'dns-prefetch';
         link.href = domain;
+        document.head.appendChild(link);
+      }
+    });
+
+    // Preconnect para CDNs críticos (mais rápido)
+    preconnectDomains.forEach(domain => {
+      let link = document.querySelector(`link[rel="preconnect"][href="${domain}"]`);
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'preconnect';
+        link.href = domain;
+        link.crossOrigin = 'anonymous';
         document.head.appendChild(link);
       }
     });
