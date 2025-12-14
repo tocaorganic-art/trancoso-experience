@@ -1,211 +1,233 @@
-/* ============================================
-   EVENT CARDS - GLASSMORPHISM PREMIUM
-   Toca Experience - 2024
-   ============================================ */
+/* EventCard - Card de evento com glassmorphism premium */
 
-/* BASE CARD */
 .event-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 22px;
-  padding: 28px;
+  position: relative;
   display: flex;
-  gap: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  min-height: 240px;
 }
 
 .event-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-/* DATE BOX */
+/* Variantes de cor */
+.event-card--reveillon {
+  border-left: 4px solid #FBBF24;
+}
+
+.event-card--casamento {
+  border-left: 4px solid #EC4899;
+}
+
+.event-card--corporativo {
+  border-left: 4px solid #8B5CF6;
+}
+
+.event-card--afrohouse {
+  border-left: 4px solid #F97316;
+}
+
+.event-card--gastronomia {
+  border-left: 4px solid #10B981;
+}
+
+/* Card com imagem de fundo */
+.event-card--with-image {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.event-card--with-image .event-title,
+.event-card--with-image .event-location,
+.event-card--with-image .event-highlight {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+.event-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+/* Date Box */
 .event-date-box {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
   border-radius: 14px;
-  padding: 14px 18px;
-  text-align: center;
-  font-weight: 700;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  min-width: 75px;
-  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 
 .event-date-box .day {
-  font-size: 28px;
+  font-size: 26px;
+  font-weight: 700;
   line-height: 1;
-  color: #111;
+  color: #ffffff;
+  letter-spacing: -0.5px;
 }
 
 .event-date-box .month {
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  color: #444;
-  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.5px;
+  margin-top: 2px;
 }
 
-/* EVENT INFO */
+/* Event Info */
 .event-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .event-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 4px;
-  color: #111;
   line-height: 1.3;
+  color: #ffffff;
+  margin: 0;
 }
 
 .event-location {
-  color: #666;
   font-size: 14px;
-  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-/* TAGS */
+/* Highlights */
+.event-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.event-highlight {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
+/* Tags */
 .event-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  margin-top: 8px;
 }
 
 .event-tag {
+  padding: 4px 10px;
+  border-radius: 8px;
   font-size: 11px;
-  background: #111;
-  padding: 6px 10px;
-  border-radius: 500px;
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 0.3px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   white-space: nowrap;
 }
 
-/* ============================================
-   VARIAÇÕES DE COR
-   ============================================ */
-
-/* CASAMENTO - Rosa/Coral */
-.event-card--casamento .event-date-box {
-  background: rgba(255, 182, 193, 0.3);
-  border-color: rgba(255, 182, 193, 0.5);
+/* Status Badge */
+.event-status-badge {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  width: fit-content;
 }
 
-.event-card--casamento .event-date-box .day {
-  color: #d63384;
+/* Footer */
+.event-card-footer {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.event-card--casamento .event-date-box .month {
-  color: #c71f66;
+.event-buy-button {
+  flex: 1;
+  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+  border: none;
+  color: #000000;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
-/* RÉVEILLON - Dourado */
-.event-card--reveillon .event-date-box {
-  background: rgba(255, 215, 0, 0.3);
-  border-color: rgba(255, 215, 0, 0.5);
+.event-buy-button:hover {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
 }
 
-.event-card--reveillon .event-date-box .day {
-  color: #d4a017;
-}
-
-.event-card--reveillon .event-date-box .month {
-  color: #b8860b;
-}
-
-/* CORPORATIVO - Azul profissional */
-.event-card--corporativo .event-date-box {
-  background: rgba(79, 70, 229, 0.15);
-  border-color: rgba(79, 70, 229, 0.3);
-}
-
-.event-card--corporativo .event-date-box .day {
-  color: #4f46e5;
-}
-
-.event-card--corporativo .event-date-box .month {
-  color: #3730a3;
-}
-
-/* AFRO HOUSE - Preto elegante */
-.event-card--afrohouse .event-date-box {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.event-card--afrohouse .event-date-box .day {
-  color: #000;
-}
-
-.event-card--afrohouse .event-date-box .month {
-  color: #333;
-}
-
-/* GASTRONOMIA - Verde folha/Terracota */
-.event-card--gastronomia .event-date-box {
-  background: rgba(34, 197, 94, 0.15);
-  border-color: rgba(34, 197, 94, 0.3);
-}
-
-.event-card--gastronomia .event-date-box .day {
-  color: #16a34a;
-}
-
-.event-card--gastronomia .event-date-box .month {
-  color: #15803d;
-}
-
-/* ============================================
-   RESPONSIVIDADE - MOBILE
-   ============================================ */
-
-@media (max-width: 768px) {
+/* Responsividade */
+@media (max-width: 640px) {
   .event-card {
-    flex-direction: column;
-    padding: 20px;
-    gap: 16px;
+    padding: 16px;
+    gap: 12px;
+    min-height: 200px;
   }
 
   .event-date-box {
-    width: fit-content;
-    padding: 12px 16px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .event-date-box .day {
+    font-size: 22px;
+  }
+
+  .event-date-box .month {
+    font-size: 10px;
   }
 
   .event-title {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .event-location {
     font-size: 13px;
   }
 
-  .event-tag {
-    font-size: 10px;
-    padding: 5px 9px;
-  }
-}
-
-/* Para telas muito pequenas */
-@media (max-width: 480px) {
-  .event-card {
-    padding: 16px;
-  }
-
-  .event-date-box .day {
-    font-size: 24px;
-  }
-
-  .event-title {
-    font-size: 16px;
+  .event-buy-button {
+    font-size: 12px;
+    padding: 8px 12px;
   }
 }

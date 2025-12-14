@@ -11,6 +11,7 @@ import { createPageUrl } from "@/utils";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import EventCard from "@/components/eventos/EventCard";
+import EventDaySection from "@/components/eventos/EventDaySection";
 import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
 
 const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
@@ -310,7 +311,7 @@ export default function EventosAnoNovo() {
             <Loader2 className="w-8 h-8 animate-spin text-pink-400" />
           </div>
         ) : (
-          <div className="space-y-8">
+          <div className="space-y-4">
             {Object.entries(eventosPorData).map(([data, eventosData]) => {
               // Parse date correctly to avoid timezone issues
               const [year, month, day] = data.split('-').map(Number);
@@ -318,62 +319,57 @@ export default function EventosAnoNovo() {
               const isRev = isReveillon(data);
               const isDay = isDayAfter(data);
               
+              // Transformar eventos para o formato do EventCard
+              const eventosFormatados = eventosData.map(evento => {
+                const eventDate = new Date(evento.data);
+                const day = eventDate.getDate().toString();
+                const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
+                
+                // Determinar variante baseado em tags ou tipo
+                let variant = "reveillon";
+                if (evento.tags?.includes("Gastronomia")) variant = "gastronomia";
+                else if (evento.tags?.includes("Afro House")) variant = "afrohouse";
+                else if (evento.tags?.includes("Corporativo")) variant = "corporativo";
+                else if (isDay) variant = "afrohouse";
+                
+                // Determinar cidade baseado em localidade
+                let city = "trancoso";
+                if (evento.localidade === "Caraíva") city = "caraiva";
+                else if (evento.localidade === "Arraial d'Ajuda") city = "arraial";
+                
+                // Extrair highlights das tags
+                const highlights = [];
+                if (evento.tags?.includes("Open bar premium")) highlights.push("Open Bar Premium");
+                if (evento.tags?.includes("Pacote de festas")) highlights.push("Parte de um pacote");
+                if (evento.detalhes && !evento.detalhes.startsWith("Festa")) {
+                  highlights.push(evento.detalhes.substring(0, 50));
+                }
+                
+                return {
+                  id: evento.id,
+                  variant,
+                  day,
+                  month,
+                  title: evento.nome,
+                  location: evento.local,
+                  city,
+                  tags: evento.tags || [],
+                  highlights,
+                  backgroundImage: evento.imagem,
+                  buyLink: evento.link_compra,
+                  status: evento.tags?.includes("DJs internacionais") ? "hot" : null
+                };
+              });
+              
               return (
-                <div key={data}>
-                  {/* Data Header */}
-                  <div className={`
-                    flex items-center gap-3 mb-4 pb-2 border-b
-                    ${isRev ? 'border-yellow-500/30' : isDay ? 'border-purple-500/30' : 'border-white/10'}
-                  `}>
-                    <Calendar className={`w-5 h-5 ${isRev ? 'text-yellow-400' : isDay ? 'text-purple-400' : 'text-gray-400'}`} />
-                    <h2 className="text-xl font-semibold text-white">
-                      {format(dateObj, "EEEE, dd 'de' MMMM", { locale: ptBR })}
-                    </h2>
-                    {isRev && (
-                      <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                        <Sparkles className="w-3 h-3 mr-1" /> Noite de Réveillon
-                      </Badge>
-                    )}
-                    {isDay && (
-                      <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
-                        <PartyPopper className="w-3 h-3 mr-1" /> Day After
-                      </Badge>
-                    )}
-                    <Badge variant="outline" className="text-gray-400 border-gray-600 ml-auto">
-                      {eventosData.length} evento{eventosData.length > 1 ? 's' : ''}
-                    </Badge>
-                  </div>
-
-                  {/* Eventos Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {eventosData.map((evento, idx) => {
-                      const eventDate = new Date(evento.data);
-                      const day = eventDate.getDate().toString();
-                      const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
-                      
-                      // Determinar variante baseado em tags ou tipo
-                      let variant = "reveillon";
-                      if (evento.tags?.includes("Gastronomia")) variant = "gastronomia";
-                      else if (evento.tags?.includes("Afro House")) variant = "afrohouse";
-                      else if (evento.tags?.includes("Corporativo")) variant = "corporativo";
-                      else if (isDay) variant = "afrohouse";
-                      
-                      return (
-                        <EventCard
-                          key={evento.id}
-                          variant={variant}
-                          day={day}
-                          month={month}
-                          title={evento.nome}
-                          location={`${evento.localidade} • ${evento.local}`}
-                          tags={evento.tags || []}
-                          backgroundImage={evento.imagem}
-                          onClick={() => evento.link_compra && window.open(evento.link_compra, '_blank')}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
+                <EventDaySection
+                  key={data}
+                  date={data}
+                  weekdayLabel={format(dateObj, "EEEE, dd 'de' MMMM", { locale: ptBR })}
+                  events={eventosFormatados}
+                  isReveillon={isRev}
+                  isDayAfter={isDay}
+                />
               );
             })}
           </div>
