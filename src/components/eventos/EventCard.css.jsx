@@ -1,233 +1,153 @@
-/* EventCard - Card de evento com glassmorphism premium */
+import React from "react";
+import { ExternalLink, Ticket } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-.event-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  min-height: 240px;
-}
+/**
+ * EventCard - Card de evento sofisticado com glassmorphism premium
+ * 
+ * @param {Object} props
+ * @param {string} props.variant - Variante de cor: casamento | reveillon | corporativo | afrohouse | gastronomia
+ * @param {string} props.day - Dia do evento (ex: "31")
+ * @param {string} props.month - Mês abreviado (ex: "DEZ")
+ * @param {string} props.title - Título do evento
+ * @param {string} props.location - Localização do evento
+ * @param {string} props.city - Cidade: trancoso | caraiva | arraial
+ * @param {Array<string>} props.tags - Array de tags do evento
+ * @param {Array<string>} props.highlights - Destaques do evento (ex: "Open Bar Premium")
+ * @param {string} props.backgroundImage - URL da imagem de fundo (opcional)
+ * @param {string} props.buyLink - Link externo para compra de ingressos
+ * @param {string} props.status - Status do evento para badge especial
+ * @param {Function} props.onClick - Callback ao clicar no card
+ */
+export default function EventCard({ 
+  variant = "reveillon", 
+  day, 
+  month, 
+  title, 
+  location, 
+  city = "trancoso",
+  tags = [],
+  highlights = [],
+  backgroundImage,
+  buyLink,
+  status,
+  onClick
+}) {
+  const cardStyle = backgroundImage ? {
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  } : {};
 
-.event-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
-}
+  const cityColors = {
+    trancoso: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+    caraiva: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
+    arraial: "bg-purple-500/20 text-purple-300 border-purple-500/30"
+  };
 
-/* Variantes de cor */
-.event-card--reveillon {
-  border-left: 4px solid #FBBF24;
-}
+  const cityLabels = {
+    trancoso: "🌴 Trancoso",
+    caraiva: "🏝️ Caraíva",
+    arraial: "🌊 Arraial d'Ajuda"
+  };
 
-.event-card--casamento {
-  border-left: 4px solid #EC4899;
-}
+  const variantBorders = {
+    reveillon: "border-l-4 border-yellow-400",
+    casamento: "border-l-4 border-pink-500",
+    corporativo: "border-l-4 border-purple-500",
+    afrohouse: "border-l-4 border-orange-500",
+    gastronomia: "border-l-4 border-emerald-500"
+  };
 
-.event-card--corporativo {
-  border-left: 4px solid #8B5CF6;
-}
+  const handleBuyClick = (e) => {
+    e.stopPropagation();
+    if (buyLink) {
+      window.open(buyLink, '_blank');
+    }
+  };
 
-.event-card--afrohouse {
-  border-left: 4px solid #F97316;
-}
+  return (
+    <div 
+      className={`
+        relative flex flex-col gap-4 p-5 rounded-3xl
+        backdrop-blur-[16px] bg-white/8 border border-white/18
+        shadow-[0_8px_32px_rgba(0,0,0,0.12)]
+        cursor-pointer transition-all duration-300 ease-out
+        hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(0,0,0,0.18)]
+        hover:bg-white/12 hover:border-white/25
+        overflow-hidden min-h-[240px]
+        ${variantBorders[variant]}
+        ${backgroundImage ? 'bg-black/30' : ''}
+      `}
+      style={cardStyle}
+      onClick={onClick}
+    >
+      {/* Header: Data + Cidade */}
+      <div className="flex justify-between items-start mb-1">
+        <div className="flex flex-col items-center justify-center w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/20 flex-shrink-0">
+          <div className="text-[26px] font-bold leading-none text-white tracking-tight">{day}</div>
+          <div className="text-[11px] font-semibold uppercase text-white/80 tracking-wide mt-0.5">{month}</div>
+        </div>
+        
+        <Badge className={cityColors[city]}>
+          {cityLabels[city]}
+        </Badge>
+      </div>
 
-.event-card--gastronomia {
-  border-left: 4px solid #10B981;
-}
+      {/* Corpo: Informações do evento */}
+      <div className="flex-1 flex flex-col gap-2">
+        <h3 className={`text-lg font-bold leading-tight ${backgroundImage ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]' : 'text-white'}`}>
+          {title}
+        </h3>
+        <p className={`text-sm flex items-center gap-1 ${backgroundImage ? 'text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]' : 'text-white/70'}`}>
+          {location}
+        </p>
 
-/* Card com imagem de fundo */
-.event-card--with-image {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
+        {/* Highlights */}
+        {highlights.length > 0 && (
+          <div className="flex flex-col gap-1 mt-1">
+            {highlights.slice(0, 2).map((highlight, index) => (
+              <span key={index} className={`text-xs leading-relaxed ${backgroundImage ? 'text-white/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]' : 'text-white/65'}`}>
+                • {highlight}
+              </span>
+            ))}
+          </div>
+        )}
 
-.event-card--with-image .event-title,
-.event-card--with-image .event-location,
-.event-card--with-image .event-highlight {
-  color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
+        {/* Tags */}
+        {tags.length > 0 && !backgroundImage && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            <span className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white/15 text-white/90 backdrop-blur-sm border border-white/20 whitespace-nowrap">
+              {tags[tags.length - 1]}
+            </span>
+          </div>
+        )}
 
-/* Header */
-.event-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4px;
-}
+        {/* Status Badge */}
+        {status && (
+          <Badge className="mt-2 text-[11px] font-semibold px-2 py-1 w-fit">
+            {status === 'hot' && '🔥 Últimas vagas'}
+            {status === 'new' && '✨ Novo'}
+            {status === 'soldout' && '✓ Esgotado'}
+          </Badge>
+        )}
+      </div>
 
-/* Date Box */
-.event-date-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  flex-shrink: 0;
-}
-
-.event-date-box .day {
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1;
-  color: #ffffff;
-  letter-spacing: -0.5px;
-}
-
-.event-date-box .month {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0.5px;
-  margin-top: 2px;
-}
-
-/* Event Info */
-.event-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.event-title {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #ffffff;
-  margin: 0;
-}
-
-.event-location {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Highlights */
-.event-highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 4px;
-}
-
-.event-highlight {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.4;
-}
-
-/* Tags */
-.event-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.event-tag {
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  white-space: nowrap;
-}
-
-/* Status Badge */
-.event-status-badge {
-  margin-top: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 8px;
-  width: fit-content;
-}
-
-/* Footer */
-.event-card-footer {
-  display: flex;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.event-buy-button {
-  flex: 1;
-  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
-  border: none;
-  color: #000000;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.event-buy-button:hover {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
-}
-
-/* Responsividade */
-@media (max-width: 640px) {
-  .event-card {
-    padding: 16px;
-    gap: 12px;
-    min-height: 200px;
-  }
-
-  .event-date-box {
-    width: 56px;
-    height: 56px;
-  }
-
-  .event-date-box .day {
-    font-size: 22px;
-  }
-
-  .event-date-box .month {
-    font-size: 10px;
-  }
-
-  .event-title {
-    font-size: 16px;
-  }
-
-  .event-location {
-    font-size: 13px;
-  }
-
-  .event-buy-button {
-    font-size: 12px;
-    padding: 8px 12px;
-  }
+      {/* Footer: Ação de compra */}
+      {buyLink && (
+        <div className="flex gap-2 mt-auto pt-3 border-t border-white/10">
+          <Button 
+            onClick={handleBuyClick}
+            className="flex-1 bg-gradient-to-r from-yellow-400 to-yellow-500 border-0 text-black font-semibold text-[13px] px-4 py-2.5 rounded-xl transition-all hover:from-yellow-500 hover:to-yellow-600 hover:scale-[1.02] hover:shadow-[0_4px_12px_rgba(251,191,36,0.4)]"
+            size="sm"
+          >
+            <Ticket className="w-4 h-4 mr-2" />
+            Comprar Ingresso
+            <ExternalLink className="w-3 h-3 ml-2" />
+          </Button>
+        </div>
+      )}
+    </div>
+  );
 }
