@@ -75,10 +75,11 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
           {evento.imagem && !imageError && (
             <div className="relative w-full h-48 overflow-hidden group">
               <img
-                src={evento.imagem}
+                src={`${evento.imagem}?width=800&quality=85&format=webp`}
                 alt={`${evento.nome} - ${evento.data} em ${evento.local}, ${evento.localidade}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
+                decoding="async"
                 onError={() => setImageError(true)}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
