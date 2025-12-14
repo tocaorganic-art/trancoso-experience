@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
-import FontOptimizer from "@/components/performance/FontOptimizer";
 
 const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
@@ -468,9 +467,6 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <TrackingProvider>
-      {/* Performance Optimizers */}
-      <FontOptimizer />
-      
       {/* Google Ads Tag (gtag.js) */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HTCZ1069J"></script>
       <script dangerouslySetInnerHTML={{__html: `
