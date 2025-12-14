@@ -7,15 +7,15 @@ import { createPageUrl } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import EventoCard from "@/components/eventos-ano-novo/EventoCard";
+import EventCard from "@/components/eventos/EventCard";
 
 export default function Eventos() {
   const { data: eventosAyumar, isLoading } = useQuery({
     queryKey: ['eventos-ayumar'],
     queryFn: async () => {
-      const eventos = await base44.entities.EventoAnoNovo.filter({ 
-        nome: "Réveillon Ayumar 2026" 
-      });
-      return eventos.sort((a, b) => new Date(a.data) - new Date(b.data));
+      const eventos = await base44.entities.EventoAnoNovo.list('data');
+      // Filtrar apenas eventos RÉVEILLON AYUMAR
+      return eventos.filter(e => e.nome.includes('RÉVEILLON AYUMAR'));
     }
   });
 
@@ -69,17 +69,39 @@ export default function Eventos() {
               </Link>
             </div>
             <p className="text-gray-600 mb-4">
-              🎉 Pacote completo de 4 dias no Fly Club Trancoso com open bar premium
+              🎉 Pacote completo de 5 festas no Fly Club Trancoso com open bar premium - 27/12 a 02/01
             </p>
-            <div className="grid gap-4">
-              {eventosAyumar.map((evento, index) => (
-                <EventoCard 
-                  key={evento.id} 
-                  evento={evento} 
-                  index={index}
-                  isReveillon={evento.data === "2025-12-31"}
-                />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {eventosAyumar.map((evento) => {
+                const eventDate = new Date(evento.data);
+                const day = eventDate.getDate().toString();
+                const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
+                
+                let variant = "reveillon";
+                let city = "trancoso";
+                
+                const highlights = [];
+                if (evento.tags?.includes("Open bar premium")) highlights.push("Open Bar Premium");
+                if (evento.tags?.includes("Pacote de festas")) highlights.push("Parte de um pacote");
+                if (evento.nome.includes("PACOTE")) highlights.push("5 Festas Incluídas");
+                
+                return (
+                  <EventCard
+                    key={evento.id}
+                    variant={variant}
+                    day={day}
+                    month={month}
+                    title={evento.nome}
+                    location={evento.local}
+                    city={city}
+                    tags={evento.tags || []}
+                    highlights={highlights}
+                    backgroundImage={evento.imagem}
+                    buyLink={evento.link_compra}
+                    status={evento.data === "2025-12-31" ? "hot" : null}
+                  />
+                );
+              })}
             </div>
           </motion.div>
         </div>
