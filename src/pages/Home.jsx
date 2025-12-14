@@ -82,23 +82,32 @@ export default function Home() {
 
       const whatsappMessage = `*NOVA PROPOSTA - Toca Experience*
 
-📋 *DADOS DO CLIENTE:*
-Nome: ${formData.nome}
-Email: ${formData.email}
-Telefone: ${formData.telefone}
+    📋 *DADOS DO CLIENTE:*
+    Nome: ${formData.nome}
+    Email: ${formData.email}
+    Telefone: ${formData.telefone}
 
-🎉 *EVENTO:*
-Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não especificado"}
-Data: ${formData.data || "Não informada"}
+    🎉 *EVENTO:*
+    Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não especificado"}
+    Data: ${formData.data || "Não informada"}
 
-💰 *ORÇAMENTO:*
-${orcamentoLabels[formData.orcamento] || "A combinar"}
+    💰 *ORÇAMENTO:*
+    ${orcamentoLabels[formData.orcamento] || "A combinar"}
 
-💬 *MENSAGEM:*
-${formData.mensagem || "Sem mensagem adicional"}`;
+    💬 *MENSAGEM:*
+    ${formData.mensagem || "Sem mensagem adicional"}`;
 
       // Salvar dados no localStorage para WhatsApp posterior
       localStorage.setItem('whatsapp_message', whatsappMessage);
+
+      // Enviar evento para dataLayer do GTM
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'form_submission_success',
+        'form_name': 'cotacao',
+        'event_category': 'Lead',
+        'event_label': formData.tipoEvento || 'Não especificado'
+      });
 
       trackFormSubmission(formData);
       trackWhatsAppClick();
