@@ -12,6 +12,7 @@ import LeadsDashboard from "@/components/analytics/LeadsDashboard";
 import ConversionFunnel from "@/components/analytics/ConversionFunnel";
 import RevenueChart from "@/components/analytics/RevenueChart";
 import ABTestManager from "@/components/analytics/ABTestManager";
+import LeadManager from "@/components/admin/LeadManager";
 
 import ProtectedRoute from "@/components/admin/ProtectedRoute";
 
@@ -53,10 +54,15 @@ function AdminDashboardContent() {
         <QuickStats />
         
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 bg-white p-2 rounded-lg shadow">
-            <TabsTrigger value="overview" className="flex items-center gap-2">
+          <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 gap-2 bg-white p-2 rounded-lg shadow">
+            <TabsTrigger value="leads" className="flex items-center gap-2">
               <Users className="w-4 h-4" />
-              <span className="hidden md:inline">Visão Geral</span>
+              <span className="hidden md:inline">Leads</span>
+              <span className="md:hidden">Leads</span>
+            </TabsTrigger>
+            <TabsTrigger value="overview" className="flex items-center gap-2">
+              <BarChart3 className="w-4 h-4" />
+              <span className="hidden md:inline">Geral</span>
               <span className="md:hidden">Geral</span>
             </TabsTrigger>
             <TabsTrigger value="funnel" className="flex items-center gap-2">
@@ -67,14 +73,23 @@ function AdminDashboardContent() {
             <TabsTrigger value="revenue" className="flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
               <span className="hidden md:inline">Receita</span>
-              <span className="md:hidden">Receita</span>
+              <span className="md:hidden">$</span>
             </TabsTrigger>
             <TabsTrigger value="abtests" className="flex items-center gap-2">
               <TestTube className="w-4 h-4" />
-              <span className="hidden md:inline">Testes A/B</span>
+              <span className="hidden md:inline">A/B</span>
               <span className="md:hidden">A/B</span>
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="leads">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <LeadManager />
+            </motion.div>
+          </TabsContent>
 
           <TabsContent value="overview">
             <motion.div
