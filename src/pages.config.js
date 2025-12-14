@@ -34,6 +34,7 @@ import RelatorioGoogleAds from './pages/RelatorioGoogleAds';
 import RelatorioImplementacao from './pages/RelatorioImplementacao';
 import ConfiguracaoGoogleAds from './pages/ConfiguracaoGoogleAds';
 import ProximasTarefas from './pages/ProximasTarefas';
+import RelatorioPresencaDigital from './pages/RelatorioPresencaDigital';
 import __Layout from './Layout.jsx';
 
 
@@ -74,6 +75,7 @@ export const PAGES = {
     "RelatorioImplementacao": RelatorioImplementacao,
     "ConfiguracaoGoogleAds": ConfiguracaoGoogleAds,
     "ProximasTarefas": ProximasTarefas,
+    "RelatorioPresencaDigital": RelatorioPresencaDigital,
 }
 
 export const pagesConfig = {
