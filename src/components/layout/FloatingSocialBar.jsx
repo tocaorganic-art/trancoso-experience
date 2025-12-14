@@ -103,7 +103,7 @@ export default function FloatingSocialBar() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="p-2 rounded-l-xl backdrop-blur-xl bg-white/10 border border-r-0 border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition-all shadow-lg"
+        className="p-3 rounded-l-full backdrop-blur-md bg-gray-600/80 border border-r-0 border-gray-500/50 text-white hover:bg-gray-500/80 transition-all shadow-xl"
         aria-label={isExpanded ? "Recolher" : "Expandir"}>
 
         {isExpanded ?
@@ -120,12 +120,8 @@ export default function FloatingSocialBar() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
-          transition={{ duration: 0.3 }} className="bg-emerald-100 text-black p-2 rounded-l-2xl flex flex-col gap-1 backdrop-blur-xl border border-r-0 border-white/20 shadow-2xl"
-
-          style={{
-            background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)"
-          }}>
+          transition={{ duration: 0.3 }} 
+          className="bg-gray-600/80 backdrop-blur-md p-3 rounded-l-3xl flex flex-col gap-2 border border-r-0 border-gray-500/50 shadow-2xl">
 
             {SOCIAL_LINKS.map((social, index) =>
           <motion.a
@@ -136,11 +132,8 @@ export default function FloatingSocialBar() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.05 }}
-            className={`p-2.5 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 text-white/70 ${social.color} transition-all duration-300 hover:bg-white/20 hover:scale-110 hover:shadow-lg group`}
-            title={social.name}
-            style={{
-              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1)"
-            }}>
+            className="p-3 rounded-2xl bg-gray-700/60 backdrop-blur-sm border border-gray-500/30 text-white hover:bg-gray-600/80 hover:scale-105 transition-all duration-300 group"
+            title={social.name}>
 
                 <div className="transform group-hover:scale-110 transition-transform">
                   {social.icon}
