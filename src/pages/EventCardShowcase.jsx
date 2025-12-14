@@ -13,7 +13,7 @@ export default function EventCardShowcase() {
       month: "JUN",
       title: "Casamento Marina & Pedro",
       location: "Trancoso • Praia dos Coqueiros",
-      tags: ["Casamento", "Luxo", "Praia"],
+      tags: ["Casamento", "Praia"],
       backgroundImage: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"
     },
     {
