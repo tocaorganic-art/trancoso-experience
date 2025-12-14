@@ -71,24 +71,24 @@ export default function EventCard({
     <div 
       className={`
         relative flex flex-col gap-4 p-5 rounded-3xl
-        backdrop-blur-[16px] bg-gray-900/95 border border-gray-700/50
-        shadow-[0_8px_32px_rgba(0,0,0,0.4)]
+        backdrop-blur-[16px] bg-white/8 border border-white/18
+        shadow-[0_8px_32px_rgba(0,0,0,0.12)]
         cursor-pointer transition-all duration-300 ease-out
-        hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(0,0,0,0.6)]
-        hover:bg-gray-800/95 hover:border-gray-600/60
+        hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(0,0,0,0.18)]
+        hover:bg-white/12 hover:border-white/25
         overflow-hidden min-h-[240px]
         ${variantBorders[variant]}
-        ${backgroundImage ? 'bg-black/80' : ''}
+        ${backgroundImage ? 'bg-black/30' : ''}
       `}
       style={cardStyle}
       onClick={onClick}
     >
       {/* Header: Data + Cidade */}
       <div className="flex justify-between items-start mb-1">
-        <div className="flex flex-col items-center justify-center w-16 h-16 rounded-2xl bg-gray-800/90 backdrop-blur-sm border border-gray-600/50 flex-shrink-0">
-            <div className="text-[26px] font-bold leading-none text-white tracking-tight">{day}</div>
-            <div className="text-[11px] font-semibold uppercase text-gray-300 tracking-wide mt-0.5">{month}</div>
-          </div>
+        <div className="flex flex-col items-center justify-center w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/20 flex-shrink-0">
+          <div className="text-[26px] font-bold leading-none text-white tracking-tight">{day}</div>
+          <div className="text-[11px] font-semibold uppercase text-white/80 tracking-wide mt-0.5">{month}</div>
+        </div>
         
         <Badge className={cityColors[city]}>
           {cityLabels[city]}
@@ -118,7 +118,7 @@ export default function EventCard({
         {/* Tags */}
         {tags.length > 0 && !backgroundImage && (
           <div className="flex flex-wrap gap-1.5 mt-2">
-            <span className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-gray-800/90 text-gray-200 backdrop-blur-sm border border-gray-600/50 whitespace-nowrap">
+            <span className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white/15 text-white/90 backdrop-blur-sm border border-white/20 whitespace-nowrap">
               {tags[tags.length - 1]}
             </span>
           </div>

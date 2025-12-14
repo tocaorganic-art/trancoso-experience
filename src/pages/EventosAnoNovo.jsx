@@ -14,8 +14,7 @@ import EventCard from "@/components/eventos/EventCard";
 import EventDaySection from "@/components/eventos/EventDaySection";
 import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
 
-import MapaEventos from "@/components/eventos-ano-novo/MapaEventos";
-
+const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
 const StructuredDataEvents = React.lazy(() => import("@/components/seo/StructuredDataEvents"));
 
@@ -254,10 +253,17 @@ export default function EventosAnoNovo() {
 
         {/* Mapa Interativo */}
         <div className="mb-8">
-          <MapaEventos 
-            onLocalidadeClick={(loc) => setFiltroLocalidade(loc)}
-            eventosCount={eventosCount}
-          />
+          <React.Suspense fallback={
+            <Card className="bg-gray-900/50 border-white/10 p-8 text-center">
+              <Loader2 className="w-8 h-8 animate-spin text-pink-400 mx-auto mb-2" />
+              <p className="text-gray-400 text-sm">Carregando mapa...</p>
+            </Card>
+          }>
+            <MapaEventos 
+              onLocalidadeClick={(loc) => setFiltroLocalidade(loc)}
+              eventosCount={eventosCount}
+            />
+          </React.Suspense>
         </div>
 
         {/* Filtros */}
