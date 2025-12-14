@@ -63,13 +63,16 @@ export default function RotatingBanner() {
             style={{ transform: `translateX(${offset}%)` }}
           >
             {item.video ? (
-              <iframe
-                src={`${item.video}?autoplay=1&mute=1&loop=1&playlist=3V59U7hwj9Q`}
-                title="Toca Experience"
-                className="w-full h-full rounded-2xl"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <div className="w-full h-full rounded-2xl overflow-hidden">
+                <iframe
+                  src={`${item.video}?autoplay=1&mute=1&loop=1&playlist=3V59U7hwj9Q`}
+                  title="Toca Experience"
+                  className="w-full h-full rounded-2xl"
+                  style={{ aspectRatio: '16/9' }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             ) : item.image ? (
               <OptimizedImage 
                 src={item.image}
