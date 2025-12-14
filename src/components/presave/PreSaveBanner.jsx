@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 export default function PreSaveBanner() {
-  const shareUrl = "https://ffm.to/truetomyself";
-  const shareText = "🎵 Novo single 'True To Myself' de Tony Monteiro lançando dia 13 de Dezembro! Salve agora na sua playlist";
+  const shareUrl = "https://open.spotify.com/intl-pt/album/48zWmrvv58M6T7vR4vvtOv?si=TpF_k1DdS5ugsoWxJ3JCdA";
+  const shareText = "🎵 Novo single 'True To Myself' de Tony Monteiro já disponível! Ouça agora na sua playlist favorita";
 
   const handleShare = (platform) => {
     const urls = {
@@ -42,7 +42,7 @@ export default function PreSaveBanner() {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="whitespace-nowrap text-white text-6xl font-bold"
         >
-          SALVE NA SUA PLAYLIST • SALVE NA SUA PLAYLIST • SALVE NA SUA PLAYLIST •
+          OUÇA AGORA • TRUE TO MYSELF • OUÇA AGORA • TRUE TO MYSELF •
         </motion.div>
       </div>
 
@@ -55,7 +55,7 @@ export default function PreSaveBanner() {
           className="flex items-center justify-center"
         >
           <img 
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e19e90f67_anima_o_ultra_realista_e_ultra_hd_estilo.jpg?width=500&quality=75"
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/45fbf25d5_anima_o_ultra_realista_e_ultra_hd_estilo.jpg?width=500&quality=75"
             alt="True To Myself - Tony Monteiro"
             className="w-full max-w-sm md:max-w-md rounded-xl md:rounded-2xl shadow-2xl border-2 md:border-4 border-white/20"
             loading="lazy"
@@ -72,14 +72,14 @@ export default function PreSaveBanner() {
           >
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm mb-3 md:mb-4">
               <Calendar className="w-3 h-3 md:w-4 md:h-4" />
-              Lançamento: 13 de Dezembro
+              Lançamento: Já disponível
             </div>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2">
               TRUE TO MYSELF
             </h2>
             <p className="text-lg md:text-xl text-white/90 mb-2 md:mb-4">Tony Monteiro</p>
             <p className="text-sm md:text-lg text-white/80 mb-4 md:mb-6">
-              Novo single chegando! Seja um dos primeiros a ouvir e salve agora na sua playlist favorita.
+              Novo single já ta no ar! Seja um dos primeiros a ouvir e salve agora na sua playlist favorita.
             </p>
           </motion.div>
 
@@ -97,13 +97,13 @@ export default function PreSaveBanner() {
             >
               <p className="text-lg md:text-2xl font-bold flex items-center justify-center gap-2">
                 <Music className="w-5 h-5 md:w-6 md:h-6" />
-                SALVE NA SUA PLAYLIST
+                OUÇA AGORA
               </p>
             </motion.div>
 
             {/* Botão de ação */}
             <a
-              href="https://ffm.to/truetomyself"
+              href="https://open.spotify.com/intl-pt/album/48zWmrvv58M6T7vR4vvtOv?si=TpF_k1DdS5ugsoWxJ3JCdA"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
@@ -112,7 +112,7 @@ export default function PreSaveBanner() {
                 size="lg"
                 className="w-full bg-white text-red-600 hover:bg-gray-100 text-base md:text-xl py-5 md:py-7 rounded-full font-bold shadow-xl hover:scale-105 transition-all"
               >
-                CLIQUE AQUI PARA SALVAR
+                OUÇA AGORA NO SPOTIFY
                 <ExternalLink className="w-5 h-5 md:w-6 md:h-6 ml-2" />
               </Button>
             </a>

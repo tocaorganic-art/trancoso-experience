@@ -83,9 +83,9 @@ export default function Layout({ children, currentPageName }) {
 
     // Open Graph Tags
     const ogTags = [
-      { property: "og:title", content: "True To Myself - Tony Monteiro | Novo Single 13/12" },
-      { property: "og:description", content: "🎵 Novo single 'True To Myself' de Tony Monteiro lançando dia 13 de Dezembro! Salve agora na sua playlist favorita." },
-      { property: "og:image", content: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e19e90f67_anima_o_ultra_realista_e_ultra_hd_estilo.jpg" },
+      { property: "og:title", content: "True To Myself - Tony Monteiro | Já Disponível" },
+      { property: "og:description", content: "🎵 Novo single 'True To Myself' de Tony Monteiro já disponível! Ouça agora na sua playlist favorita." },
+      { property: "og:image", content: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/45fbf25d5_anima_o_ultra_realista_e_ultra_hd_estilo.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "1200" },
       { property: "og:type", content: "music.song" },
@@ -93,8 +93,8 @@ export default function Layout({ children, currentPageName }) {
       { property: "og:url", content: "https://ffm.to/truetomyself" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "True To Myself - Tony Monteiro" },
-      { name: "twitter:description", content: "Novo single lançando 13/12! Salve agora 🎵" },
-      { name: "twitter:image", content: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e19e90f67_anima_o_ultra_realista_e_ultra_hd_estilo.jpg" }
+      { name: "twitter:description", content: "Novo single já disponível! Ouça agora 🎵" },
+      { name: "twitter:image", content: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/45fbf25d5_anima_o_ultra_realista_e_ultra_hd_estilo.jpg" }
     ];
 
     ogTags.forEach(tag => {
