@@ -57,7 +57,7 @@ export default function Home() {
           "author": { "@type": "Person", "name": "Marina & Pedro S." },
           "datePublished": "2024-12-01",
           "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "reviewBody": "Exclusividade e luxo em um paraíso. A Toca Experience transformou nosso casamento em Trancoso em algo mágico. A energia da música foi perfeita do sunset até o amanhecer!"
+          "reviewBody": "Exclusividade em um paraíso. A Toca Experience transformou nosso casamento em Trancoso em algo mágico. A energia da música foi perfeita do sunset até o amanhecer!"
         },
         {
           "@type": "Review",
