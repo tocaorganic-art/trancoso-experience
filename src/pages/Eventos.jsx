@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
-import EventoCard from "@/components/eventos-ano-novo/EventoCard";
+import EventCard from "@/components/eventos/EventCard";
 
 export default function Eventos() {
   const { data: eventosAyumar, isLoading } = useQuery({
@@ -72,15 +72,49 @@ export default function Eventos() {
             <p className="text-gray-600 mb-4">
               🎉 Eventos premium em Trancoso com open bar e shows nacionais
             </p>
-            <div className="grid gap-4">
-              {eventosAyumar.map((evento, index) => (
-                <EventoCard 
-                  key={evento.id} 
-                  evento={evento} 
-                  index={index}
-                  isReveillon={evento.data === "2025-12-31"}
-                />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {eventosAyumar.map((evento) => {
+                const eventDate = new Date(evento.data);
+                const day = eventDate.getDate().toString();
+                const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
+                
+                // Determinar variante baseado no evento
+                let variant = "reveillon";
+                if (evento.data === "2025-12-31") variant = "reveillon";
+                else if (evento.data === "2026-01-01" || evento.data === "2026-01-02") variant = "afrohouse";
+                
+                // Imagens de festas para os eventos
+                const eventImages = {
+                  "Elemental": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+                  "PACOTE": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80",
+                  "Wesley": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+                  "Jorge": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80",
+                  "Bell": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80",
+                  "Benzadeus": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80"
+                };
+                
+                const backgroundImage = Object.keys(eventImages).find(key => evento.nome.includes(key)) 
+                  ? eventImages[Object.keys(eventImages).find(key => evento.nome.includes(key))]
+                  : "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80";
+                
+                return (
+                  <EventCard
+                    key={evento.id}
+                    variant={variant}
+                    day={day}
+                    month={month}
+                    title={evento.nome}
+                    location={evento.local}
+                    city={evento.localidade === "Caraíva" ? "caraiva" : evento.localidade === "Arraial d'Ajuda" ? "arraial" : "trancoso"}
+                    tags={evento.tags || []}
+                    highlights={evento.detalhes ? [evento.detalhes] : []}
+                    backgroundImage={backgroundImage}
+                    buyLink={evento.link_compra}
+                    status={evento.tags?.includes("DJs internacionais") ? "hot" : null}
+                    onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                  />
+                );
+              })}
             </div>
           </motion.div>
         </div>
