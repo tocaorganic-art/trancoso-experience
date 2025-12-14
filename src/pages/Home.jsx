@@ -11,7 +11,6 @@ import { createPageUrl } from "@/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
-import { useQuery } from "@tanstack/react-query";
 import VideoBackground from "@/components/hero/VideoBackground";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 import CriticalCSS from "@/components/performance/CriticalCSS";
@@ -32,29 +31,6 @@ const NewsletterPopup = React.lazy(() => import("@/components/layout/NewsletterP
 
 export default function Home() {
   const { trackFormSubmission, trackWhatsAppClick } = useTracking();
-
-  // Fetch Réveillon Ayumar events (apenas os 5 mais recentes para evitar duplicatas)
-  const { data: eventosAyumar = [] } = useQuery({
-    queryKey: ['eventos-ayumar-home'],
-    queryFn: async () => {
-      const eventos = await base44.entities.EventoAnoNovo.list('data');
-      const ayumarEvents = eventos.filter(e => e.nome.includes('RÉVEILLON AYUMAR'));
-      
-      // Remover duplicatas mantendo apenas a versão mais recente de cada evento
-      const uniqueEvents = new Map();
-      ayumarEvents.forEach(evento => {
-        const key = evento.data + '-' + evento.nome; // Chave única por data + nome
-        const existing = uniqueEvents.get(key);
-        if (!existing || new Date(evento.created_date) > new Date(existing.created_date)) {
-          uniqueEvents.set(key, evento);
-        }
-      });
-      
-      return Array.from(uniqueEvents.values()).sort((a, b) => 
-        new Date(a.data) - new Date(b.data)
-      );
-    }
-  });
 
   // SEO - Reviews Schema
   React.useEffect(() => {
@@ -364,38 +340,62 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mb-8 w-full max-w-[90vw] md:max-w-[800px] lg:max-w-[900px] mx-auto"
             >
-              {/* Grid de EventCards Premium - RÉVEILLON AYUMAR */}
+              {/* Grid de EventCards Premium */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto px-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
-                {eventosAyumar.map((evento) => {
-                  const eventDate = new Date(evento.data);
-                  const day = eventDate.getDate().toString();
-                  const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
-                  
-                  let variant = "reveillon";
-                  let city = "trancoso";
-                  
-                  const highlights = [];
-                  if (evento.tags?.includes("Open bar premium")) highlights.push("Open Bar Premium");
-                  if (evento.nome.includes("PACOTE")) highlights.push("5 Festas Incluídas");
-                  
-                  return (
-                    <EventCard
-                      key={evento.id}
-                      variant={variant}
-                      day={day}
-                      month={month}
-                      title={evento.nome}
-                      location={evento.local}
-                      city={city}
-                      tags={evento.tags || []}
-                      highlights={highlights}
-                      backgroundImage={evento.imagem}
-                      buyLink={evento.link_compra}
-                      status={evento.data === "2025-12-31" ? "hot" : null}
-                      onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                    />
-                  );
-                })}
+                <EventCard
+                  variant="reveillon"
+                  day="31"
+                  month="DEZ"
+                  title="Réveillon Ayumar 2026"
+                  location="Trancoso • Fly Club"
+                  tags={["Bell Marques", "Open Bar Premium"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="casamento"
+                  day="15"
+                  month="MAR"
+                  title="Casamento Premium"
+                  location="Praia do Espelho"
+                  tags={["Destination Wedding", "Som Pioneer"]}
+                  onClick={() => window.location.href = createPageUrl("CasamentosTrancoso")}
+                />
+                <EventCard
+                  variant="afrohouse"
+                  day="03"
+                  month="JAN"
+                  title="Aura Sunset"
+                  location="Trancoso"
+                  tags={["Dubdogz", "Sarah Stenzel"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="corporativo"
+                  day="05"
+                  month="FEV"
+                  title="Evento Corporativo Exclusivo"
+                  location="Arraial d'Ajuda"
+                  tags={["Empresarial", "Som Premium"]}
+                  onClick={() => window.location.href = createPageUrl("EventosCorporativos")}
+                />
+                <EventCard
+                  variant="gastronomia"
+                  day="30"
+                  month="DEZ"
+                  title="Mahal Zé Barbudo"
+                  location="Trancoso"
+                  tags={["OPEN BAR PREMIUM"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="reveillon"
+                  day="02"
+                  month="JAN"
+                  title="Réveillon Ayumar 2026"
+                  location="Trancoso • Fly Club"
+                  tags={["Benzadeus", "Day After"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
               </div>
 
               <div className="text-center mt-6">
