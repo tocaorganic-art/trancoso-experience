@@ -495,6 +495,17 @@ export default function Layout({ children, currentPageName }) {
           <ReveillonCTA />
         </React.Suspense>
         
+        {/* Barra de Busca Global */}
+        {currentPageName !== "Home" && (
+          <div className="sticky top-0 z-50 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 border-b border-gray-700 py-3 backdrop-blur-sm">
+            <div className="container mx-auto px-6">
+              <React.Suspense fallback={<div />}>
+                <GlobalSearchBar />
+              </React.Suspense>
+            </div>
+          </div>
+        )}
+        
         <Toaster position="top-center" richColors />
         {children}
         
