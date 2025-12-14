@@ -8,8 +8,8 @@ export default function StructuredDataEvents({ eventos = [] }) {
   React.useEffect(() => {
     if (!eventos || eventos.length === 0) return;
 
-    // Criar schema para os 10 primeiros eventos com propriedades completas
-    const eventSchemas = eventos.slice(0, 10).map(evento => {
+    // Criar schema para TODOS os eventos com propriedades completas
+    const eventSchemas = eventos.map(evento => {
       const endDate = evento.data === "2025-12-31" || evento.data === "2026-01-01" 
         ? `${evento.data}T06:00:00-03:00` 
         : `${evento.data}T23:59:00-03:00`;
