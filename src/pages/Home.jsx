@@ -796,7 +796,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                quote: "Exclusividade e luxo em um paraíso. A Toca Experience transformou nosso casamento em Trancoso em algo mágico. A energia da música foi perfeita do sunset até o amanhecer!",
+                quote: "Exclusividade em um paraíso. A Toca Experience transformou nosso casamento em Trancoso em algo mágico. A energia da música foi perfeita do sunset até o amanhecer!",
                 author: "Marina & Pedro S.",
                 role: "Casamento em Trancoso"
               },

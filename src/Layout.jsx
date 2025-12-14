@@ -109,7 +109,7 @@ export default function Layout({ children, currentPageName }) {
 
     // SEO Meta Tags - Otimizado para conversão + Long-tail keywords
     const pageTitles = {
-      "Home": "DJ para Casamento e Eventos de Luxo em Trancoso | Toca Experience",
+      "Home": "DJ para Casamento e Eventos em Trancoso | Toca Experience",
       "Agenda": "Agenda de Eventos | Toca Experience - Tony Monteiro & Enzo Furtado",
       "CasamentosTrancoso": "DJ para Casamento em Trancoso | Música Exclusiva para Seu Grande Dia",
       "AluguelEquipamentos": "Aluguel de Equipamentos DJ Pioneer em Trancoso | CDJ, Controladoras e Som",
@@ -158,9 +158,9 @@ export default function Layout({ children, currentPageName }) {
       document.head.appendChild(metaKeywords);
     }
     const pageKeywords = {
-      "Home": "DJ para casamento Trancoso, DJ eventos luxo, aluguel som profissional Trancoso, Afro House Brasil, DJ casamento praia",
+      "Home": "DJ para casamento Trancoso, DJ eventos premium, aluguel som profissional Trancoso, Afro House Brasil, DJ casamento praia",
       "EventosAnoNovo": "reveillon trancoso 2026, festa ano novo caraiva, eventos premium arraial ajuda, ingressos reveillon bahia, festas fim de ano trancoso",
-      "CasamentosTrancoso": "DJ casamento Trancoso, musica casamento praia, DJ destination wedding, som casamento luxo, playlist casamento exclusiva",
+      "CasamentosTrancoso": "DJ casamento Trancoso, musica casamento praia, DJ destination wedding, som casamento profissional, playlist casamento exclusiva",
       "AluguelEquipamentos": "aluguel Pioneer CDJ Trancoso, locação equipamento DJ, som profissional eventos, Funktion-One aluguel, iluminação festa",
       "LocacaoSom": "locação som profissional Trancoso, aluguel caixa de som eventos, equipamento DJ Bahia, sistema de som casamento",
       "EventosCorporativos": "DJ evento corporativo Trancoso, festa empresa exclusiva, confraternização empresarial musica, evento corporativo premium",
@@ -174,7 +174,7 @@ export default function Layout({ children, currentPageName }) {
     
     const pageOgData = {
       "Home": {
-        title: "Toca Experience | DJs Premium para Casamentos e Eventos de Luxo em Trancoso",
+        title: "Toca Experience | DJs Premium para Casamentos e Eventos em Trancoso",
         description: "DJs profissionais Tony Monteiro & Enzo Furtado. Especializados em Afro House, Organic House. Aluguel de equipamentos Pioneer. Atendemos Trancoso, Caraíva e região.",
         type: "website"
       },
@@ -185,7 +185,7 @@ export default function Layout({ children, currentPageName }) {
       },
       "CasamentosTrancoso": {
         title: "DJ para Casamento em Trancoso | Som Pioneer e Curadoria Musical Exclusiva",
-        description: "DJ especializado em casamentos de luxo. Equipamentos Pioneer de última geração, playlist personalizada, experiência inesquecível na praia.",
+        description: "DJ especializado em casamentos. Equipamentos Pioneer de última geração, playlist personalizada, experiência inesquecível na praia.",
         type: "website"
       },
       "Discografia": {
