@@ -31,6 +31,7 @@ import SEOStatus from './pages/SEOStatus';
 import RelatorioRastreamento from './pages/RelatorioRastreamento';
 import TesteRastreamento from './pages/TesteRastreamento';
 import RelatorioGoogleAds from './pages/RelatorioGoogleAds';
+import RelatorioImplementacao from './pages/RelatorioImplementacao';
 import __Layout from './Layout.jsx';
 
 
@@ -68,6 +69,7 @@ export const PAGES = {
     "RelatorioRastreamento": RelatorioRastreamento,
     "TesteRastreamento": TesteRastreamento,
     "RelatorioGoogleAds": RelatorioGoogleAds,
+    "RelatorioImplementacao": RelatorioImplementacao,
 }
 
 export const pagesConfig = {
