@@ -6,7 +6,7 @@ import OptimizedImage from "@/components/ui/OptimizedImage";
 const BANNER_ITEMS = [
   {
     id: "toca-logo",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/8c9bc9739_logo_da_toca_experience_com_cone_branco2.jpg",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/0cf258bd7_image.png",
     link: null
   },
   {
