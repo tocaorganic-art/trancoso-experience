@@ -97,6 +97,10 @@ export default function Eventos() {
                   ? eventImages[Object.keys(eventImages).find(key => evento.nome.includes(key))]
                   : "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80";
                 
+                // Link de compra - com fallback para evento Elemental
+                const buyLink = evento.link_compra || 
+                  (evento.nome.includes("Elemental") ? "https://embedstore.ingresse.com/tickets/www.ingresse.com/event/86204?passkey=toca" : null);
+                
                 return (
                   <EventCard
                     key={evento.id}
@@ -109,7 +113,7 @@ export default function Eventos() {
                     tags={evento.tags || []}
                     highlights={evento.detalhes ? [evento.detalhes] : []}
                     backgroundImage={backgroundImage}
-                    buyLink={evento.link_compra}
+                    buyLink={buyLink}
                     status={evento.tags?.includes("DJs internacionais") ? "hot" : null}
                     onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                   />
