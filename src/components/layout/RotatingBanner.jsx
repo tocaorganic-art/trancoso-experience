@@ -64,7 +64,7 @@ export default function RotatingBanner() {
           >
             {item.video ? (
               <iframe
-                src={item.video}
+                src={`${item.video}?autoplay=1&mute=1&loop=1&playlist=3V59U7hwj9Q`}
                 title="Toca Experience"
                 className="w-full h-full rounded-2xl"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
