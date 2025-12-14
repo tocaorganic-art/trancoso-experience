@@ -9,6 +9,7 @@ import AuthorityBanner from "@/components/curadoria/AuthorityBanner";
 import PlayerTabs from "@/components/curadoria/PlayerTabs";
 import CuradoriaFilters from "@/components/curadoria/CuradoriaFilters";
 import CuradoriaCard from "@/components/curadoria/CuradoriaCard";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export default function Curadoria() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -67,6 +68,13 @@ export default function Curadoria() {
 
   return (
     <div className="min-h-screen bg-black">
+      {/* Breadcrumbs */}
+      <div className="container mx-auto px-6 pt-6">
+        <Breadcrumbs items={[
+          { label: "Curadoria Musical", page: "Curadoria" }
+        ]} />
+      </div>
+
       {/* Header */}
       <div className="bg-gradient-to-b from-gray-900 to-black py-16 border-b border-gray-800">
         <div className="container mx-auto px-6 text-center">

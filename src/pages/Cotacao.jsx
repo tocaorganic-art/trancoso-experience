@@ -11,6 +11,7 @@ import { base44 } from "@/api/base44Client";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import MultiStepQuotationForm from "@/components/ai/MultiStepQuotationForm";
 import { Checkbox } from "@/components/ui/checkbox";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export default function Cotacao() {
   const { trackFormSubmission, trackWhatsAppClick } = useTracking();
@@ -148,6 +149,11 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`;
 
       {/* Form Section */}
       <div className="container mx-auto px-6 py-12">
+        {/* Breadcrumbs */}
+        <Breadcrumbs items={[
+          { label: "Solicitar Cotação", page: "Cotacao" }
+        ]} />
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

@@ -12,6 +12,7 @@ import LazyEmbed from "@/components/embeds/LazyEmbed";
 import ReleaseCard from "@/components/discografia/ReleaseCard";
 import ReleasePlayer from "@/components/discografia/ReleasePlayer";
 import PreSaveBanner from "@/components/presave/PreSaveBanner";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 const TYPE_LABELS = {
   single: "Single",
@@ -79,6 +80,13 @@ export default function Discografia() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 pb-24">
+      {/* Breadcrumbs */}
+      <div className="container mx-auto px-6 pt-6">
+        <Breadcrumbs items={[
+          { label: "Discografia", page: "Discografia" }
+        ]} />
+      </div>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-gray-800 to-gray-900 py-16">
         <div className="container mx-auto px-6 text-center">
