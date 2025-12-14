@@ -346,9 +346,9 @@ export default function Home() {
                   variant="reveillon"
                   day="31"
                   month="DEZ"
-                  title="Réveillon Trancoso 2026"
-                  location="Trancoso • Quadrado"
-                  tags={["Réveillon", "Open Bar", "Live DJ"]}
+                  title="Réveillon Ayumar 2026"
+                  location="Trancoso • Fly Club"
+                  tags={["Bell Marques", "Open Bar Premium"]}
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
                 <EventCard
@@ -357,41 +357,44 @@ export default function Home() {
                   month="MAR"
                   title="Casamento Premium"
                   location="Praia do Espelho"
-                  tags={["Destination Wedding", "Som Premium"]}
+                  tags={["Destination Wedding", "Som Pioneer"]}
                   onClick={() => window.location.href = createPageUrl("CasamentosTrancoso")}
                 />
                 <EventCard
                   variant="afrohouse"
-                  day="20"
+                  day="03"
                   month="JAN"
-                  title="Afro House Sunset"
-                  location="Trancoso Beach Club"
-                  tags={["Afro House", "Organic", "Live DJ"]}
+                  title="Aura Sunset"
+                  location="Trancoso"
+                  tags={["Dubdogz", "Sarah Stenzel"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
                 <EventCard
                   variant="corporativo"
                   day="05"
                   month="FEV"
-                  title="Evento Corporativo"
+                  title="Evento Corporativo Exclusivo"
                   location="Arraial d'Ajuda"
-                  tags={["Empresarial", "Networking"]}
+                  tags={["Empresarial", "Som Premium"]}
                   onClick={() => window.location.href = createPageUrl("EventosCorporativos")}
                 />
                 <EventCard
                   variant="gastronomia"
-                  day="10"
-                  month="FEV"
-                  title="Jantar Harmonizado"
-                  location="Caraíva • Restaurante Vista Mar"
-                  tags={["Gastronomia", "Live Music"]}
+                  day="30"
+                  month="DEZ"
+                  title="Mahal Zé Barbudo"
+                  location="Trancoso"
+                  tags={["OPEN BAR PREMIUM"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
                 <EventCard
                   variant="reveillon"
-                  day="01"
+                  day="02"
                   month="JAN"
-                  title="Day After Caraíva"
-                  location="Caraíva Beach"
-                  tags={["Pool Party", "Day After"]}
+                  title="Réveillon Ayumar 2026"
+                  location="Trancoso • Fly Club"
+                  tags={["Benzadeus", "Day After"]}
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
               </div>
 
