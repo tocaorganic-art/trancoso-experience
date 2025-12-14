@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export default function Ethos() {
   useEffect(() => {
@@ -23,6 +24,13 @@ export default function Ethos() {
   }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 text-gray-800">
+      {/* Breadcrumbs */}
+      <div className="container mx-auto px-6 pt-6">
+        <Breadcrumbs items={[
+          { label: "Sobre", page: "Ethos" }
+        ]} />
+      </div>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-gray-800 to-gray-900 py-16">
         <div className="container mx-auto px-6">

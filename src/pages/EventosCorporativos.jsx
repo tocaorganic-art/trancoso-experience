@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -24,6 +24,68 @@ export default function EventosCorporativos() {
     mensagem: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    // FAQ Schema
+    const faqSchema = document.querySelector('script[data-schema="faq-corporativo"]');
+    if (faqSchema) faqSchema.remove();
+    
+    const newSchema = document.createElement('script');
+    newSchema.type = 'application/ld+json';
+    newSchema.setAttribute('data-schema', 'faq-corporativo');
+    newSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto custa contratar DJ para evento corporativo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os valores variam de R$ 10.000 a R$ 50.000+ dependendo do tipo de evento, duração, equipamentos e localização. Entre em contato para orçamento personalizado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês fornecem equipamento de som e iluminação?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! Trabalhamos com equipamentos Pioneer de última geração (CDJ-3000, DJM-V10) e sistemas de som Funktion-One, além de iluminação LED profissional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível customizar o repertório musical?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutamente! Realizamos reuniões de briefing pré-evento para entender o perfil dos participantes e criar uma playlist personalizada que atenda perfeitamente o clima desejado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Atendem eventos corporativos fora de Trancoso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! Atendemos toda a região da Bahia e também realizamos eventos corporativos em outras cidades mediante consulta de disponibilidade e custos de deslocamento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a antecedência ideal para reservar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para eventos corporativos, recomendamos contato com pelo menos 60 dias de antecedência para garantir disponibilidade de agenda e tempo adequado para planejamento."
+          }
+        }
+      ]
+    });
+    document.head.appendChild(newSchema);
+
+    return () => {
+      const schema = document.querySelector('script[data-schema="faq-corporativo"]');
+      if (schema) schema.remove();
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -346,6 +408,42 @@ export default function EventosCorporativos() {
               </form>
             </CardContent>
           </Card>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mt-20 mb-16">
+          <h2 className="text-3xl font-bold text-center mb-12">Perguntas Frequentes</h2>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              {
+                question: "Quanto custa contratar DJ para evento corporativo?",
+                answer: "Os valores variam de R$ 10.000 a R$ 50.000+ dependendo do tipo de evento, duração, equipamentos e localização. Entre em contato para orçamento personalizado."
+              },
+              {
+                question: "Vocês fornecem equipamento de som e iluminação?",
+                answer: "Sim! Trabalhamos com equipamentos Pioneer de última geração (CDJ-3000, DJM-V10) e sistemas de som Funktion-One, além de iluminação LED profissional."
+              },
+              {
+                question: "É possível customizar o repertório musical?",
+                answer: "Absolutamente! Realizamos reuniões de briefing pré-evento para entender o perfil dos participantes e criar uma playlist personalizada que atenda perfeitamente o clima desejado."
+              },
+              {
+                question: "Atendem eventos corporativos fora de Trancoso?",
+                answer: "Sim! Atendemos toda a região da Bahia e também realizamos eventos corporativos em outras cidades mediante consulta de disponibilidade e custos de deslocamento."
+              },
+              {
+                question: "Qual a antecedência ideal para reservar?",
+                answer: "Para eventos corporativos, recomendamos contato com pelo menos 60 dias de antecedência para garantir disponibilidade de agenda e tempo adequado para planejamento."
+              }
+            ].map((faq, idx) => (
+              <Card key={idx} className="bg-white">
+                <CardContent className="p-6">
+                  <h3 className="font-bold text-lg text-gray-800 mb-2">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </section>
 
         {/* CTA Final */}
