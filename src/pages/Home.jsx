@@ -344,56 +344,70 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto px-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
                 <EventCard
                   variant="reveillon"
-                  day="31"
+                  day="26"
                   month="DEZ"
-                  title="Réveillon Ayumar 2026"
-                  location="Trancoso • Fly Club"
-                  tags={["Bell Marques", "Open Bar Premium"]}
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-                <EventCard
-                  variant="casamento"
-                  day="15"
-                  month="MAR"
-                  title="Casamento Premium"
-                  location="Praia do Espelho"
-                  tags={["Destination Wedding", "Som Pioneer"]}
-                  onClick={() => window.location.href = createPageUrl("CasamentosTrancoso")}
-                />
-                <EventCard
-                  variant="afrohouse"
-                  day="03"
-                  month="JAN"
-                  title="Aura Sunset"
-                  location="Trancoso"
-                  tags={["Dubdogz", "Sarah Stenzel"]}
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-                <EventCard
-                  variant="corporativo"
-                  day="05"
-                  month="FEV"
-                  title="Evento Corporativo Exclusivo"
-                  location="Arraial d'Ajuda"
-                  tags={["Empresarial", "Som Premium"]}
-                  onClick={() => window.location.href = createPageUrl("EventosCorporativos")}
-                />
-                <EventCard
-                  variant="gastronomia"
-                  day="30"
-                  month="DEZ"
-                  title="Mahal Zé Barbudo"
-                  location="Trancoso"
-                  tags={["OPEN BAR PREMIUM"]}
+                  title="Réveillon Elemental Trancoso 2026"
+                  location="Trancoso • Almar"
+                  city="trancoso"
+                  tags={["Parte de um pacote", "Atividades imersivas"]}
+                  buyLink="https://embedstore.ingresse.com/tickets/www.ingresse.com/event/86204?passkey=toca"
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
                 <EventCard
                   variant="reveillon"
+                  day="27"
+                  month="DEZ"
+                  title="RÉVEILLON AYUMAR PACOTE"
+                  location="Trancoso • Fly Club"
+                  city="trancoso"
+                  tags={["Open Bar Premium", "Pacote 5 Festas"]}
+                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-pacote-fly-club14112025102422"
+                  status="hot"
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="afrohouse"
+                  day="28"
+                  month="DEZ"
+                  title="AYUMAR — Wesley Safadão"
+                  location="Trancoso • Fly Club"
+                  city="trancoso"
+                  tags={["Open Bar Premium", "Show Nacional"]}
+                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-28-12-2025-fly-club13112025083501"
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="reveillon"
+                  day="30"
+                  month="DEZ"
+                  title="AYUMAR — Jorge & Mateus"
+                  location="Trancoso • Fly Club"
+                  city="trancoso"
+                  tags={["Open Bar Premium", "Show Nacional"]}
+                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-29-12-2025-fly-club13112025083723"
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="reveillon"
+                  day="31"
+                  month="DEZ"
+                  title="AYUMAR — Bell Marques"
+                  location="Trancoso • Fly Club"
+                  city="trancoso"
+                  tags={["Réveillon", "Open Bar Premium"]}
+                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-yara-fly-club14112025102612"
+                  status="hot"
+                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
+                />
+                <EventCard
+                  variant="afrohouse"
                   day="02"
                   month="JAN"
-                  title="Réveillon Ayumar 2026"
+                  title="AYUMAR — Grupo Benzadeus"
                   location="Trancoso • Fly Club"
-                  tags={["Benzadeus", "Day After"]}
+                  city="trancoso"
+                  tags={["Day After", "Open Bar Premium"]}
+                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-30-12-2025-fly-club13112025083939"
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
               </div>

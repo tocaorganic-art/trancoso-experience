@@ -12,10 +12,11 @@ export default function Eventos() {
   const { data: eventosAyumar, isLoading } = useQuery({
     queryKey: ['eventos-ayumar'],
     queryFn: async () => {
-      const eventos = await base44.entities.EventoAnoNovo.filter({ 
-        nome: "Réveillon Ayumar 2026" 
-      });
-      return eventos.sort((a, b) => new Date(a.data) - new Date(b.data));
+      const eventos = await base44.entities.EventoAnoNovo.filter({});
+      const ayumarEvents = eventos.filter(e => 
+        e.nome.includes("AYUMAR") || e.nome.includes("Ayumar") || e.nome.includes("Elemental")
+      );
+      return ayumarEvents.sort((a, b) => new Date(a.data) - new Date(b.data));
     }
   });
 
@@ -60,7 +61,7 @@ export default function Eventos() {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <PartyPopper className="w-6 h-6 text-yellow-500" />
-                <h2 className="text-2xl font-bold text-gray-800">Réveillon Ayumar 2026</h2>
+                <h2 className="text-2xl font-bold text-gray-800">Réveillon 2025/2026</h2>
               </div>
               <Link to={createPageUrl("EventosAnoNovo")}>
                 <Button variant="outline" size="sm">
@@ -69,7 +70,7 @@ export default function Eventos() {
               </Link>
             </div>
             <p className="text-gray-600 mb-4">
-              🎉 Pacote completo de 4 dias no Fly Club Trancoso com open bar premium
+              🎉 Eventos premium em Trancoso com open bar e shows nacionais
             </p>
             <div className="grid gap-4">
               {eventosAyumar.map((evento, index) => (
