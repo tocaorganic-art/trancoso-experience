@@ -4,6 +4,7 @@ import TrackingProvider from "@/components/tracking/TrackingProvider";
 
 const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
+const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
 
 export default function Layout({ children, currentPageName }) {
   useEffect(() => {

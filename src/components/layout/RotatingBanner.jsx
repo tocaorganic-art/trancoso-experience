@@ -6,7 +6,7 @@ import OptimizedImage from "@/components/ui/OptimizedImage";
 const BANNER_ITEMS = [
   {
     id: "toca-logo",
-    video: "https://www.youtube.com/embed/3V59U7hwj9Q",
+    video: "https://1drv.ms/v/c/99f25a081393a902/IQO5YgljTsfwTqKM1HBRfm7yAZRJCKlk7FJK2zAd18pv?e=eXlKOW",
     link: null
   },
   {
