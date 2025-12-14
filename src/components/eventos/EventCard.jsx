@@ -125,9 +125,8 @@ export default function EventCard({
         )}
 
         {/* Status Badge */}
-        {status && (
+        {status && status !== 'hot' && (
           <Badge className="mt-2 text-[11px] font-semibold px-2 py-1 w-fit">
-            {status === 'hot' && '🔥 Últimas vagas'}
             {status === 'new' && '✨ Novo'}
             {status === 'soldout' && '✓ Esgotado'}
           </Badge>
