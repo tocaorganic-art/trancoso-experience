@@ -6,7 +6,7 @@ import OptimizedImage from "@/components/ui/OptimizedImage";
 const BANNER_ITEMS = [
   {
     id: "toca-logo",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/0cf258bd7_image.png",
+    video: "https://www.youtube.com/embed/3V59U7hwj9Q",
     link: null
   },
   {
@@ -62,7 +62,15 @@ export default function RotatingBanner() {
             className="absolute inset-0 transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(${offset}%)` }}
           >
-            {item.image ? (
+            {item.video ? (
+              <iframe
+                src={item.video}
+                title="Toca Experience"
+                className="w-full h-full rounded-2xl"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : item.image ? (
               <OptimizedImage 
                 src={item.image}
                 alt="Toca Experience Apresenta"
