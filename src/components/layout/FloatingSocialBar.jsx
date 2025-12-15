@@ -69,7 +69,7 @@ export default function FloatingSocialBar() {
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex items-center group/social">
+    <div className="fixed right-4 bottom-20 z-[9999] flex items-center group/social">
       {/* Toggle Button - Premium */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
