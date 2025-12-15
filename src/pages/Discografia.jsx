@@ -13,6 +13,7 @@ import ReleaseCard from "@/components/discografia/ReleaseCard";
 import ReleasePlayer from "@/components/discografia/ReleasePlayer";
 import PreSaveBanner from "@/components/presave/PreSaveBanner";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import DiscografiaFilters from "@/components/discografia/DiscografiaFilters";
 
 const TYPE_LABELS = {
   single: "Single",
@@ -27,8 +28,15 @@ const ARTIST_LABELS = {
   toca_experience: "Toca Experience"
 };
 
+const RELEASES_PER_PAGE = 12;
+
 export default function Discografia() {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [filtros, setFiltros] = useState({
+    tipo: "all",
+    artista: "all",
+    ordenacao: "data_desc"
+  });
+  const [paginaAtual, setPaginaAtual] = useState(1);
   const [selectedRelease, setSelectedRelease] = useState(null);
 
   useEffect(() => {
@@ -72,9 +80,54 @@ export default function Discografia() {
     queryFn: () => base44.entities.Release.list('-release_date'),
   });
 
-  const filteredReleases = activeFilter === "all" 
-    ? releases 
-    : releases.filter(r => r.type === activeFilter);
+  // Aplicar filtros
+  let releasesFiltrados = releases;
+
+  if (filtros.tipo !== "all") {
+    releasesFiltrados = releasesFiltrados.filter(r => r.type === filtros.tipo);
+  }
+
+  if (filtros.artista !== "all") {
+    releasesFiltrados = releasesFiltrados.filter(r => r.artist === filtros.artista);
+  }
+
+  // Ordenação
+  releasesFiltrados = [...releasesFiltrados].sort((a, b) => {
+    switch (filtros.ordenacao) {
+      case "data_asc":
+        return new Date(a.release_date || 0) - new Date(b.release_date || 0);
+      case "nome_asc":
+        return a.title.localeCompare(b.title);
+      case "nome_desc":
+        return b.title.localeCompare(a.title);
+      default: // data_desc
+        return new Date(b.release_date || 0) - new Date(a.release_date || 0);
+    }
+  });
+
+  // Paginação
+  const totalPaginas = Math.ceil(releasesFiltrados.length / RELEASES_PER_PAGE);
+  const releasesPaginados = releasesFiltrados.slice(0, paginaAtual * RELEASES_PER_PAGE);
+
+  const handleFilterChange = (newFilters) => {
+    setFiltros(prev => ({ ...prev, ...newFilters }));
+    setPaginaAtual(1);
+  };
+
+  const carregarMais = () => {
+    if (paginaAtual < totalPaginas) {
+      setPaginaAtual(prev => prev + 1);
+    }
+  };
+
+  // Counts para filtros
+  const counts = {
+    total: releases.length,
+    single: releases.filter(r => r.type === "single").length,
+    ep: releases.filter(r => r.type === "ep").length,
+    remix: releases.filter(r => r.type === "remix").length,
+    album: releases.filter(r => r.type === "album").length
+  };
 
   const featuredReleases = releases.filter(r => r.featured);
 
@@ -169,53 +222,57 @@ export default function Discografia() {
           </motion.div>
         )}
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          <Button
-            variant={activeFilter === "all" ? "default" : "outline"}
-            onClick={() => setActiveFilter("all")}
-            className={activeFilter === "all" ? "bg-gray-800" : ""}
-          >
-            Todos
-          </Button>
-          {Object.entries(TYPE_LABELS).map(([key, label]) => (
-            <Button
-              key={key}
-              variant={activeFilter === key ? "default" : "outline"}
-              onClick={() => setActiveFilter(key)}
-              className={activeFilter === key ? "bg-gray-800" : ""}
-            >
-              {label}s
-            </Button>
-          ))}
-        </div>
+        {/* Filtros Avançados */}
+        <DiscografiaFilters 
+          filters={filtros}
+          onFilterChange={handleFilterChange}
+          counts={counts}
+        />
 
         {/* Releases Grid */}
         {isLoading ? (
           <div className="flex justify-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
           </div>
-        ) : filteredReleases.length === 0 ? (
+        ) : releasesFiltrados.length === 0 ? (
           <div className="text-center py-16">
             <Disc3 className="w-16 h-16 mx-auto text-gray-300 mb-4" />
             <h3 className="text-xl font-semibold text-gray-600 mb-2">
               Nenhum lançamento encontrado
             </h3>
             <p className="text-gray-400">
-              Novos lançamentos em breve.
+              Tente ajustar os filtros.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {filteredReleases.map((release, idx) => (
-              <ReleaseCard 
-                key={release.id} 
-                release={release} 
-                index={idx}
-                onPlay={() => setSelectedRelease(release)}
-              />
-            ))}
-          </div>
+          <>
+            <div className="mb-4 text-gray-600 text-sm">
+              Mostrando {releasesPaginados.length} de {releasesFiltrados.length} lançamentos
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {releasesPaginados.map((release, idx) => (
+                <ReleaseCard 
+                  key={release.id} 
+                  release={release} 
+                  index={idx}
+                  onPlay={() => setSelectedRelease(release)}
+                />
+              ))}
+            </div>
+            
+            {/* Load More Button */}
+            {paginaAtual < totalPaginas && (
+              <div className="flex justify-center mt-8">
+                <Button
+                  onClick={carregarMais}
+                  size="lg"
+                  className="bg-gray-800 hover:bg-gray-900 text-white px-8"
+                >
+                  Carregar Mais ({releasesFiltrados.length - releasesPaginados.length} restantes)
+                </Button>
+              </div>
+            )}
+          </>
         )}
 
         {/* Streaming Links */}
