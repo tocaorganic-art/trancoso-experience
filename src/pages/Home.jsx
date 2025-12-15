@@ -365,16 +365,16 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex items-center justify-center mb-12"
+              className="flex items-center justify-center mb-12 px-4"
             >
-              <OptimizedImage
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
-                alt="Toca Experience Logo"
-                width={200}
-                height={60}
-                className="w-[140px] md:w-[180px] lg:w-[200px]"
-                priority
-              />
+              <div className="w-full max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex items-center justify-center">
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
+                  alt="Toca Experience Logo"
+                  className="w-full h-auto object-contain"
+                  loading="eager"
+                />
+              </div>
             </motion.div>
 
             <motion.div
