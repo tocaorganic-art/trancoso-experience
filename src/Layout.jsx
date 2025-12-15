@@ -509,8 +509,16 @@ export default function Layout({ children, currentPageName }) {
         >
           <div className="container mx-auto px-4 py-2">
             <div className="flex items-center justify-between">
-              {/* Navigation Links */}
-              <div className="flex flex-wrap gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
+              {/* Logo + Navigation Links */}
+              <div className="flex items-center gap-3 flex-1">
+                <Link to={createPageUrl("Home")} className="flex-shrink-0">
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/d07be9ab3_logo_da_toca_experience_com_cone_e1.jpg"
+                    alt="Toca Experience"
+                    className="h-8 w-auto object-contain"
+                  />
+                </Link>
+                <div className="flex flex-wrap gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
                 <Link to={createPageUrl("Ethos")}>
                   <Button 
                     variant="ghost" 
@@ -573,10 +581,11 @@ export default function Layout({ children, currentPageName }) {
                   >
                     <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
                   </Button>
-                </Link>
-              </div>
+                  </Link>
+                  </div>
+                  </div>
 
-              {/* Social Icons - Right Side */}
+                  {/* Social Icons - Right Side */}
               <div className="flex items-center gap-2 ml-4">
                 <a 
                   href="https://wa.me/5521997731321" 
