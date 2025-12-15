@@ -34,16 +34,6 @@ const SOCIAL_LINKS = [
   color: "hover:text-orange-500"
 },
 {
-  name: "YouTube",
-  url: "https://youtube.com/@tocamusiccrew",
-  icon:
-  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>,
-
-  color: "hover:text-red-500"
-},
-{
   name: "Spotify",
   url: "https://open.spotify.com/artist/2r4S2RPdfnx7UPL73jJWlQ",
   icon:
@@ -72,26 +62,6 @@ const SOCIAL_LINKS = [
       </svg>,
 
   color: "hover:text-red-400"
-},
-{
-  name: "Facebook",
-  url: "https://www.facebook.com/share/1D2R3NspD9",
-  icon:
-  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-      </svg>,
-
-  color: "hover:text-blue-500"
-},
-{
-  name: "Linktree",
-  url: "https://linktr.ee/tocamusiccrew",
-  icon:
-  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-        <path d="M7.953 15.066l-.038-4.012 4.124-.001-.001-3.688h-4.1l-.04-4.033L5.93 6.86l-2.462 2.467H.005L4.456 13.8l-.003 3.6 3.5.002zm.038 5.274v3.66h3.66v-3.66h-3.66zM12.012 0l-4.47 4.471.003 3.478 4.467-4.467 4.47 4.466-.001-3.478L12.012 0zm4.019 7.334l-.039 4.012 4.088-.001-.001 3.688h-4.087l-.04 4.033 1.968-3.528 2.462-2.467h3.463L19.394 8.6l.003-3.6-3.366.334zm.038 14.006v-3.66h-3.66v3.66h3.66z" />
-      </svg>,
-
-  color: "hover:text-lime-400"
 }];
 
 
@@ -103,17 +73,17 @@ export default function FloatingSocialBar() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="p-3 rounded-l-full backdrop-blur-md bg-gray-600/80 border border-r-0 border-gray-500/50 text-white hover:bg-gray-500/80 transition-all shadow-xl"
+        className="p-2 md:p-3 rounded-l-full backdrop-blur-md bg-gray-600/80 border border-r-0 border-gray-500/50 text-white hover:bg-gray-500/80 transition-all shadow-xl"
         aria-label={isExpanded ? "Recolher" : "Expandir"}>
 
         {isExpanded ?
-        <ChevronRight className="w-4 h-4" /> :
+        <ChevronRight className="w-3 h-3 md:w-4 md:h-4" /> :
 
-        <ChevronLeft className="w-4 h-4" />
+        <ChevronLeft className="w-3 h-3 md:w-4 md:h-4" />
         }
       </button>
 
-      {/* Social Links Container */}
+      {/* Social Links Container - Horizontal */}
       <AnimatePresence>
         {isExpanded &&
         <motion.div
@@ -121,7 +91,7 @@ export default function FloatingSocialBar() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
           transition={{ duration: 0.3 }} 
-          className="bg-gray-600/80 backdrop-blur-md p-3 rounded-l-3xl flex flex-col gap-2 border border-r-0 border-gray-500/50 shadow-2xl">
+          className="bg-gray-600/80 backdrop-blur-md p-2 md:p-3 rounded-l-3xl flex flex-row gap-1.5 md:gap-2 border border-r-0 border-gray-500/50 shadow-2xl max-w-[280px] md:max-w-none overflow-x-auto scrollbar-hide">
 
             {SOCIAL_LINKS.map((social, index) =>
           <motion.a
@@ -132,7 +102,7 @@ export default function FloatingSocialBar() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="p-3 rounded-2xl bg-gray-700/60 backdrop-blur-sm border border-gray-500/30 text-white hover:bg-gray-600/80 hover:scale-105 transition-all duration-300 group"
+            className="p-2 md:p-3 rounded-xl md:rounded-2xl bg-gray-700/60 backdrop-blur-sm border border-gray-500/30 text-white hover:bg-gray-600/80 hover:scale-105 transition-all duration-300 group flex-shrink-0"
             title={social.name}>
 
                 <div className="transform group-hover:scale-110 transition-transform">

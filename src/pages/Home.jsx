@@ -23,7 +23,6 @@ import EventCard from "@/components/eventos/EventCard";
 // Lazy load non-critical components
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
 const PreSaveBanner = React.lazy(() => import("@/components/presave/PreSaveBanner"));
-const StickyPlayer = React.lazy(() => import("@/components/player/StickyPlayer"));
 const FixedLogo = React.lazy(() => import("@/components/layout/FixedLogo"));
 const RotatingBanner = React.lazy(() => import("@/components/layout/RotatingBanner"));
 const FloatingSocialBar = React.lazy(() => import("@/components/layout/FloatingSocialBar"));
@@ -884,11 +883,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-
-      {/* Sticky Player */}
-      <React.Suspense fallback={null}>
-        <StickyPlayer />
-      </React.Suspense>
 
       {/* Floating Social Bar */}
       <React.Suspense fallback={null}>
