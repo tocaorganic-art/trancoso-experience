@@ -35,14 +35,23 @@ export default function EventCard({
   onClick
 }) {
   const [imageError, setImageError] = React.useState(false);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
   
   // Pré-carregar imagem para detectar erro
   React.useEffect(() => {
     if (!backgroundImage) return;
     
     const img = new Image();
-    img.onload = () => setImageError(false);
-    img.onerror = () => setImageError(true);
+    img.onload = () => {
+      setImageError(false);
+      setImageLoaded(true);
+      console.log('✅ Imagem carregada:', backgroundImage);
+    };
+    img.onerror = () => {
+      setImageError(true);
+      setImageLoaded(false);
+      console.error('❌ Erro ao carregar imagem:', backgroundImage);
+    };
     img.src = backgroundImage;
   }, [backgroundImage]);
 
