@@ -10,23 +10,33 @@ export default function VideoBackground() {
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     
     // Não carregar vídeo em mobile ou conexão lenta
-    if (isMobile) return;
+    if (isMobile) {
+      console.log('VideoBackground: Mobile device detected, skipping video');
+      return;
+    }
     
     if (connection) {
       const { effectiveType, saveData, downlink } = connection;
       if (saveData || effectiveType === '2g' || effectiveType === '3g' || downlink < 2) {
+        console.log('VideoBackground: Slow connection detected, skipping video');
         return;
       }
     }
     
-    // Aguardar carregamento inicial da página antes de carregar vídeo
+    // Aguardar carregamento inicial da página (reduzir de 1s para 500ms)
     const timer = setTimeout(() => {
       if (document.readyState === 'complete') {
+        console.log('VideoBackground: Page loaded, loading video');
         setShouldLoadVideo(true);
       } else {
-        window.addEventListener('load', () => setShouldLoadVideo(true));
+        const handleLoad = () => {
+          console.log('VideoBackground: Load event fired, loading video');
+          setShouldLoadVideo(true);
+        };
+        window.addEventListener('load', handleLoad, { once: true });
+        return () => window.removeEventListener('load', handleLoad);
       }
-    }, 1000);
+    }, 500);
     
     return () => clearTimeout(timer);
   }, []);
@@ -56,12 +66,19 @@ export default function VideoBackground() {
       {/* Vídeo otimizado - apenas desktop com boa conexão */}
       {shouldLoadVideo && (
         <iframe
-          src="https://onedrive.live.com/embed?resid=99F25A081393A902%21s7329dadc59ad34e04ea28cd470517e6ee&authkey=!ALXRo_r5w0R9TkI"
+          src="https://onedrive.live.com/embed?resid=99F25A081393A902%21s7329dadc59ad34e04ea28cd470517e6ee&authkey=!ALXRo_r5w0R9TkI&autoplay=true"
           className="absolute inset-0 w-full h-full border-0 opacity-30"
-          allow="autoplay"
+          allow="autoplay; fullscreen"
           style={{ pointerEvents: 'none' }}
-          onLoad={() => setVideoLoaded(true)}
+          onLoad={() => {
+            console.log('VideoBackground: Video iframe loaded');
+            setVideoLoaded(true);
+          }}
+          onError={() => {
+            console.error('VideoBackground: Video failed to load');
+          }}
           title="Vídeo de fundo Trancoso Experience"
+          loading="lazy"
         />
       )}
       
