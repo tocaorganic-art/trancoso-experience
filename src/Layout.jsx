@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 import { Toaster } from "sonner";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "@/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar, Newspaper, Disc3, PartyPopper, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 
 const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
@@ -497,17 +501,105 @@ export default function Layout({ children, currentPageName }) {
         <React.Suspense fallback={null}>
           <ReveillonCTA />
         </React.Suspense>
-        
-        {/* Barra de Busca Global */}
-        {currentPageName !== "Home" && (
-          <div className="sticky top-0 z-50 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 border-b border-gray-700 py-3 backdrop-blur-sm">
-            <div className="container mx-auto px-6">
-              <React.Suspense fallback={<div />}>
-                <GlobalSearchBar />
-              </React.Suspense>
+
+        {/* Barra de Navegação Global - Aparece em todas as páginas */}
+        <div 
+          id="categories-bar"
+          className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/40 shadow-[0_2px_20px_rgba(0,0,0,0.04)]"
+        >
+          <div className="container mx-auto px-4 py-2">
+            <div className="flex items-center justify-between">
+              {/* Navigation Links */}
+              <div className="flex flex-wrap gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
+                <Link to={createPageUrl("Ethos")}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                  >
+                    ETHOS
+                  </Button>
+                </Link>
+                <Link to={createPageUrl("Eventos")}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                  >
+                    <Calendar className="mr-0.5 h-2.5 w-2.5" /> EVENTOS
+                  </Button>
+                </Link>
+                <Link to={createPageUrl("Curadoria")}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                  >
+                    <Newspaper className="mr-0.5 h-2.5 w-2.5" /> CURADORIA
+                  </Button>
+                </Link>
+                <Link to={createPageUrl("Cotacao")}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                  >
+                    <CalendarIcon className="mr-0.5 h-2.5 w-2.5" /> COTAÇÃO
+                  </Button>
+                </Link>
+                <Link to={createPageUrl("Discografia")}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                  >
+                    <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
+                  </Button>
+                </Link>
+                <Link to={createPageUrl("EventosAnoNovo")}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                  >
+                    <PartyPopper className="mr-0.5 h-2.5 w-2.5" /> ANO NOVO
+                  </Button>
+                </Link>
+                <Link to={createPageUrl("LocacaoSom")}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                  >
+                    <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Social Icons - Right Side */}
+              <div className="flex items-center gap-2 ml-4">
+                <a 
+                  href="https://wa.me/5521997731321" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-green-500/10 hover:bg-green-500/20 flex items-center justify-center transition-colors"
+                  title="WhatsApp"
+                >
+                  <MessageCircle className="w-4 h-4 text-green-600" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/tonyismusic" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-pink-500/10 hover:bg-pink-500/20 flex items-center justify-center transition-colors"
+                  title="Instagram"
+                >
+                  <Instagram className="w-4 h-4 text-pink-600" />
+                </a>
+              </div>
             </div>
           </div>
-        )}
+        </div>
         
         <Toaster position="top-center" richColors />
         {children}
