@@ -232,13 +232,13 @@ export default function Home() {
                         <div className="container mx-auto px-4 py-1.5 pl-4 pr-16">
                       <div className="flex flex-wrap justify-center gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
                       <RouterLink to={createPageUrl("Ethos")}>
-                      <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                      >
-                      <Sparkles className="mr-0.5 h-2.5 w-2.5" /> ETHOS
-                      </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                        >
+                          ETHOS
+                        </Button>
                       </RouterLink>
                       <RouterLink to={createPageUrl("Eventos")}>
                       <Button 
@@ -286,13 +286,13 @@ export default function Home() {
                       </Button>
                       </RouterLink>
                       <RouterLink to={createPageUrl("LocacaoSom")}>
-                      <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                      >
-                      <Music className="mr-0.5 h-2.5 w-2.5" /> SOM
-                      </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                        >
+                          <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
+                        </Button>
                       </RouterLink>
                       </div>
                       </div>
