@@ -294,7 +294,7 @@ export default function Home() {
                   city="trancoso"
                   tags={["Open Bar Premium", "Pacote 5 Festas"]}
                   backgroundImage="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-pacote-fly-club14112025102422"
+                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
                   status="hot"
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
@@ -307,7 +307,7 @@ export default function Home() {
                   city="trancoso"
                   tags={["Open Bar Premium", "Show Nacional"]}
                   backgroundImage="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-28-12-2025-fly-club13112025083501"
+                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
                 <EventCard
@@ -319,7 +319,7 @@ export default function Home() {
                   city="trancoso"
                   tags={["Open Bar Premium", "Show Nacional"]}
                   backgroundImage="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-29-12-2025-fly-club13112025083723"
+                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
                 <EventCard
@@ -331,7 +331,7 @@ export default function Home() {
                   city="trancoso"
                   tags={["Réveillon", "Open Bar Premium"]}
                   backgroundImage="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-yara-fly-club14112025102612"
+                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
                   status="hot"
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
@@ -344,7 +344,7 @@ export default function Home() {
                   city="trancoso"
                   tags={["Day After", "Open Bar Premium"]}
                   backgroundImage="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/events/comissario-reveillon-ayumar-30-12-2025-fly-club13112025083939"
+                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
                   onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
                 />
               </div>
