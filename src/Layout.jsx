@@ -584,28 +584,6 @@ export default function Layout({ children, currentPageName }) {
                   </Link>
                   </div>
                   </div>
-
-                  {/* Social Icons - Right Side */}
-              <div className="flex items-center gap-2 ml-4">
-                <a 
-                  href="https://wa.me/5521997731321" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-green-500/10 hover:bg-green-500/20 flex items-center justify-center transition-colors"
-                  title="WhatsApp"
-                >
-                  <MessageCircle className="w-4 h-4 text-green-600" />
-                </a>
-                <a 
-                  href="https://www.instagram.com/tonyismusic" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-pink-500/10 hover:bg-pink-500/20 flex items-center justify-center transition-colors"
-                  title="Instagram"
-                >
-                  <Instagram className="w-4 h-4 text-pink-600" />
-                </a>
-              </div>
             </div>
           </div>
         </div>
