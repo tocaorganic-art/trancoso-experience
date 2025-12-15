@@ -69,21 +69,20 @@ export default function FloatingSocialBar() {
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="fixed right-4 bottom-20 z-[9999] flex items-center group/social">
-      {/* Toggle Button - Premium */}
+    <div className="fixed right-0 top-12 z-[9999] flex flex-col items-end group/social">
+      {/* Toggle Button - Premium Vertical */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="p-1.5 md:p-2 rounded-l-2xl backdrop-blur-xl bg-white/95 border border-r-0 border-gray-200/60 text-gray-600 hover:text-gray-900 hover:bg-white transition-all shadow-[0_2px_12px_rgba(0,0,0,0.08)]"
+        className="p-1 rounded-l-lg backdrop-blur-xl bg-white/95 border border-r-0 border-gray-200/60 text-gray-600 hover:text-gray-900 hover:bg-white transition-all shadow-[0_2px_12px_rgba(0,0,0,0.08)]"
         aria-label={isExpanded ? "Recolher" : "Expandir"}>
 
         {isExpanded ?
-        <ChevronRight className="w-3 h-3 md:w-3.5 md:h-3.5" /> :
-
-        <ChevronLeft className="w-3 h-3 md:w-3.5 md:h-3.5" />
+        <ChevronRight className="w-3 h-3" /> :
+        <ChevronLeft className="w-3 h-3" />
         }
       </button>
 
-      {/* Social Links Container - Premium Clean */}
+      {/* Social Links Container - Vertical Premium */}
       <AnimatePresence>
         {isExpanded &&
         <motion.div
@@ -91,7 +90,7 @@ export default function FloatingSocialBar() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
           transition={{ duration: 0.3 }} 
-          className="bg-white/95 backdrop-blur-xl p-1.5 md:p-2 rounded-l-3xl flex flex-row gap-1 md:gap-1.5 border border-r-0 border-gray-200/60 shadow-[0_2px_16px_rgba(0,0,0,0.08)] max-w-[240px] md:max-w-none overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
+          className="bg-white/95 backdrop-blur-xl p-1.5 rounded-l-2xl flex flex-col gap-1 border border-r-0 border-gray-200/60 shadow-[0_2px_16px_rgba(0,0,0,0.08)] mt-1">
 
             {SOCIAL_LINKS.map((social, index) =>
           <motion.a
@@ -102,11 +101,11 @@ export default function FloatingSocialBar() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="p-2 rounded-xl bg-gray-50/70 hover:bg-gray-100 backdrop-blur-sm border border-gray-200/40 text-gray-600 hover:text-gray-900 hover:scale-105 transition-all duration-300 group/icon flex-shrink-0"
+            className="p-1.5 rounded-lg bg-gray-50/70 hover:bg-gray-100 backdrop-blur-sm border border-gray-200/40 text-gray-600 hover:text-gray-900 hover:scale-105 transition-all duration-300 group/icon"
             title={social.name}>
 
-                <div className="transform group-hover/icon:scale-110 transition-transform">
-                  {social.icon}
+                <div className="transform group-hover/icon:scale-110 transition-transform w-4 h-4 flex items-center justify-center">
+                  {React.cloneElement(social.icon, { className: 'w-3.5 h-3.5 fill-current' })}
                 </div>
               </motion.a>
           )}
