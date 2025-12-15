@@ -74,13 +74,14 @@ export default function RotatingBanner() {
                 />
               </div>
             ) : item.image ? (
-              <OptimizedImage 
-                src={item.image}
-                alt="Toca Experience Apresenta"
-                className="rounded-2xl"
-                containerClassName="w-full h-full"
-                priority={index === 0}
-              />
+              <div className="w-full h-full bg-white rounded-2xl flex items-center justify-center p-8">
+                <img 
+                  src={item.image}
+                  alt="Toca Experience"
+                  className="w-full h-full object-contain"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </div>
             ) : (
               <Link
                 to={createPageUrl(item.link)}
