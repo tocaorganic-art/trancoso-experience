@@ -440,17 +440,13 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.45 }}
               className="flex items-center justify-center mb-12"
             >
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=240&quality=85&format=webp" 
-                srcSet="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=120&quality=85&format=webp 1x,
-                        https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png?width=240&quality=85&format=webp 2x"
-                alt="Tony Monteiro Logo" 
+              <OptimizedImage
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png"
+                alt="Tony Monteiro Logo"
+                width={120}
+                height={120}
                 className="w-[80px] md:w-[100px] lg:w-[120px]"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-                width="120"
-                height="120"
+                priority
               />
             </motion.div>
 
@@ -560,17 +556,13 @@ export default function Home() {
               className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all"
             >
               <div className="flex items-center gap-4 mb-6">
-                <img 
-                                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=128&quality=80&format=webp" 
-                                      srcSet="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=64&quality=80&format=webp 1x,
-                                              https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=128&quality=80&format=webp 2x"
-                                      alt="Tony Monteiro - DJ Afro House"
-                                      className="w-16 h-16 rounded-full object-cover"
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="64"
-                                      height="64"
-                                    />
+                <OptimizedImage
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG"
+                  alt="Tony Monteiro - DJ Afro House"
+                  width={64}
+                  height={64}
+                  className="w-16 h-16 rounded-full object-cover"
+                />
                 <div>
                   <h3 className="text-2xl font-bold text-gray-800">Tony Monteiro</h3>
                   <p className="text-gray-500">O Refinamento Global</p>

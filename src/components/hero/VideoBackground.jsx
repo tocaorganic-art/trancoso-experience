@@ -33,17 +33,25 @@ export default function VideoBackground() {
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
-      {/* Imagem de fallback - sempre visível, fade quando vídeo carregar */}
-      <img 
-        src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png?width=1920&quality=60&format=webp"
-        alt="Experiência exclusiva em Trancoso"
-        className={`absolute inset-0 w-full h-full object-cover opacity-30 transition-opacity duration-1000 ${
-          videoLoaded ? 'opacity-0' : 'opacity-30'
-        }`}
-        style={{ objectPosition: 'center 40%' }}
-        loading="eager"
-        fetchpriority="high"
-      />
+      {/* Imagem de fallback otimizada - sempre visível, fade quando vídeo carregar */}
+      <picture>
+        <source
+          srcSet="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png?width=1920&quality=60&format=webp"
+          type="image/webp"
+        />
+        <img 
+          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png?width=1920&quality=60"
+          alt="Experiência exclusiva em Trancoso"
+          className={`absolute inset-0 w-full h-full object-cover opacity-30 transition-opacity duration-1000 ${
+            videoLoaded ? 'opacity-0' : 'opacity-30'
+          }`}
+          style={{ objectPosition: 'center 40%' }}
+          loading="eager"
+          fetchpriority="high"
+          width="1920"
+          height="1080"
+        />
+      </picture>
       
       {/* Vídeo otimizado - apenas desktop com boa conexão */}
       {shouldLoadVideo && (
