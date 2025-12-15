@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Filter, Sparkles, PartyPopper, Loader2, ArrowLeft, Users, Music, MessageCircle, CheckCircle } from "lucide-react";
+import { Calendar, MapPin, Filter, Sparkles, PartyPopper, Loader2, ArrowLeft, Users, Music, MessageCircle, CheckCircle, ImageIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,7 @@ import { ptBR } from "date-fns/locale";
 import EventCard from "@/components/eventos/EventCard";
 import EventDaySection from "@/components/eventos/EventDaySection";
 import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
+import ImageGallery from "@/components/eventos/ImageGallery";
 
 const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
@@ -22,6 +23,7 @@ const LOCALIDADES = ["Todas", "Caraíva", "Trancoso", "Arraial d'Ajuda"];
 
 export default function EventosAnoNovo() {
   const [filtroLocalidade, setFiltroLocalidade] = useState("Todas");
+  const [galleryOpen, setGalleryOpen] = useState(false);
 
   const { data: eventos = [], isLoading } = useQuery({
     queryKey: ['eventosAnoNovo'],
@@ -290,7 +292,17 @@ export default function EventosAnoNovo() {
           ))}
           
           <div className="w-px h-6 bg-white/20 hidden sm:block" />
-          
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setGalleryOpen(true)}
+            className="bg-white/5 border-white/20 text-white hover:bg-white/10 text-xs sm:text-sm"
+          >
+            <ImageIcon className="w-4 h-4 mr-2" />
+            Galeria ({eventosFiltrados.filter(e => e.imagem).length})
+          </Button>
+
           <CompartilharTodos eventos={eventos} />
         </div>
 
@@ -400,6 +412,13 @@ export default function EventosAnoNovo() {
       <footer className="py-8 text-center text-gray-500 text-sm border-t border-white/5 mt-12">
         <p>© 2024 Toca Experience - Eventos de Ano Novo</p>
       </footer>
-    </div>
-  );
-}
+      </div>
+
+      {/* Image Gallery Modal */}
+      <ImageGallery 
+      eventos={eventosFiltrados}
+      isOpen={galleryOpen}
+      onClose={() => setGalleryOpen(false)}
+      />
+      );
+      }
