@@ -34,11 +34,25 @@ export default function EventCard({
   status,
   onClick
 }) {
-  const cardStyle = backgroundImage ? {
+  const [imageError, setImageError] = React.useState(false);
+  
+  // Pré-carregar imagem para detectar erro
+  React.useEffect(() => {
+    if (!backgroundImage) return;
+    
+    const img = new Image();
+    img.onload = () => setImageError(false);
+    img.onerror = () => setImageError(true);
+    img.src = backgroundImage;
+  }, [backgroundImage]);
+
+  const cardStyle = backgroundImage && !imageError ? {
     backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center'
-  } : {};
+  } : {
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+  };
 
   const cityColors = {
     trancoso: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
