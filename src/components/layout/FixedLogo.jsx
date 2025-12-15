@@ -6,12 +6,12 @@ export default function FixedLogo() {
   return (
     <Link 
       to={createPageUrl("Home")}
-      className="fixed top-16 left-4 z-40 hover:opacity-80 transition-opacity"
+      className="fixed top-14 left-3 z-40 hover:opacity-80 transition-opacity max-w-[80px] md:max-w-[100px]"
     >
       <img 
-        src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/9db850e06_logo_da_toca_experience_com_cone_e1.jpg" 
+        src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png" 
         alt="Toca Experience" 
-        className="h-10 w-10 md:h-12 md:w-12 object-contain rounded-lg shadow-lg"
+        className="w-full h-auto object-contain"
       />
     </Link>
   );
