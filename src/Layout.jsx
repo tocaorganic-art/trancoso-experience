@@ -135,18 +135,18 @@ export default function Layout({ children, currentPageName }) {
     }
 
     const pageDescriptions = {
-      "Home": "Experiências musicais exclusivas em Trancoso. DJs Tony Monteiro & Enzo Furtado. Aluguel de som profissional (CDJ, Controladoras, Caixas de Som) para festas e casamentos.",
-      "Agenda": "Confira a agenda de eventos e próximas apresentações dos DJs Tony Monteiro e Enzo Furtado. Afro House, Organic House e House music em festivais, clubs e eventos privados.",
-      "CasamentosTrancoso": "DJ especializado em casamentos de luxo em Trancoso. Som profissional Pioneer, trilha personalizada e experiência inesquecível para seu grande dia.",
-      "AluguelEquipamentos": "Aluguel de equipamentos DJ profissionais em Trancoso: Pioneer CDJ-3000, Controladoras DDJ, caixas de som e iluminação para festas e eventos.",
-      "EventosCorporativos": "DJs para eventos corporativos em Trancoso. Festas empresariais, lançamentos de produtos e confraternizações com música de alta qualidade.",
-      "EventosAnoNovo": "Guia completo de festas e eventos de Réveillon 2025/2026 em Trancoso, Caraíva e Arraial d'Ajuda. Mais de 40 opções de festas premium, open bar, DJs internacionais. Ingressos e reservas disponíveis.",
-      "LocacaoSom": "Locação de equipamentos de som profissional em Trancoso: Pioneer CDJ-3000, DJM-V10, Funktion-One, iluminação LED. Instalação e suporte técnico inclusos. Ideal para casamentos, festas e eventos.",
-      "Curadoria": "Curadoria musical especializada em Afro House, Organic House e House Music. Playlists exclusivas, sets ao vivo e conteúdo selecionado por Tony Monteiro e Enzo Furtado.",
-      "Discografia": "Discografia completa de Tony Monteiro e Enzo Furtado. Ouça lançamentos, remixes e produções originais de Afro House e Organic House. Disponível no Spotify, SoundCloud e Apple Music.",
-      "Ethos": "Conheça a filosofia da Toca Experience: música como linguagem universal, fusão de brasilidades com eletrônica contemporânea, e excelência técnica em cada apresentação.",
-      "Cotacao": "Solicite um orçamento personalizado para DJ em casamentos, eventos corporativos, festas privadas e Réveillon em Trancoso. Resposta em até 24 horas.",
-      "Obrigado": "Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo."
+      "Home": "Viva o Novo - Viva Experiências. Experiências musicais exclusivas em Trancoso. Tony Monteiro & Enzo Furtado. Aluguel de som profissional (CDJ, Controladoras, Caixas de Som) para festas e casamentos.",
+      "Agenda": "Viva o Novo - Viva Experiências. Confira a agenda de eventos e próximas apresentações. Tony Monteiro e Enzo Furtado. Afro House, Organic House e House music em festivais, clubs e eventos privados.",
+      "CasamentosTrancoso": "Viva o Novo - Viva Experiências. Casamentos de luxo em Trancoso. Som profissional Pioneer, trilha personalizada e experiência inesquecível para seu grande dia.",
+      "AluguelEquipamentos": "Viva o Novo - Viva Experiências. Aluguel de equipamentos profissionais em Trancoso: Pioneer CDJ-3000, Controladoras DDJ, caixas de som e iluminação para festas e eventos.",
+      "EventosCorporativos": "Viva o Novo - Viva Experiências. Eventos corporativos em Trancoso. Festas empresariais, lançamentos de produtos e confraternizações com música de alta qualidade.",
+      "EventosAnoNovo": "Viva o Novo - Viva Experiências. Guia completo de festas e eventos de Réveillon 2025/2026 em Trancoso, Caraíva e Arraial d'Ajuda. Mais de 40 opções de festas premium, open bar, música internacional. Ingressos e reservas disponíveis.",
+      "LocacaoSom": "Viva o Novo - Viva Experiências. Locação de equipamentos de som profissional em Trancoso: Pioneer CDJ-3000, DJM-V10, Funktion-One, iluminação LED. Instalação e suporte técnico inclusos. Ideal para casamentos, festas e eventos.",
+      "Curadoria": "Viva o Novo - Viva Experiências. Curadoria musical especializada em Afro House, Organic House e House Music. Playlists exclusivas, sets ao vivo e conteúdo selecionado por Tony Monteiro e Enzo Furtado.",
+      "Discografia": "Viva o Novo - Viva Experiências. Discografia completa de Tony Monteiro e Enzo Furtado. Ouça lançamentos, remixes e produções originais de Afro House e Organic House. Disponível no Spotify, SoundCloud e Apple Music.",
+      "Ethos": "Viva o Novo - Viva Experiências. Conheça a filosofia da Toca Experience: música como linguagem universal, fusão de brasilidades com eletrônica contemporânea, e excelência técnica em cada apresentação.",
+      "Cotacao": "Viva o Novo - Viva Experiências. Solicite um orçamento personalizado para casamentos, eventos corporativos, festas privadas e Réveillon em Trancoso. Resposta em até 24 horas.",
+      "Obrigado": "Viva o Novo - Viva Experiências. Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo."
     };
 
     metaDescription.content = pageDescriptions[currentPageName] || "Toca Experience apresenta Tony Monteiro & Enzo Furtado - duo de DJs especialistas em Afro House, Organic House e House. Contrate para casamentos, festivais, eventos corporativos e festas privadas.";
