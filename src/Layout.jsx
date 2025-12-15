@@ -5,6 +5,7 @@ import TrackingProvider from "@/components/tracking/TrackingProvider";
 const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
+const FloatingWhatsAppButton = React.lazy(() => import("@/components/layout/FloatingWhatsAppButton"));
 
 export default function Layout({ children, currentPageName }) {
   useEffect(() => {
@@ -515,7 +516,12 @@ export default function Layout({ children, currentPageName }) {
         <React.Suspense fallback={null}>
           <FloatingChatWidget />
         </React.Suspense>
-      </div>
+
+        {/* Floating WhatsApp Button */}
+        <React.Suspense fallback={null}>
+          <FloatingWhatsAppButton />
+        </React.Suspense>
+        </div>
     </TrackingProvider>
   );
 }
