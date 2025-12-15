@@ -23,22 +23,9 @@ export default function VideoBackground() {
       }
     }
     
-    // Aguardar carregamento inicial da página (reduzir de 1s para 500ms)
-    const timer = setTimeout(() => {
-      if (document.readyState === 'complete') {
-        console.log('VideoBackground: Page loaded, loading video');
-        setShouldLoadVideo(true);
-      } else {
-        const handleLoad = () => {
-          console.log('VideoBackground: Load event fired, loading video');
-          setShouldLoadVideo(true);
-        };
-        window.addEventListener('load', handleLoad, { once: true });
-        return () => window.removeEventListener('load', handleLoad);
-      }
-    }, 500);
-    
-    return () => clearTimeout(timer);
+    // Carregar vídeo imediatamente após o componente montar
+    console.log('VideoBackground: Loading video');
+    setShouldLoadVideo(true);
   }, []);
 
   return (
