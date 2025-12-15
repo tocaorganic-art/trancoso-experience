@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube, PlayCircle } from "lucide-react";
+import { ArrowLeft, BarChart3, TrendingUp, Users, Mail, MessageCircle, TestTube, PlayCircle, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
-import QuickStats from "@/components/admin/QuickStats";
-import QuickGuide from "@/components/admin/QuickGuide";
-import ExportCSV from "@/components/admin/ExportCSV";
-import LeadsDashboard from "@/components/analytics/LeadsDashboard";
-import ConversionFunnel from "@/components/analytics/ConversionFunnel";
-import RevenueChart from "@/components/analytics/RevenueChart";
-import ABTestManager from "@/components/analytics/ABTestManager";
-import LeadManager from "@/components/admin/LeadManager";
-
 import ProtectedRoute from "@/components/admin/ProtectedRoute";
+
+// Lazy load componentes pesados para reduzir bundle inicial
+const QuickStats = React.lazy(() => import("@/components/admin/QuickStats"));
+const QuickGuide = React.lazy(() => import("@/components/admin/QuickGuide"));
+const ExportCSV = React.lazy(() => import("@/components/admin/ExportCSV"));
+const LeadsDashboard = React.lazy(() => import("@/components/analytics/LeadsDashboard"));
+const ConversionFunnel = React.lazy(() => import("@/components/analytics/ConversionFunnel"));
+const RevenueChart = React.lazy(() => import("@/components/analytics/RevenueChart"));
+const ABTestManager = React.lazy(() => import("@/components/analytics/ABTestManager"));
+const LeadManager = React.lazy(() => import("@/components/admin/LeadManager"));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center py-12">
+    <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
+  </div>
+);
 
 function AdminDashboardContent() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -51,7 +59,9 @@ function AdminDashboardContent() {
 
       {/* Main Content */}
       <div className="container mx-auto px-6 py-12">
-        <QuickStats />
+        <Suspense fallback={<LoadingFallback />}>
+          <QuickStats />
+        </Suspense>
         
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 gap-2 bg-white p-2 rounded-lg shadow">
@@ -83,48 +93,58 @@ function AdminDashboardContent() {
           </TabsList>
 
           <TabsContent value="leads">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <LeadManager />
-            </motion.div>
+            <Suspense fallback={<LoadingFallback />}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <LeadManager />
+              </motion.div>
+            </Suspense>
           </TabsContent>
 
           <TabsContent value="overview">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <LeadsDashboard />
-            </motion.div>
+            <Suspense fallback={<LoadingFallback />}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <LeadsDashboard />
+              </motion.div>
+            </Suspense>
           </TabsContent>
 
           <TabsContent value="funnel">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <ConversionFunnel />
-            </motion.div>
+            <Suspense fallback={<LoadingFallback />}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <ConversionFunnel />
+              </motion.div>
+            </Suspense>
           </TabsContent>
 
           <TabsContent value="revenue">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <RevenueChart />
-            </motion.div>
+            <Suspense fallback={<LoadingFallback />}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <RevenueChart />
+              </motion.div>
+            </Suspense>
           </TabsContent>
 
           <TabsContent value="abtests">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <ABTestManager />
-            </motion.div>
+            <Suspense fallback={<LoadingFallback />}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <ABTestManager />
+              </motion.div>
+            </Suspense>
           </TabsContent>
         </Tabs>
 
@@ -155,11 +175,15 @@ function AdminDashboardContent() {
             <MessageCircle className="w-5 h-5 mr-2" />
             WhatsApp Massivo
           </Button>
-          <ExportCSV />
+          <Suspense fallback={<Button className="bg-gray-400 text-white py-6" disabled>Carregando...</Button>}>
+            <ExportCSV />
+          </Suspense>
         </motion.div>
 
         {/* Quick Guide */}
-        <QuickGuide />
+        <Suspense fallback={<LoadingFallback />}>
+          <QuickGuide />
+        </Suspense>
       </div>
     </div>
   );
