@@ -8,11 +8,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Music, Speaker, Lightbulb, Check, ArrowLeft, ChevronDown,
-  Disc3, Volume2, Zap, Star, MessageCircle, Clock, Truck, Shield
+  Disc3, Volume2, Zap, Star, MessageCircle, Clock, Truck, Shield, Image as ImageIcon
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { toast } from "sonner";
+import EquipmentGallery from "@/components/equipamentos/EquipmentGallery";
 
 // Equipamentos data
 const EQUIPAMENTOS = [
@@ -177,6 +178,8 @@ export default function LocacaoSom() {
     aceitaPoliticas: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [selectedEquipIndex, setSelectedEquipIndex] = useState(0);
 
   // SEO
   useEffect(() => {
@@ -354,9 +357,17 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Galeria de <span className="text-orange-400">Equipamentos</span>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-400 max-w-2xl mx-auto mb-6">
               Equipamentos profissionais de marcas líderes do mercado para a sua festa em casa
             </p>
+            <Button
+              onClick={() => setGalleryOpen(true)}
+              variant="outline"
+              className="border-orange-500 text-orange-500 hover:bg-orange-500/10"
+            >
+              <ImageIcon className="w-4 h-4 mr-2" />
+              Ver Galeria Completa com Zoom
+            </Button>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -368,14 +379,26 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <Card className="bg-gray-800/50 border-gray-700 overflow-hidden hover:border-orange-500/50 transition-all h-full">
-                  <div className="aspect-video overflow-hidden">
+                <Card 
+                  className="bg-gray-800/50 border-gray-700 overflow-hidden hover:border-orange-500/50 transition-all h-full cursor-pointer group"
+                  onClick={() => {
+                    setSelectedEquipIndex(idx);
+                    setGalleryOpen(true);
+                  }}
+                >
+                  <div className="aspect-video overflow-hidden relative">
                     <img 
                       src={equip.imagem} 
                       alt={equip.alt}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2">
+                        <ImageIcon className="w-4 h-4 text-white" />
+                        <span className="text-white text-sm font-semibold">Ver Detalhes</span>
+                      </div>
+                    </div>
                   </div>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-3">
@@ -384,7 +407,7 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}
                       </div>
                       <h3 className="text-lg font-bold text-white">{equip.titulo}</h3>
                     </div>
-                    <p className="text-gray-400 text-sm leading-relaxed">{equip.descricao}</p>
+                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">{equip.descricao}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -765,6 +788,14 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}
       <footer className="py-8 border-t border-gray-800 text-center text-gray-500 text-sm">
         <p>© 2024 Toca Experience - Locação de Equipamentos de Som para Residências</p>
       </footer>
+
+      {/* Equipment Gallery Modal */}
+      <EquipmentGallery
+        equipamentos={EQUIPAMENTOS}
+        isOpen={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
+        selectedIndex={selectedEquipIndex}
+      />
     </div>
   );
 }
