@@ -368,11 +368,11 @@ export default function Home() {
               className="flex items-center justify-center mb-12"
             >
               <OptimizedImage
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png"
-                alt="Tony Monteiro Logo"
-                width={120}
-                height={120}
-                className="w-[80px] md:w-[100px] lg:w-[120px]"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
+                alt="Toca Experience Logo"
+                width={200}
+                height={60}
+                className="w-[140px] md:w-[180px] lg:w-[200px]"
                 priority
               />
             </motion.div>
@@ -773,6 +773,13 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-12 border-t border-gray-200/60 bg-white pb-24">
         <div className="container mx-auto px-6 text-center">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
+              alt="Toca Experience"
+              className="h-12 w-auto"
+            />
+          </div>
           <p className="text-gray-600 font-medium mb-2">
             Toca Experience — Experiências Exclusivas em Trancoso
           </p>
