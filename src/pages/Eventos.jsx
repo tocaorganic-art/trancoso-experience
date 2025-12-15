@@ -72,7 +72,7 @@ export default function Eventos() {
             <p className="text-gray-600 mb-4">
               🎉 Eventos premium em Trancoso com open bar e shows nacionais
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
               {eventosAyumar.map((evento) => {
                 const eventDate = new Date(evento.data);
                 const day = eventDate.getDate().toString();
@@ -124,16 +124,7 @@ export default function Eventos() {
         </div>
       )}
 
-      {/* Iframe Container */}
-      <div className="w-full" style={{ height: "calc(100vh - 180px)" }}>
-        <iframe
-          src="https://preview-stellar-rain-252.apps.devlo.ai/casamentos"
-          className="w-full h-full border-0"
-          title="Eventos Toca Experience"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
+
     </div>
   );
 }

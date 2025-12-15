@@ -341,10 +341,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8 w-full max-w-[90vw] md:max-w-[800px] lg:max-w-[900px] mx-auto"
+              className="mb-8 w-full max-w-[95vw] md:max-w-5xl mx-auto px-2"
             >
               {/* Grid de EventCards Premium */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto px-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
                 <EventCard
                   variant="reveillon"
                   day="26"
@@ -535,13 +535,13 @@ export default function Home() {
                 Ethos — Nossa Essência
               </span>
             </h2>
-            <p className="text-gray-500 text-lg max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-500 text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-4">
               A música como <strong className="text-gray-700">linguagem universal</strong> que conecta culturas, gerações e experiências. Cada set é uma jornada cuidadosamente construída para criar momentos únicos e memoráveis.
             </p>
-            <p className="text-gray-500 text-lg max-w-3xl mx-auto leading-relaxed mt-4">
+            <p className="text-gray-500 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mt-4 px-4">
               Com mais de <strong className="text-gray-700">500 mil streams</strong> e apresentações em vários países, a Toca Experience leva a energia tropical de Trancoso para palcos internacionais. Fusão entre elementos eletrônicos contemporâneos e <strong className="text-gray-700">brasilidades autênticas</strong>.
             </p>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed mt-4 font-medium">
+            <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mt-4 font-medium px-4">
               Lideramos eventos e a união de talentos da cena eletrônica global, sempre com foco na qualidade, inovação sonora e excelência técnica com equipamentos Pioneer de última geração.
             </p>
           </motion.div>
