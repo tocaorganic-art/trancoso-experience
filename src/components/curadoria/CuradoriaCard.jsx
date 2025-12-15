@@ -37,13 +37,21 @@ export default function CuradoriaCard({ post, index }) {
       <Card className="bg-gradient-to-br from-gray-900 to-black border-gray-800 hover:border-[#FFD700]/30 transition-all overflow-hidden h-full group">
         {post.cover_image && (
           <div className="h-48 overflow-hidden relative">
-            <img 
-              src={post.cover_image} 
-              alt={post.title}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
+            <picture>
+              <source
+                srcSet={`${post.cover_image}?format=webp&width=800&quality=85`}
+                type="image/webp"
+              />
+              <img 
+                src={post.cover_image} 
+                alt={post.title}
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="192"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
         )}
