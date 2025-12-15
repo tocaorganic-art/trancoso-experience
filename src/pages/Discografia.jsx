@@ -131,11 +131,20 @@ export default function Discografia() {
                   <div className="flex flex-col md:flex-row">
                     {release.cover_image && (
                       <div className="md:w-48 h-48 flex-shrink-0">
-                        <img 
-                          src={release.cover_image} 
-                          alt={`Capa de ${release.title}`}
-                          className="w-full h-full object-cover"
-                        />
+                        <picture>
+                          <source
+                            srcSet={`${release.cover_image}?format=webp&width=384&quality=85`}
+                            type="image/webp"
+                          />
+                          <img 
+                            src={release.cover_image} 
+                            alt={`Capa de ${release.title}`}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            width="192"
+                            height="192"
+                          />
+                        </picture>
                       </div>
                     )}
                     <CardContent className="p-6 flex-1">
