@@ -213,7 +213,7 @@ export default function Home() {
 
 
   return (
-          <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 text-gray-800">
+          <div className="min-h-screen bg-white text-gray-800">
               {/* Performance Optimizations */}
               <CriticalCSS />
               <DeferredResources />
@@ -298,8 +298,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+        {/* Hero Section - Premium Frosted */}
+        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
           {/* Video Background */}
           <React.Suspense fallback={
             <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300" />
@@ -513,7 +513,7 @@ export default function Home() {
               </section>
 
       {/* Pre-Save Banner */}
-      <section className="py-12 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-6">
           <React.Suspense fallback={<div className="h-64" />}>
             <PreSaveBanner />
@@ -521,8 +521,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="sobre" className="py-24 bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
+      {/* About Section - Clean White */}
+      <section id="sobre" className="py-24 bg-gradient-to-br from-gray-50/50 via-white to-gray-50/50">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -552,7 +552,7 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all"
+              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/60 hover:border-gray-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all"
             >
               <div className="flex items-center gap-4 mb-6">
                 <OptimizedImage
@@ -605,8 +605,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+      {/* Benefits Section - Experiência Clean */}
+      <section className="py-24 bg-gradient-to-br from-white via-gray-50/30 to-white">
         <div className="container mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -645,13 +645,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="bg-white border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all h-full group">
+                <Card className="bg-white/90 backdrop-blur-sm border-gray-200/60 hover:border-gray-300/80 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all h-full group">
                   <CardContent className="p-8 text-center">
-                    <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${benefit.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${benefit.gradient} flex items-center justify-center group-hover:scale-110 transition-all shadow-lg`}>
                       <benefit.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">{benefit.title}</h3>
-                    <p className="text-gray-500">{benefit.description}</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -661,7 +661,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
+      <section className="py-24 bg-gradient-to-br from-gray-50/50 via-white to-gray-50/50">
         <div className="container mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -696,21 +696,21 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all"
-              >
-                <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
+                className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-200/60 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all"
+                >
+                <p className="text-gray-700 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
                 <div>
-                  <p className="text-gray-800 font-semibold">{testimonial.author}</p>
-                  <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                  <p className="text-gray-900 font-semibold">{testimonial.author}</p>
+                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
                 </div>
-              </motion.div>
+                </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section id="contato" className="py-24 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+      {/* Contact Form - Premium Clean */}
+      <section id="contato" className="py-24 bg-gradient-to-br from-white via-gray-50/30 to-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -731,7 +731,7 @@ export default function Home() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-3xl border border-gray-200 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-gray-200/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-600 mb-2">Nome Completo *</label>
@@ -843,7 +843,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-300 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 pb-24">
+      <footer className="py-12 border-t border-gray-200/60 bg-white pb-24">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-600 font-medium mb-2">
             Toca Experience — Experiências Exclusivas em Trancoso
