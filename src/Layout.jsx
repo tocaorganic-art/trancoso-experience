@@ -590,7 +590,23 @@ export default function Layout({ children, currentPageName }) {
         
         <Toaster position="top-center" richColors />
         {children}
-        
+
+        {/* Global Footer */}
+        <footer className="py-8 border-t border-gray-200/60 bg-white">
+          <div className="container mx-auto px-6 text-center">
+            <div className="flex justify-center mb-4">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
+                alt="Toca Experience"
+                className="h-10 w-auto"
+              />
+            </div>
+            <p className="text-gray-500 text-xs">
+              © 2024 Toca Experience. Todos os direitos reservados.
+            </p>
+          </div>
+        </footer>
+
         {/* Floating WhatsApp Button */}
         <React.Suspense fallback={null}>
           <FloatingWhatsAppButton />
