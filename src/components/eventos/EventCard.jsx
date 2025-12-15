@@ -134,8 +134,8 @@ export default function EventCard({
       </div>
 
       {/* Footer: Ação de compra */}
-      {buyLink && (
-        <div className="flex gap-2 mt-auto pt-3 border-t border-white/10">
+      <div className="flex gap-2 mt-auto pt-3 border-t border-white/10">
+        {buyLink ? (
           <Button 
             onClick={handleBuyClick}
             className="flex-1 bg-gradient-to-r from-yellow-400 to-yellow-500 border-0 text-black font-semibold text-[13px] px-4 py-2.5 rounded-xl transition-all hover:from-yellow-500 hover:to-yellow-600 hover:scale-[1.02] hover:shadow-[0_4px_12px_rgba(251,191,36,0.4)]"
@@ -145,8 +145,17 @@ export default function EventCard({
             Comprar Ingresso com Desconto
             <ExternalLink className="w-3 h-3 ml-2" />
           </Button>
-        </div>
-      )}
+        ) : (
+          <Button 
+            onClick={onClick}
+            className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 border-0 text-white font-semibold text-[13px] px-4 py-2.5 rounded-xl transition-all hover:from-purple-600 hover:to-pink-600 hover:scale-[1.02] hover:shadow-[0_4px_12px_rgba(168,85,247,0.4)]"
+            size="sm"
+          >
+            <Ticket className="w-4 h-4 mr-2" />
+            Ver Ingressos
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
