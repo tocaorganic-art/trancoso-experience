@@ -873,10 +873,6 @@ export default function Home() {
             <RouterLink to={createPageUrl("TermosServico")} className="text-gray-500 hover:text-gray-800 underline">
               Termos de Serviço
             </RouterLink>
-            <span className="text-gray-400">•</span>
-            <RouterLink to={createPageUrl("AdminDashboard")} className="text-gray-500 hover:text-gray-800 underline">
-              Admin
-            </RouterLink>
           </div>
           <p className="text-gray-400 text-xs">
             © 2024 Toca Experience. Todos os direitos reservados.
