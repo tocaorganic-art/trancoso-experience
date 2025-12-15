@@ -512,11 +512,6 @@ export default function Layout({ children, currentPageName }) {
         <Toaster position="top-center" richColors />
         {children}
         
-        {/* Floating Chat Widget */}
-        <React.Suspense fallback={null}>
-          <FloatingChatWidget />
-        </React.Suspense>
-
         {/* Floating WhatsApp Button */}
         <React.Suspense fallback={null}>
           <FloatingWhatsAppButton />
