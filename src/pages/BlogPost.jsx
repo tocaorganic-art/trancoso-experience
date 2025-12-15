@@ -135,8 +135,34 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold text-gray-800 mb-4">Post não encontrado</h1>
+      <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 flex flex-col items-center justify-center px-4">
+        <h1 className="text-2xl font-bold text-gray-800 mb-4 text-center">Post não encontrado</h1>
+        <p className="text-gray-600 mb-6 text-center max-w-md">
+          Enquanto isso, explore conteúdos que inspiram nossa curadoria sonora:
+        </p>
+        
+        <div className="grid grid-cols-2 gap-3 max-w-lg w-full mb-8">
+          {[
+            { name: "When We Dip", url: "https://www.whenwedjp.com" },
+            { name: "Deep House Amsterdam", url: "https://www.deephouseamsterdam.com" },
+            { name: "Mixmag", url: "https://mixmag.net" },
+            { name: "Electronic Groove", url: "https://www.electronicgroove.com" },
+            { name: "Alataj", url: "https://www.alataj.com.br" },
+            { name: "DJ Mag Brasil", url: "https://djmagbrasil.com.br" }
+          ].map(blog => (
+            <a
+              key={blog.name}
+              href={blog.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white border border-gray-300 hover:border-gray-500 p-3 rounded-lg text-center transition-all"
+            >
+              <p className="text-gray-800 text-sm font-medium">{blog.name}</p>
+              <ExternalLink className="w-3 h-3 mx-auto mt-1 text-gray-500" />
+            </a>
+          ))}
+        </div>
+        
         <Link to={createPageUrl("Curadoria")}>
           <Button>Voltar para Curadoria</Button>
         </Link>
@@ -146,27 +172,19 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
-      {/* Header Image */}
-      {post.cover_image && (
-        <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
-          <img 
-            src={post.cover_image} 
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+      {/* Compact Header - Mobile Optimized */}
+      <div className="bg-gradient-to-b from-gray-800 to-gray-900 py-6 md:py-8">
+        <div className="container mx-auto px-4">
+          <Link to={createPageUrl("Curadoria")}>
+            <Button variant="ghost" className="mb-2 text-white/70 hover:text-white text-sm">
+              <ArrowLeft className="w-3 h-3 mr-1" />
+              Voltar
+            </Button>
+          </Link>
         </div>
-      )}
+      </div>
 
-      <div className="container mx-auto px-6 py-8">
-        {/* Back Button */}
-        <Link to={createPageUrl("Curadoria")}>
-          <Button variant="ghost" className="mb-6 text-gray-600 hover:text-gray-800">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar para Curadoria
-          </Button>
-        </Link>
-
+      <div className="container mx-auto px-4 py-4 md:py-8">
         <motion.article
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -178,12 +196,12 @@ export default function BlogPostPage() {
           </Badge>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 leading-tight">
             {post.title}
           </h1>
 
           {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-4 text-gray-500 mb-8 pb-8 border-b border-gray-200">
+          <div className="flex flex-wrap items-center gap-3 text-gray-500 text-sm mb-6 pb-6 border-b border-gray-200">
             <div className="flex items-center gap-2">
               <User className="w-4 h-4" />
               <span>Tony Monteiro & Enzo Furtado</span>
@@ -197,7 +215,7 @@ export default function BlogPostPage() {
           </div>
 
           {/* Excerpt */}
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
             {post.excerpt}
           </p>
 

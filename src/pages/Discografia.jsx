@@ -140,9 +140,9 @@ export default function Discografia() {
         ]} />
       </div>
 
-      {/* Header */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-900 py-16">
-        <div className="container mx-auto px-6 text-center">
+      {/* Header - Compact Mobile */}
+      <div className="bg-gradient-to-r from-gray-800 to-gray-900 py-8 md:py-12">
+        <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,11 +151,11 @@ export default function Discografia() {
               <Disc3 className="w-4 h-4" />
               Discografia
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Nossos Lançamentos
+            <h1 className="text-2xl md:text-4xl font-bold text-white mb-2">
+              Discografia
             </h1>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Singles, EPs, remixes e álbuns. Explore nossa discografia completa.
+            <p className="text-gray-300 text-sm md:text-base max-w-2xl mx-auto">
+              Singles, EPs e remixes
             </p>
           </motion.div>
         </div>
@@ -275,43 +275,43 @@ export default function Discografia() {
           </>
         )}
 
-        {/* Streaming Links */}
-        <div className="mt-16 grid md:grid-cols-4 gap-4">
+        {/* Streaming Links - Mobile Optimized */}
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3">
           <a 
             href="https://open.spotify.com/artist/2r4S2RPdfnx7UPL73jJWlQ" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-green-500 hover:bg-green-600 text-white p-5 rounded-xl flex items-center justify-between transition-colors"
+            className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
           >
-            <span className="font-bold">Spotify</span>
-            <ExternalLink className="w-5 h-5" />
+            <span className="font-bold text-sm md:text-base">Spotify</span>
+            <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
           </a>
           <a 
             href="https://soundcloud.com/tonyismusic" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-orange-500 hover:bg-orange-600 text-white p-5 rounded-xl flex items-center justify-between transition-colors"
+            className="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
           >
-            <span className="font-bold">SoundCloud</span>
-            <ExternalLink className="w-5 h-5" />
+            <span className="font-bold text-sm md:text-base">SoundCloud</span>
+            <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
           </a>
           <a 
             href="https://music.apple.com/br/artist/tony-monteiro/373816598" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-pink-500 hover:bg-pink-600 text-white p-5 rounded-xl flex items-center justify-between transition-colors"
+            className="bg-pink-500 hover:bg-pink-600 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
           >
-            <span className="font-bold">Apple Music</span>
-            <ExternalLink className="w-5 h-5" />
+            <span className="font-bold text-sm md:text-base">Apple Music</span>
+            <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
           </a>
           <a 
             href="https://www.beatport.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-blue-500 hover:bg-blue-600 text-white p-5 rounded-xl flex items-center justify-between transition-colors"
+            className="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
           >
-            <span className="font-bold">Beatport</span>
-            <ExternalLink className="w-5 h-5" />
+            <span className="font-bold text-sm md:text-base">Beatport</span>
+            <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
           </a>
         </div>
       </div>

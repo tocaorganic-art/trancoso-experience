@@ -75,9 +75,9 @@ export default function Curadoria() {
         ]} />
       </div>
 
-      {/* Header */}
-      <div className="bg-gradient-to-b from-gray-900 to-black py-16 border-b border-gray-800">
-        <div className="container mx-auto px-6 text-center">
+      {/* Header - Compact Mobile */}
+      <div className="bg-gradient-to-b from-gray-900 to-black py-8 md:py-12 border-b border-gray-800">
+        <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,13 +86,13 @@ export default function Curadoria() {
               <Headphones className="w-4 h-4" />
               Curadoria
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-2xl md:text-4xl font-bold mb-2">
               <span className="bg-gradient-to-r from-[#FFD700] to-[#40E0D0] bg-clip-text text-transparent">
-                Curadoria Toca
+                Curadoria
               </span>
             </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Sets exclusivos, playlists curadas e o melhor do Afro House e Organic House.
+            <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
+              Música e experiências sonoras
             </p>
           </motion.div>
         </div>
@@ -134,8 +134,39 @@ export default function Curadoria() {
           </div>
         )}
 
+        {/* Blogs Recomendados */}
+        <div className="mt-16 mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <Headphones className="w-6 h-6 text-[#FFD700]" />
+            Fontes que Inspiram Nossa Curadoria
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {[
+              { name: "When We Dip", url: "https://www.whenwedjp.com", category: "Afro/Organic" },
+              { name: "Deep House Amsterdam", url: "https://www.deephouseamsterdam.com", category: "Curadoria" },
+              { name: "Mixmag", url: "https://mixmag.net", category: "Internacional" },
+              { name: "Resident Advisor", url: "https://ra.co", category: "Artistas" },
+              { name: "OkayAfrica", url: "https://www.okayafrica.com", category: "Afro Culture" },
+              { name: "Electronic Groove", url: "https://www.electronicgroove.com", category: "Organic" },
+              { name: "Alataj", url: "https://www.alataj.com.br", category: "Brasil" },
+              { name: "DJ Mag Brasil", url: "https://djmagbrasil.com.br", category: "Brasil" }
+            ].map(blog => (
+              <a
+                key={blog.name}
+                href={blog.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-900 border border-gray-800 hover:border-[#FFD700]/50 p-3 rounded-lg text-center transition-all group"
+              >
+                <p className="text-white text-sm font-medium group-hover:text-[#FFD700] transition-colors">{blog.name}</p>
+                <p className="text-gray-500 text-xs mt-1">{blog.category}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Quick Links - Redesigned CTAs */}
-        <div className="mt-16 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 grid md:grid-cols-3 gap-6">
           <a 
             href="https://open.spotify.com/artist/2r4S2RPdfnx7UPL73jJWlQ" 
             target="_blank" 
