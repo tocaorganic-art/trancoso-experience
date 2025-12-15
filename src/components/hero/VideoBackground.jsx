@@ -2,27 +2,52 @@ import React from "react";
 
 export default function VideoBackground() {
   const [shouldLoad, setShouldLoad] = React.useState(false);
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  const videoRef = React.useRef(null);
 
   React.useEffect(() => {
-    // Lazy load video após carregamento inicial
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => setShouldLoad(true));
-    } else {
-      setTimeout(() => setShouldLoad(true), 1000);
+    // Carregar imediatamente em conexões rápidas
+    if ('connection' in navigator) {
+      const conn = navigator.connection;
+      if (conn.effectiveType === '4g' || conn.downlink > 5) {
+        setShouldLoad(true);
+        return;
+      }
     }
+    
+    // Para conexões lentas, esperar um pouco
+    const timer = setTimeout(() => setShouldLoad(true), 500);
+    return () => clearTimeout(timer);
   }, []);
 
+  React.useEffect(() => {
+    if (shouldLoad && videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Fallback silencioso se autoplay falhar
+      });
+    }
+  }, [shouldLoad]);
+
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+      {/* Poster sempre visível para carregamento instantâneo */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-30"
+        style={{
+          backgroundImage: `url(https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png?width=1920&quality=60&format=webp)`
+        }}
+      />
+      
       {shouldLoad && (
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          preload="none"
-          className="absolute w-full h-full object-cover opacity-30"
-          poster="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png?width=1920&quality=60&format=webp"
+          preload="metadata"
+          onLoadedData={() => setIsLoaded(true)}
+          className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-30' : 'opacity-0'}`}
         >
           <source 
             src="https://assets.mixkit.co/videos/preview/mixkit-dj-playing-music-at-a-concert-4800-large.mp4" 

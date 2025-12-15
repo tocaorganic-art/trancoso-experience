@@ -77,12 +77,14 @@ export default function Layout({ children, currentPageName }) {
       'https://qtrypzzcjebvfcihiynt.supabase.co',
       'https://fonts.gstatic.com',
       'https://www.googletagmanager.com',
-      'https://connect.facebook.net'
+      'https://connect.facebook.net',
+      'https://assets.mixkit.co'
     ];
 
     const preconnectDomains = [
       'https://qtrypzzcjebvfcihiynt.supabase.co', // CDN de imagens
-      'https://fonts.gstatic.com' // CDN de fonts
+      'https://fonts.gstatic.com', // CDN de fonts
+      'https://assets.mixkit.co' // CDN de vídeos
     ];
 
     // DNS Prefetch para todos os domínios

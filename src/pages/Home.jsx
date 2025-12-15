@@ -300,9 +300,13 @@ export default function Home() {
         </div>
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
           {/* Video Background */}
-          <VideoBackground />
+          <React.Suspense fallback={
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300" />
+          }>
+            <VideoBackground />
+          </React.Suspense>
 
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20">
             <motion.div
