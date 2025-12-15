@@ -412,13 +412,13 @@ export default function EventosAnoNovo() {
       <footer className="py-8 text-center text-gray-500 text-sm border-t border-white/5 mt-12">
         <p>© 2024 Toca Experience - Eventos de Ano Novo</p>
       </footer>
-      </div>
 
       {/* Image Gallery Modal */}
       <ImageGallery 
-      eventos={eventosFiltrados}
-      isOpen={galleryOpen}
-      onClose={() => setGalleryOpen(false)}
+        eventos={eventosFiltrados}
+        isOpen={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
       />
-      );
-      }
+    </div>
+  );
+}
