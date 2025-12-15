@@ -224,79 +224,79 @@ export default function Home() {
                           <FixedLogo />
                         </React.Suspense>
 
-                      {/* Sticky Categories Bar - Acima do Hero */}
+                      {/* Sticky Categories Bar - Premium Clean Compact */}
                       <div 
                         id="categories-bar"
-                        className="sticky top-0 z-50 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 border-b border-gray-200 shadow-sm backdrop-blur-sm bg-opacity-95"
+                        className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/40 shadow-[0_2px_20px_rgba(0,0,0,0.04)]"
                       >
-                        <div className="container mx-auto px-4 py-3 pl-16 md:pl-20">
-                <div className="flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide">
-              <RouterLink to={createPageUrl("Ethos")}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                >
-                  <Sparkles className="mr-1.5 h-4 w-4" /> ETHOS
-                </Button>
-              </RouterLink>
-              <RouterLink to={createPageUrl("Eventos")}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                >
-                  <Calendar className="mr-1.5 h-4 w-4" /> EVENTOS
-                </Button>
-              </RouterLink>
-              <RouterLink to={createPageUrl("Curadoria")}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                >
-                  <Newspaper className="mr-1.5 h-4 w-4" /> CURADORIA
-                </Button>
-              </RouterLink>
-              <RouterLink to={createPageUrl("Cotacao")}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                >
-                  <CalendarIcon className="mr-1.5 h-4 w-4" /> COTAÇÃO
-                </Button>
-              </RouterLink>
-              <RouterLink to={createPageUrl("Discografia")}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                >
-                  <Disc3 className="mr-1.5 h-4 w-4" /> DISCOGRAFIA
-                </Button>
-              </RouterLink>
-              <RouterLink to={createPageUrl("EventosAnoNovo")}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                >
-                  <PartyPopper className="mr-1.5 h-4 w-4" /> ANO NOVO/TRANCOSO/CARAÍVA/ARRAIAL
-                </Button>
-              </RouterLink>
-              <RouterLink to={createPageUrl("LocacaoSom")}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-200 text-xs md:text-sm whitespace-nowrap"
-                >
-                  <Music className="mr-1.5 h-4 w-4" /> LOCAÇÃO DE SOM
-                </Button>
-              </RouterLink>
-            </div>
-          </div>
-        </div>
+                        <div className="container mx-auto px-4 py-1.5 pl-4 pr-16">
+                      <div className="flex flex-wrap justify-center gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
+                      <RouterLink to={createPageUrl("Ethos")}>
+                      <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                      >
+                      <Sparkles className="mr-0.5 h-2.5 w-2.5" /> ETHOS
+                      </Button>
+                      </RouterLink>
+                      <RouterLink to={createPageUrl("Eventos")}>
+                      <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                      >
+                      <Calendar className="mr-0.5 h-2.5 w-2.5" /> EVENTOS
+                      </Button>
+                      </RouterLink>
+                      <RouterLink to={createPageUrl("Curadoria")}>
+                      <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                      >
+                      <Newspaper className="mr-0.5 h-2.5 w-2.5" /> CURADORIA
+                      </Button>
+                      </RouterLink>
+                      <RouterLink to={createPageUrl("Cotacao")}>
+                      <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                      >
+                      <CalendarIcon className="mr-0.5 h-2.5 w-2.5" /> COTAÇÃO
+                      </Button>
+                      </RouterLink>
+                      <RouterLink to={createPageUrl("Discografia")}>
+                      <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                      >
+                      <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
+                      </Button>
+                      </RouterLink>
+                      <RouterLink to={createPageUrl("EventosAnoNovo")}>
+                      <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                      >
+                      <PartyPopper className="mr-0.5 h-2.5 w-2.5" /> ANO NOVO
+                      </Button>
+                      </RouterLink>
+                      <RouterLink to={createPageUrl("LocacaoSom")}>
+                      <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                      >
+                      <Music className="mr-0.5 h-2.5 w-2.5" /> SOM
+                      </Button>
+                      </RouterLink>
+                      </div>
+                      </div>
+                      </div>
 
         {/* Hero Section - Premium Frosted */}
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
