@@ -323,32 +323,32 @@ export default function EventosAnoNovo() {
             <Loader2 className="w-8 h-8 animate-spin text-pink-400" />
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-6">
             {Object.entries(eventosPorData).map(([data, eventosData]) => {
               // Parse date correctly to avoid timezone issues
               const [year, month, day] = data.split('-').map(Number);
               const dateObj = new Date(year, month - 1, day);
               const isRev = isReveillon(data);
               const isDay = isDayAfter(data);
-              
+
               // Transformar eventos para o formato do EventCard
               const eventosFormatados = eventosData.map(evento => {
                 const eventDate = new Date(evento.data);
                 const day = eventDate.getDate().toString();
                 const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
-                
+
                 // Determinar variante baseado em tags ou tipo
                 let variant = "reveillon";
                 if (evento.tags?.includes("Gastronomia")) variant = "gastronomia";
                 else if (evento.tags?.includes("Afro House")) variant = "afrohouse";
                 else if (evento.tags?.includes("Corporativo")) variant = "corporativo";
                 else if (isDay) variant = "afrohouse";
-                
+
                 // Determinar cidade baseado em localidade
                 let city = "trancoso";
                 if (evento.localidade === "Caraíva") city = "caraiva";
                 else if (evento.localidade === "Arraial d'Ajuda") city = "arraial";
-                
+
                 // Extrair highlights das tags
                 const highlights = [];
                 if (evento.tags?.includes("Open bar premium")) highlights.push("Open Bar Premium");
@@ -356,7 +356,7 @@ export default function EventosAnoNovo() {
                 if (evento.detalhes && !evento.detalhes.startsWith("Festa")) {
                   highlights.push(evento.detalhes.substring(0, 50));
                 }
-                
+
                 return {
                   id: evento.id,
                   variant,
@@ -372,16 +372,30 @@ export default function EventosAnoNovo() {
                   status: evento.tags?.includes("DJs internacionais") ? "hot" : null
                 };
               });
-              
+
               return (
-                <EventDaySection
-                  key={data}
-                  date={data}
-                  weekdayLabel={format(dateObj, "EEEE, dd 'de' MMMM", { locale: ptBR })}
-                  events={eventosFormatados}
-                  isReveillon={isRev}
-                  isDayAfter={isDay}
-                />
+                <div key={data} className="space-y-3">
+                  {/* Date Header */}
+                  <div className={`flex items-center gap-2 px-2 ${isRev ? 'text-yellow-400' : isDay ? 'text-purple-400' : 'text-white'}`}>
+                    <Calendar className="w-5 h-5" />
+                    <h3 className="text-lg font-bold">
+                      {format(dateObj, "EEEE, dd 'de' MMMM", { locale: ptBR })}
+                    </h3>
+                    {isRev && <span className="text-xs bg-yellow-400/20 px-2 py-1 rounded-full">Réveillon</span>}
+                    {isDay && <span className="text-xs bg-purple-400/20 px-2 py-1 rounded-full">Day After</span>}
+                  </div>
+
+                  {/* Cards - Horizontal Scroll on Mobile */}
+                  <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent -mx-4 px-4">
+                    <div className="flex gap-3 pb-2 min-w-max md:grid md:grid-cols-2 lg:grid-cols-3 md:min-w-0">
+                      {eventosFormatados.map((evento) => (
+                        <div key={evento.id} className="w-[85vw] max-w-[340px] flex-shrink-0 md:w-auto md:max-w-none">
+                          <EventCard {...evento} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </div>
