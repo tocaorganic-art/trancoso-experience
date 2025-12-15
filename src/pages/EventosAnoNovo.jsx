@@ -14,15 +14,23 @@ import EventCard from "@/components/eventos/EventCard";
 import EventDaySection from "@/components/eventos/EventDaySection";
 import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
 import ImageGallery from "@/components/eventos/ImageGallery";
+import EventFilters from "@/components/eventos/EventFilters";
 
 const MapaEventos = React.lazy(() => import("@/components/eventos-ano-novo/MapaEventos"));
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
 const StructuredDataEvents = React.lazy(() => import("@/components/seo/StructuredDataEvents"));
 
 const LOCALIDADES = ["Todas", "Caraíva", "Trancoso", "Arraial d'Ajuda"];
+const EVENTOS_POR_PAGINA = 20;
 
 export default function EventosAnoNovo() {
-  const [filtroLocalidade, setFiltroLocalidade] = useState("Todas");
+  const [filtros, setFiltros] = useState({
+    localidade: "Todas",
+    ordenacao: "data_asc",
+    mesInicio: "todos",
+    mesFim: "todos"
+  });
+  const [paginaAtual, setPaginaAtual] = useState(1);
   const [galleryOpen, setGalleryOpen] = useState(false);
 
   const { data: eventos = [], isLoading } = useQuery({
@@ -30,18 +38,71 @@ export default function EventosAnoNovo() {
     queryFn: () => base44.entities.EventoAnoNovo.list('data'),
   });
 
-  const eventosFiltrados = filtroLocalidade === "Todas" 
-    ? eventos 
-    : eventos.filter(e => e.localidade === filtroLocalidade);
+  // Aplicar filtros
+  let eventosFiltrados = eventos;
+
+  // Filtro de localidade
+  if (filtros.localidade !== "Todas") {
+    eventosFiltrados = eventosFiltrados.filter(e => e.localidade === filtros.localidade);
+  }
+
+  // Filtro de mês
+  if (filtros.mesInicio !== "todos" || filtros.mesFim !== "todos") {
+    eventosFiltrados = eventosFiltrados.filter(e => {
+      const [ano, mes] = e.data.split('-');
+      const mesNum = parseInt(mes);
+      const mesInicio = filtros.mesInicio !== "todos" ? parseInt(filtros.mesInicio) : 1;
+      const mesFim = filtros.mesFim !== "todos" ? parseInt(filtros.mesFim) : 12;
+      
+      // Handle December to January range
+      if (mesInicio === 12 && mesFim === 1) {
+        return mesNum === 12 || mesNum === 1;
+      }
+      
+      return mesNum >= mesInicio && mesNum <= mesFim;
+    });
+  }
+
+  // Ordenação
+  eventosFiltrados = [...eventosFiltrados].sort((a, b) => {
+    switch (filtros.ordenacao) {
+      case "data_desc":
+        return new Date(b.data) - new Date(a.data);
+      case "nome_asc":
+        return a.nome.localeCompare(b.nome);
+      case "nome_desc":
+        return b.nome.localeCompare(a.nome);
+      default: // data_asc
+        return new Date(a.data) - new Date(b.data);
+    }
+  });
+
+  // Paginação
+  const totalPaginas = Math.ceil(eventosFiltrados.length / EVENTOS_POR_PAGINA);
+  const eventosPaginados = eventosFiltrados.slice(0, paginaAtual * EVENTOS_POR_PAGINA);
+
+  const handleFilterChange = (newFilters) => {
+    setFiltros(prev => ({ ...prev, ...newFilters }));
+    setPaginaAtual(1);
+  };
+
+  const carregarMais = () => {
+    if (paginaAtual < totalPaginas) {
+      setPaginaAtual(prev => prev + 1);
+    }
+  };
 
   // Count eventos por localidade
-  const eventosCount = eventos.reduce((acc, evento) => {
-    acc[evento.localidade] = (acc[evento.localidade] || 0) + 1;
-    return acc;
-  }, {});
+  const eventosCount = {
+    total: eventos.length,
+    ...eventos.reduce((acc, evento) => {
+      acc[evento.localidade] = (acc[evento.localidade] || 0) + 1;
+      return acc;
+    }, {})
+  };
 
-  // Agrupar por data
-  const eventosPorData = eventosFiltrados.reduce((acc, evento) => {
+  // Agrupar por data (apenas eventos paginados)
+  const eventosPorData = eventosPaginados.reduce((acc, evento) => {
     const data = evento.data;
     if (!acc[data]) acc[data] = [];
     acc[data].push(evento);
@@ -58,7 +119,7 @@ export default function EventosAnoNovo() {
     // Title otimizado para palavra-chave alvo
     document.title = `DJ para Réveillon Trancoso Luxo 2025/2026 | ${totalEventos} Eventos Exclusivos`;
 
-    const firstEventImage = eventosFiltrados[0]?.imagem || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png";
+    const firstEventImage = eventosPaginados[0]?.imagem || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/959573c6d_IMG_1921.png";
 
     // Meta tags otimizadas
     const metaTags = [
@@ -88,7 +149,7 @@ export default function EventosAnoNovo() {
     });
 
     // Event Schema Markup para rich snippets
-    const eventSchemas = eventosFiltrados.slice(0, 5).map(evento => ({
+    const eventSchemas = eventosPaginados.slice(0, 5).map(evento => ({
       "@context": "https://schema.org",
       "@type": "Event",
       "name": evento.nome,
@@ -125,7 +186,7 @@ export default function EventosAnoNovo() {
         document.head.removeChild(schemaScript);
       }
     };
-  }, [eventosFiltrados]);
+  }, [eventosPaginados]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a0a1f] via-[#0d0d1a] to-[#050510]">
@@ -268,31 +329,15 @@ export default function EventosAnoNovo() {
           </React.Suspense>
         </div>
 
-        {/* Filtros */}
-        <div className="flex flex-wrap gap-2 mb-6 sm:mb-8 justify-center items-center">
-          {LOCALIDADES.map((loc) => (
-            <Button
-              key={loc}
-              variant={filtroLocalidade === loc ? "default" : "outline"}
-              onClick={() => setFiltroLocalidade(loc)}
-              size="sm"
-              className={`
-                text-xs sm:text-sm
-                ${filtroLocalidade === loc 
-                  ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white border-0' 
-                  : 'bg-white/5 border-white/20 text-white hover:bg-white/10'}
-              `}
-            >
-              {loc === "Caraíva" && "🏝️ "}
-              {loc === "Trancoso" && "🌴 "}
-              {loc === "Arraial d'Ajuda" && "🌊 "}
-              <span className="hidden sm:inline">{loc}</span>
-              <span className="sm:hidden">{loc === "Arraial d'Ajuda" ? "Arraial" : loc === "Todas" ? "Todas" : ""}</span>
-            </Button>
-          ))}
-          
-          <div className="w-px h-6 bg-white/20 hidden sm:block" />
+        {/* Filtros Avançados */}
+        <EventFilters 
+          filters={filtros} 
+          onFilterChange={handleFilterChange}
+          eventCounts={eventosCount}
+        />
 
+        {/* Quick Filters + Actions */}
+        <div className="flex flex-wrap gap-2 mb-6 justify-center items-center">
           <Button
             variant="outline"
             size="sm"
@@ -398,28 +443,41 @@ export default function EventosAnoNovo() {
                 </div>
               );
             })}
-          </div>
-        )}
+            </div>
+            )}
 
-        {/* Stats */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-            <p className="text-3xl font-bold text-white">{eventos.length}</p>
-            <p className="text-gray-400 text-sm">Total de Eventos</p>
-          </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-            <p className="text-3xl font-bold text-white">{eventos.filter(e => e.status === "A confirmar").length}</p>
-            <p className="text-gray-400 text-sm">A Confirmar</p>
-          </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-            <p className="text-3xl font-bold text-white">{eventos.filter(e => e.tags?.includes("Open bar premium")).length}</p>
-            <p className="text-gray-400 text-sm">Open Bar Premium</p>
-          </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-            <p className="text-3xl font-bold text-white">{eventos.filter(e => e.tags?.includes("Pacote de festas")).length}</p>
-            <p className="text-gray-400 text-sm">Pacotes de Festas</p>
-          </div>
-        </div>
+            {/* Load More Button */}
+            {!isLoading && paginaAtual < totalPaginas && (
+            <div className="flex justify-center mt-8">
+            <Button
+              onClick={carregarMais}
+              size="lg"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8"
+            >
+              Carregar Mais Eventos ({eventosFiltrados.length - eventosPaginados.length} restantes)
+            </Button>
+            </div>
+            )}
+
+            {/* Stats */}
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <p className="text-3xl font-bold text-white">{eventosFiltrados.length}</p>
+                <p className="text-gray-400 text-sm">Eventos Filtrados</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <p className="text-3xl font-bold text-white">{eventos.filter(e => e.status === "A confirmar").length}</p>
+                <p className="text-gray-400 text-sm">A Confirmar</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <p className="text-3xl font-bold text-white">{eventos.filter(e => e.tags?.includes("Open bar premium")).length}</p>
+                <p className="text-gray-400 text-sm">Open Bar Premium</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <p className="text-3xl font-bold text-white">{eventos.filter(e => e.tags?.includes("Pacote de festas")).length}</p>
+                <p className="text-gray-400 text-sm">Pacotes de Festas</p>
+              </div>
+            </div>
       </div>
 
       {/* Footer */}
