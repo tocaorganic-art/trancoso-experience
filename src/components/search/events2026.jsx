@@ -1,5 +1,5 @@
 // Base de dados completa de eventos para busca inteligente
-// Atualizado em: 15/12/2025
+// Atualizado em: 15/12/2025 - LISTA COMPLETA RÉVEILLON 2025/2026
 
 export const events2026 = [
   // DEZEMBRO 2025
@@ -13,6 +13,45 @@ export const events2026 = [
     dateLabel: "25 de Dezembro",
     tags: ["eletrônica", "haute"],
     image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663206873160/uqeNitJAdmDORgkg.jpg",
+    linkDetalhe: "/EventosAnoNovo",
+    linkComprar: null
+  },
+  {
+    id: "awe-caraivana-26",
+    name: "AWÊ Réveillon Caraíva 2026 - AWÊ do Caraivana + DJs",
+    artist: "Caraivana + DJs",
+    local: "Casa Awê",
+    region: "Caraíva",
+    date: "2025-12-26",
+    dateLabel: "26 de Dezembro",
+    tags: ["festival", "eletrônica"],
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/Awe_Caraiva.jpg",
+    linkDetalhe: "/EventosAnoNovo",
+    linkComprar: null
+  },
+  {
+    id: "sal-caraiva-26",
+    name: "Réveillon Sal de Caraíva 2026",
+    artist: null,
+    local: "Caraíva",
+    region: "Caraíva",
+    date: "2025-12-26",
+    dateLabel: "26 de Dezembro",
+    tags: ["parte de um pacote"],
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/Sal_de_Caraiva.jpg",
+    linkDetalhe: "/EventosAnoNovo",
+    linkComprar: null
+  },
+  {
+    id: "goodtimes-illusionize-26",
+    name: "GoodTimes by Illusionize",
+    artist: "Illusionize",
+    local: "Awê Praia",
+    region: "Caraíva",
+    date: "2025-12-26",
+    dateLabel: "26 de Dezembro",
+    tags: ["eletrônica", "parte de um pacote"],
+    image: "",
     linkDetalhe: "/EventosAnoNovo",
     linkComprar: null
   },
