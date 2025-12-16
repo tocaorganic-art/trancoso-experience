@@ -38,6 +38,7 @@ import RelatorioPresencaDigital from './pages/RelatorioPresencaDigital';
 import EventCardShowcase from './pages/EventCardShowcase';
 import ResultadosBusca from './pages/ResultadosBusca';
 import RelatorioVideoHero from './pages/RelatorioVideoHero';
+import AdminBlog from './pages/AdminBlog';
 import __Layout from './Layout.jsx';
 
 
@@ -82,6 +83,7 @@ export const PAGES = {
     "EventCardShowcase": EventCardShowcase,
     "ResultadosBusca": ResultadosBusca,
     "RelatorioVideoHero": RelatorioVideoHero,
+    "AdminBlog": AdminBlog,
 }
 
 export const pagesConfig = {
