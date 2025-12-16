@@ -94,6 +94,15 @@ ${formData.mensagem || "Nenhuma mensagem adicional"}`;
       trackFormSubmission(formData);
       trackWhatsAppClick();
 
+      // Google Ads Conversion Event
+      if (window.gtag) {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-17649743667/Px_YCKCb3s4bELPuhuBB',
+          'value': 1.0,
+          'currency': 'BRL'
+        });
+      }
+
       toast.success("Proposta enviada com sucesso!", {
         description: "Redirecionando para página de confirmação..."
       });
