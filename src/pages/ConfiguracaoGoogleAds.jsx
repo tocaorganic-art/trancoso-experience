@@ -124,9 +124,7 @@ Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta AW-17649
 - [Eventos Trancoso Dezembro]
 
 **Palavras-Chave Negativas:**
-```
--gratis -gratuito -caseiro -em casa
-```
+-gratis -gratuito -caseiro -em_casa
 
 **Observação Especial:** Este grupo deve incluir termos de busca que reflitam a intenção de compra nas cidades de Belo Horizonte, São Paulo e Porto Seguro.
 
