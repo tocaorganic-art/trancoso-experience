@@ -228,9 +228,16 @@ export default function Home() {
 
         {/* Hero Section - Premium Frosted */}
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
-          {/* Video Background */}
+          {/* Video Background - Lazy Loaded */}
           <React.Suspense fallback={
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300" />
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+              <img 
+                src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&q=60"
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover opacity-20"
+                loading="eager"
+              />
+            </div>
           }>
             <VideoBackground />
           </React.Suspense>
@@ -271,8 +278,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mb-8 w-full max-w-[95vw] md:max-w-5xl mx-auto px-2"
             >
-              {/* Grid de EventCards Premium */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+              {/* Grid de EventCards Premium - Lazy Loaded */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent will-change-scroll">
                 <EventCard
                   variant="reveillon"
                   day="26"
