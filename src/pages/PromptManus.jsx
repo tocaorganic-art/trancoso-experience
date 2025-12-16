@@ -77,7 +77,7 @@ Locais Alvo:
 │ RASTREAMENTO DE CONVERSÕES                                  │
 └─────────────────────────────────────────────────────────────┘
 
-ID de Conversão (AW): AW-790-733-7347/Px_YCKCb3s4bELPuhuBB
+ID de Conversão (AW): AW-17649743667/Px_YCKCb3s4bELPuhuBB
 URL de Conversão: https://tocaexperience.com.br/Obrigado
 Modelo de Rastreamento: {lpurl}?utm_source=google&utm_medium=cpc&utm_campaign=reveillon2026
 

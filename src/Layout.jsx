@@ -476,12 +476,12 @@ export default function Layout({ children, currentPageName }) {
   return (
     <TrackingProvider>
       {/* Google Ads Tag (gtag.js) - Primary */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-790-733-7347"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17649743667"></script>
       <script dangerouslySetInnerHTML={{__html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'AW-790-733-7347');
+        gtag('config', 'AW-17649743667');
         gtag('config', 'G-8HTCZ1069J');
 
         // Google Ads Click Conversion Function
@@ -492,7 +492,7 @@ export default function Layout({ children, currentPageName }) {
             }
           };
           gtag('event', 'conversion', {
-            'send_to': 'AW-790-733-7347/Px_YCKCb3s4bELPuhuBB',
+            'send_to': 'AW-17649743667/Px_YCKCb3s4bELPuhuBB',
             'value': 1.0,
             'currency': 'BRL',
             'event_callback': callback

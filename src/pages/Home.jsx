@@ -162,7 +162,7 @@ export default function Home() {
       // Google Ads Conversion Event
       if (window.gtag) {
         window.gtag('event', 'conversion', {
-          'send_to': 'AW-790-733-7347/Px_YCKCb3s4bELPuhuBB',
+          'send_to': 'AW-17649743667/Px_YCKCb3s4bELPuhuBB',
           'value': 1.0,
           'currency': 'BRL'
         });
