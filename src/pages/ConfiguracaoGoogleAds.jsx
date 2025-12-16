@@ -56,6 +56,7 @@ Localizações (6 cidades):
 Rastreamento:
 - ID: 790-733-7347/Px_YCKCb3s4bELPuhuBB
 - URL: https://tocaexperience.com.br/Obrigado
+- Sufixo do URL Final: utm_source=google&utm_medium=cpc&utm_campaign=reveillon2026
 
 GRUPOS DE ANÚNCIOS
 
