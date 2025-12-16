@@ -795,6 +795,11 @@ export default function Home() {
           <p className="text-gray-500 text-sm mb-4">
             <a href="mailto:eventos@tocaexperience.com.br" className="hover:text-gray-800 transition-colors">eventos@tocaexperience.com.br</a>
           </p>
+          <p className="text-gray-500 text-sm mb-4">
+            <a href="https://wa.me/5521997731321" target="_blank" rel="noopener noreferrer" className="hover:text-green-600 transition-colors font-medium">
+              📱 WhatsApp: +55 (21) 99773-1321
+            </a>
+          </p>
           <div className="flex justify-center gap-4 mb-4">
             <a href="https://www.instagram.com/tonyismusic" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-800 transition-colors" title="Instagram Tony">
               <Instagram className="w-5 h-5" />
