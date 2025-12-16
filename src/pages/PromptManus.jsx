@@ -15,7 +15,7 @@ Configuração de Campanha Google Ads - Réveillon Trancoso 2026
 ═══════════════════════════════════════════════════════════════
 
 ## OBJETIVO
-Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta do usuário (ID: AW-17649743667), seguindo o plano detalhado para venda de ingressos dos eventos Ayumar (Wesley Safadão, Jorge & Mateus, Bell Marques) e Elemental.
+Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta do usuário (ID: 790-733-7347), seguindo o plano detalhado para venda de ingressos dos eventos Ayumar (Wesley Safadão, Jorge & Mateus, Bell Marques) e Elemental.
 
 ## INSTRUÇÕES PARA O AGENTE
 
@@ -203,7 +203,7 @@ Descrição 3:
 CHECKLIST DE IMPLEMENTAÇÃO
 ═══════════════════════════════════════════════════════════════
 
-□ Acessar conta Google Ads AW-17649743667
+□ Acessar conta Google Ads 790-733-7347
 □ Criar campanha "Réveillon Trancoso 2026"
 □ Configurar tipo: Pesquisa (Search) + Objetivo: Vendas
 □ Definir orçamento: R$ 15,00/dia + CPC R$ 0,30
@@ -219,7 +219,7 @@ CHECKLIST DE IMPLEMENTAÇÃO
 □ Adicionar 4 sitelinks
 □ Adicionar 5 callouts
 □ Configurar tracking template com UTMs
-□ Validar rastreamento de conversão (AW-17649743667/Px_YCKCb3s4bELPuhuBB)
+□ Validar rastreamento de conversão (790-733-7347/Px_YCKCb3s4bELPuhuBB)
 □ Revisar todas as configurações
 □ Ativar campanha
 □ Monitorar desempenho nas primeiras 48h

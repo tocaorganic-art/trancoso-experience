@@ -19,7 +19,7 @@ export default function ConfiguracaoGoogleAds() {
   const promptCompleto = `PROMPT DE CONFIGURAÇÃO GOOGLE ADS - RÉVEILLON TRANCOSO 2026
 
 OBJETIVO
-Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta AW-17649743667, seguindo o plano detalhado para venda de ingressos dos eventos Ayumar e Elemental.
+Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta 790-733-7347, seguindo o plano detalhado para venda de ingressos dos eventos Ayumar e Elemental.
 
 INSTRUÇÕES
 1. Acessar a Conta Google Ads do usuário
@@ -54,7 +54,7 @@ Localizações (6 cidades):
 6. Arraial d'Ajuda, BA
 
 Rastreamento:
-- ID: AW-17649743667/Px_YCKCb3s4bELPuhuBB
+- ID: 790-733-7347/Px_YCKCb3s4bELPuhuBB
 - URL: https://tocaexperience.com.br/Obrigado
 
 GRUPOS DE ANÚNCIOS
@@ -231,7 +231,7 @@ MÉTRICAS ESPERADAS
                 <div>
                   <p className="text-gray-600 mb-1">ID de Conversão:</p>
                   <p className="font-mono text-xs bg-gray-100 p-2 rounded break-all">
-                    AW-17649743667/Px_YCKCb3s4bELPuhuBB
+                    790-733-7347/Px_YCKCb3s4bELPuhuBB
                   </p>
                 </div>
               </div>
@@ -313,7 +313,7 @@ MÉTRICAS ESPERADAS
             <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
               <li>Clique em <strong>"Copiar Prompt"</strong> acima</li>
               <li>Cole no agente Manus ou configure manualmente no Google Ads</li>
-              <li>Garanta acesso à conta AW-17649743667</li>
+              <li>Garanta acesso à conta 790-733-7347</li>
               <li>Siga a estrutura de 3 grupos de anúncios</li>
               <li>Configure extensões (sitelinks + callouts)</li>
               <li>Valide o rastreamento de conversão</li>
