@@ -39,6 +39,7 @@ import EventCardShowcase from './pages/EventCardShowcase';
 import ResultadosBusca from './pages/ResultadosBusca';
 import RelatorioVideoHero from './pages/RelatorioVideoHero';
 import AdminBlog from './pages/AdminBlog';
+import PromptManus from './pages/PromptManus';
 import __Layout from './Layout.jsx';
 
 
@@ -84,6 +85,7 @@ export const PAGES = {
     "ResultadosBusca": ResultadosBusca,
     "RelatorioVideoHero": RelatorioVideoHero,
     "AdminBlog": AdminBlog,
+    "PromptManus": PromptManus,
 }
 
 export const pagesConfig = {
