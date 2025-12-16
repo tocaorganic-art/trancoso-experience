@@ -410,7 +410,7 @@ Status: ✅ PRONTO PARA IMPLEMENTAÇÃO IMEDIATA
               <li>Copiar o prompt completo acima</li>
               <li>Acessar a interface do agente Manus</li>
               <li>Colar o prompt na área de comando</li>
-              <li>Garantir acesso à conta Google Ads AW-17649743667</li>
+              <li>Garantir acesso à conta Google Ads 790-733-7347</li>
               <li>Executar o comando</li>
               <li>Validar todas as configurações criadas</li>
               <li>Ativar a campanha</li>
