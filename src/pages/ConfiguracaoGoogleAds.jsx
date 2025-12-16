@@ -12,7 +12,15 @@ export default function ConfiguracaoGoogleAds() {
   const promptCompleto = `# PROMPT DE CONFIGURAÇÃO GOOGLE ADS - RÉVEILLON TRANCOSO 2026
 
 ## OBJETIVO
-Configurar campanha de Google Ads "Réveillon Trancoso 2026" para venda de ingressos dos eventos Ayumar e Elemental.
+Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta AW-17649743667, seguindo o plano detalhado para venda de ingressos dos eventos Ayumar (Wesley Safadão, Jorge & Mateus, Bell Marques) e Elemental.
+
+## INSTRUÇÕES PARA O AGENTE MANUS
+
+1. **Acessar a Conta Google Ads** do usuário (o usuário garantirá o acesso)
+2. **Criar uma nova Campanha de Pesquisa** com o objetivo "Vendas"
+3. **Configurar a Campanha** estritamente de acordo com os parâmetros abaixo
+
+---
 
 ## PARÂMETROS ESSENCIAIS DA CAMPANHA
 
@@ -21,8 +29,10 @@ Configurar campanha de Google Ads "Réveillon Trancoso 2026" para venda de ingre
 - **Tipo:** Pesquisa (Search)
 - **Objetivo:** Vendas
 - **Estratégia de Lance:** Maximizar Conversões
+- **Rede:** Somente Pesquisa Google
 - **URL Final:** https://tocaexperience.com.br/EventosAnoNovo
 - **URL de Exibição:** tocaexperience.com.br
+- **Idioma:** Português (Brasil)
 
 ### Orçamento
 - **Orçamento Diário:** R$ 15,00
@@ -32,14 +42,15 @@ Configurar campanha de Google Ads "Réveillon Trancoso 2026" para venda de ingre
 ### Período
 - **Data de Início:** 16/12/2025
 - **Data de Término:** 28/12/2025
+- **Duração:** 13 dias
 
-### Localizações Alvo
-1. Belo Horizonte, MG
-2. São Paulo, SP
-3. Porto Seguro, BA
-4. Trancoso, BA
-5. Caraíva, BA
-6. Arraial d'Ajuda, BA
+### Localizações Alvo (6 Cidades)
+1. **Belo Horizonte**, MG (mercado primário)
+2. **São Paulo**, SP (mercado primário)
+3. **Porto Seguro**, BA (proximidade)
+4. **Trancoso**, BA (local do evento)
+5. **Caraíva**, BA (proximidade)
+6. **Arraial d'Ajuda**, BA (proximidade)
 
 ### Rastreamento de Conversões
 - **ID de Conversão:** AW-17649743667/Px_YCKCb3s4bELPuhuBB
