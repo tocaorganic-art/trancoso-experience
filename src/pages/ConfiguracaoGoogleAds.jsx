@@ -62,58 +62,73 @@ Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta AW-17649
 ## ESTRUTURA DE GRUPOS DE ANÚNCIOS (3 GRUPOS)
 
 ### Grupo 1: Shows Nacionais (Ayumar)
-**Foco:** Artistas Wesley Safadão, Jorge & Mateus, Bell Marques
+**Foco:** Artistas Wesley Safadão, Jorge & Mateus, Bell Marques  
+**URL Final:** https://tocaexperience.com.br/EventosAnoNovo
 
-**Palavras-Chave:**
-- "Wesley Safadão Trancoso ingresso" [Frase]
-- [Wesley Safadão Trancoso] [Exata]
-- "Jorge e Mateus Fly Club" [Frase]
-- [Jorge e Mateus Trancoso ingresso] [Exata]
-- "Bell Marques Réveillon Trancoso" [Frase]
-- [Bell Marques Trancoso 2026] [Exata]
+**Palavras-Chave (Correspondência de Frase):**
+- "Wesley Safadão Trancoso ingresso"
+- "Wesley Safadão Réveillon 2026"
+- "Jorge e Mateus Fly Club"
+- "Jorge e Mateus Trancoso ingresso"
+- "Bell Marques Réveillon Trancoso"
+- "Bell Marques Trancoso 2026"
+
+**Palavras-Chave (Correspondência Exata):**
+- [Wesley Safadão Trancoso]
+- [Jorge e Mateus Trancoso]
+- [Bell Marques Trancoso]
 
 **Palavras-Chave Negativas:**
-- -letras
-- -videoclipe
-- -biografia
-- -grátis
-- -pirata
+```
+-letras -videoclipe -biografia -gratis -gratuito -pirata -revenda
+```
 
 ---
 
 ### Grupo 2: Pacotes de Festas (Elemental/Ayumar)
-**Foco:** Pacotes completos e eventos específicos
+**Foco:** Pacotes completos e eventos específicos  
+**URL Final:** https://tocaexperience.com.br/EventosAnoNovo
 
-**Palavras-Chave:**
-- "Réveillon Elemental Trancoso 2026" [Frase]
-- [Pacote festas Trancoso] [Exata]
-- "Réveillon Ayumar Trancoso 2026" [Frase]
-- [Ingressos Fly Club Trancoso] [Exata]
-- "Pacote 5 dias Trancoso Réveillon" [Frase]
+**Palavras-Chave (Correspondência de Frase):**
+- "Réveillon Elemental Trancoso 2026"
+- "Réveillon Ayumar Trancoso 2026"
+- "Pacote festas Trancoso"
+- "Ingressos Fly Club Trancoso"
+- "Pacote 5 dias Trancoso Réveillon"
+
+**Palavras-Chave (Correspondência Exata):**
+- [Pacote festas Trancoso]
+- [Ingressos Fly Club Trancoso]
 
 **Palavras-Chave Negativas:**
-- -barato
-- -revenda
-- -pirateado
-- -esquema
+```
+-barato -revenda -pirata -esquema -gratuito
+```
 
 ---
 
 ### Grupo 3: Localização e Data (Geral)
-**Foco:** Buscas genéricas sobre Réveillon em Trancoso
+**Foco:** Buscas genéricas e localização (BH, SP, Porto Seguro)  
+**URL Final:** https://tocaexperience.com.br/EventosAnoNovo
 
-**Palavras-Chave:**
-- "Ingressos Réveillon Trancoso 2026" [Frase]
-- [Festa Trancoso Ano Novo] [Exata]
-- "Onde comprar ingresso Réveillon Bahia" [Frase]
-- [Eventos Trancoso Dezembro] [Exata]
-- "Réveillon Trancoso de Belo Horizonte" [Frase]
-- "Pacotes Trancoso São Paulo" [Frase]
+**Palavras-Chave (Correspondência de Frase):**
+- "Ingressos Réveillon Trancoso 2026"
+- "Festa Trancoso Ano Novo"
+- "Onde comprar ingresso Réveillon Bahia"
+- "Réveillon Trancoso de Belo Horizonte"
+- "Pacotes Trancoso São Paulo"
+- "Eventos Trancoso Dezembro"
+
+**Palavras-Chave (Correspondência Exata):**
+- [Festa Trancoso Ano Novo]
+- [Eventos Trancoso Dezembro]
 
 **Palavras-Chave Negativas:**
-- -gratuitos
-- -caseiras
-- -em casa
+```
+-gratis -gratuito -caseiro -em casa
+```
+
+**Observação Especial:** Este grupo deve incluir termos de busca que reflitam a intenção de compra nas cidades de Belo Horizonte, São Paulo e Porto Seguro.
 
 ---
 
