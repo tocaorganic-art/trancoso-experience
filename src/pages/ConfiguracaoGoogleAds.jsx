@@ -55,7 +55,7 @@ Configurar a campanha de Google Ads "Réveillon Trancoso 2026" na conta AW-17649
 ### Rastreamento de Conversões
 - **ID de Conversão:** AW-17649743667/Px_YCKCb3s4bELPuhuBB
 - **URL de Conversão:** https://tocaexperience.com.br/Obrigado
-- **Tracking Template:** {lpurl}?utm_source=google&utm_medium=cpc&utm_campaign=reveillon2026
+- **Tracking Template:** LPURL?utm_source=google&utm_medium=cpc&utm_campaign=reveillon2026
 
 ---
 
