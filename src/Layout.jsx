@@ -20,7 +20,7 @@ export default function Layout({ children, currentPageName }) {
       canonicalLink.rel = 'canonical';
       document.head.appendChild(canonicalLink);
     }
-    const baseUrl = 'https://tocaexperience.com.br';
+    const baseUrl = 'https://www.tocaexperience.com.br';
     const pageUrls = {
       "Home": baseUrl,
       "EventosAnoNovo": `${baseUrl}/EventosAnoNovo`,
