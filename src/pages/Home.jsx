@@ -404,6 +404,9 @@ export default function Home() {
                   <Button 
                     onClick={() => {
                       trackClick();
+                      if (typeof window.gtag_report_conversion === 'function') {
+                        window.gtag_report_conversion();
+                      }
                       scrollToForm();
                     }}
                     className="bg-white/20 backdrop-blur-xl border-2 border-white/30 text-gray-900 font-bold px-8 py-6 text-lg rounded-full shadow-2xl transition-all hover:scale-105 hover:bg-white/30 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.37)]"

@@ -484,6 +484,22 @@ export default function Layout({ children, currentPageName }) {
         gtag('config', 'AW-17649743667');
         gtag('config', 'G-8HTCZ1069J');
         gtag('config', 'AW-17589027735');
+
+        // Google Ads Click Conversion Function
+        function gtag_report_conversion(url) {
+          var callback = function () {
+            if (typeof(url) != 'undefined') {
+              window.location = url;
+            }
+          };
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17649743667/Px_YCKCb3s4bELPuhuBB',
+            'value': 1.0,
+            'currency': 'BRL',
+            'event_callback': callback
+          });
+          return false;
+        }
       `}} />
 
       {/* Google Tag Manager (noscript) */}
