@@ -456,13 +456,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section - Clean White */}
+      {/* About Section - Clean White - Lazy Loaded Content */}
       <section id="sobre" className="py-24 bg-gradient-to-br from-gray-50/50 via-white to-gray-50/50">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "100px" }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -490,11 +490,10 @@ export default function Home() {
               className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/60 hover:border-gray-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all"
             >
               <div className="flex items-center gap-4 mb-6">
-                <OptimizedImage
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG"
+                <img
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/f6262c8a5_IMG_8909.JPEG?width=128&quality=80"
                   alt="Tony Monteiro - DJ Afro House"
-                  width={64}
-                  height={64}
+                  loading="lazy"
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div>

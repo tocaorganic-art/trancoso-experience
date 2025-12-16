@@ -34,7 +34,17 @@ export default function EventCard({
   status,
   onClick
 }) {
-  const cardStyle = backgroundImage ? {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+  
+  React.useEffect(() => {
+    if (backgroundImage) {
+      const img = new Image();
+      img.src = backgroundImage;
+      img.onload = () => setImageLoaded(true);
+    }
+  }, [backgroundImage]);
+
+  const cardStyle = backgroundImage && imageLoaded ? {
     backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center'
