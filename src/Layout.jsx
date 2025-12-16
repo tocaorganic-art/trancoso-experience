@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Newspaper, Disc3, PartyPopper, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 
-const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
 const FloatingWhatsAppButton = React.lazy(() => import("@/components/layout/FloatingWhatsAppButton"));
+const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
 
 export default function Layout({ children, currentPageName }) {
   useEffect(() => {
@@ -610,6 +610,11 @@ export default function Layout({ children, currentPageName }) {
         {/* Floating WhatsApp Button */}
         <React.Suspense fallback={null}>
           <FloatingWhatsAppButton />
+        </React.Suspense>
+
+        {/* Floating Chat Widget */}
+        <React.Suspense fallback={null}>
+          <FloatingChatWidget />
         </React.Suspense>
         </div>
     </TrackingProvider>
