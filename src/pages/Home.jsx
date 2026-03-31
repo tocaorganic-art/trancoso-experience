@@ -272,14 +272,7 @@ export default function Home() {
             >
               Experiência Exclusiva em <span className="font-semibold bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent">Trancoso</span>
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.35 }}
-              className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-8"
-            >
-              Todos os Eventos de Ano Novo em Trancoso, Caraíva e Arraial d'Ajuda
-            </motion.p>
+
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

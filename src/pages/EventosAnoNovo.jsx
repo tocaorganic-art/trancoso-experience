@@ -296,12 +296,7 @@ export default function EventosAnoNovo() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
               Eventos de <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-gradient">Ano Novo</span>
             </h1>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Trancoso • Caraíva • Arraial d'Ajuda
-            </p>
-            <p className="text-gray-500 text-sm mt-2">
-              26 de Dezembro a 10 de Janeiro
-            </p>
+
           </motion.div>
         </div>
       </div>
