@@ -3,7 +3,7 @@ import { Toaster } from "sonner";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar, Newspaper, Disc3, PartyPopper, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
+import { Calendar, Newspaper, Disc3, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
@@ -579,15 +579,7 @@ export default function Layout({ children, currentPageName }) {
                     <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
                   </Button>
                 </Link>
-                <Link to={createPageUrl("EventosAnoNovo")}>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                  >
-                    <PartyPopper className="mr-0.5 h-2.5 w-2.5" /> ANO NOVO
-                  </Button>
-                </Link>
+
                 <Link to={createPageUrl("LocacaoSom")}>
                   <Button 
                     variant="ghost" 

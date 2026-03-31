@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, PartyPopper, Calendar as CalendarIcon } from "lucide-react";
+import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, Calendar as CalendarIcon } from "lucide-react";
 import LGPDConsent from "@/components/compliance/LGPDConsent";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";
@@ -18,7 +18,6 @@ import DeferredResources from "@/components/performance/DeferredResources";
 import PerformanceOptimizer from "@/components/performance/PerformanceOptimizer";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import ABTestTracker from "@/components/tracking/ABTestTracker";
-import EventCard from "@/components/eventos/EventCard";
 
 // Lazy load non-critical components
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
@@ -274,101 +273,7 @@ export default function Home() {
             </motion.h1>
 
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8 w-full max-w-[95vw] md:max-w-5xl mx-auto px-2"
-            >
-              {/* Grid de EventCards Premium - Lazy Loaded */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent will-change-scroll">
-                <EventCard
-                  variant="reveillon"
-                  day="26"
-                  month="DEZ"
-                  title="Réveillon Elemental Trancoso 2026"
-                  location="Trancoso • Almar"
-                  city="trancoso"
-                  tags={["Parte de um pacote", "Atividades imersivas"]}
-                  backgroundImage="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
-                  buyLink="https://embedstore.ingresse.com/tickets/www.ingresse.com/event/86204?passkey=toca"
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-                <EventCard
-                  variant="reveillon"
-                  day="27"
-                  month="DEZ"
-                  title="RÉVEILLON AYUMAR PACOTE"
-                  location="Trancoso • Fly Club"
-                  city="trancoso"
-                  tags={["Open Bar Premium", "Pacote 5 Festas"]}
-                  backgroundImage="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
-                  status="hot"
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-                <EventCard
-                  variant="afrohouse"
-                  day="28"
-                  month="DEZ"
-                  title="AYUMAR — Wesley Safadão"
-                  location="Trancoso • Fly Club"
-                  city="trancoso"
-                  tags={["Open Bar Premium", "Show Nacional"]}
-                  backgroundImage="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-                <EventCard
-                  variant="reveillon"
-                  day="30"
-                  month="DEZ"
-                  title="AYUMAR — Jorge & Mateus"
-                  location="Trancoso • Fly Club"
-                  city="trancoso"
-                  tags={["Open Bar Premium", "Show Nacional"]}
-                  backgroundImage="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-                <EventCard
-                  variant="reveillon"
-                  day="31"
-                  month="DEZ"
-                  title="AYUMAR — Bell Marques"
-                  location="Trancoso • Fly Club"
-                  city="trancoso"
-                  tags={["Réveillon", "Open Bar Premium"]}
-                  backgroundImage="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
-                  status="hot"
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-                <EventCard
-                  variant="afrohouse"
-                  day="02"
-                  month="JAN"
-                  title="AYUMAR — Grupo Benzadeus"
-                  location="Trancoso • Fly Club"
-                  city="trancoso"
-                  tags={["Day After", "Open Bar Premium"]}
-                  backgroundImage="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80"
-                  buyLink="https://comissario.q2ingressos.com.br/?id=x6PCApP4"
-                  onClick={() => window.location.href = createPageUrl("EventosAnoNovo")}
-                />
-              </div>
 
-              <div className="text-center mt-6">
-                <RouterLink to={createPageUrl("EventosAnoNovo")}>
-                  <Button 
-                    variant="outline"
-                    className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-8 py-4 rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
-                  >
-                    Ver Todos os Eventos de Ano Novo
-                  </Button>
-                </RouterLink>
-              </div>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -432,14 +337,7 @@ export default function Home() {
                                       <Disc3 className="mr-2 h-5 w-5" /> DISCOGRAFIA
                                     </Button>
                                   </RouterLink>
-                                  <RouterLink to={createPageUrl("EventosAnoNovo")}>
-                                    <Button 
-                                      variant="outline" 
-                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
-                                    >
-                                      <PartyPopper className="mr-2 h-5 w-5" /> ANO NOVO
-                                    </Button>
-                                  </RouterLink>
+
                                   <RouterLink to={createPageUrl("LocacaoSom")}>
                                     <Button 
                                       variant="outline" 
