@@ -50,14 +50,16 @@ export function generateSrcSet(url, sizes = [320, 640, 1024, 1920]) {
     .join(', ');
 }
 
+import { useState, useEffect, useRef } from "react";
+
 /**
  * Hook para detectar se a imagem está no viewport
  * Usado para lazy loading manual
  */
 export function useIntersectionObserver(ref, options = {}) {
-  const [isIntersecting, setIsIntersecting] = React.useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsIntersecting(true);
@@ -88,7 +90,7 @@ export function useIntersectionObserver(ref, options = {}) {
  * Componente Picture otimizado com suporte a WebP
  */
 export function OptimizedPicture({ src, alt, className, width, height, priority = false }) {
-  const imgRef = React.useRef(null);
+  const imgRef = useRef(null);
   const isVisible = useIntersectionObserver(imgRef);
   const shouldLoad = priority || isVisible;
 

@@ -613,7 +613,7 @@ export default function Layout({ children, currentPageName }) {
             </p>
             <div className="mt-3">
               <a
-                href="https://wa.me/5573998283579"
+                href="https://wa.me/5521972824659"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-gray-500 hover:text-green-600 transition-colors text-xs"

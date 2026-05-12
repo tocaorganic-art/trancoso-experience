@@ -3,10 +3,10 @@ import React from "react";
 export default function FloatingWhatsAppButton() {
   const handleClick = () => {
     if (typeof window.gtag_report_conversion === 'function') {
-      window.gtag_report_conversion('https://wa.me/5573998283579');
+      window.gtag_report_conversion('https://wa.me/5521972824659');
       return false;
     }
-    window.open('https://wa.me/5573998283579', '_blank');
+    window.open('https://wa.me/5521972824659', '_blank');
   };
 
   return (

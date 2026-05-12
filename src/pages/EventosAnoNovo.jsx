@@ -318,7 +318,7 @@ export default function EventosAnoNovo() {
             </Card>
           }>
             <MapaEventos 
-              onLocalidadeClick={(loc) => setFiltroLocalidade(loc)}
+              onLocalidadeClick={(loc) => handleFilterChange({ localidade: loc })}
               eventosCount={eventosCount}
             />
           </React.Suspense>
