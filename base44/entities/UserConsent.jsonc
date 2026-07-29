@@ -1,0 +1,42 @@
+{
+  "name": "UserConsent",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Email do usu\u00e1rio"
+    },
+    "email_marketing_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Consentimento para email marketing"
+    },
+    "whatsapp_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Consentimento para WhatsApp"
+    },
+    "sms_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Consentimento para SMS"
+    },
+    "phone_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Consentimento para liga\u00e7\u00f5es"
+    },
+    "consent_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data do consentimento"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "IP do usu\u00e1rio ao consentir"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

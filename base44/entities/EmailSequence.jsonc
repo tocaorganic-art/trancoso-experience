@@ -1,0 +1,58 @@
+{
+  "name": "EmailSequence",
+  "type": "object",
+  "properties": {
+    "lead_id": {
+      "type": "string",
+      "description": "ID do lead"
+    },
+    "sequence_step": {
+      "type": "number",
+      "description": "N\u00famero do email na sequ\u00eancia (1-5)"
+    },
+    "email_type": {
+      "type": "string",
+      "enum": [
+        "confirmation",
+        "services",
+        "testimonials",
+        "offer",
+        "last_chance"
+      ],
+      "description": "Tipo de email"
+    },
+    "sent_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data de envio"
+    },
+    "opened_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data de abertura"
+    },
+    "clicked_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data de clique"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "sent",
+        "opened",
+        "clicked",
+        "bounced",
+        "unsubscribed"
+      ],
+      "default": "scheduled",
+      "description": "Status do email"
+    }
+  },
+  "required": [
+    "lead_id",
+    "sequence_step",
+    "email_type"
+  ]
+}

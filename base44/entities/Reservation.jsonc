@@ -1,0 +1,92 @@
+{
+  "name": "Reservation",
+  "type": "object",
+  "properties": {
+    "evento_id": {
+      "type": "string",
+      "description": "ID do evento"
+    },
+    "ticket_id": {
+      "type": "string",
+      "description": "ID do tipo de ingresso"
+    },
+    "user_email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email do comprador"
+    },
+    "user_nome": {
+      "type": "string",
+      "description": "Nome completo do comprador"
+    },
+    "user_telefone": {
+      "type": "string",
+      "description": "Telefone do comprador"
+    },
+    "quantidade": {
+      "type": "number",
+      "default": 1,
+      "description": "Quantidade de ingressos"
+    },
+    "valor_total": {
+      "type": "number",
+      "description": "Valor total da reserva"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pendente",
+        "confirmado",
+        "pago",
+        "cancelado",
+        "expirado"
+      ],
+      "default": "pendente",
+      "description": "Status da reserva"
+    },
+    "codigo_reserva": {
+      "type": "string",
+      "description": "C\u00f3digo \u00fanico da reserva"
+    },
+    "payment_id": {
+      "type": "string",
+      "description": "ID do pagamento no gateway"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "pix",
+        "cartao",
+        "transferencia"
+      ],
+      "description": "M\u00e9todo de pagamento"
+    },
+    "expira_em": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data de expira\u00e7\u00e3o da reserva"
+    },
+    "qr_code": {
+      "type": "string",
+      "description": "QR Code do ingresso"
+    },
+    "checkin_realizado": {
+      "type": "boolean",
+      "default": false,
+      "description": "Se j\u00e1 fez check-in no evento"
+    },
+    "checkin_data": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data/hora do check-in"
+    }
+  },
+  "required": [
+    "evento_id",
+    "ticket_id",
+    "user_email",
+    "user_nome",
+    "quantidade",
+    "valor_total"
+  ]
+}

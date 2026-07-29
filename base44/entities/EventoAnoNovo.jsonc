@@ -1,0 +1,68 @@
+{
+  "name": "EventoAnoNovo",
+  "type": "object",
+  "properties": {
+    "nome": {
+      "type": "string",
+      "description": "Nome do evento"
+    },
+    "data": {
+      "type": "string",
+      "format": "date",
+      "description": "Data do evento"
+    },
+    "localidade": {
+      "type": "string",
+      "enum": [
+        "Cara\u00edva",
+        "Trancoso",
+        "Arraial d'Ajuda"
+      ],
+      "description": "Localidade do evento"
+    },
+    "local": {
+      "type": "string",
+      "description": "Local espec\u00edfico do evento"
+    },
+    "detalhes": {
+      "type": "string",
+      "description": "Detalhes do evento"
+    },
+    "tipo": {
+      "type": "string",
+      "default": "Evento de Ano Novo",
+      "description": "Tipo do evento"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Confirmado",
+        "A confirmar"
+      ],
+      "default": "Confirmado",
+      "description": "Status do evento"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags do evento"
+    },
+    "imagem": {
+      "type": "string",
+      "description": "URL da imagem do evento (cartaz oficial)"
+    },
+    "link_compra": {
+      "type": "string",
+      "description": "Link para compra de ingressos"
+    }
+  },
+  "required": [
+    "nome",
+    "data",
+    "localidade",
+    "local"
+  ],
+  "rls": {}
+}

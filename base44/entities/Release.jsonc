@@ -1,0 +1,74 @@
+{
+  "name": "Release",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Nome do lan\u00e7amento"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "single",
+        "ep",
+        "remix",
+        "album"
+      ],
+      "description": "Tipo de lan\u00e7amento"
+    },
+    "release_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data de lan\u00e7amento"
+    },
+    "cover_image": {
+      "type": "string",
+      "description": "URL da capa do \u00e1lbum"
+    },
+    "description": {
+      "type": "string",
+      "description": "Descri\u00e7\u00e3o do lan\u00e7amento"
+    },
+    "spotify_url": {
+      "type": "string",
+      "description": "Link do Spotify"
+    },
+    "spotify_embed": {
+      "type": "string",
+      "description": "URL do embed do Spotify"
+    },
+    "soundcloud_url": {
+      "type": "string",
+      "description": "Link do SoundCloud"
+    },
+    "apple_music_url": {
+      "type": "string",
+      "description": "Link do Apple Music"
+    },
+    "beatport_url": {
+      "type": "string",
+      "description": "Link do Beatport"
+    },
+    "artist": {
+      "type": "string",
+      "enum": [
+        "tony_monteiro",
+        "enzo_furtado",
+        "toca_experience"
+      ],
+      "default": "toca_experience",
+      "description": "Artista principal"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Lan\u00e7amento em destaque"
+    }
+  },
+  "required": [
+    "title",
+    "type",
+    "artist"
+  ],
+  "rls": {}
+}

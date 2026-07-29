@@ -1,0 +1,39 @@
+{
+  "name": "ChatInteraction",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "ID da sess\u00e3o do chat"
+    },
+    "user_message": {
+      "type": "string",
+      "description": "Mensagem do usu\u00e1rio"
+    },
+    "bot_response": {
+      "type": "string",
+      "description": "Resposta do bot"
+    },
+    "intent_detected": {
+      "type": "string",
+      "description": "Inten\u00e7\u00e3o detectada (quotation, info, support)"
+    },
+    "qualified": {
+      "type": "boolean",
+      "default": false,
+      "description": "Se foi qualificado como lead"
+    },
+    "lead_id": {
+      "type": "string",
+      "description": "ID do lead criado (se qualificado)"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Dura\u00e7\u00e3o da conversa em segundos"
+    }
+  },
+  "required": [
+    "session_id",
+    "user_message"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "name": "LeadFollowUp",
+  "type": "object",
+  "properties": {
+    "lead_id": {
+      "type": "string",
+      "description": "ID do lead no EventData"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "contacted",
+        "proposal_sent",
+        "negotiating",
+        "closed_won",
+        "closed_lost",
+        "cold"
+      ],
+      "default": "pending",
+      "description": "Status do follow-up"
+    },
+    "last_contact_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data do \u00faltimo contato"
+    },
+    "next_contact_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data agendada para pr\u00f3ximo contato"
+    },
+    "contact_attempts": {
+      "type": "number",
+      "default": 0,
+      "description": "N\u00famero de tentativas de contato"
+    },
+    "contact_channel": {
+      "type": "string",
+      "enum": [
+        "email",
+        "whatsapp",
+        "phone",
+        "in_person"
+      ],
+      "description": "Canal do \u00faltimo contato"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notas sobre o follow-up"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Email do respons\u00e1vel pelo follow-up"
+    }
+  },
+  "required": [
+    "lead_id"
+  ]
+}

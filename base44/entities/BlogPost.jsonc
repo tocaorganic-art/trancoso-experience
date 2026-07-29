@@ -1,0 +1,83 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "T\u00edtulo do post"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL amig\u00e1vel do post"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Resumo do post"
+    },
+    "content": {
+      "type": "string",
+      "description": "Conte\u00fado completo do post em markdown"
+    },
+    "cover_image": {
+      "type": "string",
+      "description": "URL da imagem de capa"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "afro_house",
+        "organic_house",
+        "casamentos",
+        "equipamentos",
+        "eventos",
+        "guias"
+      ],
+      "description": "Categoria do post"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Palavras-chave para SEO"
+    },
+    "meta_description": {
+      "type": "string",
+      "description": "Meta description para SEO"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Se o post est\u00e1 publicado"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Se \u00e9 um post em destaque"
+    },
+    "author": {
+      "type": "string",
+      "default": "Toca Experience",
+      "description": "Autor do post"
+    },
+    "read_time": {
+      "type": "number",
+      "description": "Tempo de leitura em minutos"
+    }
+  },
+  "required": [
+    "title",
+    "slug",
+    "excerpt",
+    "content",
+    "category"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {},
+        {}
+      ]
+    }
+  }
+}

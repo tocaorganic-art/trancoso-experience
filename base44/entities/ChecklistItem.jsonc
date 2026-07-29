@@ -1,0 +1,37 @@
+{
+  "name": "ChecklistItem",
+  "type": "object",
+  "properties": {
+    "categoria": {
+      "type": "string",
+      "description": "Categoria do item do checklist"
+    },
+    "item": {
+      "type": "string",
+      "description": "Descri\u00e7\u00e3o do item"
+    },
+    "prioridade": {
+      "type": "string",
+      "enum": [
+        "cr\u00edtico",
+        "importante",
+        "recomendado"
+      ],
+      "default": "importante",
+      "description": "N\u00edvel de prioridade"
+    },
+    "concluido": {
+      "type": "boolean",
+      "default": false,
+      "description": "Status de conclus\u00e3o"
+    },
+    "observacoes": {
+      "type": "string",
+      "description": "Observa\u00e7\u00f5es sobre o item"
+    }
+  },
+  "required": [
+    "categoria",
+    "item"
+  ]
+}
