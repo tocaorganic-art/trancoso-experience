@@ -28,6 +28,8 @@ export default function Breadcrumbs({ items }) {
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           const position = index + 2;
+          // Aceita { page } (nome de página) ou { href } (caminho completo). Sem destino, não vira link.
+          const target = item.href || (item.page ? createPageUrl(item.page) : null);
           
           return (
             <React.Fragment key={index}>
@@ -43,14 +45,16 @@ export default function Breadcrumbs({ items }) {
                     <span itemProp="name">{item.label}</span>
                     <meta itemProp="position" content={position.toString()} />
                   </>
-                ) : (
+                ) : target ? (
                   <Link 
-                    to={createPageUrl(item.page)} 
+                    to={target} 
                     className="hover:text-gray-900 transition-colors"
                     itemProp="item"
                   >
                     <span itemProp="name">{item.label}</span>
                   </Link>
+                ) : (
+                  <span itemProp="name">{item.label}</span>
                 )}
                 <meta itemProp="position" content={position.toString()} />
               </li>

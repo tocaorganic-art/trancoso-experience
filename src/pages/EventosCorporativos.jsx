@@ -101,21 +101,8 @@ export default function EventosCorporativos() {
         message: `Tipo: ${formData.tipoEvento}. Participantes: ${formData.numeroParticipantes}. ${formData.mensagem}`
       });
 
-      const whatsappMessage = encodeURIComponent(`*Orçamento Evento Corporativo*
       
-*Empresa:* ${formData.empresa}
-*Responsável:* ${formData.responsavel}
-*Email:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Tipo de Evento:* ${formData.tipoEvento}
-*Data:* ${formData.dataEvento}
-*Participantes:* ${formData.numeroParticipantes}
-
-*Mensagem:* ${formData.mensagem}`);
-
-      window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
-      
-      toast.success("Proposta enviada com sucesso!");
+      toast.success("Pedido recebido! Nossa equipe retornará pelo e-mail ou telefone informado.");
       setFormData({ empresa: "", responsavel: "", email: "", telefone: "", tipoEvento: "", dataEvento: "", numeroParticipantes: "", mensagem: "" });
     } catch (error) {
       toast.error("Erro ao enviar. Tente novamente.");
@@ -305,7 +292,7 @@ export default function EventosCorporativos() {
               <div className="text-center mb-8">
                 <Briefcase className="w-12 h-12 mx-auto mb-4 text-indigo-600" />
                 <h2 className="text-3xl font-bold mb-2">Solicite um Orçamento Corporativo</h2>
-                <p className="text-gray-600">Resposta em até 24 horas úteis com proposta detalhada</p>
+                <p className="text-gray-600">Retorno com proposta detalhada, conforme disponibilidade</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -464,10 +451,10 @@ export default function EventosCorporativos() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white/10"
-                onClick={() => window.open('https://wa.me/5521972824659', '_blank')}
+                onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
+                Solicitar proposta
               </Button>
             </div>
           </div>

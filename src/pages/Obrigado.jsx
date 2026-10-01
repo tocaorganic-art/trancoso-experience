@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, ArrowLeft, MessageCircle } from "lucide-react";
+import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
@@ -43,12 +43,12 @@ export default function Obrigado() {
 
           {/* Title */}
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Proposta Enviada com Sucesso! 🎉
+            Pedido recebido!
           </h1>
 
           {/* Description */}
           <p className="text-lg text-gray-600 mb-6">
-            Recebemos sua solicitação de cotação e já estamos preparando uma proposta exclusiva para seu evento.
+            Recebemos sua solicitação. Nossa equipe retornará pelo e-mail ou telefone informado.
           </p>
 
           {/* Next Steps */}
@@ -76,7 +76,7 @@ export default function Obrigado() {
                   3
                 </div>
                 <p className="text-gray-700 pt-1">
-                  Entraremos em contato via WhatsApp para finalizar os detalhes
+                  Entraremos em contato por e-mail ou telefone para finalizar os detalhes
                 </p>
               </div>
             </div>
@@ -84,17 +84,6 @@ export default function Obrigado() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <a 
-              href="https://wa.me/557398283579?text=Olá! Acabei de enviar uma cotação pelo site e gostaria de saber mais."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto"
-            >
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg rounded-full shadow-lg transition-all hover:scale-105">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Falar no WhatsApp Agora
-              </Button>
-            </a>
             <Link to={createPageUrl("Home")} className="w-full sm:w-auto">
               <Button variant="outline" className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-6 text-lg rounded-full">
                 <ArrowLeft className="w-5 h-5 mr-2" />
@@ -107,9 +96,6 @@ export default function Obrigado() {
           <div className="border-t border-gray-200 pt-6">
             <p className="text-sm text-gray-500 mb-2">
               Alguma dúvida urgente?
-            </p>
-            <p className="text-gray-700 font-semibold">
-              WhatsApp: <a href="https://wa.me/557398283579" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:underline">+55 73 9828-3579</a>
             </p>
             <p className="text-gray-700">
               Email: <a href="mailto:eventos@tocaexperience.com.br" className="text-green-600 hover:underline">eventos@tocaexperience.com.br</a>

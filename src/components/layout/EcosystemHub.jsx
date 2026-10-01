@@ -15,13 +15,13 @@ export const ECOSYSTEM_LINKS = [
     id: "toca-concierge",
     name: "Toca Concierge",
     href: "https://tocaconcierge.com.br/",
-    description: "Serviço de concierge. Veja no site como funciona.",
+    description: "Sistema de gestão para concierges independentes: pipeline de viagens, clientes e finanças.",
   },
   {
     id: "trancoso-resolve",
     name: "Trancoso Resolve",
     href: "https://trancosoresolve.com.br/",
-    description: "Marketplace local de serviços em Trancoso.",
+    description: "Plataforma para encontrar profissionais em Trancoso: diaristas, pedreiros, jardineiros e mais.",
   },
 ];
 

@@ -203,7 +203,7 @@ export default function AluguelEquipamentos() {
 
                   <Button 
                     className="w-full bg-blue-600 hover:bg-blue-700"
-                    onClick={() => window.open('https://wa.me/5521972824659?text=Olá! Gostaria de um orçamento para o ' + pacote.nome, '_blank')}
+                    onClick={() => window.location.href = '/Cotacao'}
                   >
                     Solicitar Orçamento
                   </Button>
@@ -267,7 +267,7 @@ export default function AluguelEquipamentos() {
                     
                     <Button 
                       className="w-full bg-blue-600 hover:bg-blue-700"
-                      onClick={() => window.open(`https://wa.me/5521972824659?text=Olá! Gostaria de alugar ${equip.nome}`, '_blank')}
+                      onClick={() => window.location.href = '/Cotacao'}
                     >
                       Solicitar
                     </Button>
@@ -309,10 +309,10 @@ export default function AluguelEquipamentos() {
             <Button 
               size="lg"
               className="bg-white text-blue-600 hover:bg-gray-100"
-              onClick={() => window.open('https://wa.me/5521972824659', '_blank')}
+              onClick={() => window.location.href = '/Cotacao'}
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp: (21) 97282-4659
+              Solicitar proposta
             </Button>
           </div>
         </section>

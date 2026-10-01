@@ -42,6 +42,20 @@ Usados: `logo-web-720.png`, `icone-192/512`, `apple-touch-icon-180`, `favicon.ic
 - [ ] Adicionar ao celular (iOS/Android): ícone com o símbolo, sem distorção.
 - [ ] Imagem de compartilhamento (Open Graph) ainda é a foto antiga; trocar por arte própria quando houver (o kit não traz uma imagem OG 1200×630).
 
+## Deploy 4 — Hub completo, leads reais, WhatsApp fora, segurança das funções
+
+Antes de publicar
+- [ ] Redeployar as funções alteradas: `sendWhatsApp` (agora só admin), `whatsappWebhook` (assinatura), `sendEmailBrevo`, `testEmailBrevo`, `leadNotification` (logs sem segredo/PII), além de `adminAuth` e `createDefaultAdmin` (Deploy 1).
+- [ ] Criar o secret `WHATSAPP_APP_SECRET` (segredo do app na Meta) para ativar a validação de assinatura do webhook. Sem ele, o webhook continua aceitando e só registra aviso.
+
+Após publicar (sem sessão)
+- [ ] Home: enviar o formulário com dados fictícios. Deve aparecer "Pedido recebido!", redirecionar a /Obrigado, e o lead aparecer em `EventData` (painel admin). Apagar o lead de teste depois.
+- [ ] Nenhuma página pública tem botão ou link de contato por WhatsApp (os botões de **compartilhar** no WhatsApp foram mantidos, são ação de compartilhamento).
+- [ ] /CasamentosTrancoso, /AluguelEquipamentos, /EventosCorporativos, /DestinationWedding, /Cotacao e /Ethos abrem sem erro (antes caíam no erro do Breadcrumbs).
+- [ ] /CampanhaReveillon exige login de admin.
+- [ ] Visual: tons de cinza/roxo/rosa/azul antigos agora quentes (paleta TOCA). Conferir contraste do texto sobre botões coloridos.
+- [ ] No painel Base44: ajustar título e descrição do SEO (hoje a descrição é "Seu assistente pessoal para gerenciar...", genérica) e remover as páginas internas do sitemap.
+
 ## Pendências humanas
 
 - [ ] Destino real dos leads (entidade/integração com o Concierge OS) e retirar a conversão no front que dispara sem lead entregue.

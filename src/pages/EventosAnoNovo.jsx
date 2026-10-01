@@ -240,10 +240,10 @@ export default function EventosAnoNovo() {
                 size="lg"
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
-                onClick={() => window.open('https://wa.me/5521972824659?text=Olá! Gostaria de um orçamento para Réveillon em Trancoso', '_blank')}
+                onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp Direto
+                Solicitar orçamento
               </Button>
             </div>
 
@@ -256,7 +256,7 @@ export default function EventosAnoNovo() {
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
                 <CheckCircle className="w-8 h-8 mb-3" />
                 <h3 className="font-bold mb-2">DJs Experientes</h3>
-                <p className="text-sm text-white/80">500 mil+ streams, turnês internacionais</p>
+                <p className="text-sm text-white/80">Turnês internacionais</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
                 <CheckCircle className="w-8 h-8 mb-3" />

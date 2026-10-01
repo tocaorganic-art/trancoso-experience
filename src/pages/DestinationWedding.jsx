@@ -71,20 +71,8 @@ export default function DestinationWedding() {
         message: `Destination Wedding - País: ${formData.paisOrigem}. Convidados: ${formData.numeroConvidados}. ${formData.mensagem}`
       });
 
-      const whatsappMessage = encodeURIComponent(`*Destination Wedding - Orçamento*
-
-*Nome:* ${formData.nome}
-*Email:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Data:* ${formData.dataCasamento}
-*País de Origem:* ${formData.paisOrigem}
-*Convidados:* ${formData.numeroConvidados}
-
-*Mensagem:* ${formData.mensagem}`);
-
-      window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
       
-      toast.success("Proposta enviada! Entraremos em contato em até 2 horas.");
+      toast.success("Pedido recebido! Nossa equipe retornará pelo e-mail ou telefone informado.");
       setFormData({ nome: "", email: "", telefone: "", dataCasamento: "", paisOrigem: "", numeroConvidados: "", mensagem: "" });
     } catch (error) {
       toast.error("Erro ao enviar. Tente novamente.");
@@ -229,7 +217,7 @@ export default function DestinationWedding() {
                 title: "Suporte & Atendimento",
                 items: [
                   "Atendimento em inglês, português e espanhol",
-                  "Suporte pré-evento por WhatsApp/Email",
+                  "Suporte pré-evento por e-mail",
                   "Cronograma musical detalhado",
                   "Relatório pós-evento com fotos e setlist"
                 ]
@@ -282,47 +270,6 @@ export default function DestinationWedding() {
           </div>
         </section>
 
-        {/* Depoimentos Internacionais */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Destination Weddings Realizados</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                quote: "Coming from France, we wanted a unique experience for our wedding. Toca Experience delivered beyond expectations. The music was perfect from ceremony to party!",
-                author: "Sophie & Pierre Laurent",
-                origem: "Paris, France",
-                local: "Praia dos Coqueiros"
-              },
-              {
-                quote: "We flew all our family from the US and Brazil. The DJ understood both cultures perfectly and kept everyone dancing all night. Highly professional!",
-                author: "Jessica & Carlos Mendes",
-                origem: "Miami, USA / São Paulo",
-                local: "UXUA Casa Hotel"
-              }
-            ].map((testimonial, index) => (
-              <Card key={index}>
-                <CardContent className="p-8">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
-                  <div>
-                    <p className="font-semibold flex items-center gap-2">
-                      <Globe className="w-4 h-4 text-blue-600" />
-                      {testimonial.author}
-                    </p>
-                    <p className="text-sm text-gray-500">{testimonial.origem}</p>
-                    <p className="text-xs text-gray-400 mt-1">{testimonial.local}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
         {/* Formulário de Orçamento */}
         <section className="max-w-2xl mx-auto">
           <Card className="border-2 border-purple-200">
@@ -331,7 +278,6 @@ export default function DestinationWedding() {
                 <Calendar className="w-12 h-12 mx-auto mb-4 text-purple-600" />
                 <h2 className="text-3xl font-bold mb-2">Request Your Quote</h2>
                 <p className="text-gray-600">Solicite sua Proposta Personalizada</p>
-                <p className="text-sm text-gray-500 mt-2">Response in 24h • Resposta em 24h</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -439,10 +385,10 @@ export default function DestinationWedding() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white/10"
-                onClick={() => window.open('https://wa.me/5521972824659', '_blank')}
+                onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
+                Solicitar proposta
               </Button>
             </div>
           </div>

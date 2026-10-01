@@ -10,7 +10,7 @@ const TABS = [
     icon: Music2,
     src: "https://open.spotify.com/embed/artist/2r4S2RPdfnx7UPL73jJWlQ?utm_source=generator&theme=0",
     title: "Tony Monteiro no Spotify",
-    subtitle: "Mais de 500 mil streams"
+    subtitle: "Produções oficiais"
   },
   { 
     id: "soundcloud", 

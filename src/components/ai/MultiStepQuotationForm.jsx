@@ -17,7 +17,7 @@ const STEPS = [
 ];
 
 export default function MultiStepQuotationForm({ onClose }) {
-  const { trackFormSubmission, trackWhatsAppClick } = useTracking();
+  const { trackFormSubmission } = useTracking();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     // Step 1
@@ -98,37 +98,9 @@ export default function MultiStepQuotationForm({ onClose }) {
 
       await base44.entities.EventData.create(leadData);
 
-      const message = `*Cotação Multi-Step - Toca Experience*
-
-*👤 CONTATO:*
-Nome: ${formData.nome}
-E-mail: ${formData.email}
-Telefone: ${formData.telefone}
-
-*🎉 EVENTO:*
-Tipo: ${formData.tipoEvento}
-Data: ${formData.data}
-Horário: ${formData.horarioInicio || "Não especificado"}
-Duração: ${formData.duracao || "Não especificado"} horas
-Convidados: ${formData.numeroConvidados || "Não especificado"}
-
-*🎵 PREFERÊNCIAS MUSICAIS:*
-Estilos: ${formData.estilMusical.join(", ") || "Aberto a sugestões"}
-Atmosfera: ${formData.atmosfera || "Não especificado"}
-Momentos Especiais: ${formData.momentosEspeciais || "Nenhum"}
-
-*📍 LOCAL E ORÇAMENTO:*
-Local: ${formData.local || "Não especificado"}
-Localidade: ${formData.localidade || "Não especificado"}
-Estrutura: ${formData.estruturaNecessaria || "Não especificado"}
-Orçamento: ${formData.orcamento || "Não especificado"}`;
 
       trackFormSubmission(formData);
-      trackWhatsAppClick();
-      
-      window.open(`https://wa.me/5521972824659?text=${encodeURIComponent(message)}`, '_blank');
-      
-      toast.success("Cotação enviada!");
+      toast.success("Pedido recebido! Nossa equipe retornará pelo e-mail ou telefone informado.");
       onClose?.();
     } catch (error) {
       toast.error("Erro ao enviar. Tente novamente.");

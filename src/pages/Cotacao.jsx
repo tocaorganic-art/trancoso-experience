@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { openWhatsAppLead } from "@/lib/whatsappLead";
 import { base44 } from "@/api/base44Client";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import MultiStepQuotationForm from "@/components/ai/MultiStepQuotationForm";
@@ -15,7 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export default function Cotacao() {
-  const { trackWhatsAppClick } = useTracking();
+  const { trackFormSubmission } = useTracking();
   const [showMultiStep, setShowMultiStep] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
@@ -64,46 +63,40 @@ export default function Cotacao() {
         a_combinar: "A combinar"
       };
 
-      // Mensagem para WhatsApp
-      const whatsappMessage = `*NOVA COTAÇÃO - Toca Experience*
 
-📋 *DADOS DO CLIENTE:*
-Nome: ${formData.nome}
-Email: ${formData.email}
-Telefone: ${formData.telefone}
+      // Grava o lead na entidade EventData (mesmo caminho dos demais formulários do site).
+      await base44.entities.EventData.create({
+        client_name: formData.nome,
+        client_email: formData.email,
+        client_phone: formData.telefone,
+        event_type: tipoEventoLabels[formData.tipoEvento] || formData.tipoEvento || "não especificado",
+        event_date: formData.data || null,
+        budget_requested: formData.orcamento || "a_combinar",
+        message: [
+          `Horário: ${formData.horarioInicio || "Não informado"}`,
+          `Duração: ${formData.duracao ? formData.duracao + "h" : "Não informada"}`,
+          `Local: ${formData.local || "Não informado"}`,
+          `Convidados: ${formData.numeroConvidados || "Não informado"}`,
+          `Estrutura: ${formData.estrutura || "Não informada"}`,
+          formData.mensagem || ""
+        ].join(". ").trim(),
+        conversion_status: "pending",
+        source: "website"
+      });
 
-🎉 *DETALHES DO EVENTO:*
-Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
-Data: ${formData.data || "Não informada"}
-Horário: ${formData.horarioInicio || "Não informado"}
-Duração: ${formData.duracao ? formData.duracao + "h" : "Não informada"}
-Local: ${formData.local || "Não informado"}
-Convidados: ${formData.numeroConvidados || "Não informado"}
+      // Só chega aqui se o lead foi gravado; o evento não carrega nome, e-mail nem telefone.
+      trackFormSubmission(formData);
 
-💰 *ORÇAMENTO:*
-${orcamentoLabels[formData.orcamento] || "A combinar"}
+      toast.success("Pedido recebido!", {
+        description: "Nossa equipe retornará pelo e-mail ou telefone informado."
+      });
 
-🎛️ *ESTRUTURA:*
-${formData.estrutura || "Não informada"}
-
-💬 *MENSAGEM ADICIONAL:*
-${formData.mensagem || "Nenhuma mensagem adicional"}`;
-
-      // Nada é enviado automaticamente: abrimos o WhatsApp com a mensagem pronta.
-      const opened = openWhatsAppLead(whatsappMessage);
-      if (opened) {
-        trackWhatsAppClick();
-        toast.success("WhatsApp aberto com sua mensagem", {
-          description: "Toque em enviar no WhatsApp para concluir. Seu pedido só chega até nós depois disso."
-        });
-      } else {
-        toast.error("Não conseguimos abrir o WhatsApp", {
-          description: "Verifique se o navegador bloqueou a janela e tente de novo."
-        });
-      }
+      setTimeout(() => {
+        window.location.href = createPageUrl("Obrigado");
+      }, 800);
     } catch (error) {
       console.error("Erro ao processar cotação:", error);
-      toast.error("Erro ao processar cotação. Tente novamente.");
+      toast.error("Não foi possível enviar seu pedido. Tente novamente em instantes.");
     } finally {
       setIsSubmitting(false);
     }

@@ -152,7 +152,7 @@ export const useAutoSEO = (pageName, pageContent) => {
       },
       "Discografia": {
         title: "Discografia Oficial | Tony Monteiro & Enzo Furtado | 500k+ Streams",
-        description: "Ouça as produções oficiais de Tony Monteiro e Enzo Furtado. Mais de 500 mil streams, lançamentos em selos internacionais. Afro House, Organic House e MPB Rock Club.",
+        description: "Ouça as produções oficiais de Tony Monteiro e Enzo Furtado. lançamentos em selos internacionais. Afro House, Organic House e MPB Rock Club.",
         keywords: ["tony monteiro", "enzo furtado", "discografia afro house", "producoes musicais", "spotify"],
         canonical: "https://tocaexperience.com.br/Discografia"
       }
