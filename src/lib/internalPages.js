@@ -24,6 +24,7 @@ export const INTERNAL_PAGES = [
   'RelatorioRastreamento',
   'RelatorioSEO',
   'RelatorioVideoHero',
+  'CampanhaReveillon',
 ];
 
 // Páginas que não devem ser indexadas, mas são públicas (tela de login).

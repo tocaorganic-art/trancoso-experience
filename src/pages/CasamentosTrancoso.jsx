@@ -36,19 +36,8 @@ export default function CasamentosTrancoso() {
         message: `Local: ${formData.localCasamento}. ${formData.mensagem}`
       });
 
-      const whatsappMessage = encodeURIComponent(`*Orçamento DJ Casamento Trancoso*
       
-*Nome:* ${formData.nome}
-*Email:* ${formData.email}
-*Telefone:* ${formData.telefone}
-*Data do Casamento:* ${formData.dataCasamento}
-*Local:* ${formData.localCasamento}
-
-*Mensagem:* ${formData.mensagem}`);
-
-      window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
-      
-      toast.success("Proposta enviada com sucesso!");
+      toast.success("Pedido recebido! Nossa equipe retornará pelo e-mail ou telefone informado.");
       setFormData({ nome: "", email: "", telefone: "", dataCasamento: "", localCasamento: "", mensagem: "" });
     } catch (error) {
       toast.error("Erro ao enviar. Tente novamente.");
@@ -90,7 +79,7 @@ export default function CasamentosTrancoso() {
               Música exclusiva e inesquecível para o dia mais especial da sua vida
             </p>
             <p className="text-gray-500">
-              Equipamentos Pioneer profissionais • Trilha personalizada • 500 mil+ streams • Experiência internacional
+              Equipamentos Pioneer profissionais • Trilha personalizada • Experiência internacional
             </p>
           </motion.div>
         </div>
@@ -116,7 +105,7 @@ export default function CasamentosTrancoso() {
               {
                 icon: Star,
                 title: "Experiência Internacional",
-                description: "Mais de 500 mil streams e apresentações na Polinésia Francesa, Europa e América do Sul"
+                description: "Apresentações na Polinésia Francesa, Europa e América do Sul"
               }
             ].map((benefit, index) => (
               <motion.div
@@ -163,41 +152,6 @@ export default function CasamentosTrancoso() {
           </div>
         </section>
 
-        {/* Depoimentos */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">O Que Dizem Nossos Noivos</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                quote: "A Toca Experience transformou nosso casamento em algo mágico. Do sunset à pista de dança, cada momento tinha a música perfeita. Nossos convidados ainda comentam!",
-                author: "Marina & Pedro",
-                event: "Casamento na Praia do Espelho"
-              },
-              {
-                quote: "Profissionalismo impecável. Tony e Enzo entenderam exatamente o que queríamos e superaram todas as expectativas. A energia na festa foi incrível!",
-                author: "Juliana & Ricardo",
-                event: "Casamento no Quadrado de Trancoso"
-              }
-            ].map((testimonial, index) => (
-              <Card key={index} className="bg-white">
-                <CardContent className="p-8">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-gray-500">{testimonial.event}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
         {/* Formulário de Contato */}
         <section className="max-w-2xl mx-auto">
           <Card>
@@ -205,7 +159,7 @@ export default function CasamentosTrancoso() {
               <div className="text-center mb-8">
                 <Calendar className="w-12 h-12 mx-auto mb-4 text-pink-600" />
                 <h2 className="text-3xl font-bold mb-2">Solicite um Orçamento</h2>
-                <p className="text-gray-600">Preencha o formulário e receba uma proposta personalizada em até 2 horas</p>
+                <p className="text-gray-600">Preencha o formulário e receba uma proposta personalizada</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -387,10 +341,10 @@ export default function CasamentosTrancoso() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white/10"
-                onClick={() => window.open('https://wa.me/5521972824659', '_blank')}
+                onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp Direto
+                Solicitar orçamento
               </Button>
             </div>
           </div>

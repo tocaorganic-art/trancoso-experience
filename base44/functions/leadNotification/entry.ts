@@ -10,7 +10,7 @@ Deno.serve(async (req) => {
     console.log('=== INICIANDO leadNotification ===');
     const base44 = createClientFromRequest(req);
     const data = await req.json();
-    console.log('Dados recebidos:', JSON.stringify(data, null, 2));
+    console.log('Dados recebidos (apenas nomes dos campos):', Object.keys(data || {}));
 
     // Validar dados obrigatórios
     if (!data.client_name || !data.client_email || !data.client_phone) {

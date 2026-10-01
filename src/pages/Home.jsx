@@ -4,14 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Music, Sparkles, Instagram, MessageCircle, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, Calendar as CalendarIcon } from "lucide-react";
+import { Globe, Music, Sparkles, Instagram, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, Calendar as CalendarIcon } from "lucide-react";
 import LGPDConsent from "@/components/compliance/LGPDConsent";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
-import { openWhatsAppLead } from "@/lib/whatsappLead";
 import EcosystemHub from "@/components/layout/EcosystemHub";
 import VideoBackground from "@/components/hero/VideoBackground";
 import OptimizedImage from "@/components/ui/OptimizedImage";
@@ -30,7 +29,7 @@ const FloatingSocialBar = React.lazy(() => import("@/components/layout/FloatingS
 const NewsletterPopup = React.lazy(() => import("@/components/layout/NewsletterPopup"));
 
 export default function Home() {
-  const { trackWhatsAppClick } = useTracking();
+  const { trackFormSubmission } = useTracking();
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -61,7 +60,6 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
-      // Mensagem para WhatsApp
       const tipoEventoLabels = {
         casamento: "Casamento",
         aniversario: "Aniversário",
@@ -84,38 +82,33 @@ export default function Home() {
         a_combinar: "A combinar"
       };
 
-      const whatsappMessage = `*NOVA PROPOSTA - Toca Experience*
 
-    📋 *DADOS DO CLIENTE:*
-    Nome: ${formData.nome}
-    Email: ${formData.email}
-    Telefone: ${formData.telefone}
+      // Grava o lead na entidade EventData (mesmo caminho dos demais formulários do site).
+      await base44.entities.EventData.create({
+        client_name: formData.nome,
+        client_email: formData.email,
+        client_phone: formData.telefone,
+        event_type: tipoEventoLabels[formData.tipoEvento] || formData.tipoEvento || "não especificado",
+        event_date: formData.data || null,
+        budget_requested: formData.orcamento || "a_combinar",
+        message: `Orçamento: ${orcamentoLabels[formData.orcamento] || "A combinar"}. ${formData.mensagem || ""}`.trim(),
+        conversion_status: "pending",
+        source: "website"
+      });
 
-    🎉 *EVENTO:*
-    Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não especificado"}
-    Data: ${formData.data || "Não informada"}
+      // Só chega aqui se o lead foi gravado; o evento não carrega nome, e-mail nem telefone.
+      trackFormSubmission(formData);
 
-    💰 *ORÇAMENTO:*
-    ${orcamentoLabels[formData.orcamento] || "A combinar"}
+      toast.success("Pedido recebido!", {
+        description: "Nossa equipe retornará pelo e-mail ou telefone informado."
+      });
 
-    💬 *MENSAGEM:*
-    ${formData.mensagem || "Sem mensagem adicional"}`;
-
-      // Nada é enviado automaticamente: abrimos o WhatsApp com a mensagem pronta.
-      const opened = openWhatsAppLead(whatsappMessage);
-      if (opened) {
-        trackWhatsAppClick();
-        toast.success("WhatsApp aberto com sua mensagem", {
-          description: "Toque em enviar no WhatsApp para concluir. Seu pedido só chega até nós depois disso."
-        });
-      } else {
-        toast.error("Não conseguimos abrir o WhatsApp", {
-          description: "Verifique se o navegador bloqueou a janela e tente de novo."
-        });
-      }
+      setTimeout(() => {
+        window.location.href = createPageUrl("Obrigado");
+      }, 800);
     } catch (error) {
       console.error("Erro ao processar proposta:", error);
-      toast.error("Erro ao processar proposta. Tente novamente.");
+      toast.error("Não foi possível enviar seu pedido. Tente novamente em instantes.");
     } finally {
       setIsSubmitting(false);
     }
@@ -315,7 +308,7 @@ export default function Home() {
               A música como <strong className="text-gray-700">linguagem universal</strong> que conecta culturas, gerações e experiências. Cada set é uma jornada cuidadosamente construída para criar momentos únicos e memoráveis.
             </p>
             <p className="text-gray-500 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mt-4 px-4">
-              Com mais de <strong className="text-gray-700">500 mil streams</strong> e apresentações em vários países, a Toca Experience leva a energia tropical de Trancoso para palcos internacionais. Fusão entre elementos eletrônicos contemporâneos e <strong className="text-gray-700">brasilidades autênticas</strong>.
+              Com apresentações em vários países, a Toca Experience leva a energia tropical de Trancoso para palcos internacionais. Fusão entre elementos eletrônicos contemporâneos e <strong className="text-gray-700">brasilidades autênticas</strong>.
             </p>
             <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mt-4 font-medium px-4">
               Lideramos eventos e a união de talentos da cena eletrônica global, sempre com foco na qualidade, inovação sonora e excelência técnica com equipamentos Pioneer de última geração.
@@ -344,13 +337,10 @@ export default function Home() {
               </div>
 
               <p className="text-gray-600 mb-6 leading-relaxed">
-                O refinamento global é a marca registrada das produções de Tony Monteiro, que transita com maestria entre <strong className="text-gray-800">Afro House, Organic House e House</strong>. Com residências em clubes de elite pelo Brasil e turnês realizadas pela <strong className="text-gray-800">Polinésia Francesa, Europa e América do Sul</strong>, Tony leva sua assinatura sonora a diferentes culturas e pistas ao redor do mundo. Seu projeto <span className="text-gray-700 font-semibold">MPB Rock Club</span> traduz a alma brasileira em batidas sofisticadas, conectando tradição e modernidade em performances únicas. Com mais de <strong className="text-gray-800">500 mil streams</strong> nas plataformas oficiais, Tony Monteiro consolida-se como presença constante e relevante na cena eletrônica atual.
+                O refinamento global é a marca registrada das produções de Tony Monteiro, que transita com maestria entre <strong className="text-gray-800">Afro House, Organic House e House</strong>. Com residências em clubes de elite pelo Brasil e turnês realizadas pela <strong className="text-gray-800">Polinésia Francesa, Europa e América do Sul</strong>, Tony leva sua assinatura sonora a diferentes culturas e pistas ao redor do mundo. Seu projeto <span className="text-gray-700 font-semibold">MPB Rock Club</span> traduz a alma brasileira em batidas sofisticadas, conectando tradição e modernidade em performances únicas. Nas plataformas oficiais, Tony Monteiro consolida-se como presença constante e relevante na cena eletrônica atual.
               </p>
 
               <div className="flex flex-wrap gap-2">
-                <a href="https://wa.me/5521997731321" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-green-100 text-gray-600 hover:text-green-600 transition-colors" title="WhatsApp">
-                  <MessageCircle className="w-5 h-5" />
-                </a>
                 <a href="https://www.instagram.com/tonyismusic" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-pink-100 text-gray-600 hover:text-pink-600 transition-colors" title="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>

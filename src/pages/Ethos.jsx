@@ -82,7 +82,7 @@ export default function Ethos() {
                 Desde 2015, construímos uma trajetória marcada pela busca constante da <strong className="text-gray-800">excelência artística</strong>. Nossa jornada musical transcende fronteiras geográficas e culturais, levando a energia tropical de Trancoso para palcos internacionais.
               </p>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Com mais de <strong className="text-gray-800">500 mil streams</strong> e apresentações em vários países, estabelecemos residências em clubes renomados do Rio de Janeiro e realizamos turnês pela <strong className="text-gray-800">Polinésia Francesa, Europa e América do Sul</strong>.
+                Com apresentações em vários países, estabelecemos residências em clubes renomados do Rio de Janeiro e realizamos turnês pela <strong className="text-gray-800">Polinésia Francesa, Europa e América do Sul</strong>.
               </p>
             </CardContent>
           </Card>
@@ -355,11 +355,11 @@ export default function Ethos() {
                 Fale com a Toca Experience e crie sua experiência sob medida.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="https://wa.me/5521997731321" target="_blank" rel="noopener noreferrer">
+                <Link to={createPageUrl("Cotacao")}>
                   <Button className="bg-white text-gray-800 hover:bg-gray-100 px-8 py-6 text-lg rounded-full">
-                    Falar no WhatsApp
+                    Solicitar proposta
                   </Button>
-                </a>
+                </Link>
                 <Link to={createPageUrl("Home")}>
                   <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full">
                     Explorar Experiências

@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { toast } from "sonner";
+import { base44 } from "@/api/base44Client";
 import EquipmentGallery from "@/components/equipamentos/EquipmentGallery";
 
 // Equipamentos data
@@ -231,31 +232,34 @@ export default function LocacaoSom() {
       a_definir: "A definir"
     };
 
-    const whatsappMessage = encodeURIComponent(`*🔊 LOCAÇÃO DE EQUIPAMENTOS - Toca Experience*
+    try {
+      await base44.entities.EventData.create({
+        client_name: formData.nome,
+        client_email: formData.email,
+        client_phone: formData.whatsapp,
+        event_type: "locacao_som",
+        event_date: formData.dataEvento || null,
+        message: [
+          `Horário: ${formData.horarioInicio || "?"} às ${formData.horarioTermino || "?"}`,
+          `Endereço: ${formData.endereco || "Não informado"}`,
+          `Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}`,
+          `Convidados: ${formData.convidados || "Não informado"}`,
+          `Pacote: ${pacoteLabels[formData.pacote] || "A definir"}`,
+          `Aceita contato por WhatsApp: ${formData.aceitaWhatsApp ? "Sim" : "Não"}`,
+          formData.mensagem || ""
+        ].join(". ").trim(),
+        conversion_status: "pending",
+        source: "website"
+      });
 
-*📋 DADOS DO CLIENTE:*
-Nome: ${formData.nome}
-E-mail: ${formData.email}
-WhatsApp: ${formData.whatsapp}
-
-*🎉 DETALHES DO EVENTO:*
-Data: ${formData.dataEvento}
-Horário: ${formData.horarioInicio} às ${formData.horarioTermino}
-Endereço: ${formData.endereco}
-Tipo: ${tipoEventoLabels[formData.tipoEvento] || "Não informado"}
-Convidados: ${formData.convidados || "Não informado"}
-Pacote desejado: ${pacoteLabels[formData.pacote] || "A definir"}
-
-*💬 MENSAGEM:*
-${formData.mensagem || "Nenhuma mensagem adicional"}
-
-*✅ Aceita contato por WhatsApp:* ${formData.aceitaWhatsApp ? "Sim" : "Não"}`);
-
-    window.open(`https://wa.me/5521972824659?text=${whatsappMessage}`, '_blank');
-
-    toast.success("Reserva enviada!", {
-      description: "WhatsApp aberto para confirmação."
-    });
+      toast.success("Pedido recebido!", {
+        description: "Nossa equipe retornará pelo e-mail ou telefone informado."
+      });
+    } catch (error) {
+      toast.error("Não foi possível enviar seu pedido. Tente novamente em instantes.");
+      setIsSubmitting(false);
+      return;
+    }
 
     setFormData({
       nome: "",

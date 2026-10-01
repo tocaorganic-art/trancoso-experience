@@ -43,7 +43,7 @@ export default function BookingChatbot() {
         prompt: `Você é o assistente virtual da Toca Experience, um duo de DJs formado por Tony Monteiro e Enzo Furtado, especialistas em Afro House, Organic House e House Music.
 
 INFORMAÇÕES SOBRE O DUO:
-- Tony Monteiro: Refinamento global, residências em clubes de elite, turnês internacionais (Polinésia Francesa, Europa, América do Sul), projeto MPB Rock Club, +500 mil streams
+- Tony Monteiro: Refinamento global, residências em clubes de elite, turnês internacionais (Polinésia Francesa, Europa, América do Sul), projeto MPB Rock Club
 - Enzo Furtado: 5 anos em Trancoso (Zé Barbudo, Estrela D'Água), atualmente em São Paulo, especialista em Afro House e texturas orgânicas
 
 INFORMAÇÕES FREQUENTES:
@@ -58,7 +58,7 @@ REGRAS:
 2. Responda em português brasileiro
 3. Para orçamentos específicos, direcione ao formulário de proposta
 4. Mantenha respostas concisas (máx 3 frases)
-5. Se não souber algo específico, sugira contato direto via WhatsApp
+5. Se não souber algo específico, sugira o formulário de proposta do site ou o e-mail eventos@tocaexperience.com.br
 
 Mensagem do cliente: "${userMessage}"
 
@@ -80,7 +80,7 @@ Responda de forma útil e direcione para ação quando apropriado:`,
     } catch (error) {
       setMessages(prev => [...prev, { 
         role: "assistant", 
-        content: "Desculpe, tive um problema. Tente novamente ou entre em contato pelo WhatsApp!" 
+        content: "Desculpe, tive um problema. Tente novamente ou escreva para eventos@tocaexperience.com.br." 
       }]);
     } finally {
       setIsLoading(false);

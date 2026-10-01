@@ -25,7 +25,7 @@ Deno.serve(async (req) => {
       console.error('BREVO_API_KEY não encontrada no ambiente');
       throw new Error('BREVO_API_KEY não configurada');
     }
-    console.log('BREVO_API_KEY configurada:', BREVO_API_KEY.substring(0, 10) + '...');
+    console.log('BREVO_API_KEY configurada: sim');
 
     // Configuração do email - sender SEMPRE fixo (não usar email do cliente)
     const emailPayload = {
@@ -44,7 +44,7 @@ Deno.serve(async (req) => {
     const sendWithRetry = async (attempt = 1, maxAttempts = 3) => {
       try {
         console.log(`Tentativa ${attempt} de ${maxAttempts} - Enviando para Brevo...`);
-        console.log('Payload:', JSON.stringify(emailPayload, null, 2));
+        console.log('Enviando e-mail:', { subject: emailPayload.subject });
         
         const response = await fetch('https://api.brevo.com/v3/smtp/email', {
           method: 'POST',

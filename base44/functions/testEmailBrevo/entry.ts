@@ -10,7 +10,6 @@ Deno.serve(async (req) => {
     
     const BREVO_API_KEY = Deno.env.get('BREVO_API_KEY');
     console.log('BREVO_API_KEY existe?', !!BREVO_API_KEY);
-    console.log('Primeiros 10 chars:', BREVO_API_KEY?.substring(0, 10));
 
     const emailPayload = {
       sender: {
@@ -24,7 +23,7 @@ Deno.serve(async (req) => {
       htmlContent: "<h1>Email de teste</h1><p>Se você está lendo isso, o Brevo está funcionando!</p>"
     };
 
-    console.log('Payload:', JSON.stringify(emailPayload, null, 2));
+    console.log('Enviando e-mail de teste:', { subject: emailPayload.subject });
 
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',

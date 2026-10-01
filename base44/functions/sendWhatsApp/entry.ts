@@ -19,8 +19,14 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
     
-    // Verifica autenticação (opcional)
+    // Somente administrador autenticado pode disparar mensagens pela conta de WhatsApp Business.
     const user = await base44.auth.me().catch(() => null);
+    if (!user) {
+      return Response.json({ success: false, error: 'Não autenticado' }, { status: 401 });
+    }
+    if (user.role !== 'admin') {
+      return Response.json({ success: false, error: 'Acesso restrito a administradores' }, { status: 403 });
+    }
     
     const { phone, message } = await req.json();
     

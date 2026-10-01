@@ -47,7 +47,6 @@ export default function CompartilharTodos({ eventos }) {
 
     texto += `━━━━━━━━━━━━━━━━━━━━\n`;
     texto += `🌐 Mais informações: ${window.location.href}\n`;
-    texto += `📱 WhatsApp: +55 21 99773-1321\n`;
     texto += `\n✨ *TOCA EXPERIENCE* - Experiências Exclusivas`;
 
     return texto;

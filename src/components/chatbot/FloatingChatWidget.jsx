@@ -60,7 +60,6 @@ Informações importantes:
 - Valores a partir de R$ 15.000 para eventos em Trancoso
 - Especializados em casamentos, festivais, eventos corporativos, réveillon
 - Equipamentos Pioneer de última geração
-- Mais de 500 mil streams nas plataformas
 - Contato: (21) 97282-4659
 
 Usuário pergunta: ${text}
@@ -68,7 +67,7 @@ Usuário pergunta: ${text}
 Responda de forma amigável, objetiva e útil em até 2 parágrafos. Se for sobre preços, sugira preencher o formulário de cotação.`,
           add_context_from_internet: false
         });
-        response = aiResponse || 'Desculpe, não entendi sua pergunta. Pode reformular? Ou fale diretamente com nossa equipe via WhatsApp: (73) 98283-579';
+        response = aiResponse || 'Desculpe, não entendi sua pergunta. Pode reformular? Ou escreva para eventos@tocaexperience.com.br';
       }
 
       setTimeout(() => {
@@ -79,7 +78,7 @@ Responda de forma amigável, objetiva e útil em até 2 parágrafos. Se for sobr
       setTimeout(() => {
         setMessages(prev => [...prev, { 
           role: 'assistant', 
-          content: 'Ops, tive um problema. Mas você pode falar diretamente conosco via WhatsApp: (21) 97282-4659' 
+          content: 'Ops, tive um problema. Mas você pode falar conosco por eventos@tocaexperience.com.br' 
         }]);
         setIsTyping(false);
       }, 500);
