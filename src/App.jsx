@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import AdminProtectedRoute from '@/components/admin/ProtectedRoute';
+import { isInternalPage } from '@/lib/internalPages';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -55,7 +57,7 @@ const AuthenticatedApp = () => {
           path={`/${path}`}
           element={
             <LayoutWrapper currentPageName={path}>
-              <Page />
+              {isInternalPage(path) ? <AdminProtectedRoute><Page /></AdminProtectedRoute> : <Page />}
             </LayoutWrapper>
           }
         />

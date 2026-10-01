@@ -5,6 +5,7 @@ import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar, Newspaper, Disc3, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
+import { isNoIndexPage } from "@/lib/internalPages";
 
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
@@ -52,8 +53,7 @@ export default function Layout({ children, currentPageName }) {
       robotsMeta.name = 'robots';
       document.head.appendChild(robotsMeta);
     }
-    const noIndexPages = ["AdminDashboard", "AdminLogin", "RelatorioImplementacao"];
-    robotsMeta.content = noIndexPages.includes(currentPageName) 
+    robotsMeta.content = isNoIndexPage(currentPageName) 
       ? 'noindex, nofollow' 
       : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
@@ -269,13 +269,6 @@ export default function Layout({ children, currentPageName }) {
         "latitude": "-16.5917",
         "longitude": "-39.0736"
       },
-      "priceRange": "$$$$",
-      "openingHours": "Mo-Su 00:00-23:59",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "47"
-      }
     });
 
     // Service Schema
