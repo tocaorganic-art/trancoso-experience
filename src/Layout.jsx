@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Newspaper, Disc3, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 import { isNoIndexPage } from "@/lib/internalPages";
+import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
+import { ECOSYSTEM_LINKS } from "@/components/layout/EcosystemHub";
 
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
@@ -57,24 +59,7 @@ export default function Layout({ children, currentPageName }) {
       ? 'noindex, nofollow' 
       : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
-    // Preload Critical Fonts for better Core Web Vitals (FCP, LCP)
-    const fonts = [
-      { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2', type: 'font/woff2' },
-      { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2', type: 'font/woff2' }
-    ];
-
-    fonts.forEach(font => {
-      let preloadLink = document.querySelector(`link[rel="preload"][href="${font.href}"]`);
-      if (!preloadLink) {
-        preloadLink = document.createElement('link');
-        preloadLink.rel = 'preload';
-        preloadLink.as = 'font';
-        preloadLink.type = font.type;
-        preloadLink.href = font.href;
-        preloadLink.crossOrigin = 'anonymous';
-        document.head.appendChild(preloadLink);
-      }
-    });
+    // Fontes (Nunito Sans/Newsreader) são auto-hospedadas e carregadas via CSS (font-display: swap).
 
     // Resource Hints - DNS prefetch + Preconnect para CDNs críticos
     const prefetchDomains = [
@@ -582,6 +567,23 @@ export default function Layout({ children, currentPageName }) {
                     <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
                   </Button>
                   </Link>
+                {ECOSYSTEM_LINKS.filter((i) => !i.current).map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${item.name} (abre em nova aba)`}
+                  >
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide"
+                    >
+                      {item.name.toUpperCase()}
+                    </Button>
+                  </a>
+                ))}
                   </div>
                   </div>
             </div>
@@ -601,9 +603,7 @@ export default function Layout({ children, currentPageName }) {
                 className="h-10 w-auto"
               />
             </div>
-            <p className="text-gray-500 text-xs">
-              © 2024 Toca Experience. Todos os direitos reservados.
-            </p>
+            <SiteFooterInfo />
             <div className="mt-3">
               <a
                 href="https://wa.me/5521972824659"

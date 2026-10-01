@@ -12,6 +12,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 import { openWhatsAppLead } from "@/lib/whatsappLead";
+import EcosystemHub from "@/components/layout/EcosystemHub";
 import VideoBackground from "@/components/hero/VideoBackground";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 import CriticalCSS from "@/components/performance/CriticalCSS";
@@ -434,6 +435,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Hub: marcas e serviços Toca */}
+      <EcosystemHub />
+
       {/* Contact Form - Premium Clean */}
       <section id="contato" className="py-24 bg-gradient-to-br from-white via-gray-50/30 to-white">
         <div className="container mx-auto px-6">
@@ -566,34 +570,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 border-t border-gray-200/60 bg-white pb-24">
-        <div className="container mx-auto px-6 text-center">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
-              alt="Toca Experience"
-              className="h-12 w-auto"
-            />
-          </div>
-          <p className="text-gray-600 font-medium mb-2">
-            Toca Experience — Experiências Exclusivas em Trancoso
-          </p>
-          <div className="flex justify-center gap-3 mb-4 text-xs">
-            <RouterLink to={createPageUrl("PoliticaPrivacidade")} className="text-gray-500 hover:text-gray-800 underline">
-              Política de Privacidade
-            </RouterLink>
-            <span className="text-gray-400">•</span>
-            <RouterLink to={createPageUrl("TermosServico")} className="text-gray-500 hover:text-gray-800 underline">
-              Termos de Serviço
-            </RouterLink>
-          </div>
-          <p className="text-gray-400 text-xs">
-            © 2024 Toca Experience. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
 
       {/* Floating Social Bar */}
       <React.Suspense fallback={null}>
