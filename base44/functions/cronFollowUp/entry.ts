@@ -26,11 +26,11 @@ Deno.serve(async (req) => {
 
     for (const lead of leads) {
       const createdDate = new Date(lead.created_date);
-      const hoursS inceCreation = (now - createdDate) / (1000 * 60 * 60);
+      const hoursSinceCreation = (now - createdDate) / (1000 * 60 * 60);
 
       try {
         // Trigger 1h: Confirmação
-        if (hoursS inceCreation >= 1 && hoursSinceCreation < 1.1) {
+        if (hoursSinceCreation >= 1 && hoursSinceCreation < 1.1) {
           await sendConfirmationEmail(base44, lead);
           results.push({ lead_id: lead.id, action: 'confirmation', status: 'sent' });
         }
