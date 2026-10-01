@@ -58,7 +58,7 @@ export default function TesteRastreamento() {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
               <div 
-                className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500"
+                className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500 text-white"
                 style={{ width: `${porcentagem}%` }}
               />
             </div>
@@ -133,7 +133,7 @@ export default function TesteRastreamento() {
                   type="checkbox"
                   checked={checklist.testeFormulario}
                   onChange={() => toggleCheckbox("testeFormulario")}
-                  className="mt-1 w-5 h-5 text-green-600"
+                  className="mt-1 w-5 h-5 text-green-700"
                 />
                 <div className="flex-1">
                   <h3 className="font-bold text-gray-900 mb-2">
@@ -143,7 +143,7 @@ export default function TesteRastreamento() {
                     Preencha e envie o formulário para gerar a conversão
                   </p>
                   <Link to={createPageUrl("Cotacao")}>
-                    <Button className="bg-green-600 hover:bg-green-700 text-white">
+                    <Button className="bg-green-700 hover:bg-green-800 text-white">
                       Ir para Formulário de Cotação
                     </Button>
                   </Link>

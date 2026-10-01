@@ -134,7 +134,7 @@ export default function PreSaveBanner() {
               </button>
               <button
                 onClick={() => handleShare("whatsapp")}
-                className="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition-colors"
+                className="bg-green-700 hover:bg-green-800 text-white p-2 rounded-full transition-colors"
                 title="WhatsApp"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

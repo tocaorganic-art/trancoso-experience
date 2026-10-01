@@ -98,7 +98,7 @@ export default function Obrigado() {
               Alguma dúvida urgente?
             </p>
             <p className="text-gray-700">
-              Email: <a href="mailto:eventos@tocaexperience.com.br" className="text-green-600 hover:underline">eventos@tocaexperience.com.br</a>
+              Email: <a href="mailto:eventos@tocaexperience.com.br" className="text-green-700 hover:underline">eventos@tocaexperience.com.br</a>
             </p>
           </div>
         </div>

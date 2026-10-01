@@ -31,7 +31,7 @@ export default function DeployGuide() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <CheckCircle className="w-5 h-5 text-green-600" />
+            <CheckCircle className="w-5 h-5 text-green-700" />
             Passo 1: Pre-Deploy Checklist
           </CardTitle>
         </CardHeader>
@@ -40,23 +40,23 @@ export default function DeployGuide() {
             <p className="text-sm text-gray-600 mb-4">Verifique antes de fazer deploy:</p>
             <div className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                 <span>✅ Todas as secrets configuradas (BREVO_API_KEY, MAILCHIMP_API_KEY)</span>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                 <span>✅ Testes manuais realizados (formulário, chatbot, admin)</span>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                 <span>✅ Entities criadas (EventData, AdminUser, ABTest, etc)</span>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                 <span>✅ Backend functions testadas (leadNotification, adminAuth, etc)</span>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                 <span>✅ Performance validada (Core Web Vitals)</span>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function DeployGuide() {
 
               <div className="flex items-start gap-3">
                 <div className="bg-green-100 rounded-full p-1 flex-shrink-0">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-700" />
                 </div>
                 <div>
                   <strong className="text-gray-900">Formulários</strong>
@@ -234,14 +234,14 @@ export default function DeployGuide() {
       {/* Success Message */}
       <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
         <CardContent className="p-6 text-center">
-          <Rocket className="w-12 h-12 mx-auto mb-3 text-green-600" />
+          <Rocket className="w-12 h-12 mx-auto mb-3 text-green-700" />
           <h3 className="text-xl font-bold text-gray-900 mb-2">
             🎉 Pronto para Deploy!
           </h3>
           <p className="text-sm text-gray-600 mb-4">
             Seu sistema Toca Experience está configurado e testado. Deploy via Base44 é automático.
           </p>
-          <Button className="bg-green-600 hover:bg-green-700">
+          <Button className="bg-green-700 hover:bg-green-800">
             Acessar Base44 Dashboard
           </Button>
         </CardContent>

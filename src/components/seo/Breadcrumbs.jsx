@@ -7,16 +7,16 @@ import { ChevronRight, Home } from "lucide-react";
  * Breadcrumbs Component - Melhora UX e SEO
  * Exibe navegação hierárquica da página atual
  */
-export default function Breadcrumbs({ items }) {
+export default function Breadcrumbs({ items, dark = false }) {
   if (!items || items.length === 0) return null;
 
   return (
-    <nav aria-label="breadcrumb" className="py-4">
-      <ol className="flex items-center gap-2 text-sm text-gray-600" itemScope itemType="https://schema.org/BreadcrumbList">
+    <nav aria-label="Você está em" className="py-4">
+      <ol className={"flex items-center gap-2 text-sm " + (dark ? "text-[#E4D5BE]" : "text-gray-600")} itemScope itemType="https://schema.org/BreadcrumbList">
         <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
           <Link 
             to={createPageUrl("Home")} 
-            className="flex items-center gap-1 hover:text-gray-900 transition-colors"
+            className={"flex items-center gap-1 transition-colors " + (dark ? "hover:text-white" : "hover:text-gray-900")}
             itemProp="item"
           >
             <Home className="w-4 h-4" />
@@ -33,13 +33,13 @@ export default function Breadcrumbs({ items }) {
           
           return (
             <React.Fragment key={index}>
-              <ChevronRight className="w-4 h-4 text-gray-400" />
               <li 
                 itemProp="itemListElement" 
                 itemScope 
                 itemType="https://schema.org/ListItem"
-                className={isLast ? "text-gray-900 font-medium" : ""}
+                className={"flex items-center gap-2 " + (isLast ? (dark ? "text-white font-medium" : "text-gray-900 font-medium") : "")}
               >
+                <ChevronRight className="w-4 h-4 text-gray-500" aria-hidden="true" />
                 {isLast ? (
                   <>
                     <span itemProp="name">{item.label}</span>
@@ -48,7 +48,7 @@ export default function Breadcrumbs({ items }) {
                 ) : target ? (
                   <Link 
                     to={target} 
-                    className="hover:text-gray-900 transition-colors"
+                    className={dark ? "hover:text-white transition-colors underline-offset-4 hover:underline" : "hover:text-gray-900 transition-colors"}
                     itemProp="item"
                   >
                     <span itemProp="name">{item.label}</span>

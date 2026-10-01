@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { 
   ArrowLeft, Target, TrendingUp, Users, DollarSign, 
-  Instagram, Facebook, Mail, CheckCircle, Zap, Star 
+  Instagram, CheckCircle, Zap, Star 
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function CampanhaReveillon() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 py-12">
+      <div className="bg-gradient-to-r from-purple-600 to-pink-600 py-12 text-white">
         <div className="container mx-auto px-6">
           <Link to={createPageUrl("AdminDashboard")}>
             <Button variant="ghost" className="text-white/80 hover:text-white mb-6">
@@ -53,9 +53,9 @@ export default function CampanhaReveillon() {
 
             <Card>
               <CardContent className="p-6">
-                <Target className="w-12 h-12 text-green-600 mb-4" />
+                <Target className="w-12 h-12 text-green-700 mb-4" />
                 <h3 className="text-xl font-bold mb-2">Conversão</h3>
-                <p className="text-3xl font-bold text-green-600 mb-2">5%</p>
+                <p className="text-3xl font-bold text-green-700 mb-2">5%</p>
                 <p className="text-gray-600">Taxa de conversão no formulário de Ano Novo</p>
               </CardContent>
             </Card>
@@ -90,15 +90,15 @@ export default function CampanhaReveillon() {
                     <h4 className="font-bold mb-2">🎯 Público Principal</h4>
                     <ul className="space-y-2 text-gray-600">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span>Alto poder aquisitivo (renda familiar 30k+)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span>Interesses: Luxo, viagens, destination weddings</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span>Idade: 28-55 anos</span>
                       </li>
                     </ul>
@@ -108,15 +108,15 @@ export default function CampanhaReveillon() {
                     <h4 className="font-bold mb-2">📍 Geolocalização</h4>
                     <ul className="space-y-2 text-gray-600">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span>Primário: Trancoso, Caraíva, Arraial d'Ajuda</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span>Secundário: São Paulo, Rio de Janeiro</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span>Internacional: Miami, NYC, Europa</span>
                       </li>
                     </ul>
@@ -165,7 +165,7 @@ export default function CampanhaReveillon() {
         {/* Budget & Planejamento */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <DollarSign className="w-8 h-8 text-green-600" />
+            <DollarSign className="w-8 h-8 text-green-700" />
             Orçamento e Distribuição
           </h2>
 
@@ -189,7 +189,7 @@ export default function CampanhaReveillon() {
                     </div>
                     <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
                       <span className="font-medium">Influencer Marketing</span>
-                      <span className="font-bold text-green-600">5%</span>
+                      <span className="font-bold text-green-700">5%</span>
                     </div>
                   </div>
                 </div>
@@ -198,14 +198,14 @@ export default function CampanhaReveillon() {
                   <h3 className="text-xl font-bold mb-4">Timeline da Campanha</h3>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-purple-600 mt-2"></div>
+                      <div className="w-2 h-2 rounded-full bg-purple-600 mt-2 text-white"></div>
                       <div>
                         <p className="font-bold">Semana 1-2 (Nov 25 - Dez 8)</p>
                         <p className="text-sm text-gray-600">Setup de campanha, criação de criativos</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-600 mt-2"></div>
+                      <div className="w-2 h-2 rounded-full bg-blue-600 mt-2 text-white"></div>
                       <div>
                         <p className="font-bold">Semana 3-4 (Dez 9-22)</p>
                         <p className="text-sm text-gray-600">Lançamento da campanha, teste A/B</p>
@@ -294,7 +294,7 @@ export default function CampanhaReveillon() {
                   </Button>
                 </Link>
                 <Link to={createPageUrl("Cotacao")}>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
                     Formulário de Cotação
                   </Button>
                 </Link>

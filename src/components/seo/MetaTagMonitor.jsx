@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { CheckCircle, AlertTriangle, XCircle, History, RefreshCw } from "lucide-react";
+import { CheckCircle, AlertTriangle, XCircle, History } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -82,14 +81,14 @@ export default function MetaTagMonitor() {
 
   const getTitleLength = (title) => {
     const len = title?.length || 0;
-    if (len >= 50 && len <= 60) return { color: "text-green-600", status: "Ideal" };
+    if (len >= 50 && len <= 60) return { color: "text-green-700", status: "Ideal" };
     if (len >= 40 && len <= 70) return { color: "text-yellow-600", status: "Aceitável" };
     return { color: "text-red-600", status: len < 40 ? "Muito curto" : "Muito longo" };
   };
 
   const getDescLength = (desc) => {
     const len = desc?.length || 0;
-    if (len >= 140 && len <= 160) return { color: "text-green-600", status: "Ideal" };
+    if (len >= 140 && len <= 160) return { color: "text-green-700", status: "Ideal" };
     if (len >= 100 && len <= 180) return { color: "text-yellow-600", status: "Aceitável" };
     return { color: "text-red-600", status: len < 100 ? "Muito curto" : "Muito longo" };
   };
@@ -100,7 +99,7 @@ export default function MetaTagMonitor() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="bg-green-50 border-green-200">
           <CardContent className="p-4 text-center">
-            <p className="text-3xl font-bold text-green-600">
+            <p className="text-3xl font-bold text-green-700">
               {PAGES_META.filter(p => p.issues.length === 0).length}
             </p>
             <p className="text-sm text-green-700">Páginas Otimizadas</p>

@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, ArrowLeft, Sparkles, Zap, Image, Accessibility, TrendingUp } from "lucide-react";
+import { CheckCircle2, ArrowLeft, Sparkles, Zap, Accessibility, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
@@ -174,7 +174,7 @@ export default function RelatorioFinal() {
         </div>
 
         {/* Resumo Técnico */}
-        <Card className="mt-12 bg-gradient-to-r from-blue-900/50 to-purple-900/50 border-blue-700">
+        <Card className="mt-12 bg-gradient-to-r from-blue-900/50 to-purple-900/50 border-blue-700 text-white">
           <CardHeader>
             <CardTitle className="text-2xl text-white">📋 Resumo Técnico</CardTitle>
           </CardHeader>

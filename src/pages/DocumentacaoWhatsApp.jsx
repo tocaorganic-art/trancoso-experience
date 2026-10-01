@@ -61,7 +61,7 @@ export default function DocumentacaoWhatsApp() {
             <Card className="border-green-200">
               <CardContent className="p-6">
                 <div className="flex items-start gap-3 mb-4">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-green-700 flex-shrink-0" />
                   <div>
                     <h3 className="font-bold text-lg mb-2">WhatsApp Business API (Oficial)</h3>
                     <p className="text-sm text-gray-600 mb-3">
@@ -71,20 +71,20 @@ export default function DocumentacaoWhatsApp() {
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-700" />
                     <span>Gratuito até 1.000 conversas/mês</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-700" />
                     <span>Número verificado com selo verde</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-700" />
                     <span>Suporte oficial do Meta</span>
                   </div>
                 </div>
                 <Button 
-                  className="w-full mt-4 bg-green-600 hover:bg-green-700"
+                  className="w-full mt-4 bg-green-700 hover:bg-green-800"
                   onClick={() => window.open('https://business.facebook.com/wa/manage/phone-numbers/', '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
@@ -119,7 +119,7 @@ export default function DocumentacaoWhatsApp() {
                   </div>
                 </div>
                 <Button 
-                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
+                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white"
                   onClick={() => window.open('https://www.twilio.com/whatsapp', '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
@@ -335,11 +335,11 @@ export default function DocumentacaoWhatsApp() {
                     </p>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-700" />
                         <span>Email em eventos@tocaexperience.com.br</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-700" />
                         <span>Mensagem WhatsApp automática (sem abrir interface)</span>
                       </li>
                     </ul>
@@ -497,7 +497,7 @@ export default function DocumentacaoWhatsApp() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg"
-                className="bg-white text-green-600 hover:bg-gray-100"
+                className="bg-white text-green-700 hover:bg-gray-100"
                 onClick={() => window.open('https://business.facebook.com/wa/manage/phone-numbers/', '_blank')}
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
@@ -506,7 +506,7 @@ export default function DocumentacaoWhatsApp() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="bg-transparent border-white text-white hover:bg-white/10"
                 onClick={() => window.open('https://developers.facebook.com/docs/whatsapp/cloud-api/get-started', '_blank')}
               >
                 Ver Documentação Oficial

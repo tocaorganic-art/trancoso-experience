@@ -4,7 +4,7 @@ import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MessageCircle, Trash2, CheckCircle, Calendar, User, Phone, Mail, AlertTriangle } from "lucide-react";
+import { MessageCircle, Trash2, CheckCircle, Calendar, Phone, Mail, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -209,7 +209,7 @@ Vou preparar uma proposta exclusiva para você! Podemos conversar melhor?`;
                   <div className="flex gap-2">
                     <Button 
                       onClick={() => handleWhatsApp(lead)}
-                      className="bg-green-600 hover:bg-green-700"
+                      className="bg-green-700 hover:bg-green-800"
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
                       Contactar WhatsApp
@@ -258,7 +258,7 @@ Vou preparar uma proposta exclusiva para você! Podemos conversar melhor?`;
                       <div>
                         <div className="flex items-center gap-2 mb-2">
                           <h4 className="font-bold text-lg">{lead.client_name}</h4>
-                          <Badge className="bg-blue-600">Contactado</Badge>
+                          <Badge className="bg-blue-600 text-white">Contactado</Badge>
                         </div>
                         <div className="space-y-1 text-sm text-gray-600">
                           <p>{lead.client_email} • {lead.client_phone}</p>

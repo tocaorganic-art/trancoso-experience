@@ -8,7 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Music, Speaker, Lightbulb, Check, ArrowLeft, ChevronDown,
-  Disc3, Volume2, Zap, Star, MessageCircle, Clock, Truck, Shield, Image as ImageIcon
+  Disc3, Volume2, Zap, Star, Clock, Truck, Shield, Image as ImageIcon
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
@@ -285,7 +285,7 @@ export default function LocacaoSom() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl text-white" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative">
@@ -340,7 +340,7 @@ export default function LocacaoSom() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-6 text-lg rounded-full"
+              className="h-auto max-w-full whitespace-normal text-center bg-gradient-to-r from-orange-700 to-pink-600 hover:from-orange-800 hover:to-pink-700 text-white px-8 py-6 text-lg rounded-full"
             >
               Solicitar orçamento agora
               <ChevronDown className="ml-2 w-5 h-5" />
@@ -367,7 +367,7 @@ export default function LocacaoSom() {
             <Button
               onClick={() => setGalleryOpen(true)}
               variant="outline"
-              className="border-orange-500 text-orange-500 hover:bg-orange-500/10"
+              className="h-auto max-w-full whitespace-normal text-center border-orange-500 text-orange-500 hover:bg-orange-500/10"
             >
               <ImageIcon className="w-4 h-4 mr-2" />
               Ver Galeria Completa com Zoom
@@ -478,7 +478,7 @@ export default function LocacaoSom() {
                       onClick={scrollToForm}
                       size="lg"
                       className={`w-full py-6 text-base font-semibold rounded-xl ${pacote.destaque 
-                        ? 'bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 shadow-lg' 
+                        ? 'bg-gradient-to-r from-orange-700 to-pink-600 hover:from-orange-800 hover:to-pink-700 shadow-lg' 
                         : 'bg-gray-700 hover:bg-gray-600 border border-gray-500'}`}
                     >
                       Solicitar este pacote
@@ -549,7 +549,7 @@ export default function LocacaoSom() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-10 py-7 text-lg font-semibold rounded-full shadow-xl hover:shadow-orange-500/30 transition-all"
+              className="h-auto max-w-full whitespace-normal text-center bg-gradient-to-r from-orange-700 to-pink-600 hover:from-orange-800 hover:to-pink-700 text-white px-10 py-7 text-lg font-semibold rounded-full shadow-xl hover:shadow-orange-500/30 transition-all"
             >
               Solicitar orçamento e disponibilidade
             </Button>
@@ -579,8 +579,8 @@ export default function LocacaoSom() {
               {/* Dados pessoais */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Nome completo *</label>
-                  <Input
+                  <label htmlFor="loc-nome-completo" className="block text-sm text-gray-400 mb-2">Nome completo *</label>
+                  <Input id="loc-nome-completo"
                     required
                     value={formData.nome}
                     onChange={(e) => setFormData({...formData, nome: e.target.value})}
@@ -589,8 +589,8 @@ export default function LocacaoSom() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">E-mail *</label>
-                  <Input
+                  <label htmlFor="loc-e-mail" className="block text-sm text-gray-400 mb-2">E-mail *</label>
+                  <Input id="loc-e-mail"
                     required
                     type="email"
                     value={formData.email}
@@ -602,8 +602,8 @@ export default function LocacaoSom() {
               </div>
 
               <div>
-                <label className="block text-sm text-gray-400 mb-2">WhatsApp *</label>
-                <Input
+                <label htmlFor="loc-whatsapp" className="block text-sm text-gray-400 mb-2">WhatsApp *</label>
+                <Input id="loc-whatsapp"
                   required
                   value={formData.whatsapp}
                   onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
@@ -615,8 +615,8 @@ export default function LocacaoSom() {
               {/* Detalhes do evento */}
               <div className="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Data do evento</label>
-                  <Input
+                  <label htmlFor="loc-data-do-evento" className="block text-sm text-gray-400 mb-2">Data do evento</label>
+                  <Input id="loc-data-do-evento"
                     type="date"
                     value={formData.dataEvento}
                     onChange={(e) => setFormData({...formData, dataEvento: e.target.value})}
@@ -624,8 +624,8 @@ export default function LocacaoSom() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Horário de início</label>
-                  <Input
+                  <label htmlFor="loc-horario-de-inicio" className="block text-sm text-gray-400 mb-2">Horário de início</label>
+                  <Input id="loc-horario-de-inicio"
                     type="time"
                     value={formData.horarioInicio}
                     onChange={(e) => setFormData({...formData, horarioInicio: e.target.value})}
@@ -633,8 +633,8 @@ export default function LocacaoSom() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Horário de término</label>
-                  <Input
+                  <label htmlFor="loc-horario-de-termino" className="block text-sm text-gray-400 mb-2">Horário de término</label>
+                  <Input id="loc-horario-de-termino"
                     type="time"
                     value={formData.horarioTermino}
                     onChange={(e) => setFormData({...formData, horarioTermino: e.target.value})}
@@ -644,8 +644,8 @@ export default function LocacaoSom() {
               </div>
 
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Endereço do evento</label>
-                <Input
+                <label htmlFor="loc-endereco-do-evento" className="block text-sm text-gray-400 mb-2">Endereço do evento</label>
+                <Input id="loc-endereco-do-evento"
                   value={formData.endereco}
                   onChange={(e) => setFormData({...formData, endereco: e.target.value})}
                   className="bg-gray-900 border-gray-600 text-white"
@@ -655,9 +655,9 @@ export default function LocacaoSom() {
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Tipo de evento</label>
+                  <label htmlFor="loc-tipo-de-evento" className="block text-sm text-gray-400 mb-2">Tipo de evento</label>
                   <Select value={formData.tipoEvento} onValueChange={(v) => setFormData({...formData, tipoEvento: v})}>
-                    <SelectTrigger className="bg-gray-900 border-gray-600 text-white">
+                    <SelectTrigger id="loc-tipo-de-evento" className="bg-gray-900 border-gray-600 text-white">
                       <SelectValue placeholder="Selecione" />
                     </SelectTrigger>
                     <SelectContent>
@@ -670,8 +670,8 @@ export default function LocacaoSom() {
                   </Select>
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Nº de convidados</label>
-                  <Input
+                  <label htmlFor="loc-no-de-convidados" className="block text-sm text-gray-400 mb-2">Nº de convidados</label>
+                  <Input id="loc-no-de-convidados"
                     value={formData.convidados}
                     onChange={(e) => setFormData({...formData, convidados: e.target.value})}
                     className="bg-gray-900 border-gray-600 text-white"
@@ -679,9 +679,9 @@ export default function LocacaoSom() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Pacote desejado</label>
+                  <label htmlFor="loc-pacote-desejado" className="block text-sm text-gray-400 mb-2">Pacote desejado</label>
                   <Select value={formData.pacote} onValueChange={(v) => setFormData({...formData, pacote: v})}>
-                    <SelectTrigger className="bg-gray-900 border-gray-600 text-white">
+                    <SelectTrigger id="loc-pacote-desejado" className="bg-gray-900 border-gray-600 text-white">
                       <SelectValue placeholder="Selecione" />
                     </SelectTrigger>
                     <SelectContent>
@@ -695,8 +695,8 @@ export default function LocacaoSom() {
               </div>
 
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Conte mais sobre o seu evento</label>
-                <Textarea
+                <label htmlFor="loc-conte-mais-sobre-o-seu-evento" className="block text-sm text-gray-400 mb-2">Conte mais sobre o seu evento</label>
+                <Textarea id="loc-conte-mais-sobre-o-seu-evento"
                   value={formData.mensagem}
                   onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
                   className="bg-gray-900 border-gray-600 text-white min-h-[100px]"
@@ -733,7 +733,7 @@ export default function LocacaoSom() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white py-6 text-lg rounded-xl"
+                className="w-full bg-gradient-to-r from-orange-700 to-pink-600 hover:from-orange-800 hover:to-pink-700 text-white py-6 text-lg rounded-xl"
               >
                 {isSubmitting ? "Enviando..." : "Enviar reserva"}
               </Button>

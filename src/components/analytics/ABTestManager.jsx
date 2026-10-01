@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -73,7 +73,7 @@ export default function ABTestManager() {
               <CardTitle className="flex items-center justify-between">
                 <span>{test.name}</span>
                 {metrics.significance === 'Significativo' && (
-                  <span className="text-sm font-normal text-green-600">✓ {metrics.significance}</span>
+                  <span className="text-sm font-normal text-green-700">✓ {metrics.significance}</span>
                 )}
               </CardTitle>
             </CardHeader>
@@ -83,7 +83,7 @@ export default function ABTestManager() {
                 <div className={`p-4 rounded-lg border-2 ${metrics.winner === 'A' ? 'border-green-500 bg-green-50' : 'border-gray-200'}`}>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-bold text-gray-800">Variante A</h4>
-                    {metrics.winner === 'A' && <span className="text-green-600 text-sm font-bold">🏆 Vencedor</span>}
+                    {metrics.winner === 'A' && <span className="text-green-700 text-sm font-bold">🏆 Vencedor</span>}
                   </div>
                   <p className="text-sm text-gray-600 mb-4">{test.variants.A}</p>
                   <div className="space-y-2 text-sm">
@@ -114,7 +114,7 @@ export default function ABTestManager() {
                 <div className={`p-4 rounded-lg border-2 ${metrics.winner === 'B' ? 'border-green-500 bg-green-50' : 'border-gray-200'}`}>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-bold text-gray-800">Variante B</h4>
-                    {metrics.winner === 'B' && <span className="text-green-600 text-sm font-bold">🏆 Vencedor</span>}
+                    {metrics.winner === 'B' && <span className="text-green-700 text-sm font-bold">🏆 Vencedor</span>}
                   </div>
                   <p className="text-sm text-gray-600 mb-4">{test.variants.B}</p>
                   <div className="space-y-2 text-sm">
@@ -150,7 +150,7 @@ export default function ABTestManager() {
                   <div className="space-y-3 text-sm">
                     <div>
                       <p className="text-gray-600 mb-1">Melhoria:</p>
-                      <p className="text-2xl font-bold text-green-600">+{metrics.improvement}%</p>
+                      <p className="text-2xl font-bold text-green-700">+{metrics.improvement}%</p>
                     </div>
                     <div>
                       <p className="text-gray-600 mb-1">Total de Testes:</p>
@@ -158,7 +158,7 @@ export default function ABTestManager() {
                     </div>
                     <div>
                       <p className="text-gray-600 mb-1">Significância:</p>
-                      <p className={`font-bold ${metrics.significance === 'Significativo' ? 'text-green-600' : 'text-orange-600'}`}>
+                      <p className={`font-bold ${metrics.significance === 'Significativo' ? 'text-green-700' : 'text-orange-600'}`}>
                         {metrics.significance}
                       </p>
                     </div>

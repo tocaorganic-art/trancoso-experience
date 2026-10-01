@@ -157,8 +157,8 @@ export default function Cotacao() {
               <h3 className="text-xl font-bold text-gray-800 mb-4">Dados de Contato</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Nome Completo *</label>
-                  <Input
+                  <label htmlFor="cot-nome-completo" className="block text-sm font-medium text-gray-600 mb-2">Nome Completo *</label>
+                  <Input id="cot-nome-completo"
                     required
                     value={formData.nome}
                     onChange={(e) => setFormData({...formData, nome: e.target.value})}
@@ -167,8 +167,8 @@ export default function Cotacao() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">E-mail *</label>
-                  <Input
+                  <label htmlFor="cot-e-mail" className="block text-sm font-medium text-gray-600 mb-2">E-mail *</label>
+                  <Input id="cot-e-mail"
                     required
                     type="email"
                     value={formData.email}
@@ -179,8 +179,8 @@ export default function Cotacao() {
                 </div>
               </div>
               <div className="mt-4">
-                <label className="block text-sm font-medium text-gray-600 mb-2">Telefone / WhatsApp *</label>
-                <Input
+                <label htmlFor="cot-telefone-whatsapp" className="block text-sm font-medium text-gray-600 mb-2">Telefone / WhatsApp *</label>
+                <Input id="cot-telefone-whatsapp"
                   required
                   value={formData.telefone}
                   onChange={(e) => setFormData({...formData, telefone: e.target.value})}
@@ -195,8 +195,8 @@ export default function Cotacao() {
               <h3 className="text-xl font-bold text-gray-800 mb-4">Detalhes do Evento</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Tipo de Evento *</label>
-                  <select
+                  <label htmlFor="cot-tipo-de-evento" className="block text-sm font-medium text-gray-600 mb-2">Tipo de Evento *</label>
+                  <select id="cot-tipo-de-evento"
                     required
                     value={formData.tipoEvento}
                     onChange={(e) => setFormData({...formData, tipoEvento: e.target.value})}
@@ -215,8 +215,8 @@ export default function Cotacao() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Data do Evento *</label>
-                  <Input
+                  <label htmlFor="cot-data-do-evento" className="block text-sm font-medium text-gray-600 mb-2">Data do Evento *</label>
+                  <Input id="cot-data-do-evento"
                     required
                     type="date"
                     value={formData.data}
@@ -228,8 +228,8 @@ export default function Cotacao() {
 
               <div className="grid md:grid-cols-3 gap-4 mt-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Horário Início</label>
-                  <Input
+                  <label htmlFor="cot-horario-inicio" className="block text-sm font-medium text-gray-600 mb-2">Horário Início</label>
+                  <Input id="cot-horario-inicio"
                     type="time"
                     value={formData.horarioInicio}
                     onChange={(e) => setFormData({...formData, horarioInicio: e.target.value})}
@@ -237,8 +237,8 @@ export default function Cotacao() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Duração (horas)</label>
-                  <Input
+                  <label htmlFor="cot-duracao-horas" className="block text-sm font-medium text-gray-600 mb-2">Duração (horas)</label>
+                  <Input id="cot-duracao-horas"
                     type="number"
                     value={formData.duracao}
                     onChange={(e) => setFormData({...formData, duracao: e.target.value})}
@@ -247,8 +247,8 @@ export default function Cotacao() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Nº Convidados</label>
-                  <Input
+                  <label htmlFor="cot-no-convidados" className="block text-sm font-medium text-gray-600 mb-2">Nº Convidados</label>
+                  <Input id="cot-no-convidados"
                     type="number"
                     value={formData.numeroConvidados}
                     onChange={(e) => setFormData({...formData, numeroConvidados: e.target.value})}
@@ -259,8 +259,8 @@ export default function Cotacao() {
               </div>
 
               <div className="mt-4">
-                <label className="block text-sm font-medium text-gray-600 mb-2">Local do Evento *</label>
-                <Input
+                <label htmlFor="cot-local-do-evento" className="block text-sm font-medium text-gray-600 mb-2">Local do Evento *</label>
+                <Input id="cot-local-do-evento"
                   required
                   value={formData.local}
                   onChange={(e) => setFormData({...formData, local: e.target.value})}
@@ -275,8 +275,8 @@ export default function Cotacao() {
               <h3 className="text-xl font-bold text-gray-800 mb-4">Orçamento e Infraestrutura</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Orçamento Estimado</label>
-                  <select
+                  <label htmlFor="cot-orcamento-estimado" className="block text-sm font-medium text-gray-600 mb-2">Orçamento Estimado</label>
+                  <select id="cot-orcamento-estimado"
                     value={formData.orcamento}
                     onChange={(e) => setFormData({...formData, orcamento: e.target.value})}
                     className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
@@ -291,8 +291,8 @@ export default function Cotacao() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Estrutura Necessária</label>
-                  <select
+                  <label htmlFor="cot-estrutura-necessaria" className="block text-sm font-medium text-gray-600 mb-2">Estrutura Necessária</label>
+                  <select id="cot-estrutura-necessaria"
                     value={formData.estrutura}
                     onChange={(e) => setFormData({...formData, estrutura: e.target.value})}
                     className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
@@ -309,8 +309,8 @@ export default function Cotacao() {
 
             {/* Mensagem */}
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-2">Detalhes Adicionais</label>
-              <Textarea
+              <label htmlFor="cot-detalhes-adicionais" className="block text-sm font-medium text-gray-600 mb-2">Detalhes Adicionais</label>
+              <Textarea id="cot-detalhes-adicionais"
                 value={formData.mensagem}
                 onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
                 className="bg-gray-50 border-gray-300 min-h-[120px]"

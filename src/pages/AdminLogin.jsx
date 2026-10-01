@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Lock, Mail } from "lucide-react";
+import { Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { useAuth } from "@/lib/AuthContext";
@@ -48,7 +47,7 @@ export default function AdminLogin() {
 
             <Button
               onClick={handleLogin}
-              className="w-full bg-purple-600 hover:bg-purple-700 py-6 text-lg"
+              className="w-full bg-purple-600 hover:bg-purple-700 py-6 text-lg text-white"
             >
               Entrar com minha conta
             </Button>

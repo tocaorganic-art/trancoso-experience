@@ -45,7 +45,7 @@ export default function RelatorioSEO() {
           <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
             <CardContent className="pt-6">
               <div className="text-center">
-                <div className="text-6xl font-bold text-green-600 mb-2">82/100</div>
+                <div className="text-6xl font-bold text-green-700 mb-2">82/100</div>
                 <p className="text-xl text-gray-700 font-semibold">Pronto para Lançamento</p>
                 <p className="text-sm text-gray-600 mt-2">Site otimizado com pontos de melhoria identificados</p>
               </div>
@@ -61,7 +61,7 @@ export default function RelatorioSEO() {
           <CardContent>
             <div className="space-y-4">
               <div>
-                <h3 className="font-bold text-lg mb-2 text-green-600">✅ Palavras-Chave Identificadas (Pontos Fortes)</h3>
+                <h3 className="font-bold text-lg mb-2 text-green-700">✅ Palavras-Chave Identificadas (Pontos Fortes)</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="bg-green-50 p-4 rounded-lg">
                     <p className="font-semibold">Primárias:</p>
@@ -134,21 +134,21 @@ export default function RelatorioSEO() {
                 <h3 className="font-bold text-lg mb-3">Meta Tags</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Title Tags</p>
                       <p className="text-xs text-gray-600">Otimizados por página com palavras-chave primárias</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Meta Descriptions</p>
                       <p className="text-xs text-gray-600">Únicas para cada página, incluindo CTAs</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Open Graph Tags</p>
                       <p className="text-xs text-gray-600">Configurados para compartilhamento social</p>
@@ -162,14 +162,14 @@ export default function RelatorioSEO() {
                 <h3 className="font-bold text-lg mb-3">Estrutura de Conteúdo</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Hierarquia de Headings (H1-H3)</p>
                       <p className="text-xs text-gray-600">Estrutura clara e semântica</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Schema.org Markup</p>
                       <p className="text-xs text-gray-600">LocalBusiness, Service e MusicGroup implementados</p>
@@ -190,14 +190,14 @@ export default function RelatorioSEO() {
                 <h3 className="font-bold text-lg mb-3">Performance Técnica</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Otimização de Imagens</p>
                       <p className="text-xs text-gray-600">WebP, lazy loading e dimensões responsivas implementadas</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Mobile-First Design</p>
                       <p className="text-xs text-gray-600">Layout totalmente responsivo</p>
@@ -224,28 +224,28 @@ export default function RelatorioSEO() {
           <CardContent>
             <div className="space-y-3">
               <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-sm">Formulários de Cotação</p>
                   <p className="text-xs text-gray-600">Funcionais com redirect para WhatsApp +55 73 98283579</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-sm">CTAs Claros</p>
                   <p className="text-xs text-gray-600">Múltiplos pontos de conversão em todas as páginas</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-sm">Navegação Intuitiva</p>
                   <p className="text-xs text-gray-600">Menu fixo com acesso rápido a todas as seções</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-green-50 p-3 rounded-lg">
-                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-sm">LGPD Compliance</p>
                   <p className="text-xs text-gray-600">Política de Privacidade e Termos de Serviço implementados</p>
@@ -456,7 +456,7 @@ export default function RelatorioSEO() {
           <CardContent>
             <div className="space-y-4">
               <p className="text-gray-700">
-                O site <strong>www.tocaexperience.com.br</strong> está <strong className="text-green-600">82% pronto</strong> para lançamento de campanhas Google Ads. 
+                O site <strong>www.tocaexperience.com.br</strong> está <strong className="text-green-700">82% pronto</strong> para lançamento de campanhas Google Ads. 
                 A estrutura de SEO on-page é sólida, com meta tags otimizadas, schema markup implementado e design responsivo.
               </p>
               <p className="text-gray-700">
@@ -464,7 +464,7 @@ export default function RelatorioSEO() {
                 Sem esses pixels, não será possível medir ROI, otimizar campanhas ou fazer remarketing.
               </p>
               <p className="text-gray-700">
-                <strong className="text-green-600">Próximos passos:</strong> Configurar os pixels de rastreamento (1-2 dias), testar eventos de conversão (1 dia), 
+                <strong className="text-green-700">Próximos passos:</strong> Configurar os pixels de rastreamento (1-2 dias), testar eventos de conversão (1 dia), 
                 e criar as primeiras campanhas focadas em casamentos e réveillon (2-3 dias). Orçamento inicial sugerido: R$ 200-300/dia distribuído entre as campanhas.
               </p>
               <p className="text-gray-700">

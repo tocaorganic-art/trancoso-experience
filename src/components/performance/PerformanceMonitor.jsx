@@ -76,7 +76,7 @@ export default function PerformanceMonitor() {
     };
 
     const t = thresholds[metric];
-    if (value <= t.good) return 'text-green-600';
+    if (value <= t.good) return 'text-green-700';
     if (value <= t.poor) return 'text-yellow-600';
     return 'text-red-600';
   };
@@ -93,7 +93,7 @@ export default function PerformanceMonitor() {
     };
 
     const t = thresholds[metric];
-    if (value <= t.good) return <CheckCircle className="w-5 h-5 text-green-600" />;
+    if (value <= t.good) return <CheckCircle className="w-5 h-5 text-green-700" />;
     if (value <= t.poor) return <TrendingUp className="w-5 h-5 text-yellow-600" />;
     return <AlertCircle className="w-5 h-5 text-red-600" />;
   };

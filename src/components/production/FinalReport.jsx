@@ -149,7 +149,7 @@ export default function FinalReport() {
             <ul className="space-y-2 text-sm text-gray-700">
               {section.items.map((item, itemIdx) => (
                 <li key={itemIdx} className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -197,23 +197,23 @@ export default function FinalReport() {
         <CardContent>
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-700" />
               <span><strong>Página de Documentação:</strong> /Documentacao - guias detalhados de cada feature</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-700" />
               <span><strong>Production Checklist:</strong> /ProductionChecklist - validação automatizada</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-700" />
               <span><strong>Production Setup:</strong> /ProductionSetup - guia de deploy</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-700" />
               <span><strong>Testing Dashboard:</strong> /TestingDashboard - testes e debug</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-700" />
               <span><strong>Admin Dashboard:</strong> /AdminDashboard - gestão completa</span>
             </div>
           </div>

@@ -1,3 +1,5 @@
+@import '../../shared-components/tokens/tokens.css';
+
 /* TOCA EXPERIENCE: tokens de marca (cores e raios conforme o prompt do projeto).
    Fontes auto-hospedadas (OFL-1.1): Nunito Sans (interface) e Newsreader (títulos editoriais).
    Divergência registrada: o kit v1.0 indica Manrope para interface; por decisão explícita
@@ -92,60 +94,53 @@
 }
 
 :root {
-  /* Paleta */
-  --toca-obsidiana: #1A1714;
-  --toca-laranja: #E8571A;
-  --toca-terracota: #C1440E;
-  --toca-oliva: #6B7C3A;
-  --toca-areia: #F2DEC4;
-  --toca-areia-suave: #FAF6EE;
-  --toca-areia-media: #F5EFE5;
-  --toca-ink: #2A2520;
+  /* Aliases --toca-* (nomes usados no código deste app) apontando para a fonte única de tokens
+     em shared-components/tokens/tokens.css (--ds-*). Não defina valores novos aqui. */
+  --toca-obsidiana: var(--ds-color-obsidiana);
+  --toca-laranja: var(--ds-color-laranja);
+  --toca-terracota: var(--ds-color-terracota);
+  --toca-oliva: var(--ds-color-oliva);
+  --toca-areia: var(--ds-color-areia);
+  --toca-areia-suave: var(--ds-color-areia-suave);
+  --toca-areia-media: var(--ds-color-areia-media);
+  --toca-ink: var(--ds-color-ink);
+  --toca-sucesso: var(--ds-color-sucesso);
+  --toca-atencao: var(--ds-color-atencao);
+  --toca-erro: var(--ds-color-erro);
+  --toca-info: var(--ds-color-info);
+  --toca-header-bg: var(--ds-header-bg);
+  --toca-header-blur: var(--ds-header-blur);
+  --toca-bg: var(--ds-color-bg);
+  --toca-surface: var(--ds-color-surface);
+  --toca-text: var(--ds-color-text);
+  --toca-text-muted: var(--ds-color-text-muted);
+  --toca-border: var(--ds-color-border);
+  --toca-action: var(--ds-color-action);
+  --toca-on-action: var(--ds-color-on-action);
+  --toca-link: var(--ds-color-link);
+  --toca-focus: var(--ds-color-focus);
+  --toca-radius-sm: var(--ds-radius-xs);
+  --toca-radius-md: var(--ds-radius-sm);
+  --toca-radius-lg: var(--ds-radius-md);
+  --toca-radius-xl: var(--ds-radius-lg);
+  --toca-radius-pill: var(--ds-radius-pill);
+  --font-ui: var(--ds-font-ui);
+  --font-editorial: var(--ds-font-editorial);
 
-  /* Estados e cabeçalho: valores oficiais do kit v1.0 (design-tokens.json / tokens.css) */
-  --toca-sucesso: #3E8E5A;
-  --toca-atencao: #E59A12;
-  --toca-erro: #D7382B;
-  --toca-info: #2D7D8A;
-  --toca-header-bg: rgba(26, 23, 20, 0.86);
-  --toca-header-blur: 18px;
-
-  /* Nomes originais do kit (aliases, para colar trechos do manual sem renomear) */
-  --color-obsidiana: var(--toca-obsidiana);
-  --color-laranja: var(--toca-laranja);
-  --color-terracota: var(--toca-terracota);
-  --color-oliva: var(--toca-oliva);
-  --color-areia: var(--toca-areia);
-  --color-suave: var(--toca-areia-suave);
-  --color-media: var(--toca-areia-media);
-  --color-ink: var(--toca-ink);
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-pill: 999px;
-
-  /* Semânticos de aplicação (derivados da paleta do kit) */
-  --toca-bg: var(--toca-areia-suave);
-  --toca-surface: #FFFFFF;
-  --toca-text: var(--toca-ink);
-  --toca-text-muted: #5E5247;        /* 7,0:1 sobre areia suave */
-  --toca-border: #E3D2B8;
-  --toca-action: var(--toca-laranja);
-  --toca-on-action: var(--toca-obsidiana);  /* 4,94:1 sobre laranja; branco daria 3,61:1 */
-  --toca-link: var(--toca-terracota);       /* 4,75:1 sobre areia suave */
-  --toca-focus: var(--toca-terracota);
-
-  /* Raios */
-  --toca-radius-sm: 6px;
-  --toca-radius-md: 10px;
-  --toca-radius-lg: 14px;
-  --toca-radius-xl: 20px;
-  --toca-radius-pill: 999px;
-
-  /* Tipografia */
-  --font-ui: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-editorial: 'Newsreader', Georgia, 'Times New Roman', serif;
+  /* Nomes originais do kit (para colar trechos do manual sem renomear) */
+  --color-obsidiana: var(--ds-color-obsidiana);
+  --color-laranja: var(--ds-color-laranja);
+  --color-terracota: var(--ds-color-terracota);
+  --color-oliva: var(--ds-color-oliva);
+  --color-areia: var(--ds-color-areia);
+  --color-suave: var(--ds-color-areia-suave);
+  --color-media: var(--ds-color-areia-media);
+  --color-ink: var(--ds-color-ink);
+  --radius-xs: var(--ds-radius-xs);
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --radius-pill: var(--ds-radius-pill);
 }
 
 html {

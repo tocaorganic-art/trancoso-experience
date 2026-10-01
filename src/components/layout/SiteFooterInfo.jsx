@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { ECOSYSTEM_LINKS } from "@/components/layout/EcosystemHub";
+import { ECOSYSTEM_LINKS } from "@shared/ui/EcosystemHub";
 
 // Bloco de rodapé: links do ecossistema, páginas legais e dados cadastrais.
 // Dados cadastrais conforme comprovante CNPJ de 19/08/2026. Confirmar em fonte

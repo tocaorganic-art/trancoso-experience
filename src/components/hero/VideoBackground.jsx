@@ -29,7 +29,8 @@ export default function VideoBackground() {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
+    <div className="absolute inset-0 overflow-hidden"
+      style={{ backgroundColor: "var(--ds-color-obsidiana)" }}>
       {/* Imagem de fallback otimizada - sempre visível, fade quando vídeo carregar */}
       <picture>
         <source
@@ -44,7 +45,7 @@ export default function VideoBackground() {
           }`}
           style={{ objectPosition: 'center 40%' }}
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
           width="1920"
           height="1080"
         />

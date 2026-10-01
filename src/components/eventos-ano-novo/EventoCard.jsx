@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Calendar, Clock, PartyPopper, Sparkles, Share2, X, Instagram } from "lucide-react";
+import { MapPin, PartyPopper, Sparkles, Share2, X, Instagram } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { motion, AnimatePresence } from "framer-motion";
@@ -223,7 +223,7 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
                       </button>
                       <button
                         onClick={handleFacebook}
-                        className="w-8 h-8 rounded-full bg-blue-600/20 hover:bg-blue-600/40 flex items-center justify-center transition-colors"
+                        className="w-8 h-8 rounded-full bg-blue-600/20 hover:bg-blue-600/40 flex items-center justify-center transition-colors text-white"
                         title="Facebook"
                       >
                         <svg className="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
@@ -245,7 +245,7 @@ export default function EventoCard({ evento, index, isReveillon, isDayAfter }) {
                           setShowShare(false);
                           setShowStoryGenerator(true);
                         }}
-                        className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600/30 to-pink-600/30 hover:from-purple-600/50 hover:to-pink-600/50 flex items-center justify-center transition-colors"
+                        className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600/30 to-pink-600/30 hover:from-purple-600/50 hover:to-pink-600/50 flex items-center justify-center transition-colors text-white"
                         title="Stories"
                       >
                         <Instagram className="w-4 h-4 text-pink-400" />

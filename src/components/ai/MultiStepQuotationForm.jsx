@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Check, Calendar, Music, MapPin, DollarSign, User } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, Calendar, Music, MapPin, User } from "lucide-react";
 import { toast } from "sonner";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import { base44 } from "@/api/base44Client";
@@ -115,16 +115,16 @@ export default function MultiStepQuotationForm({ onClose }) {
         return (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Nome Completo *</label>
-              <Input
+              <label htmlFor="ms-nome-completo" className="block text-sm font-medium mb-2">Nome Completo *</label>
+              <Input id="ms-nome-completo"
                 value={formData.nome}
                 onChange={(e) => updateField("nome", e.target.value)}
                 placeholder="Seu nome"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">E-mail *</label>
-              <Input
+              <label htmlFor="ms-e-mail" className="block text-sm font-medium mb-2">E-mail *</label>
+              <Input id="ms-e-mail"
                 type="email"
                 value={formData.email}
                 onChange={(e) => updateField("email", e.target.value)}
@@ -132,8 +132,8 @@ export default function MultiStepQuotationForm({ onClose }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">WhatsApp *</label>
-              <Input
+              <label htmlFor="ms-whatsapp" className="block text-sm font-medium mb-2">WhatsApp *</label>
+              <Input id="ms-whatsapp"
                 value={formData.telefone}
                 onChange={(e) => updateField("telefone", e.target.value)}
                 placeholder="(00) 00000-0000"
@@ -146,9 +146,9 @@ export default function MultiStepQuotationForm({ onClose }) {
         return (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Tipo de Evento *</label>
+              <label htmlFor="ms-tipo-de-evento" className="block text-sm font-medium mb-2">Tipo de Evento *</label>
               <Select value={formData.tipoEvento} onValueChange={(v) => updateField("tipoEvento", v)}>
-                <SelectTrigger>
+                <SelectTrigger id="ms-tipo-de-evento">
                   <SelectValue placeholder="Selecione" />
                 </SelectTrigger>
                 <SelectContent>
@@ -163,16 +163,16 @@ export default function MultiStepQuotationForm({ onClose }) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Data *</label>
-                <Input
+                <label htmlFor="ms-data" className="block text-sm font-medium mb-2">Data *</label>
+                <Input id="ms-data"
                   type="date"
                   value={formData.data}
                   onChange={(e) => updateField("data", e.target.value)}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Horário Início</label>
-                <Input
+                <label htmlFor="ms-horario-inicio" className="block text-sm font-medium mb-2">Horário Início</label>
+                <Input id="ms-horario-inicio"
                   type="time"
                   value={formData.horarioInicio}
                   onChange={(e) => updateField("horarioInicio", e.target.value)}
@@ -181,8 +181,8 @@ export default function MultiStepQuotationForm({ onClose }) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Duração (horas)</label>
-                <Input
+                <label htmlFor="ms-duracao-horas" className="block text-sm font-medium mb-2">Duração (horas)</label>
+                <Input id="ms-duracao-horas"
                   type="number"
                   value={formData.duracao}
                   onChange={(e) => updateField("duracao", e.target.value)}
@@ -190,8 +190,8 @@ export default function MultiStepQuotationForm({ onClose }) {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Nº Convidados</label>
-                <Input
+                <label htmlFor="ms-no-convidados" className="block text-sm font-medium mb-2">Nº Convidados</label>
+                <Input id="ms-no-convidados"
                   type="number"
                   value={formData.numeroConvidados}
                   onChange={(e) => updateField("numeroConvidados", e.target.value)}
@@ -231,9 +231,9 @@ export default function MultiStepQuotationForm({ onClose }) {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Atmosfera Desejada</label>
+              <label htmlFor="ms-atmosfera-desejada" className="block text-sm font-medium mb-2">Atmosfera Desejada</label>
               <Select value={formData.atmosfera} onValueChange={(v) => updateField("atmosfera", v)}>
-                <SelectTrigger>
+                <SelectTrigger id="ms-atmosfera-desejada">
                   <SelectValue placeholder="Como você imagina o evento?" />
                 </SelectTrigger>
                 <SelectContent>
@@ -245,8 +245,8 @@ export default function MultiStepQuotationForm({ onClose }) {
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Momentos Especiais</label>
-              <Textarea
+              <label htmlFor="ms-momentos-especiais" className="block text-sm font-medium mb-2">Momentos Especiais</label>
+              <Textarea id="ms-momentos-especiais"
                 value={formData.momentosEspeciais}
                 onChange={(e) => updateField("momentosEspeciais", e.target.value)}
                 placeholder="Ex: Entrada dos noivos, primeira dança, músicas especiais..."
@@ -260,9 +260,9 @@ export default function MultiStepQuotationForm({ onClose }) {
         return (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Localidade</label>
+              <label htmlFor="ms-localidade" className="block text-sm font-medium mb-2">Localidade</label>
               <Select value={formData.localidade} onValueChange={(v) => updateField("localidade", v)}>
-                <SelectTrigger>
+                <SelectTrigger id="ms-localidade">
                   <SelectValue placeholder="Onde será?" />
                 </SelectTrigger>
                 <SelectContent>
@@ -276,17 +276,17 @@ export default function MultiStepQuotationForm({ onClose }) {
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Local Específico</label>
-              <Input
+              <label htmlFor="ms-local-especifico" className="block text-sm font-medium mb-2">Local Específico</label>
+              <Input id="ms-local-especifico"
                 value={formData.local}
                 onChange={(e) => updateField("local", e.target.value)}
                 placeholder="Ex: Casa de praia, resort, clube..."
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Estrutura Necessária</label>
+              <label htmlFor="ms-estrutura-necessaria" className="block text-sm font-medium mb-2">Estrutura Necessária</label>
               <Select value={formData.estruturaNecessaria} onValueChange={(v) => updateField("estruturaNecessaria", v)}>
-                <SelectTrigger>
+                <SelectTrigger id="ms-estrutura-necessaria">
                   <SelectValue placeholder="O que você precisa?" />
                 </SelectTrigger>
                 <SelectContent>
@@ -298,9 +298,9 @@ export default function MultiStepQuotationForm({ onClose }) {
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Orçamento Estimado</label>
+              <label htmlFor="ms-orcamento-estimado" className="block text-sm font-medium mb-2">Orçamento Estimado</label>
               <Select value={formData.orcamento} onValueChange={(v) => updateField("orcamento", v)}>
-                <SelectTrigger>
+                <SelectTrigger id="ms-orcamento-estimado">
                   <SelectValue placeholder="Selecione uma faixa" />
                 </SelectTrigger>
                 <SelectContent>
@@ -383,7 +383,7 @@ export default function MultiStepQuotationForm({ onClose }) {
             <Button 
               onClick={handleSubmit} 
               disabled={isSubmitting}
-              className="bg-green-600 hover:bg-green-700"
+              className="bg-green-700 hover:bg-green-800"
             >
               {isSubmitting ? "Enviando..." : "Enviar Cotação"}
             </Button>

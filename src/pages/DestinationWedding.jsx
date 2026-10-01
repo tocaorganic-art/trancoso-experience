@@ -89,7 +89,7 @@ export default function DestinationWedding() {
       ]} />
 
       {/* Hero */}
-      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-20">
+      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-20 text-white">
         <div className="container mx-auto px-6">
           <Link to={createPageUrl("CasamentosTrancoso")}>
             <Button variant="ghost" className="text-white/80 hover:text-white mb-6">
@@ -163,7 +163,7 @@ export default function DestinationWedding() {
               >
                 <Card className="h-full text-center hover:shadow-xl transition-all">
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white">
                       <item.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold mb-3">{item.title}</h3>
@@ -232,7 +232,7 @@ export default function DestinationWedding() {
                   <div className="space-y-3">
                     {service.items.map((item, i) => (
                       <div key={i} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span className="text-gray-700">{item}</span>
                       </div>
                     ))}
@@ -283,8 +283,8 @@ export default function DestinationWedding() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Full Name / Nome Completo *</label>
-                    <Input
+                    <label htmlFor="dw-full-name-nome-completo" className="block text-sm font-medium mb-2">Full Name / Nome Completo *</label>
+                    <Input id="dw-full-name-nome-completo"
                       required
                       value={formData.nome}
                       onChange={(e) => setFormData({...formData, nome: e.target.value})}
@@ -292,8 +292,8 @@ export default function DestinationWedding() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email *</label>
-                    <Input
+                    <label htmlFor="dw-email" className="block text-sm font-medium mb-2">Email *</label>
+                    <Input id="dw-email"
                       required
                       type="email"
                       value={formData.email}
@@ -305,8 +305,8 @@ export default function DestinationWedding() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Phone / WhatsApp *</label>
-                    <Input
+                    <label htmlFor="dw-phone-whatsapp" className="block text-sm font-medium mb-2">Phone / WhatsApp *</label>
+                    <Input id="dw-phone-whatsapp"
                       required
                       value={formData.telefone}
                       onChange={(e) => setFormData({...formData, telefone: e.target.value})}
@@ -314,8 +314,8 @@ export default function DestinationWedding() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Wedding Date / Data *</label>
-                    <Input
+                    <label htmlFor="dw-wedding-date-data" className="block text-sm font-medium mb-2">Wedding Date / Data *</label>
+                    <Input id="dw-wedding-date-data"
                       required
                       type="date"
                       value={formData.dataCasamento}
@@ -326,16 +326,16 @@ export default function DestinationWedding() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Country / País de Origem</label>
-                    <Input
+                    <label htmlFor="dw-country-pais-de-origem" className="block text-sm font-medium mb-2">Country / País de Origem</label>
+                    <Input id="dw-country-pais-de-origem"
                       value={formData.paisOrigem}
                       onChange={(e) => setFormData({...formData, paisOrigem: e.target.value})}
                       placeholder="USA, France, UK..."
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Number of Guests / Convidados</label>
-                    <Input
+                    <label htmlFor="dw-number-of-guests-convidados" className="block text-sm font-medium mb-2">Number of Guests / Convidados</label>
+                    <Input id="dw-number-of-guests-convidados"
                       value={formData.numeroConvidados}
                       onChange={(e) => setFormData({...formData, numeroConvidados: e.target.value})}
                       placeholder="Ex: 150"
@@ -344,8 +344,8 @@ export default function DestinationWedding() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Message / Mensagem</label>
-                  <Textarea
+                  <label htmlFor="dw-message-mensagem" className="block text-sm font-medium mb-2">Message / Mensagem</label>
+                  <Textarea id="dw-message-mensagem"
                     value={formData.mensagem}
                     onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
                     placeholder="Tell us about your wedding: venue, music style preferences, special requests..."
@@ -356,7 +356,7 @@ export default function DestinationWedding() {
                 <Button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 text-lg"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 text-lg text-white"
                 >
                   {isSubmitting ? "SENDING... / ENVIANDO..." : "REQUEST QUOTE / SOLICITAR ORÇAMENTO"}
                 </Button>
@@ -384,7 +384,7 @@ export default function DestinationWedding() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="bg-transparent border-white text-white hover:bg-white/10"
                 onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />

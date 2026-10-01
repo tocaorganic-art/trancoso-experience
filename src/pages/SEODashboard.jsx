@@ -7,9 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { 
-  ArrowLeft, Search, FileText, Lightbulb, Loader2, 
-  CheckCircle, AlertTriangle, TrendingUp, Sparkles, Copy, RefreshCw,
-  BarChart3, Tag, Users, Activity, Type
+  ArrowLeft, Search, FileText, Lightbulb, Loader2, AlertTriangle, TrendingUp, Sparkles, Copy, RefreshCw, Tag, Users, Activity, Type
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";

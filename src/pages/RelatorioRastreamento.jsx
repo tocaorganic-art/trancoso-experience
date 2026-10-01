@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle, Copy, ExternalLink, TrendingUp } from "lucide-react";
+import { ArrowLeft, CheckCircle2, AlertTriangle, Copy, ExternalLink, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { toast } from "sonner";
@@ -48,7 +48,7 @@ export default function RelatorioRastreamento() {
         <Card className="mb-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-6xl font-bold text-green-600 mb-2">
+              <div className="text-6xl font-bold text-green-700 mb-2">
                 {implementationScore}%
               </div>
               <p className="text-xl text-gray-700 font-medium">Score de Implementação</p>
@@ -69,7 +69,7 @@ export default function RelatorioRastreamento() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900">Google Tag Manager (GTM)</p>
                   <p className="text-sm text-gray-600">Container ID: GTM-M6JSFD39</p>
@@ -78,7 +78,7 @@ export default function RelatorioRastreamento() {
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900">Google Analytics 4 (GA4)</p>
                   <p className="text-sm text-gray-600">Measurement ID: G-DJK0KWJ2MH</p>
@@ -87,7 +87,7 @@ export default function RelatorioRastreamento() {
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900">Google Ads Tracking</p>
                   <p className="text-sm text-gray-600">Conversion ID: AW-17649743667</p>
@@ -96,7 +96,7 @@ export default function RelatorioRastreamento() {
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900">Meta Pixel (Facebook/Instagram)</p>
                   <p className="text-sm text-gray-600">Pixel ID: 1204913388179659</p>
@@ -105,7 +105,7 @@ export default function RelatorioRastreamento() {
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900">Página de Conversão (/Obrigado)</p>
                   <p className="text-sm text-gray-600">Event: Px_YCKCb3s4bELPuhuBB</p>
@@ -128,15 +128,15 @@ export default function RelatorioRastreamento() {
                 <p className="font-medium text-sm mb-3">Fluxo de Rastreamento:</p>
                 <div className="space-y-2 text-xs">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full text-white"></div>
                     <span className="text-gray-700">1. GTM carrega todas as tags (GA4, Meta Pixel, Ads)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full text-white"></div>
                     <span className="text-gray-700">2. Usuário preenche formulário</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full text-white"></div>
                     <span className="text-gray-700">3. Redirecionamento para /Obrigado</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -144,11 +144,11 @@ export default function RelatorioRastreamento() {
                     <span className="text-gray-700 font-medium">4. Conversão dispara (Google Ads + Meta)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full text-white"></div>
                     <span className="text-gray-700">5. WhatsApp abre automaticamente</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-purple-600 rounded-full text-white"></div>
                     <span className="text-gray-700">6. Dados registrados no GA4 e Ads</span>
                   </div>
                 </div>
@@ -372,7 +372,7 @@ export default function RelatorioRastreamento() {
         {/* CTA Final */}
         <div className="mt-8 text-center">
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-8">
-            <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto mb-4" />
+            <CheckCircle2 className="w-16 h-16 text-green-700 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-900 mb-2">
               Implementação Concluída ✅
             </h3>
@@ -383,7 +383,7 @@ export default function RelatorioRastreamento() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="https://tagmanager.google.com" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-blue-600 hover:bg-blue-700">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                   Acessar GTM <ExternalLink className="w-4 h-4 ml-2" />
                 </Button>
               </a>

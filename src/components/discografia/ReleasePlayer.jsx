@@ -95,7 +95,7 @@ export default function ReleasePlayer({ release, onClose }) {
                   href={release.spotify_url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                  className="bg-green-700 hover:bg-green-800 text-white p-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
                 >
                   Spotify <ExternalLink className="w-4 h-4" />
                 </a>
@@ -105,7 +105,7 @@ export default function ReleasePlayer({ release, onClose }) {
                   href={release.soundcloud_url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                  className="bg-orange-700 hover:bg-orange-800 text-white p-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
                 >
                   SoundCloud <ExternalLink className="w-4 h-4" />
                 </a>

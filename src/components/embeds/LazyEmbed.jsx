@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Play, Music, Loader2 } from "lucide-react";
+import { Music, Loader2 } from "lucide-react";
 
 export default function LazyEmbed({ type, src, title, height = 352 }) {
   const [isVisible, setIsVisible] = useState(false);

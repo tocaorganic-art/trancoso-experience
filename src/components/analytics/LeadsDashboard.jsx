@@ -45,7 +45,7 @@ export default function LeadsDashboard() {
       title: "Taxa de Conversão",
       value: `${conversionRate}%`,
       icon: TrendingUp,
-      color: "text-green-600",
+      color: "text-green-700",
       bgColor: "bg-green-100"
     },
     {
@@ -111,7 +111,7 @@ export default function LeadsDashboard() {
                   <div className="flex items-center gap-2">
                     <div className="w-32 bg-gray-200 rounded-full h-2">
                       <div 
-                        className="bg-purple-600 h-2 rounded-full"
+                        className="bg-purple-600 h-2 rounded-full text-white"
                         style={{ width: `${(count / totalLeads) * 100}%` }}
                       />
                     </div>

@@ -61,7 +61,7 @@ GOOGLE_ANALYTICS_ID=seu-ga-id`;
             <CardTitle className="flex items-center gap-2 text-lg">
               <button onClick={() => toggleItem('env')} className="flex-shrink-0">
                 {checklist.env ? 
-                  <CheckCircle className="w-6 h-6 text-green-600" /> : 
+                  <CheckCircle className="w-6 h-6 text-green-700" /> : 
                   <Circle className="w-6 h-6 text-gray-400" />
                 }
               </button>
@@ -97,7 +97,7 @@ GOOGLE_ANALYTICS_ID=seu-ga-id`;
             <CardTitle className="flex items-center gap-2 text-lg">
               <button onClick={() => toggleItem('ssl')} className="flex-shrink-0">
                 {checklist.ssl ? 
-                  <CheckCircle className="w-6 h-6 text-green-600" /> : 
+                  <CheckCircle className="w-6 h-6 text-green-700" /> : 
                   <Circle className="w-6 h-6 text-gray-400" />
                 }
               </button>
@@ -128,7 +128,7 @@ GOOGLE_ANALYTICS_ID=seu-ga-id`;
             <CardTitle className="flex items-center gap-2 text-lg">
               <button onClick={() => toggleItem('backup')} className="flex-shrink-0">
                 {checklist.backup ? 
-                  <CheckCircle className="w-6 h-6 text-green-600" /> : 
+                  <CheckCircle className="w-6 h-6 text-green-700" /> : 
                   <Circle className="w-6 h-6 text-gray-400" />
                 }
               </button>
@@ -158,7 +158,7 @@ GOOGLE_ANALYTICS_ID=seu-ga-id`;
             <CardTitle className="flex items-center gap-2 text-lg">
               <button onClick={() => toggleItem('monitoring')} className="flex-shrink-0">
                 {checklist.monitoring ? 
-                  <CheckCircle className="w-6 h-6 text-green-600" /> : 
+                  <CheckCircle className="w-6 h-6 text-green-700" /> : 
                   <Circle className="w-6 h-6 text-gray-400" />
                 }
               </button>
@@ -189,7 +189,7 @@ GOOGLE_ANALYTICS_ID=seu-ga-id`;
             <CardTitle className="flex items-center gap-2 text-lg">
               <button onClick={() => toggleItem('dns')} className="flex-shrink-0">
                 {checklist.dns ? 
-                  <CheckCircle className="w-6 h-6 text-green-600" /> : 
+                  <CheckCircle className="w-6 h-6 text-green-700" /> : 
                   <Circle className="w-6 h-6 text-gray-400" />
                 }
               </button>
@@ -219,7 +219,7 @@ GOOGLE_ANALYTICS_ID=seu-ga-id`;
             <CardTitle className="flex items-center gap-2 text-lg">
               <button onClick={() => toggleItem('security')} className="flex-shrink-0">
                 {checklist.security ? 
-                  <CheckCircle className="w-6 h-6 text-green-600" /> : 
+                  <CheckCircle className="w-6 h-6 text-green-700" /> : 
                   <Circle className="w-6 h-6 text-gray-400" />
                 }
               </button>
