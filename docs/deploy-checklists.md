@@ -30,11 +30,17 @@ Após publicar (sem sessão / janela anônima)
 - [ ] Conferir contra as 3 capturas de referência (pendente: arquivos não acessíveis à sessão cloud).
 - [ ] Confirmar com contabilidade: razão social/CNPJ no rodapé e situação cadastral atual.
 
-## Deploy 3 — Ativos oficiais do kit (bloqueado)
+## Deploy 3 — Ativos oficiais do kit TOCA v1.0
 
-- [ ] Subir o kit `TOCA-EXPERIENCE-KIT-v1.0` para a sessão/repo e conferir SHA-256 do manifesto.
-- [ ] Logo oficial (assinatura ≥ 640 px; símbolo compacto no header estreito) sem alterar a arte.
-- [ ] Favicon, ícones, apple-touch-icon e `manifest.json` (hoje o `index.html` aponta para `/manifest.json`, que não existe no repo).
+Origem: `TOCA-EXPERIENCE-KIT-v1.0.zip` (86/86 hashes conferidos contra o `SHA256SUMS.txt` do kit; as 6 cópias usadas no repo conferem byte a byte).
+Usados: `logo-web-720.png`, `icone-192/512`, `apple-touch-icon-180`, `favicon.ico`. Não alterados, não recortados, não recoloridos.
+
+- [ ] Aba do navegador mostra o favicon do kit (e não o da Base44) na home e nas demais páginas.
+- [ ] `https://www.tocaexperience.com.br/manifest.json` responde 200 (antes o `index.html` apontava para um arquivo inexistente). **Se a Base44 não servir a pasta `public/`, avisar.**
+- [ ] Cabeçalho escuro (rgba(26,23,20,.86) + blur 18px) com símbolo oficial; em telas ≥ 640 px aparece também o texto "TOCA EXPERIENCE".
+- [ ] Rodapé: logo completa sobre fundo Obsidiana (≥ 700 px de tela) e só o símbolo em telas menores.
+- [ ] Adicionar ao celular (iOS/Android): ícone com o símbolo, sem distorção.
+- [ ] Imagem de compartilhamento (Open Graph) ainda é a foto antiga; trocar por arte própria quando houver (o kit não traz uma imagem OG 1200×630).
 
 ## Pendências humanas
 

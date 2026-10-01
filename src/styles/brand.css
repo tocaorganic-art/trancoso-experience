@@ -102,7 +102,30 @@
   --toca-areia-media: #F5EFE5;
   --toca-ink: #2A2520;
 
-  /* Semânticos (definidos aqui; o kit original não pôde ser lido nesta sessão) */
+  /* Estados e cabeçalho: valores oficiais do kit v1.0 (design-tokens.json / tokens.css) */
+  --toca-sucesso: #3E8E5A;
+  --toca-atencao: #E59A12;
+  --toca-erro: #D7382B;
+  --toca-info: #2D7D8A;
+  --toca-header-bg: rgba(26, 23, 20, 0.86);
+  --toca-header-blur: 18px;
+
+  /* Nomes originais do kit (aliases, para colar trechos do manual sem renomear) */
+  --color-obsidiana: var(--toca-obsidiana);
+  --color-laranja: var(--toca-laranja);
+  --color-terracota: var(--toca-terracota);
+  --color-oliva: var(--toca-oliva);
+  --color-areia: var(--toca-areia);
+  --color-suave: var(--toca-areia-suave);
+  --color-media: var(--toca-areia-media);
+  --color-ink: var(--toca-ink);
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Semânticos de aplicação (derivados da paleta do kit) */
   --toca-bg: var(--toca-areia-suave);
   --toca-surface: #FFFFFF;
   --toca-text: var(--toca-ink);

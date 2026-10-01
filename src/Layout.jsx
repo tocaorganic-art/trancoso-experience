@@ -7,6 +7,8 @@ import { Calendar, Newspaper, Disc3, Music, MessageCircle, Instagram, Calendar a
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 import { isNoIndexPage } from "@/lib/internalPages";
 import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
+import logoWeb720 from "@/assets/brand/logo-web-720.png";
+import simbolo192 from "@/assets/brand/simbolo-192.png";
 import { ECOSYSTEM_LINKS } from "@/components/layout/EcosystemHub";
 
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
@@ -498,25 +500,31 @@ export default function Layout({ children, currentPageName }) {
         {/* Barra de Navegação Global - Aparece em todas as páginas */}
         <div 
           id="categories-bar"
-          className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/40 shadow-[0_2px_20px_rgba(0,0,0,0.04)]"
+          className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-[18px]"
+          style={{ backgroundColor: "var(--toca-header-bg)" }}
         >
           <div className="container mx-auto px-4 py-2">
             <div className="flex items-center justify-between">
               {/* Logo + Navigation Links */}
               <div className="flex items-center gap-3 flex-1">
-                <Link to={createPageUrl("Home")} className="flex-shrink-0">
-                  <img 
-                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/d07be9ab3_logo_da_toca_experience_com_cone_e1.jpg"
-                    alt="Toca Experience"
-                    className="h-8 w-auto object-contain"
+                <Link to={createPageUrl("Home")} className="flex-shrink-0 flex items-center gap-2" aria-label="TOCA EXPERIENCE, página inicial">
+                  <img
+                    src={simbolo192}
+                    alt=""
+                    width="36"
+                    height="36"
+                    className="h-9 w-9 rounded-[10px] object-cover"
                   />
+                  <span className="hidden sm:inline text-xs font-extrabold tracking-[0.18em]" style={{ color: "var(--toca-areia)" }}>
+                    TOCA EXPERIENCE
+                  </span>
                 </Link>
                 <div className="flex flex-wrap gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
                 <Link to={createPageUrl("Ethos")}>
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     ETHOS
                   </Button>
@@ -525,7 +533,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Calendar className="mr-0.5 h-2.5 w-2.5" /> EVENTOS
                   </Button>
@@ -534,7 +542,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Newspaper className="mr-0.5 h-2.5 w-2.5" /> CURADORIA
                   </Button>
@@ -543,7 +551,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <CalendarIcon className="mr-0.5 h-2.5 w-2.5" /> COTAÇÃO
                   </Button>
@@ -552,7 +560,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
                   </Button>
@@ -562,7 +570,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
                   </Button>
@@ -578,7 +586,7 @@ export default function Layout({ children, currentPageName }) {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide"
+                      className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide"
                     >
                       {item.name.toUpperCase()}
                     </Button>
@@ -597,11 +605,19 @@ export default function Layout({ children, currentPageName }) {
         <footer className="py-8 border-t border-gray-200/60 bg-white">
           <div className="container mx-auto px-6 text-center">
             <div className="flex justify-center mb-4">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
-                alt="Toca Experience"
-                className="h-10 w-auto"
-              />
+              <div className="p-3" style={{ backgroundColor: "var(--toca-obsidiana)", borderRadius: "var(--toca-radius-lg)" }}>
+                <picture>
+                  <source media="(min-width: 700px)" srcSet={logoWeb720} />
+                  <img
+                    src={simbolo192}
+                    alt="TOCA EXPERIENCE. Experiências que conectam você ao seu próximo destino."
+                    width="720"
+                    height="379"
+                    className="h-24 w-24 object-cover min-[700px]:h-auto min-[700px]:w-[640px] min-[700px]:max-w-full"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
             </div>
             <SiteFooterInfo />
             <div className="mt-3">
