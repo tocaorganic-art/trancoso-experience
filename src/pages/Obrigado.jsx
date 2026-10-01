@@ -68,7 +68,7 @@ export default function Obrigado() {
                   2
                 </div>
                 <p className="text-gray-700 pt-1">
-                  Você receberá nossa proposta personalizada em até 24 horas
+                  Nossa equipe retornará com uma proposta personalizada, conforme a disponibilidade
                 </p>
               </div>
               <div className="flex items-start gap-3">

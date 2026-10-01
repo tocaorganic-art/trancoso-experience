@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Lock, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { base44 } from "@/api/base44Client";
-import { toast } from "sonner";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    localStorage.setItem('admin_access', 'granted');
-    toast.success('Acesso liberado!');
-    navigate(createPageUrl('AdminDashboard'));
-  };
+  const { user, isAuthenticated, isLoadingAuth, navigateToLogin } = useAuth();
+
+  // Já autenticado como admin: segue direto para o painel.
+  useEffect(() => {
+    if (!isLoadingAuth && isAuthenticated && user?.role === 'admin') {
+      navigate(createPageUrl('AdminDashboard'));
+    }
+  }, [isLoadingAuth, isAuthenticated, user, navigate]);
+
+  const handleLogin = () => navigateToLogin();
+  const semPermissao = !isLoadingAuth && isAuthenticated && user?.role !== 'admin';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-6">
@@ -33,14 +38,19 @@ export default function AdminLogin() {
         <CardContent>
           <div className="text-center py-8">
             <p className="text-gray-600 mb-6">
-              Clique no botão abaixo para acessar o painel administrativo
+              Entre com sua conta autorizada para acessar o painel administrativo.
             </p>
+            {semPermissao && (
+              <p role="alert" className="text-sm text-red-600 mb-4">
+                Esta conta não tem permissão de administrador.
+              </p>
+            )}
 
             <Button
               onClick={handleLogin}
               className="w-full bg-purple-600 hover:bg-purple-700 py-6 text-lg"
             >
-              Acessar Dashboard
+              Entrar com minha conta
             </Button>
           </div>
         </CardContent>

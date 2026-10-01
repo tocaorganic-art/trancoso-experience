@@ -5,6 +5,11 @@ import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar, Newspaper, Disc3, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
+import { isNoIndexPage } from "@/lib/internalPages";
+import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
+import logoWeb720 from "@/assets/brand/logo-web-720.png";
+import simbolo192 from "@/assets/brand/simbolo-192.png";
+import { ECOSYSTEM_LINKS } from "@/components/layout/EcosystemHub";
 
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
@@ -52,29 +57,11 @@ export default function Layout({ children, currentPageName }) {
       robotsMeta.name = 'robots';
       document.head.appendChild(robotsMeta);
     }
-    const noIndexPages = ["AdminDashboard", "AdminLogin", "RelatorioImplementacao"];
-    robotsMeta.content = noIndexPages.includes(currentPageName) 
+    robotsMeta.content = isNoIndexPage(currentPageName) 
       ? 'noindex, nofollow' 
       : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
-    // Preload Critical Fonts for better Core Web Vitals (FCP, LCP)
-    const fonts = [
-      { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2', type: 'font/woff2' },
-      { href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2', type: 'font/woff2' }
-    ];
-
-    fonts.forEach(font => {
-      let preloadLink = document.querySelector(`link[rel="preload"][href="${font.href}"]`);
-      if (!preloadLink) {
-        preloadLink = document.createElement('link');
-        preloadLink.rel = 'preload';
-        preloadLink.as = 'font';
-        preloadLink.type = font.type;
-        preloadLink.href = font.href;
-        preloadLink.crossOrigin = 'anonymous';
-        document.head.appendChild(preloadLink);
-      }
-    });
+    // Fontes (Nunito Sans/Newsreader) são auto-hospedadas e carregadas via CSS (font-display: swap).
 
     // Resource Hints - DNS prefetch + Preconnect para CDNs críticos
     const prefetchDomains = [
@@ -269,13 +256,6 @@ export default function Layout({ children, currentPageName }) {
         "latitude": "-16.5917",
         "longitude": "-39.0736"
       },
-      "priceRange": "$$$$",
-      "openingHours": "Mo-Su 00:00-23:59",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "47"
-      }
     });
 
     // Service Schema
@@ -520,25 +500,31 @@ export default function Layout({ children, currentPageName }) {
         {/* Barra de Navegação Global - Aparece em todas as páginas */}
         <div 
           id="categories-bar"
-          className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/40 shadow-[0_2px_20px_rgba(0,0,0,0.04)]"
+          className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-[18px]"
+          style={{ backgroundColor: "var(--toca-header-bg)" }}
         >
           <div className="container mx-auto px-4 py-2">
             <div className="flex items-center justify-between">
               {/* Logo + Navigation Links */}
               <div className="flex items-center gap-3 flex-1">
-                <Link to={createPageUrl("Home")} className="flex-shrink-0">
-                  <img 
-                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/d07be9ab3_logo_da_toca_experience_com_cone_e1.jpg"
-                    alt="Toca Experience"
-                    className="h-8 w-auto object-contain"
+                <Link to={createPageUrl("Home")} className="flex-shrink-0 flex items-center gap-2" aria-label="TOCA EXPERIENCE, página inicial">
+                  <img
+                    src={simbolo192}
+                    alt=""
+                    width="36"
+                    height="36"
+                    className="h-9 w-9 rounded-[10px] object-cover"
                   />
+                  <span className="hidden sm:inline text-xs font-extrabold tracking-[0.18em]" style={{ color: "var(--toca-areia)" }}>
+                    TOCA EXPERIENCE
+                  </span>
                 </Link>
                 <div className="flex flex-wrap gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
                 <Link to={createPageUrl("Ethos")}>
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     ETHOS
                   </Button>
@@ -547,7 +533,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Calendar className="mr-0.5 h-2.5 w-2.5" /> EVENTOS
                   </Button>
@@ -556,7 +542,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Newspaper className="mr-0.5 h-2.5 w-2.5" /> CURADORIA
                   </Button>
@@ -565,7 +551,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <CalendarIcon className="mr-0.5 h-2.5 w-2.5" /> COTAÇÃO
                   </Button>
@@ -574,7 +560,7 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
                   </Button>
@@ -584,11 +570,28 @@ export default function Layout({ children, currentPageName }) {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/70 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
+                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
                   >
                     <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
                   </Button>
                   </Link>
+                {ECOSYSTEM_LINKS.filter((i) => !i.current).map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${item.name} (abre em nova aba)`}
+                  >
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide"
+                    >
+                      {item.name.toUpperCase()}
+                    </Button>
+                  </a>
+                ))}
                   </div>
                   </div>
             </div>
@@ -602,15 +605,21 @@ export default function Layout({ children, currentPageName }) {
         <footer className="py-8 border-t border-gray-200/60 bg-white">
           <div className="container mx-auto px-6 text-center">
             <div className="flex justify-center mb-4">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
-                alt="Toca Experience"
-                className="h-10 w-auto"
-              />
+              <div className="p-3" style={{ backgroundColor: "var(--toca-obsidiana)", borderRadius: "var(--toca-radius-lg)" }}>
+                <picture>
+                  <source media="(min-width: 700px)" srcSet={logoWeb720} />
+                  <img
+                    src={simbolo192}
+                    alt="TOCA EXPERIENCE. Experiências que conectam você ao seu próximo destino."
+                    width="720"
+                    height="379"
+                    className="h-24 w-24 object-cover min-[700px]:h-auto min-[700px]:w-[640px] min-[700px]:max-w-full"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
             </div>
-            <p className="text-gray-500 text-xs">
-              © 2024 Toca Experience. Todos os direitos reservados.
-            </p>
+            <SiteFooterInfo />
             <div className="mt-3">
               <a
                 href="https://wa.me/5521972824659"

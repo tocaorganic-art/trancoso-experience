@@ -11,6 +11,8 @@ import { createPageUrl } from "@/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
+import { openWhatsAppLead } from "@/lib/whatsappLead";
+import EcosystemHub from "@/components/layout/EcosystemHub";
 import VideoBackground from "@/components/hero/VideoBackground";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 import CriticalCSS from "@/components/performance/CriticalCSS";
@@ -28,52 +30,8 @@ const FloatingSocialBar = React.lazy(() => import("@/components/layout/FloatingS
 const NewsletterPopup = React.lazy(() => import("@/components/layout/NewsletterPopup"));
 
 export default function Home() {
-  const { trackFormSubmission, trackWhatsAppClick } = useTracking();
+  const { trackWhatsAppClick } = useTracking();
 
-  // SEO - Reviews Schema
-  React.useEffect(() => {
-    let reviewSchema = document.querySelector('script[data-schema="reviews"]');
-    if (!reviewSchema) {
-      reviewSchema = document.createElement('script');
-      reviewSchema.type = "application/ld+json";
-      reviewSchema.setAttribute('data-schema', 'reviews');
-      document.head.appendChild(reviewSchema);
-    }
-    reviewSchema.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Toca Experience",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "47",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Marina & Pedro S." },
-          "datePublished": "2024-12-01",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "reviewBody": "Exclusividade em um paraíso. A Toca Experience transformou nosso casamento em Trancoso em algo mágico. A energia da música foi perfeita do sunset até o amanhecer!"
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Carlos R." },
-          "datePublished": "2024-11-15",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "reviewBody": "Desde 2015, acompanho a trajetória do Tony. A busca constante pela excelência artística e a energia tropical que ele traz são incomparáveis."
-        }
-      ]
-    });
-
-    return () => {
-      if (reviewSchema && reviewSchema.parentNode) {
-        reviewSchema.parentNode.removeChild(reviewSchema);
-      }
-    };
-  }, []);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -143,38 +101,18 @@ export default function Home() {
     💬 *MENSAGEM:*
     ${formData.mensagem || "Sem mensagem adicional"}`;
 
-      // Salvar dados no localStorage para WhatsApp posterior
-      localStorage.setItem('whatsapp_message', whatsappMessage);
-
-      // Enviar evento para dataLayer do GTM
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        'event': 'form_submission_success',
-        'form_name': 'cotacao',
-        'event_category': 'Lead',
-        'event_label': formData.tipoEvento || 'Não especificado'
-      });
-
-      trackFormSubmission(formData);
-      trackWhatsAppClick();
-
-      // Google Ads Conversion Event
-      if (window.gtag) {
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-17649743667/Px_YCKCb3s4bELPuhuBB',
-          'value': 1.0,
-          'currency': 'BRL'
+      // Nada é enviado automaticamente: abrimos o WhatsApp com a mensagem pronta.
+      const opened = openWhatsAppLead(whatsappMessage);
+      if (opened) {
+        trackWhatsAppClick();
+        toast.success("WhatsApp aberto com sua mensagem", {
+          description: "Toque em enviar no WhatsApp para concluir. Seu pedido só chega até nós depois disso."
+        });
+      } else {
+        toast.error("Não conseguimos abrir o WhatsApp", {
+          description: "Verifique se o navegador bloqueou a janela e tente de novo."
         });
       }
-
-      toast.success("Proposta enviada com sucesso!", {
-        description: "Redirecionando para página de confirmação..."
-      });
-
-      // Redirecionar para página de agradecimento (dispara conversão)
-      setTimeout(() => {
-        window.location.href = createPageUrl("Obrigado");
-      }, 800);
     } catch (error) {
       console.error("Erro ao processar proposta:", error);
       toast.error("Erro ao processar proposta. Tente novamente.");
@@ -497,54 +435,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-gradient-to-br from-gray-50/50 via-white to-gray-50/50">
-        <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800"
-          >
-            O Que Dizem Sobre <span className="text-gray-600">Nós</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "Exclusividade em um paraíso. A Toca Experience transformou nosso casamento em Trancoso em algo mágico. A energia da música foi perfeita do sunset até o amanhecer!",
-                author: "Marina & Pedro S.",
-                role: "Casamento em Trancoso"
-              },
-              {
-                quote: "Desde 2015, acompanho a trajetória do Tony. A busca constante pela excelência artística e a energia tropical que ele traz são incomparáveis.",
-                author: "Carlos R.",
-                role: "Réveillon em Caraíva"
-              },
-              {
-                quote: "A fusão entre elementos eletrônicos e brasilidades autênticas criou uma atmosfera única no nosso evento. Inovação sonora e conexão global!",
-                author: "Amanda L.",
-                role: "Festival AWÊ - Arraial"
-              }
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-200/60 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all"
-                >
-                <p className="text-gray-700 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
-                <div>
-                  <p className="text-gray-900 font-semibold">{testimonial.author}</p>
-                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
-                </div>
-                </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Hub: marcas e serviços Toca */}
+      <EcosystemHub />
 
       {/* Contact Form - Premium Clean */}
       <section id="contato" className="py-24 bg-gradient-to-br from-white via-gray-50/30 to-white">
@@ -678,34 +570,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 border-t border-gray-200/60 bg-white pb-24">
-        <div className="container mx-auto px-6 text-center">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
-              alt="Toca Experience"
-              className="h-12 w-auto"
-            />
-          </div>
-          <p className="text-gray-600 font-medium mb-2">
-            Toca Experience — Experiências Exclusivas em Trancoso
-          </p>
-          <div className="flex justify-center gap-3 mb-4 text-xs">
-            <RouterLink to={createPageUrl("PoliticaPrivacidade")} className="text-gray-500 hover:text-gray-800 underline">
-              Política de Privacidade
-            </RouterLink>
-            <span className="text-gray-400">•</span>
-            <RouterLink to={createPageUrl("TermosServico")} className="text-gray-500 hover:text-gray-800 underline">
-              Termos de Serviço
-            </RouterLink>
-          </div>
-          <p className="text-gray-400 text-xs">
-            © 2024 Toca Experience. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
 
       {/* Floating Social Bar */}
       <React.Suspense fallback={null}>

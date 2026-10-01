@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { openWhatsAppLead } from "@/lib/whatsappLead";
 import { base44 } from "@/api/base44Client";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import MultiStepQuotationForm from "@/components/ai/MultiStepQuotationForm";
@@ -14,7 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export default function Cotacao() {
-  const { trackFormSubmission, trackWhatsAppClick } = useTracking();
+  const { trackWhatsAppClick } = useTracking();
   const [showMultiStep, setShowMultiStep] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
@@ -88,29 +89,18 @@ ${formData.estrutura || "Não informada"}
 💬 *MENSAGEM ADICIONAL:*
 ${formData.mensagem || "Nenhuma mensagem adicional"}`;
 
-      // Salvar dados no localStorage para WhatsApp posterior
-      localStorage.setItem('whatsapp_message', whatsappMessage);
-
-      trackFormSubmission(formData);
-      trackWhatsAppClick();
-
-      // Google Ads Conversion Event
-      if (window.gtag) {
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-17649743667/Px_YCKCb3s4bELPuhuBB',
-          'value': 1.0,
-          'currency': 'BRL'
+      // Nada é enviado automaticamente: abrimos o WhatsApp com a mensagem pronta.
+      const opened = openWhatsAppLead(whatsappMessage);
+      if (opened) {
+        trackWhatsAppClick();
+        toast.success("WhatsApp aberto com sua mensagem", {
+          description: "Toque em enviar no WhatsApp para concluir. Seu pedido só chega até nós depois disso."
+        });
+      } else {
+        toast.error("Não conseguimos abrir o WhatsApp", {
+          description: "Verifique se o navegador bloqueou a janela e tente de novo."
         });
       }
-
-      toast.success("Proposta enviada com sucesso!", {
-        description: "Redirecionando para página de confirmação..."
-      });
-
-      // Redirecionar para página de agradecimento (dispara conversão)
-      setTimeout(() => {
-        window.location.href = createPageUrl("Obrigado");
-      }, 800);
     } catch (error) {
       console.error("Erro ao processar cotação:", error);
       toast.error("Erro ao processar cotação. Tente novamente.");
