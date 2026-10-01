@@ -70,7 +70,7 @@ export default function Curadoria() {
     <div className="min-h-screen bg-black">
       {/* Breadcrumbs */}
       <div className="container mx-auto px-6 pt-6">
-        <Breadcrumbs items={[
+        <Breadcrumbs dark items={[
           { label: "Curadoria Musical", page: "Curadoria" }
         ]} />
       </div>

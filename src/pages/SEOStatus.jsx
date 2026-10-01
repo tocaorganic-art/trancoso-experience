@@ -44,48 +44,48 @@ export default function SEOStatus() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <CheckCircle2 className="w-5 h-5 text-green-700" />
                 Implementações Concluídas
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5" />
                 <div>
                   <p className="font-medium">Meta Tags Automáticas</p>
                   <p className="text-sm text-gray-600">Título, descrição e keywords otimizados por página</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5" />
                 <div>
                   <p className="font-medium">Sitemap.xml Dinâmico</p>
                   <p className="text-sm text-gray-600">Geração automática com todas as páginas</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5" />
                 <div>
                   <p className="font-medium">Schema Markup - Eventos</p>
                   <p className="text-sm text-gray-600">Event schema para todos os eventos listados</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5" />
                 <div>
                   <p className="font-medium">Schema Markup - Serviços</p>
                   <p className="text-sm text-gray-600">Service schema para casamentos, corporativo e aluguel</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5" />
                 <div>
                   <p className="font-medium">Open Graph & Twitter Cards</p>
                   <p className="text-sm text-gray-600">Otimizado para compartilhamento social</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-700 mt-0.5" />
                 <div>
                   <p className="font-medium">Canonical URLs</p>
                   <p className="text-sm text-gray-600">URLs canônicas em todas as páginas principais</p>

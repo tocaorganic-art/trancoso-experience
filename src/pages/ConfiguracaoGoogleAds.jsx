@@ -148,7 +148,7 @@ MÉTRICAS ESPERADAS
               <div className="flex gap-2">
                 <Button 
                   onClick={() => copiarTexto(promptCompleto)}
-                  className="bg-indigo-600 hover:bg-indigo-700"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white"
                 >
                   {copied ? (
                     <>
@@ -249,11 +249,11 @@ MÉTRICAS ESPERADAS
             <CardContent>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full text-white"></span>
                   <span>Belo Horizonte, MG</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full text-white"></span>
                   <span>São Paulo, SP</span>
                 </li>
                 <li className="flex items-center gap-2">

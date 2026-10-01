@@ -9,7 +9,7 @@ import { toast } from "sonner";
 const TOPIC_CATEGORIES = [
   { value: "trending", label: "Tendências", icon: TrendingUp, color: "text-red-600" },
   { value: "seasonal", label: "Sazonal", icon: Calendar, color: "text-blue-600" },
-  { value: "educational", label: "Educacional", icon: Users, color: "text-green-600" },
+  { value: "educational", label: "Educacional", icon: Users, color: "text-green-700" },
   { value: "music", label: "Música", icon: Music, color: "text-purple-600" }
 ];
 
@@ -182,7 +182,7 @@ Priorize temas que:
                   </div>
                   <Button
                     onClick={() => handleUseSuggestion(suggestion)}
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
                   >
                     Usar Este Tema
                   </Button>

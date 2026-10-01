@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Filter, Sparkles, PartyPopper, Loader2, ArrowLeft, Users, Music, MessageCircle, CheckCircle, ImageIcon } from "lucide-react";
+import { Calendar, Sparkles, Loader2, ArrowLeft, Users, Music, MessageCircle, CheckCircle, ImageIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import EventCard from "@/components/eventos/EventCard";
-import EventDaySection from "@/components/eventos/EventDaySection";
 import CompartilharTodos from "@/components/eventos-ano-novo/CompartilharTodos";
 import ImageGallery from "@/components/eventos/ImageGallery";
 import EventFilters from "@/components/eventos/EventFilters";
@@ -196,7 +194,7 @@ export default function EventosAnoNovo() {
       </React.Suspense>
 
       {/* Conversion Block - Services CTA */}
-      <section className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 py-12 relative z-10">
+      <section className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 py-12 relative z-10 text-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -229,7 +227,7 @@ export default function EventosAnoNovo() {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
                 >
                   <Music className="w-5 h-5 mr-2" />
                   Alugar Som Profissional
@@ -239,7 +237,7 @@ export default function EventosAnoNovo() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
+                className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6"
                 onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
@@ -271,7 +269,7 @@ export default function EventosAnoNovo() {
       {/* Efeito de brilho - Luxo Moderno */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/10 to-yellow-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-bl from-pink-500/10 to-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-bl from-pink-500/10 to-purple-500/5 rounded-full blur-3xl animate-pulse text-white" style={{ animationDuration: '6s', animationDelay: '1s' }} />
         <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-gradient-to-tr from-green-500/5 to-cyan-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '2s' }} />
       </div>
 
@@ -304,7 +302,7 @@ export default function EventosAnoNovo() {
       <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 relative">
         {/* Breadcrumbs */}
         <React.Suspense fallback={null}>
-          <Breadcrumbs items={[
+          <Breadcrumbs dark items={[
             { label: "Eventos de Ano Novo", page: "EventosAnoNovo" }
           ]} />
         </React.Suspense>

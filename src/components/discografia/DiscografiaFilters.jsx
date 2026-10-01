@@ -34,7 +34,7 @@ export default function DiscografiaFilters({ filters, onFilterChange, counts }) 
             Tipo de Lançamento
           </label>
           <Select value={tipo} onValueChange={(value) => onFilterChange({ tipo: value })}>
-            <SelectTrigger className="bg-white border-gray-300">
+            <SelectTrigger aria-label="Selecionar opção" className="bg-white border-gray-300">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -55,7 +55,7 @@ export default function DiscografiaFilters({ filters, onFilterChange, counts }) 
             Artista
           </label>
           <Select value={artista} onValueChange={(value) => onFilterChange({ artista: value })}>
-            <SelectTrigger className="bg-white border-gray-300">
+            <SelectTrigger aria-label="Selecionar opção" className="bg-white border-gray-300">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -74,7 +74,7 @@ export default function DiscografiaFilters({ filters, onFilterChange, counts }) 
             Ordenar por
           </label>
           <Select value={ordenacao} onValueChange={(value) => onFilterChange({ ordenacao: value })}>
-            <SelectTrigger className="bg-white border-gray-300">
+            <SelectTrigger aria-label="Selecionar opção" className="bg-white border-gray-300">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

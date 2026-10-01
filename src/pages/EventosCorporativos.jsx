@@ -171,7 +171,7 @@ export default function EventosCorporativos() {
               >
                 <Card className="h-full text-center hover:shadow-lg transition-all">
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center text-white">
                       <tipo.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold mb-3">{tipo.title}</h3>
@@ -228,7 +228,7 @@ export default function EventosCorporativos() {
                   <div className="space-y-2">
                     {diferencial.points.map((point, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span className="text-gray-700 text-sm">{point}</span>
                       </div>
                     ))}
@@ -298,8 +298,8 @@ export default function EventosCorporativos() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Nome da Empresa *</label>
-                    <Input
+                    <label htmlFor="corp-nome-da-empresa" className="block text-sm font-medium mb-2">Nome da Empresa *</label>
+                    <Input id="corp-nome-da-empresa"
                       required
                       value={formData.empresa}
                       onChange={(e) => setFormData({...formData, empresa: e.target.value})}
@@ -307,8 +307,8 @@ export default function EventosCorporativos() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Responsável *</label>
-                    <Input
+                    <label htmlFor="corp-responsavel" className="block text-sm font-medium mb-2">Responsável *</label>
+                    <Input id="corp-responsavel"
                       required
                       value={formData.responsavel}
                       onChange={(e) => setFormData({...formData, responsavel: e.target.value})}
@@ -319,8 +319,8 @@ export default function EventosCorporativos() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email Corporativo *</label>
-                    <Input
+                    <label htmlFor="corp-email-corporativo" className="block text-sm font-medium mb-2">Email Corporativo *</label>
+                    <Input id="corp-email-corporativo"
                       required
                       type="email"
                       value={formData.email}
@@ -329,8 +329,8 @@ export default function EventosCorporativos() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Telefone *</label>
-                    <Input
+                    <label htmlFor="corp-telefone" className="block text-sm font-medium mb-2">Telefone *</label>
+                    <Input id="corp-telefone"
                       required
                       value={formData.telefone}
                       onChange={(e) => setFormData({...formData, telefone: e.target.value})}
@@ -341,9 +341,9 @@ export default function EventosCorporativos() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Tipo de Evento *</label>
+                    <label htmlFor="corp-tipo-de-evento" className="block text-sm font-medium mb-2">Tipo de Evento *</label>
                     <Select value={formData.tipoEvento} onValueChange={(value) => setFormData({...formData, tipoEvento: value})}>
-                      <SelectTrigger>
+                      <SelectTrigger id="corp-tipo-de-evento">
                         <SelectValue placeholder="Selecione" />
                       </SelectTrigger>
                       <SelectContent>
@@ -357,8 +357,8 @@ export default function EventosCorporativos() {
                     </Select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Número de Participantes</label>
-                    <Input
+                    <label htmlFor="corp-numero-de-participantes" className="block text-sm font-medium mb-2">Número de Participantes</label>
+                    <Input id="corp-numero-de-participantes"
                       value={formData.numeroParticipantes}
                       onChange={(e) => setFormData({...formData, numeroParticipantes: e.target.value})}
                       placeholder="Ex: 150"
@@ -367,8 +367,8 @@ export default function EventosCorporativos() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Data do Evento</label>
-                  <Input
+                  <label htmlFor="corp-data-do-evento" className="block text-sm font-medium mb-2">Data do Evento</label>
+                  <Input id="corp-data-do-evento"
                     type="date"
                     value={formData.dataEvento}
                     onChange={(e) => setFormData({...formData, dataEvento: e.target.value})}
@@ -376,8 +376,8 @@ export default function EventosCorporativos() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Detalhes do Evento</label>
-                  <Textarea
+                  <label htmlFor="corp-detalhes-do-evento" className="block text-sm font-medium mb-2">Detalhes do Evento</label>
+                  <Textarea id="corp-detalhes-do-evento"
                     value={formData.mensagem}
                     onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
                     placeholder="Local, horários, perfil do público, necessidades específicas..."
@@ -388,7 +388,7 @@ export default function EventosCorporativos() {
                 <Button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 py-6 text-lg"
+                  className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 py-6 text-lg text-white"
                 >
                   {isSubmitting ? "ENVIANDO..." : "SOLICITAR PROPOSTA"}
                 </Button>
@@ -450,7 +450,7 @@ export default function EventosCorporativos() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="bg-transparent border-white text-white hover:bg-white/10"
                 onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />

@@ -189,7 +189,7 @@ export default function CheckoutModal({ isOpen, onClose, evento, selection }) {
               />
             </div>
 
-            <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
               Continuar
             </Button>
           </form>
@@ -237,14 +237,14 @@ export default function CheckoutModal({ isOpen, onClose, evento, selection }) {
               <Button 
                 variant="outline" 
                 onClick={() => setStep(1)}
-                className="flex-1 border-white/20 text-white hover:bg-white/10"
+                className="bg-transparent flex-1 border-white/20 text-white hover:bg-white/10"
               >
                 Voltar
               </Button>
               <Button 
                 onClick={handlePayment}
                 disabled={isProcessing}
-                className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
               >
                 {isProcessing ? (
                   <>
@@ -266,7 +266,7 @@ export default function CheckoutModal({ isOpen, onClose, evento, selection }) {
             <h3 className="text-2xl font-bold mb-2">Reserva Confirmada!</h3>
             <p className="text-gray-400 mb-6">Seus ingressos foram reservados com sucesso</p>
 
-            <Card className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-purple-500/30 mb-6">
+            <Card className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-purple-500/30 mb-6 text-white">
               <CardContent className="p-6">
                 <p className="text-sm text-gray-300 mb-2">Código da Reserva</p>
                 <p className="text-3xl font-bold text-white tracking-wider">{reservationCode}</p>
@@ -297,7 +297,7 @@ export default function CheckoutModal({ isOpen, onClose, evento, selection }) {
               </ul>
             </div>
 
-            <Button onClick={handleClose} className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button onClick={handleClose} className="w-full bg-purple-600 hover:bg-purple-700 text-white">
               Fechar
             </Button>
           </div>

@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import { motion } from "framer-motion";
-import { Disc3, Music, Loader2, ExternalLink, Play } from "lucide-react";
+import { Disc3, Music, Loader2, ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import LazyEmbed from "@/components/embeds/LazyEmbed";
 import ReleaseCard from "@/components/discografia/ReleaseCard";
 import ReleasePlayer from "@/components/discografia/ReleasePlayer";
@@ -135,7 +133,7 @@ export default function Discografia() {
     <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 pb-24">
       {/* Breadcrumbs */}
       <div className="container mx-auto px-6 pt-6">
-        <Breadcrumbs items={[
+        <Breadcrumbs dark items={[
           { label: "Discografia", page: "Discografia" }
         ]} />
       </div>
@@ -281,7 +279,7 @@ export default function Discografia() {
             href="https://open.spotify.com/artist/2r4S2RPdfnx7UPL73jJWlQ" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
+            className="bg-green-700 hover:bg-green-800 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
           >
             <span className="font-bold text-sm md:text-base">Spotify</span>
             <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
@@ -290,7 +288,7 @@ export default function Discografia() {
             href="https://soundcloud.com/tonyismusic" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
+            className="bg-orange-700 hover:bg-orange-800 text-white p-4 rounded-xl flex items-center justify-between transition-colors"
           >
             <span className="font-bold text-sm md:text-base">SoundCloud</span>
             <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />

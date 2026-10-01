@@ -61,7 +61,7 @@ export default function RevenueChart() {
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                <DollarSign className="w-6 h-6 text-green-600" />
+                <DollarSign className="w-6 h-6 text-green-700" />
               </div>
             </div>
           </CardContent>

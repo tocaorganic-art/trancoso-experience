@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
-import { TrendingUp, TrendingDown, Minus, Plus, Trash2, RefreshCw, Loader2 } from "lucide-react";
+import { TrendingUp, TrendingDown, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 
@@ -133,7 +133,7 @@ export default function KeywordTracker() {
                     <td className="text-center py-3 px-2">
                       <div className="flex items-center justify-center gap-1">
                         {getTrendIcon(kw.change)}
-                        <span className={kw.change > 0 ? "text-green-600" : kw.change < 0 ? "text-red-600" : "text-gray-400"}>
+                        <span className={kw.change > 0 ? "text-green-700" : kw.change < 0 ? "text-red-600" : "text-gray-400"}>
                           {kw.change > 0 ? `+${kw.change}` : kw.change}
                         </span>
                       </div>

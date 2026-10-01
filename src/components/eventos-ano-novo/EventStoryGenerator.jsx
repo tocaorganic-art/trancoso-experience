@@ -280,7 +280,7 @@ export default function EventStoryGenerator({ evento, isOpen, onClose }) {
           <div className="flex gap-2">
             <Button
               onClick={downloadImage}
-              className="flex-1 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600"
+              className="flex-1 bg-gradient-to-r from-orange-700 to-pink-600 hover:from-orange-800 hover:to-pink-700"
             >
               <Download className="w-4 h-4 mr-2" />
               Baixar Imagem

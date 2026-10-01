@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { X, Sparkles, Music, MessageCircle } from "lucide-react";
+import { X, Sparkles, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";

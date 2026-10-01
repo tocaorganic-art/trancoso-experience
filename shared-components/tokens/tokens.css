@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Design tokens compartilhados (fonte única) — prefixo --ds-
+   Valores = TOCA EXPERIENCE v1.0 (kit oficial: paleta, raios, estados, header).
+   Outros produtos do ecossistema (Concierge, Resolve, Move) mantêm a própria marca:
+   para adotar os componentes, sobrescrevam só os valores --ds-* no próprio tema,
+   por exemplo em :root[data-ds-theme="resolve"] { --ds-color-action: ...; }
+   ========================================================================== */
+:root {
+  /* Paleta */
+  --ds-color-obsidiana: #1A1714;
+  --ds-color-laranja: #E8571A;
+  --ds-color-terracota: #C1440E;
+  --ds-color-oliva: #6B7C3A;
+  --ds-color-areia: #F2DEC4;
+  --ds-color-areia-suave: #FAF6EE;
+  --ds-color-areia-media: #F5EFE5;
+  --ds-color-ink: #2A2520;
+
+  /* Estados (kit v1.0) */
+  --ds-color-sucesso: #3E8E5A;
+  --ds-color-atencao: #E59A12;
+  --ds-color-erro: #D7382B;
+  --ds-color-info: #2D7D8A;
+
+  /* Semânticos (contrastes verificados) */
+  --ds-color-bg: var(--ds-color-areia-suave);
+  --ds-color-surface: #FFFFFF;
+  --ds-color-text: var(--ds-color-ink);
+  --ds-color-text-muted: #5E5247;               /* 7,0:1 sobre areia suave */
+  --ds-color-text-on-dark: #FFFFFF;
+  --ds-color-text-on-dark-muted: #E4D5BE;       /* >10:1 sobre obsidiana */
+  --ds-color-border: #E3D2B8;
+  --ds-color-border-on-dark: rgba(242, 222, 196, 0.22);
+  --ds-color-action: var(--ds-color-laranja);
+  --ds-color-on-action: var(--ds-color-obsidiana); /* 4,94:1; texto branco daria 3,61:1 */
+  --ds-color-link: var(--ds-color-terracota);      /* 4,75:1 sobre areia suave */
+  --ds-color-focus: var(--ds-color-terracota);
+  --ds-color-focus-on-dark: var(--ds-color-areia);
+  --ds-header-bg: rgba(26, 23, 20, 0.86);
+  --ds-header-blur: 18px;
+
+  /* Raios (kit: 6, 10, 14, 20, pill) */
+  --ds-radius-xs: 6px;
+  --ds-radius-sm: 10px;
+  --ds-radius-md: 14px;
+  --ds-radius-lg: 20px;
+  --ds-radius-pill: 999px;
+
+  /* Espaçamento (escala de 4 px) */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+
+  /* Tipografia: interface em Nunito Sans; títulos editoriais em Newsreader */
+  --ds-font-ui: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ds-font-editorial: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --ds-text-sm: 0.875rem;
+  --ds-text-base: 1rem;
+  --ds-text-lg: 1.125rem;
+  --ds-text-xl: 1.375rem;
+  --ds-text-2xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --ds-text-3xl: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
+  --ds-text-hero: clamp(2.5rem, 1.4rem + 6vw, 6.25rem);
+
+  /* Sombras e movimento */
+  --ds-shadow-sm: 0 1px 2px rgba(26, 23, 20, 0.12);
+  --ds-shadow-md: 0 8px 24px rgba(26, 23, 20, 0.18);
+  --ds-shadow-lg: 0 24px 60px rgba(26, 23, 20, 0.32);
+  --ds-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-touch-target: 44px;
+}
+
+/* Animações utilitárias (respeitam prefers-reduced-motion no brand.css) */
+@keyframes ds-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ds-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes ds-orbit {
+  to { transform: rotate(360deg); }
+}
+.ds-fade-up { animation: ds-fade-up 0.8s var(--ds-ease) both; }

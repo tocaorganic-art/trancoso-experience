@@ -42,7 +42,7 @@ export default function ResultadosBusca() {
       {/* Efeito de brilho */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/10 to-yellow-500/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-bl from-pink-500/10 to-purple-500/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-bl from-pink-500/10 to-purple-500/5 rounded-full blur-3xl animate-pulse text-white" />
       </div>
 
       {/* Header */}
@@ -85,7 +85,7 @@ export default function ResultadosBusca() {
             <h2 className="text-2xl font-bold text-white mb-2">Nenhum evento encontrado</h2>
             <p className="text-gray-400 mb-6">Tente buscar por outros termos ou explore nossa página de eventos</p>
             <Link to={createPageUrl("EventosAnoNovo")}>
-              <Button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600">
+              <Button className="bg-gradient-to-r from-orange-700 to-pink-600 hover:from-orange-800 hover:to-pink-700">
                 Ver Todos os Eventos
               </Button>
             </Link>

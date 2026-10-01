@@ -26,7 +26,7 @@ export default function EventFilters({ filters, onFilterChange, eventCounts }) {
             Localidade
           </label>
           <Select value={localidade} onValueChange={(value) => onFilterChange({ localidade: value })}>
-            <SelectTrigger className="bg-white/5 border-white/20 text-white">
+            <SelectTrigger aria-label="Selecionar opção" className="bg-white/5 border-white/20 text-white">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -45,7 +45,7 @@ export default function EventFilters({ filters, onFilterChange, eventCounts }) {
             De
           </label>
           <Select value={mesInicio} onValueChange={(value) => onFilterChange({ mesInicio: value })}>
-            <SelectTrigger className="bg-white/5 border-white/20 text-white">
+            <SelectTrigger aria-label="Selecionar opção" className="bg-white/5 border-white/20 text-white">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -64,7 +64,7 @@ export default function EventFilters({ filters, onFilterChange, eventCounts }) {
             Até
           </label>
           <Select value={mesFim} onValueChange={(value) => onFilterChange({ mesFim: value })}>
-            <SelectTrigger className="bg-white/5 border-white/20 text-white">
+            <SelectTrigger aria-label="Selecionar opção" className="bg-white/5 border-white/20 text-white">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -83,7 +83,7 @@ export default function EventFilters({ filters, onFilterChange, eventCounts }) {
             Ordenar por
           </label>
           <Select value={ordenacao} onValueChange={(value) => onFilterChange({ ordenacao: value })}>
-            <SelectTrigger className="bg-white/5 border-white/20 text-white">
+            <SelectTrigger aria-label="Selecionar opção" className="bg-white/5 border-white/20 text-white">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

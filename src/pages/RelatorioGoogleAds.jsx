@@ -37,7 +37,7 @@ export default function RelatorioGoogleAds() {
           <Card className="bg-green-50 border-green-200">
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-8 h-8 text-green-600" />
+                <CheckCircle2 className="w-8 h-8 text-green-700" />
                 <div>
                   <p className="text-2xl font-bold text-green-900">2</p>
                   <p className="text-sm text-green-700">Concluídas</p>
@@ -81,7 +81,7 @@ export default function RelatorioGoogleAds() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
+              <CheckCircle2 className="w-5 h-5 text-green-700 mt-1" />
               <div>
                 <p className="font-semibold text-gray-900">Tag do Google Instalada</p>
                 <p className="text-sm text-gray-600">
@@ -91,7 +91,7 @@ export default function RelatorioGoogleAds() {
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
+              <CheckCircle2 className="w-5 h-5 text-green-700 mt-1" />
               <div>
                 <p className="font-semibold text-gray-900">Evento de Conversão Ajustado</p>
                 <p className="text-sm text-gray-600">
@@ -435,7 +435,7 @@ export default function RelatorioGoogleAds() {
               href="https://wa.me/5521997731321" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-green-600 hover:underline text-sm"
+              className="flex items-center gap-2 text-green-700 hover:underline text-sm"
             >
               <ExternalLink className="w-4 h-4" />
               WhatsApp Business (Leads)

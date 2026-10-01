@@ -7,6 +7,19 @@ export default function EquipmentGallery({ equipamentos, isOpen, onClose }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
 
+  // Atalhos de teclado só enquanto a galeria está aberta (hook antes de qualquer retorno antecipado).
+  const total = equipamentos.length;
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const onKey = (e) => {
+      if (e.key === "ArrowRight") { setSelectedIndex((prev) => (prev + 1) % total); setIsZoomed(false); }
+      if (e.key === "ArrowLeft") { setSelectedIndex((prev) => (prev - 1 + total) % total); setIsZoomed(false); }
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isOpen, total, onClose]);
+
   if (!isOpen) return null;
 
   const selectedEquip = equipamentos[selectedIndex];
@@ -21,16 +34,6 @@ export default function EquipmentGallery({ equipamentos, isOpen, onClose }) {
     setIsZoomed(false);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "ArrowRight") nextImage();
-    if (e.key === "ArrowLeft") prevImage();
-    if (e.key === "Escape") onClose();
-  };
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   return (
     <AnimatePresence>
@@ -40,6 +43,9 @@ export default function EquipmentGallery({ equipamentos, isOpen, onClose }) {
         exit={{ opacity: 0 }}
         className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm"
         onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Galeria de equipamentos"
       >
         {/* Close Button */}
         <Button

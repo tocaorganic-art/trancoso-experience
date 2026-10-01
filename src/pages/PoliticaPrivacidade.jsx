@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export default function PoliticaPrivacidade() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-8">
+      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-8 text-white">
         <div className="container mx-auto px-6">
           <Link to={createPageUrl("Home")}>
             <Button variant="ghost" className="text-white/70 hover:text-white mb-4">

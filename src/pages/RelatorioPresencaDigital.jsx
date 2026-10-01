@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CheckCircle2, AlertCircle, TrendingUp, Sparkles, ArrowLeft, Eye, Zap, Brain, Target, Layout, Code, FileText, Image, MessageSquare } from "lucide-react";
+import { CheckCircle2, AlertCircle, TrendingUp, Sparkles, ArrowLeft, Zap, Brain, Target, Layout, Code, FileText, Image, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
@@ -191,7 +191,7 @@ export default function RelatorioPresencaDigital() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <CheckCircle2 className="w-4 h-4 text-green-700" />
                       SEO Técnico
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
@@ -205,7 +205,7 @@ export default function RelatorioPresencaDigital() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <CheckCircle2 className="w-4 h-4 text-green-700" />
                       Performance
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
@@ -219,7 +219,7 @@ export default function RelatorioPresencaDigital() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <CheckCircle2 className="w-4 h-4 text-green-700" />
                       UX/Design
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
@@ -233,7 +233,7 @@ export default function RelatorioPresencaDigital() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <CheckCircle2 className="w-4 h-4 text-green-700" />
                       Conversão
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
@@ -297,12 +297,12 @@ export default function RelatorioPresencaDigital() {
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-2">🔑 Palavras-Chave Alvo</h4>
                         <div className="flex flex-wrap gap-2">
-                          <Badge className="bg-blue-600">dj casamento trancoso</Badge>
-                          <Badge className="bg-blue-600">eventos luxo trancoso</Badge>
-                          <Badge className="bg-blue-600">aluguel som profissional</Badge>
-                          <Badge className="bg-blue-600">afro house brasil</Badge>
-                          <Badge className="bg-purple-600">tony monteiro dj</Badge>
-                          <Badge className="bg-purple-600">organic house trancoso</Badge>
+                          <Badge className="bg-blue-600 text-white">dj casamento trancoso</Badge>
+                          <Badge className="bg-blue-600 text-white">eventos luxo trancoso</Badge>
+                          <Badge className="bg-blue-600 text-white">aluguel som profissional</Badge>
+                          <Badge className="bg-blue-600 text-white">afro house brasil</Badge>
+                          <Badge className="bg-purple-600 text-white">tony monteiro dj</Badge>
+                          <Badge className="bg-purple-600 text-white">organic house trancoso</Badge>
                         </div>
                       </div>
 
@@ -477,12 +477,12 @@ export default function RelatorioPresencaDigital() {
                         <h4 className="font-bold text-gray-900 mb-2">Serviços DJ</h4>
                         <p className="text-sm text-gray-700">Cards translúcidos com blur de fundo para destacar serviços</p>
                       </div>
-                      <div className="bg-gradient-to-br from-blue-500/30 to-purple-500/20 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-xl">
+                      <div className="bg-gradient-to-br from-blue-500/30 to-purple-500/20 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-xl text-white">
                         <div className="text-4xl mb-3">🎉</div>
                         <h4 className="font-bold text-white mb-2">Eventos Premium</h4>
                         <p className="text-sm text-white/90">Gradiente sutil com transparência para eventos destaque</p>
                       </div>
-                      <div className="bg-gradient-to-br from-pink-500/30 to-orange-500/20 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-xl">
+                      <div className="bg-gradient-to-br from-pink-500/30 to-orange-500/20 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-xl text-white">
                         <div className="text-4xl mb-3">💍</div>
                         <h4 className="font-bold text-white mb-2">Casamentos</h4>
                         <p className="text-sm text-white/90">Efeito romântico com bordas brilhantes</p>
@@ -535,7 +535,7 @@ export default function RelatorioPresencaDigital() {
                             <a href="#" className="hover:text-blue-400 transition">Sobre</a>
                           </div>
                         </div>
-                        <button className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-full text-sm font-semibold transition">
+                        <button className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-full text-sm font-semibold transition text-white">
                           Solicitar Orçamento
                         </button>
                       </div>
@@ -625,7 +625,7 @@ export default function RelatorioPresencaDigital() {
                             </div>
                           </div>
                           <div className="flex gap-3 justify-end">
-                            <div className="bg-blue-700 rounded-2xl rounded-tr-none p-3">
+                            <div className="bg-blue-700 rounded-2xl rounded-tr-none p-3 text-white">
                               Um casamento em Trancoso
                             </div>
                             <div className="bg-white/20 rounded-full w-8 h-8 flex items-center justify-center">👤</div>
@@ -677,7 +677,7 @@ export default function RelatorioPresencaDigital() {
                   <div className="border-l-4 border-purple-500 pl-6 py-4 bg-purple-50 rounded-r-xl">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-xl font-bold text-purple-900">✨ Analisador de Vibe do Evento</h3>
-                      <Badge className="bg-purple-600">Inovação</Badge>
+                      <Badge className="bg-purple-600 text-white">Inovação</Badge>
                     </div>
                     <p className="text-sm text-gray-700 mb-3">
                       Cliente descreve o evento em palavras livres → IA sugere: paleta de cores, estilo de decoração, tipo de música, mood boards.
@@ -721,7 +721,7 @@ export default function RelatorioPresencaDigital() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-6 h-6 text-green-600" />
+                  <FileText className="w-6 h-6 text-green-700" />
                   Estratégia de Conteúdo SEO
                 </CardTitle>
               </CardHeader>
@@ -734,12 +734,12 @@ export default function RelatorioPresencaDigital() {
                       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                         <h4 className="font-bold text-blue-900 mb-2">1. Guia Completo: Como Escolher DJ para Casamento em Trancoso</h4>
                         <p className="text-xs text-gray-700 mb-2">🎯 Palavra-chave: "como escolher dj casamento trancoso"</p>
-                        <Badge className="bg-blue-600 text-xs">2000+ palavras</Badge>
+                        <Badge className="bg-blue-600 text-xs text-white">2000+ palavras</Badge>
                       </div>
                       <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
                         <h4 className="font-bold text-purple-900 mb-2">2. Top 10 Locais para Casamento em Trancoso 2025</h4>
                         <p className="text-xs text-gray-700 mb-2">🎯 Palavra-chave: "melhores locais casamento trancoso"</p>
-                        <Badge className="bg-purple-600 text-xs">1500+ palavras</Badge>
+                        <Badge className="bg-purple-600 text-xs text-white">1500+ palavras</Badge>
                       </div>
                       <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                         <h4 className="font-bold text-green-900 mb-2">3. Afro House vs. Organic House: Qual o Melhor para Seu Evento?</h4>
@@ -754,12 +754,12 @@ export default function RelatorioPresencaDigital() {
                       <div className="bg-pink-50 p-4 rounded-lg border border-pink-200">
                         <h4 className="font-bold text-pink-900 mb-2">5. Quanto Custa um Casamento em Trancoso? [Breakdown Completo]</h4>
                         <p className="text-xs text-gray-700 mb-2">🎯 Palavra-chave: "custo casamento trancoso"</p>
-                        <Badge className="bg-pink-600 text-xs">1800+ palavras</Badge>
+                        <Badge className="bg-pink-600 text-xs text-white">1800+ palavras</Badge>
                       </div>
                       <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
                         <h4 className="font-bold text-indigo-900 mb-2">6. Equipamento DJ Pioneer: CDJ-3000 vs. DJM-V10 [Review]</h4>
                         <p className="text-xs text-gray-700 mb-2">🎯 Palavra-chave: "pioneer cdj 3000 review"</p>
-                        <Badge className="bg-indigo-600 text-xs">1000+ palavras</Badge>
+                        <Badge className="bg-indigo-600 text-xs text-white">1000+ palavras</Badge>
                       </div>
                     </div>
                     <div className="mt-4 bg-yellow-50 p-4 rounded-lg border border-yellow-300">
@@ -850,13 +850,13 @@ export default function RelatorioPresencaDigital() {
                     <h3 className="text-xl font-bold text-gray-900 mb-4">🎬 Backgrounds Hero Section</h3>
                     <div className="space-y-4">
                       <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-5 rounded-xl border border-blue-200">
-                        <Badge className="bg-blue-600 mb-3">Prompt 1 - Sunset Trancoso</Badge>
+                        <Badge className="bg-blue-600 mb-3 text-white">Prompt 1 - Sunset Trancoso</Badge>
                         <p className="text-sm text-gray-800 font-mono bg-white p-3 rounded-lg">
                           "Ultra-realistic photograph of Trancoso beach at golden hour sunset, warm orange and pink sky, palm trees silhouette, soft waves, DJ equipment (Pioneer CDJ) subtly integrated on beachfront setup, cinematic lighting, 16:9 aspect ratio, professional photography, dreamy atmosphere, bokeh effect, 8K resolution"
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-purple-50 to-pink-100 p-5 rounded-xl border border-purple-200">
-                        <Badge className="bg-purple-600 mb-3">Prompt 2 - Wedding Vibe</Badge>
+                        <Badge className="bg-purple-600 mb-3 text-white">Prompt 2 - Wedding Vibe</Badge>
                         <p className="text-sm text-gray-800 font-mono bg-white p-3 rounded-lg">
                           "Elegant outdoor wedding reception in Trancoso Brazil, string lights hanging over wooden tables, tropical flowers decoration, guests dancing, DJ booth with modern equipment, romantic ambient lighting, luxury destination wedding, aerial view, cinematic color grading, natural tones, shallow depth of field"
                         </p>
@@ -881,13 +881,13 @@ export default function RelatorioPresencaDigital() {
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-blue-50 to-cyan-100 p-5 rounded-xl border border-blue-200">
-                        <Badge className="bg-blue-600 mb-3">Aluguel de Equipamentos</Badge>
+                        <Badge className="bg-blue-600 mb-3 text-white">Aluguel de Equipamentos</Badge>
                         <p className="text-xs text-gray-800 font-mono bg-white p-3 rounded-lg">
                           "Product photography of Pioneer CDJ-3000 and DJM-V10 mixer on sleek black surface, studio lighting, reflections, premium quality equipment, modern professional DJ gear, minimalist composition, dark moody background, commercial product shot, high resolution, shallow focus"
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-purple-50 to-violet-100 p-5 rounded-xl border border-purple-200">
-                        <Badge className="bg-purple-600 mb-3">Eventos Corporativos</Badge>
+                        <Badge className="bg-purple-600 mb-3 text-white">Eventos Corporativos</Badge>
                         <p className="text-xs text-gray-800 font-mono bg-white p-3 rounded-lg">
                           "Corporate event scene with professional DJ setup, modern office rooftop party, business casual attendees networking, sleek lighting design, urban skyline background, contemporary business event photography, sophisticated atmosphere, editorial style, natural light mixed with ambient"
                         </p>
@@ -1044,7 +1044,7 @@ export default function RelatorioPresencaDigital() {
                   <div className="border-l-4 border-blue-500 pl-6 bg-blue-50 rounded-r-xl py-4">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-xl font-bold text-blue-900">Sprint 4 - Inovação (1 mês)</h3>
-                      <Badge className="bg-blue-600">OPCIONAL</Badge>
+                      <Badge className="bg-blue-600 text-white">OPCIONAL</Badge>
                     </div>
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
@@ -1079,7 +1079,7 @@ export default function RelatorioPresencaDigital() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="w-6 h-6 text-green-600" />
+                  <TrendingUp className="w-6 h-6 text-green-700" />
                   KPIs e Metas 2025
                 </CardTitle>
               </CardHeader>
@@ -1115,7 +1115,7 @@ export default function RelatorioPresencaDigital() {
                             <Badge>Meta: 25</Badge>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-blue-600 h-2 rounded-full" style={{width: '40%'}}></div>
+                            <div className="bg-blue-600 h-2 rounded-full text-white" style={{width: '40%'}}></div>
                           </div>
                           <p className="text-xs text-gray-500 mt-1">Atual: 10 palavras</p>
                         </div>
@@ -1168,7 +1168,7 @@ export default function RelatorioPresencaDigital() {
                             <Badge>Meta: 4.5%</Badge>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-blue-600 h-2 rounded-full" style={{width: '55%'}}></div>
+                            <div className="bg-blue-600 h-2 rounded-full text-white" style={{width: '55%'}}></div>
                           </div>
                           <p className="text-xs text-gray-500 mt-1">Atual: 2.5%</p>
                         </div>
@@ -1178,7 +1178,7 @@ export default function RelatorioPresencaDigital() {
                             <Badge>Meta: 150</Badge>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-purple-600 h-2 rounded-full" style={{width: '40%'}}></div>
+                            <div className="bg-purple-600 h-2 rounded-full text-white" style={{width: '40%'}}></div>
                           </div>
                           <p className="text-xs text-gray-500 mt-1">Atual: 60 leads</p>
                         </div>
@@ -1263,7 +1263,7 @@ export default function RelatorioPresencaDigital() {
                 </Button>
               </Link>
               <Link to={createPageUrl("AdminDashboard")}>
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10">
                   Voltar ao Dashboard
                 </Button>
               </Link>

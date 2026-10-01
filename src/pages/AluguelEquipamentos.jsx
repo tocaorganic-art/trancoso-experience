@@ -182,7 +182,7 @@ export default function AluguelEquipamentos() {
               <Card key={index} className={`${pacote.destaque ? 'border-2 border-blue-500 shadow-xl' : ''}`}>
                 <CardContent className="p-8">
                   {pacote.destaque && (
-                    <Badge className="mb-4 bg-blue-500">MAIS POPULAR</Badge>
+                    <Badge className="mb-4 bg-blue-500 text-white">MAIS POPULAR</Badge>
                   )}
                   <h3 className="text-2xl font-bold mb-2">{pacote.nome}</h3>
                   <p className="text-3xl font-bold text-blue-600 mb-6">{pacote.preco}</p>
@@ -190,7 +190,7 @@ export default function AluguelEquipamentos() {
                   <div className="space-y-3 mb-6">
                     {pacote.itens.map((item, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-700">{item}</span>
                       </div>
                     ))}
@@ -202,7 +202,7 @@ export default function AluguelEquipamentos() {
                   </div>
 
                   <Button 
-                    className="w-full bg-blue-600 hover:bg-blue-700"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                     onClick={() => window.location.href = '/Cotacao'}
                   >
                     Solicitar Orçamento
@@ -248,7 +248,7 @@ export default function AluguelEquipamentos() {
                   />
                   <CardContent className="p-6">
                     {equip.destaque && (
-                      <Badge className="mb-3 bg-blue-500">PREMIUM</Badge>
+                      <Badge className="mb-3 bg-blue-500 text-white">PREMIUM</Badge>
                     )}
                     <Badge variant="outline" className="mb-3">{equip.categoria}</Badge>
                     <h3 className="text-xl font-bold mb-2">{equip.nome}</h3>
@@ -266,7 +266,7 @@ export default function AluguelEquipamentos() {
                     <p className="text-2xl font-bold text-blue-600 mb-4">{equip.preco}</p>
                     
                     <Button 
-                      className="w-full bg-blue-600 hover:bg-blue-700"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                       onClick={() => window.location.href = '/Cotacao'}
                     >
                       Solicitar
@@ -290,7 +290,7 @@ export default function AluguelEquipamentos() {
               { icon: Radio, title: "Backup Garantido", desc: "Equipamento reserva disponível" }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-600 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-600 flex items-center justify-center text-white">
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-bold mb-2">{item.title}</h3>

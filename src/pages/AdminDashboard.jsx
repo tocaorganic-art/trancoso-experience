@@ -30,7 +30,7 @@ function AdminDashboardContent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-700 py-8 shadow-lg">
+      <div className="bg-gradient-to-r from-purple-600 to-indigo-700 py-8 shadow-lg text-white">
         <div className="container mx-auto px-6">
           <Link to={createPageUrl("Home")}>
             <Button variant="ghost" className="text-white/70 hover:text-white mb-4">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 /**
  * LazyImage - Componente de imagem otimizada com lazy loading nativo

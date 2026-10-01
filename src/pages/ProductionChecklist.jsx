@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, XCircle, Clock, Rocket } from "lucide-react";
+import { CheckCircle, Clock, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { base44 } from "@/api/base44Client";
@@ -137,7 +137,7 @@ export default function ProductionChecklist() {
                 <CardContent className="p-4 flex items-center gap-4">
                   <div className="flex-shrink-0">
                     {isComplete ? (
-                      <CheckCircle className="w-8 h-8 text-green-600" />
+                      <CheckCircle className="w-8 h-8 text-green-700" />
                     ) : (
                       <Clock className="w-8 h-8 text-gray-400" />
                     )}
@@ -151,7 +151,7 @@ export default function ProductionChecklist() {
                   </div>
                   {isComplete && (
                     <div className="flex-shrink-0">
-                      <span className="text-xs font-bold text-green-600">COMPLETO</span>
+                      <span className="text-xs font-bold text-green-700">COMPLETO</span>
                     </div>
                   )}
                 </CardContent>
@@ -199,7 +199,7 @@ export default function ProductionChecklist() {
               </ul>
             </div>
             <Link to={createPageUrl('ProductionSetup')}>
-              <Button className="bg-white text-green-600 hover:bg-gray-100 text-lg px-8 py-6">
+              <Button className="bg-white text-green-700 hover:bg-gray-100 text-lg px-8 py-6">
                 Ver Guias de Deploy →
               </Button>
             </Link>

@@ -122,7 +122,7 @@ export default function GettingStarted() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <div className="bg-gradient-to-r from-blue-600 to-purple-700 py-12">
+      <div className="bg-gradient-to-r from-blue-600 to-purple-700 py-12 text-white">
         <div className="container mx-auto px-6">
           <div className="text-center text-white">
             <PlayCircle className="w-16 h-16 mx-auto mb-4" />
@@ -232,12 +232,12 @@ export default function GettingStarted() {
               </p>
               <div className="flex justify-center gap-4">
                 <Link to={createPageUrl("Home")}>
-                  <Button className="bg-white text-green-600 hover:bg-gray-100">
+                  <Button className="bg-white text-green-700 hover:bg-gray-100">
                     Ver Site Público
                   </Button>
                 </Link>
                 <Link to={createPageUrl("AdminDashboard")}>
-                  <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
                     Ir para Dashboard
                   </Button>
                 </Link>

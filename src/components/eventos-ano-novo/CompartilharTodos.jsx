@@ -178,7 +178,7 @@ export default function CompartilharTodos({ eventos }) {
         <div className="space-y-3 mt-4">
           <Button 
             onClick={handleWhatsApp}
-            className="w-full bg-green-600 hover:bg-green-700 text-white justify-start"
+            className="w-full bg-green-700 hover:bg-green-800 text-white justify-start"
           >
             <MessageCircle className="w-5 h-5 mr-3" />
             Compartilhar no WhatsApp
@@ -187,7 +187,7 @@ export default function CompartilharTodos({ eventos }) {
           <Button 
             onClick={handleCopy}
             variant="outline"
-            className="w-full border-gray-600 text-white hover:bg-gray-800 justify-start"
+            className="bg-transparent w-full border-gray-600 text-white hover:bg-gray-800 justify-start"
           >
             {copied ? (
               <>
@@ -205,7 +205,7 @@ export default function CompartilharTodos({ eventos }) {
           <Button 
             onClick={handleDownloadPDF}
             variant="outline"
-            className="w-full border-gray-600 text-white hover:bg-gray-800 justify-start"
+            className="bg-transparent w-full border-gray-600 text-white hover:bg-gray-800 justify-start"
           >
             <Download className="w-5 h-5 mr-3" />
             Baixar PDF

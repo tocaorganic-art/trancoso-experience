@@ -167,7 +167,7 @@ export default function TicketSelector({ eventoId, onSelect }) {
       ))}
 
       {totalTickets > 0 && (
-        <Card className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-purple-500/30">
+        <Card className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-purple-500/30 text-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div>

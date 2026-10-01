@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, BookOpen, Server, Bot, Mail, TestTube, Shield, TrendingUp, FileText, CheckCircle } from "lucide-react";
+import { ArrowLeft, BookOpen, Server, Bot, TestTube, Shield, TrendingUp, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
@@ -12,7 +12,7 @@ export default function Documentacao() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-700 py-12">
+      <div className="bg-gradient-to-r from-indigo-600 to-purple-700 py-12 text-white">
         <div className="container mx-auto px-6">
           <Link to={createPageUrl("AdminDashboard")}>
             <Button variant="ghost" className="text-white/80 hover:text-white mb-4">
@@ -49,7 +49,7 @@ export default function Documentacao() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <CheckCircle className="w-6 h-6 text-green-700" />
                   Sistema 90% Completo
                 </CardTitle>
               </CardHeader>
@@ -195,7 +195,7 @@ export default function Documentacao() {
                     </div>
                     <div className="bg-green-50 p-4 rounded-lg">
                       <h4 className="font-bold text-green-800">🔥 Ver Leads Hot</h4>
-                      <p className="text-sm text-green-600">Filtro: Score 80-100</p>
+                      <p className="text-sm text-green-700">Filtro: Score 80-100</p>
                     </div>
                     <div className="bg-purple-50 p-4 rounded-lg">
                       <h4 className="font-bold text-purple-800">📈 Análise Semanal</h4>
@@ -322,7 +322,7 @@ jobs:
                     </div>
                     <div className="bg-green-50 p-4 rounded-lg">
                       <h4 className="font-bold text-green-800 mb-2">📋 Qualificação</h4>
-                      <p className="text-sm text-green-600">Coleta tipo evento, data, orçamento e local</p>
+                      <p className="text-sm text-green-700">Coleta tipo evento, data, orçamento e local</p>
                     </div>
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <h4 className="font-bold text-orange-800 mb-2">🚀 Escalação</h4>

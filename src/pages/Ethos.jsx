@@ -361,7 +361,7 @@ export default function Ethos() {
                   </Button>
                 </Link>
                 <Link to={createPageUrl("Home")}>
-                  <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full">
+                  <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full">
                     Explorar Experiências
                   </Button>
                 </Link>

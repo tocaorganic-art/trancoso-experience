@@ -113,7 +113,7 @@ export default function LGPDConsent({ userEmail, onConsent }) {
                   <Button variant="ghost" onClick={() => setShow(false)} size="sm">
                     <X className="w-4 h-4 mr-2" /> Recusar Tudo
                   </Button>
-                  <Button onClick={handleSubmit} size="sm" className="bg-blue-600">
+                  <Button onClick={handleSubmit} size="sm" className="bg-blue-600 text-white">
                     Salvar Preferências
                   </Button>
                 </div>

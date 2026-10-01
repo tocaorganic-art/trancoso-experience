@@ -196,7 +196,7 @@ Foque em termos de busca long-tail e palavras-chave locais.`,
             <Button
               onClick={() => handleSave(true)}
               disabled={saveMutation.isPending}
-              className="bg-green-600 hover:bg-green-700"
+              className="bg-green-700 hover:bg-green-800"
             >
               <Eye className="w-4 h-4 mr-2" />
               Publicar
@@ -291,7 +291,7 @@ Foque em termos de busca long-tail e palavras-chave locais.`,
                 <div>
                   <label className="block text-sm font-medium mb-2">Categoria</label>
                   <Select value={formData.category} onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}>
-                    <SelectTrigger>
+                    <SelectTrigger aria-label="Selecionar opção">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

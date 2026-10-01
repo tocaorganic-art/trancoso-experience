@@ -1,10 +1,11 @@
+import React, { useEffect } from 'react'
 import './App.css'
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import VisualEditAgent from '@/lib/VisualEditAgent'
 import NavigationTracker from '@/lib/NavigationTracker'
-import { pagesConfig } from './pages.config'
+import { pagesConfig, prefetchPages } from './pages.config'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
@@ -16,11 +17,36 @@ const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
 const MainPage = mainPageKey ? Pages[mainPageKey] : <></>;
 
+// Fallback leve enquanto o chunk da rota carrega (acessível: anuncia o carregamento).
+const PageFallback = () => (
+  <div role="status" aria-live="polite" className="flex min-h-[60vh] items-center justify-center">
+    <span className="sr-only">Carregando…</span>
+    <div aria-hidden="true" className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-slate-800" />
+  </div>
+);
+
+// Rotas de conversão pré-carregadas em tempo ocioso (não roda com economia de dados ou 2G/3G).
+const PREFETCH_ROUTES = ['Cotacao', 'CasamentosTrancoso', 'EventosCorporativos', 'LocacaoSom', 'Eventos'];
+const usePrefetchCriticalRoutes = () => {
+  useEffect(() => {
+    const conn = navigator.connection;
+    if (conn && (conn.saveData || /(^|-)2g$|3g/.test(conn.effectiveType || ''))) return undefined;
+    const run = () => prefetchPages(PREFETCH_ROUTES);
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(run, { timeout: 4000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = window.setTimeout(run, 2500);
+    return () => window.clearTimeout(id);
+  }, []);
+};
+
 const LayoutWrapper = ({ children, currentPageName }) => Layout ?
   <Layout currentPageName={currentPageName}>{children}</Layout>
   : <>{children}</>;
 
 const AuthenticatedApp = () => {
+  usePrefetchCriticalRoutes();
   const { isLoadingAuth, isLoadingPublicSettings, authError, isAuthenticated, navigateToLogin } = useAuth();
 
   // Show loading spinner while checking app public settings or auth
@@ -48,7 +74,9 @@ const AuthenticatedApp = () => {
     <Routes>
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
-          <MainPage />
+          <React.Suspense fallback={<PageFallback />}>
+            <MainPage />
+          </React.Suspense>
         </LayoutWrapper>
       } />
       {Object.entries(Pages).map(([path, Page]) => (
@@ -57,7 +85,9 @@ const AuthenticatedApp = () => {
           path={`/${path}`}
           element={
             <LayoutWrapper currentPageName={path}>
-              {isInternalPage(path) ? <AdminProtectedRoute><Page /></AdminProtectedRoute> : <Page />}
+              <React.Suspense fallback={<PageFallback />}>
+                {isInternalPage(path) ? <AdminProtectedRoute><Page /></AdminProtectedRoute> : <Page />}
+              </React.Suspense>
             </LayoutWrapper>
           }
         />

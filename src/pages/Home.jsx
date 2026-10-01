@@ -4,16 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Music, Sparkles, Instagram, ChevronDown, Facebook, Music2, Link, Headphones, Calendar, Newspaper, Disc3, Calendar as CalendarIcon } from "lucide-react";
-import LGPDConsent from "@/components/compliance/LGPDConsent";
-import { Link as RouterLink } from "react-router-dom";
+import { Globe, Music, Sparkles, Instagram, Facebook, Music2, Link, Headphones } from "lucide-react";
 import { createPageUrl } from "@/utils";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
-import EcosystemHub from "@/components/layout/EcosystemHub";
-import VideoBackground from "@/components/hero/VideoBackground";
-import OptimizedImage from "@/components/ui/OptimizedImage";
+import { DsButton, EcosystemHub, HeroCinematic, MarqueeStrip, ServiceGrid, ShareButton, StickyCTA } from "@shared";
+import { Building2, Disc3 as DiscIcon, Heart, Newspaper as NewsIcon, PartyPopper, Speaker } from "@shared/icons";
 import CriticalCSS from "@/components/performance/CriticalCSS";
 import DeferredResources from "@/components/performance/DeferredResources";
 import PerformanceOptimizer from "@/components/performance/PerformanceOptimizer";
@@ -23,8 +20,7 @@ import ABTestTracker from "@/components/tracking/ABTestTracker";
 // Lazy load non-critical components
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
 const PreSaveBanner = React.lazy(() => import("@/components/presave/PreSaveBanner"));
-const FixedLogo = React.lazy(() => import("@/components/layout/FixedLogo"));
-const RotatingBanner = React.lazy(() => import("@/components/layout/RotatingBanner"));
+const VideoBackground = React.lazy(() => import("@/components/hero/VideoBackground"));
 const FloatingSocialBar = React.lazy(() => import("@/components/layout/FloatingSocialBar"));
 const NewsletterPopup = React.lazy(() => import("@/components/layout/NewsletterPopup"));
 
@@ -158,79 +154,25 @@ export default function Home() {
               <DeferredResources />
               <PerformanceOptimizer />
 
-              {/* Logo Fixa */}
-                        <React.Suspense fallback={<div />}>
-                          <FixedLogo />
-                        </React.Suspense>
 
 
 
-        {/* Hero Section - Premium Frosted */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
-          {/* Video Background - Lazy Loaded */}
-          <React.Suspense fallback={
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300">
-              <img 
-                src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&q=60"
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover opacity-20"
-                loading="eager"
-              />
-            </div>
-          }>
-            <VideoBackground />
-          </React.Suspense>
-
-          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20">
-            <motion.div
-                            id="toca-logo"
-                            initial={{ opacity: 0, y: -30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }}
-                            className="mb-8"
-                          >
-                            <React.Suspense fallback={<div className="w-full h-32" />}>
-                              <RotatingBanner />
-                            </React.Suspense>
-                          </motion.div>
-
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-light tracking-wide text-gray-600 mb-4"
-            >
-              Experiência Exclusiva em <span className="font-semibold bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent">Trancoso</span>
-            </motion.h1>
-
-
-
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex items-center justify-center mb-12 px-4"
-            >
-              <div className="w-full max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex items-center justify-center">
-                <img 
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e442a09d3_LOGO_HORIZ_COLOR_POSIT.png"
-                  alt="Toca Experience Logo"
-                  className="w-full h-auto object-contain"
-                  loading="eager"
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-wrap justify-center gap-4"
-            >
+        {/* Hero cinematográfico (design system compartilhado) */}
+        <HeroCinematic
+          eyebrow="TRANCOSO · BAHIA"
+          title="Experiências que conectam você ao seu"
+          titleAccent="próximo destino."
+          subtitle="Eventos, sonorização e curadoria musical em Trancoso."
+          background={
+            <React.Suspense fallback={null}>
+              <VideoBackground />
+            </React.Suspense>
+          }
+          actions={
+            <>
               <ABTestTracker testName="CTA Button" element="hero_cta">
-                {({ variant, trackClick, trackConversion }) => (
-                  <Button 
+                {({ variant, trackClick }) => (
+                  <DsButton
                     onClick={() => {
                       trackClick();
                       if (typeof window.gtag_report_conversion === 'function') {
@@ -238,48 +180,56 @@ export default function Home() {
                       }
                       scrollToForm();
                     }}
-                    className="bg-white/20 backdrop-blur-xl border-2 border-white/30 text-gray-900 font-bold px-8 py-6 text-lg rounded-full shadow-2xl transition-all hover:scale-105 hover:bg-white/30 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.37)]"
                   >
-                    {variant === 'A' ? 'SOLICITAR PROPOSTA' : 'AGENDAR CONSULTA'}
-                  </Button>
+                    {variant === 'A' ? 'Solicitar proposta' : 'Agendar consulta'}
+                  </DsButton>
                 )}
               </ABTestTracker>
-              <Button 
-                variant="outline" 
-                onClick={scrollToAbout}
-                className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
-              >
-                SAIBA MAIS <ChevronDown className="ml-2 h-5 w-5" />
-              </Button>
+              <DsButton variant="ghost-dark" onClick={scrollToAbout}>
+                Saiba mais
+              </DsButton>
+              <ShareButton
+                title="TOCA EXPERIENCE"
+                text="Eventos, sonorização e experiências em Trancoso."
+              />
+            </>
+          }
+          shortcuts={[
+            { label: "Curadoria", href: createPageUrl("Curadoria"), Icon: NewsIcon },
+            { label: "Discografia", href: createPageUrl("Discografia"), Icon: DiscIcon },
+            { label: "Locação de som", href: createPageUrl("LocacaoSom"), Icon: Speaker },
+          ]}
+          scrollTargetId="servicos"
+          scrollLabel="Rolar para os serviços"
+        />
 
-              <RouterLink to={createPageUrl("Curadoria")}>
-                <Button 
-                  variant="outline" 
-                  className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
-                >
-                  <Newspaper className="mr-2 h-5 w-5" /> CURADORIA
-                </Button>
-              </RouterLink>
-              <RouterLink to={createPageUrl("Discografia")}>
-                                    <Button 
-                                      variant="outline" 
-                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
-                                    >
-                                      <Disc3 className="mr-2 h-5 w-5" /> DISCOGRAFIA
-                                    </Button>
-                                  </RouterLink>
+        <MarqueeStrip
+          ariaLabel="Nossos serviços"
+          items={[
+            "DJ para casamentos",
+            "Eventos corporativos",
+            "Locação de som",
+            "Aluguel de equipamentos",
+            "Réveillon em Trancoso",
+            "Curadoria musical",
+            "Discografia",
+          ]}
+        />
 
-                                  <RouterLink to={createPageUrl("LocacaoSom")}>
-                                    <Button 
-                                      variant="outline" 
-                                      className="bg-white/15 backdrop-blur-xl border-2 border-white/25 text-gray-800 font-semibold px-6 py-6 text-lg rounded-full shadow-xl hover:bg-white/25 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.3)] transition-all"
-                                    >
-                                      <Music className="mr-2 h-5 w-5" /> LOCAÇÃO DE SOM
-                                    </Button>
-                                  </RouterLink>
-                                  </motion.div>
-              </div>
-              </section>
+        <ServiceGrid
+          id="servicos"
+          eyebrow="O QUE FAZEMOS"
+          title="Música e estrutura para cada momento"
+          intro="Escolha o serviço e solicite uma proposta."
+          items={[
+            { id: "casamentos", title: "Casamentos", description: "DJ e trilha sonora para casamentos em Trancoso.", href: createPageUrl("CasamentosTrancoso"), Icon: Heart, featured: true },
+            { id: "corporativos", title: "Eventos corporativos", description: "DJ e sonorização para eventos empresariais, lançamentos e confraternizações.", href: createPageUrl("EventosCorporativos"), Icon: Building2 },
+            { id: "som", title: "Locação de som", description: "Aluguel de som profissional para festas e eventos em Trancoso.", href: createPageUrl("LocacaoSom"), Icon: Speaker },
+            { id: "reveillon", title: "Réveillon", description: "Festas de Ano Novo em Trancoso, Caraíva e Arraial d'Ajuda.", href: createPageUrl("EventosAnoNovo"), Icon: PartyPopper },
+            { id: "curadoria", title: "Curadoria", description: "Sets exclusivos, playlists curadas e o melhor do Afro House e Organic House.", href: createPageUrl("Curadoria"), Icon: NewsIcon },
+            { id: "discografia", title: "Discografia", description: "Singles, EPs e remixes de Tony Monteiro e Enzo Furtado.", href: createPageUrl("Discografia"), Icon: DiscIcon },
+          ]}
+        />
 
       {/* Pre-Save Banner */}
       <section className="py-12 bg-white">
@@ -347,7 +297,7 @@ export default function Home() {
                 <a href="https://on.soundcloud.com/YjRNAgQXyfWcPrfAX1" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-orange-100 text-gray-600 hover:text-orange-600 transition-colors" title="SoundCloud">
                   <Headphones className="w-5 h-5" />
                 </a>
-                <a href="https://open.spotify.com/artist/2r4S2RPdfnx7UPL73jJWlQ" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-green-100 text-gray-600 hover:text-green-600 transition-colors" title="Spotify">
+                <a href="https://open.spotify.com/artist/2r4S2RPdfnx7UPL73jJWlQ" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-green-100 text-gray-600 hover:text-green-700 transition-colors" title="Spotify">
                   <Music2 className="w-5 h-5" />
                 </a>
                 <a href="https://www.threads.com/@tonyismusic" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors" title="Threads">
@@ -453,8 +403,8 @@ export default function Home() {
             <form onSubmit={handleSubmit} className="space-y-6 bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-gray-200/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Nome Completo *</label>
-                  <Input
+                  <label htmlFor="home-nome-completo" className="block text-sm font-medium text-gray-600 mb-2">Nome Completo *</label>
+                  <Input id="home-nome-completo"
                     required
                     value={formData.nome}
                     onChange={(e) => handleFieldChange("nome", e.target.value)}
@@ -464,8 +414,8 @@ export default function Home() {
                   {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">E-mail *</label>
-                  <Input
+                  <label htmlFor="home-e-mail" className="block text-sm font-medium text-gray-600 mb-2">E-mail *</label>
+                  <Input id="home-e-mail"
                     required
                     type="email"
                     value={formData.email}
@@ -479,8 +429,8 @@ export default function Home() {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Telefone / WhatsApp *</label>
-                  <Input
+                  <label htmlFor="home-telefone-whatsapp" className="block text-sm font-medium text-gray-600 mb-2">Telefone / WhatsApp *</label>
+                  <Input id="home-telefone-whatsapp"
                     required
                     value={formData.telefone}
                     onChange={(e) => handleFieldChange("telefone", e.target.value)}
@@ -490,9 +440,9 @@ export default function Home() {
                   {errors.telefone && <p className="text-red-500 text-xs mt-1">{errors.telefone}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Tipo de Evento</label>
+                  <label htmlFor="home-tipo-de-evento" className="block text-sm font-medium text-gray-600 mb-2">Tipo de Evento</label>
                   <Select value={formData.tipoEvento} onValueChange={(value) => setFormData({...formData, tipoEvento: value})}>
-                    <SelectTrigger className="bg-gray-50 border-gray-300 text-gray-800">
+                    <SelectTrigger id="home-tipo-de-evento" className="bg-gray-50 border-gray-300 text-gray-800">
                       <SelectValue placeholder="Selecione um tipo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -513,8 +463,8 @@ export default function Home() {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Data Sugerida</label>
-                  <Input
+                  <label htmlFor="home-data-sugerida" className="block text-sm font-medium text-gray-600 mb-2">Data Sugerida</label>
+                  <Input id="home-data-sugerida"
                     type="date"
                     value={formData.data}
                     onChange={(e) => setFormData({...formData, data: e.target.value})}
@@ -522,9 +472,9 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">Orçamento Estimado</label>
+                  <label htmlFor="home-orcamento-estimado" className="block text-sm font-medium text-gray-600 mb-2">Orçamento Estimado</label>
                   <Select value={formData.orcamento} onValueChange={(value) => setFormData({...formData, orcamento: value})}>
-                    <SelectTrigger className="bg-gray-50 border-gray-300 text-gray-800">
+                    <SelectTrigger id="home-orcamento-estimado" className="bg-gray-50 border-gray-300 text-gray-800">
                       <SelectValue placeholder="Selecione uma faixa" />
                     </SelectTrigger>
                     <SelectContent>
@@ -540,8 +490,8 @@ export default function Home() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2">Mensagem / Detalhes</label>
-                <Textarea
+                <label htmlFor="home-mensagem-detalhes" className="block text-sm font-medium text-gray-600 mb-2">Mensagem / Detalhes</label>
+                <Textarea id="home-mensagem-detalhes"
                   value={formData.mensagem}
                   onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
                   className="bg-gray-50 border-gray-300 text-gray-800 placeholder:text-gray-400 focus:border-gray-500 min-h-[120px]"
@@ -560,6 +510,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* CTA fixo no celular */}
+      <StickyCTA label="Solicitar proposta" onClick={scrollToForm} hideWhenVisible="#contato" />
 
       {/* Floating Social Bar */}
       <React.Suspense fallback={null}>

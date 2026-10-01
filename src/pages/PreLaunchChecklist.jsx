@@ -244,7 +244,7 @@ export default function PreLaunchChecklist() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-700 py-8 shadow-lg">
+      <div className="bg-gradient-to-r from-purple-600 to-indigo-700 py-8 shadow-lg text-white">
         <div className="container mx-auto px-6">
           <Link to={createPageUrl("Home")}>
             <Button variant="ghost" className="text-white/70 hover:text-white mb-4">
@@ -278,7 +278,7 @@ export default function PreLaunchChecklist() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-medium text-gray-600">Progresso Total</h3>
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <CheckCircle2 className="w-5 h-5 text-green-700" />
               </div>
               <div className="text-3xl font-bold text-gray-900 mb-2">
                 {completedItems}/{totalItems}

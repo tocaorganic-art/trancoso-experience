@@ -3,13 +3,14 @@ import { Toaster } from "sonner";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar, Newspaper, Disc3, Music, MessageCircle, Instagram, Calendar as CalendarIcon } from "lucide-react";
+import { Calendar, Newspaper, Disc3, Music, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 import { isNoIndexPage } from "@/lib/internalPages";
 import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
+import { DsButton } from "@shared";
 import logoWeb720 from "@/assets/brand/logo-web-720.png";
 import simbolo192 from "@/assets/brand/simbolo-192.png";
-import { ECOSYSTEM_LINKS } from "@/components/layout/EcosystemHub";
+import { ECOSYSTEM_LINKS } from "@shared/ui/EcosystemHub";
 
 const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
@@ -491,6 +492,14 @@ export default function Layout({ children, currentPageName }) {
       </noscript>
 
       <div className="min-h-screen">
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[10000] focus:px-4 focus:py-3 focus:text-sm focus:font-bold"
+          style={{ backgroundColor: "var(--ds-color-action)", color: "var(--ds-color-on-action)", borderRadius: "var(--ds-radius-sm)" }}
+        >
+          Pular para o conteúdo
+        </a>
+
         {/* Réveillon CTA Banner */}
         <React.Suspense fallback={null}>
           <ReveillonCTA />
@@ -499,13 +508,13 @@ export default function Layout({ children, currentPageName }) {
         {/* Barra de Navegação Global - Aparece em todas as páginas */}
         <div 
           id="categories-bar"
-          className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-[18px]"
+          className="sticky top-0 z-50 overflow-hidden border-b border-white/10 backdrop-blur-[18px]"
           style={{ backgroundColor: "var(--toca-header-bg)" }}
         >
           <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center justify-between">
+            <div className="flex min-w-0 items-center justify-between">
               {/* Logo + Navigation Links */}
-              <div className="flex items-center gap-3 flex-1">
+              <div className="flex min-w-0 flex-1 items-center gap-3">
                 <Link to={createPageUrl("Home")} className="flex-shrink-0 flex items-center gap-2" aria-label="TOCA EXPERIENCE, página inicial">
                   <img
                     src={simbolo192}
@@ -518,87 +527,76 @@ export default function Layout({ children, currentPageName }) {
                     TOCA EXPERIENCE
                   </span>
                 </Link>
-                <div className="flex flex-wrap gap-1 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300/50 scrollbar-track-transparent">
-                <Link to={createPageUrl("Ethos")}>
-                  <Button 
-                    variant="ghost" 
+                <nav aria-label="Principal" className="flex min-w-0 flex-nowrap items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                <Button asChild variant="ghost" 
                     size="sm"
-                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                  >
+                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
+                  <Link to={createPageUrl("Ethos")}>
                     ETHOS
-                  </Button>
-                </Link>
-                <Link to={createPageUrl("Eventos")}>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                  >
-                    <Calendar className="mr-0.5 h-2.5 w-2.5" /> EVENTOS
-                  </Button>
-                </Link>
-                <Link to={createPageUrl("Curadoria")}>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                  >
-                    <Newspaper className="mr-0.5 h-2.5 w-2.5" /> CURADORIA
-                  </Button>
-                </Link>
-                <Link to={createPageUrl("Cotacao")}>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                  >
-                    <CalendarIcon className="mr-0.5 h-2.5 w-2.5" /> COTAÇÃO
-                  </Button>
-                </Link>
-                <Link to={createPageUrl("Discografia")}>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                  >
-                    <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
-                  </Button>
-                </Link>
-
-                <Link to={createPageUrl("LocacaoSom")}>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1"
-                  >
-                    <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
-                  </Button>
                   </Link>
+                </Button>
+                <Button asChild variant="ghost" 
+                    size="sm"
+                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
+                  <Link to={createPageUrl("Eventos")}>
+                    <Calendar className="mr-0.5 h-2.5 w-2.5" /> EVENTOS
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" 
+                    size="sm"
+                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
+                  <Link to={createPageUrl("Curadoria")}>
+                    <Newspaper className="mr-0.5 h-2.5 w-2.5" /> CURADORIA
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" 
+                    size="sm"
+                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
+                  <Link to={createPageUrl("Cotacao")}>
+                    <CalendarIcon className="mr-0.5 h-2.5 w-2.5" /> COTAÇÃO
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" 
+                    size="sm"
+                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
+                  <Link to={createPageUrl("Discografia")}>
+                    <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
+                  </Link>
+                </Button>
+
+                <Button asChild variant="ghost" 
+                    size="sm"
+                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
+                  <Link to={createPageUrl("LocacaoSom")}>
+                    <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
+                  </Link>
+                </Button>
                 {ECOSYSTEM_LINKS.filter((i) => !i.current).map((item) => (
-                  <a
-                    key={item.id}
+                  <Button key={item.id} asChild variant="ghost"
+                      size="sm"
+                      className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide">
+                    <a
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${item.name} (abre em nova aba)`}
-                  >
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-[#F2DEC4] hover:text-white hover:bg-white/10 text-[10px] whitespace-nowrap font-medium tracking-wide"
-                    >
+                    aria-label={`${item.name} (abre em nova aba)`}>
                       {item.name.toUpperCase()}
-                    </Button>
-                  </a>
+                    </a>
+                  </Button>
                 ))}
+                  </nav>
                   </div>
-                  </div>
+              <DsButton href={createPageUrl("Cotacao")} className="ml-3 hidden whitespace-nowrap !min-h-[40px] !px-4 !py-2 !text-sm sm:inline-flex">
+                Solicitar proposta
+              </DsButton>
             </div>
           </div>
         </div>
         
         <Toaster position="top-center" richColors />
-        {children}
+        <main id="conteudo" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
 
         {/* Global Footer */}
         <footer className="py-8 border-t border-gray-200/60 bg-white">

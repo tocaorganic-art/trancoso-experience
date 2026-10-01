@@ -117,7 +117,7 @@ export default function CasamentosTrancoso() {
               >
                 <Card className="h-full hover:shadow-lg transition-all">
                   <CardContent className="p-8 text-center">
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white">
                       <benefit.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
@@ -145,7 +145,7 @@ export default function CasamentosTrancoso() {
               "Mixing ao vivo e leitura de público especializada"
             ].map((item, index) => (
               <div key={index} className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-6 h-6 text-green-700 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}
@@ -165,8 +165,8 @@ export default function CasamentosTrancoso() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Nome Completo *</label>
-                    <Input
+                    <label htmlFor="cas-nome-completo" className="block text-sm font-medium mb-2">Nome Completo *</label>
+                    <Input id="cas-nome-completo"
                       required
                       value={formData.nome}
                       onChange={(e) => setFormData({...formData, nome: e.target.value})}
@@ -174,8 +174,8 @@ export default function CasamentosTrancoso() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email *</label>
-                    <Input
+                    <label htmlFor="cas-email" className="block text-sm font-medium mb-2">Email *</label>
+                    <Input id="cas-email"
                       required
                       type="email"
                       value={formData.email}
@@ -187,8 +187,8 @@ export default function CasamentosTrancoso() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Telefone / WhatsApp *</label>
-                    <Input
+                    <label htmlFor="cas-telefone-whatsapp" className="block text-sm font-medium mb-2">Telefone / WhatsApp *</label>
+                    <Input id="cas-telefone-whatsapp"
                       required
                       value={formData.telefone}
                       onChange={(e) => setFormData({...formData, telefone: e.target.value})}
@@ -196,8 +196,8 @@ export default function CasamentosTrancoso() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Data do Casamento *</label>
-                    <Input
+                    <label htmlFor="cas-data-do-casamento" className="block text-sm font-medium mb-2">Data do Casamento *</label>
+                    <Input id="cas-data-do-casamento"
                       required
                       type="date"
                       value={formData.dataCasamento}
@@ -207,8 +207,8 @@ export default function CasamentosTrancoso() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Local do Casamento</label>
-                  <Input
+                  <label htmlFor="cas-local-do-casamento" className="block text-sm font-medium mb-2">Local do Casamento</label>
+                  <Input id="cas-local-do-casamento"
                     value={formData.localCasamento}
                     onChange={(e) => setFormData({...formData, localCasamento: e.target.value})}
                     placeholder="Ex: Praia do Espelho, Quadrado de Trancoso..."
@@ -216,8 +216,8 @@ export default function CasamentosTrancoso() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Mensagem / Detalhes</label>
-                  <Textarea
+                  <label htmlFor="cas-mensagem-detalhes" className="block text-sm font-medium mb-2">Mensagem / Detalhes</label>
+                  <Textarea id="cas-mensagem-detalhes"
                     value={formData.mensagem}
                     onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
                     placeholder="Conte-nos mais sobre seu casamento: número de convidados, estilo musical preferido, horários..."
@@ -228,7 +228,7 @@ export default function CasamentosTrancoso() {
                 <Button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 py-6 text-lg"
+                  className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 py-6 text-lg text-white"
                 >
                   {isSubmitting ? "ENVIANDO..." : "SOLICITAR ORÇAMENTO"}
                 </Button>
@@ -340,7 +340,7 @@ export default function CasamentosTrancoso() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="bg-transparent border-white text-white hover:bg-white/10"
                 onClick={() => window.location.href = '/Cotacao'}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, XCircle, PlayCircle, Terminal, FileCode, TestTube } from "lucide-react";
+import { CheckCircle, PlayCircle, Terminal, FileCode, TestTube } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
@@ -44,7 +44,7 @@ export default function TestingDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-4xl font-bold text-gray-900 mb-2 flex items-center gap-3">
-                <TestTube className="w-10 h-10 text-green-600" />
+                <TestTube className="w-10 h-10 text-green-700" />
                 Testing Dashboard
               </h1>
               <p className="text-gray-600">
@@ -54,7 +54,7 @@ export default function TestingDashboard() {
             
             <Button
               onClick={() => setRunningTests(true)}
-              className="bg-green-600 hover:bg-green-700 text-white"
+              className="bg-green-700 hover:bg-green-800 text-white"
               disabled={runningTests}
             >
               <PlayCircle className="mr-2 h-5 w-5" />
@@ -68,7 +68,7 @@ export default function TestingDashboard() {
           <Card>
             <CardContent className="pt-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600">{totalTests}</div>
+                <div className="text-3xl font-bold text-green-700">{totalTests}</div>
                 <div className="text-sm text-gray-600">Total de Testes</div>
               </div>
             </CardContent>
@@ -86,7 +86,7 @@ export default function TestingDashboard() {
           <Card>
             <CardContent className="pt-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600">100%</div>
+                <div className="text-3xl font-bold text-green-700">100%</div>
                 <div className="text-sm text-gray-600">Taxa de Sucesso</div>
               </div>
             </CardContent>
@@ -115,7 +115,7 @@ export default function TestingDashboard() {
               {testSuites.backend.map((suite, idx) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-700" />
                     <div>
                       <div className="font-medium text-gray-900">{suite.name}</div>
                       <div className="text-sm text-gray-600">{suite.tests} testes</div>
@@ -150,7 +150,7 @@ export default function TestingDashboard() {
               {testSuites.frontend.map((suite, idx) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-700" />
                     <div>
                       <div className="font-medium text-gray-900">{suite.name}</div>
                       <div className="text-sm text-gray-600">{suite.tests} testes</div>
@@ -185,7 +185,7 @@ export default function TestingDashboard() {
               {testSuites.e2e.map((suite, idx) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-700" />
                     <div>
                       <div className="font-medium text-gray-900">{suite.name}</div>
                       <div className="text-sm text-gray-600">{suite.tests} testes</div>

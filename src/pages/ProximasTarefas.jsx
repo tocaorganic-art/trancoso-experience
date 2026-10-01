@@ -105,7 +105,7 @@ export default function ProximasTarefas() {
 
                 <div className="flex items-center gap-3">
                   <Badge className="bg-orange-500">⏱️ 30-40 minutos</Badge>
-                  <Badge className="bg-purple-500">🎓 Dificuldade: Média</Badge>
+                  <Badge className="bg-purple-500 text-white">🎓 Dificuldade: Média</Badge>
                 </div>
 
                 <div className="mt-4">
@@ -256,7 +256,7 @@ export default function ProximasTarefas() {
                   <p className="text-sm font-semibold text-gray-900 mb-3">Status:</p>
                   <div className="space-y-2 text-sm text-gray-700">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                       <span>✅ Schema markup criado para 10 primeiros eventos</span>
                     </div>
                     <div className="flex items-start gap-2">
@@ -272,7 +272,7 @@ export default function ProximasTarefas() {
 
                 <div className="flex items-center gap-3">
                   <Badge className="bg-orange-500">⏱️ 20-30 minutos</Badge>
-                  <Badge className="bg-purple-500">🎓 Dificuldade: Média</Badge>
+                  <Badge className="bg-purple-500 text-white">🎓 Dificuldade: Média</Badge>
                 </div>
               </div>
 
@@ -293,11 +293,11 @@ export default function ProximasTarefas() {
                   <p className="text-sm font-semibold text-gray-900 mb-3">Ações:</p>
                   <div className="space-y-2 text-sm text-gray-700">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                       <span>✅ Lazy loading de vídeos implementado</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-green-700 mt-0.5 flex-shrink-0" />
                       <span>✅ Preconnect e DNS-prefetch configurados</span>
                     </div>
                     <div className="flex items-start gap-2">
@@ -317,7 +317,7 @@ export default function ProximasTarefas() {
 
                 <div className="flex items-center gap-3">
                   <Badge className="bg-orange-500">⏱️ 1-2 horas</Badge>
-                  <Badge className="bg-purple-500">🎓 Dificuldade: Média</Badge>
+                  <Badge className="bg-purple-500 text-white">🎓 Dificuldade: Média</Badge>
                 </div>
               </div>
             </div>
@@ -347,7 +347,7 @@ export default function ProximasTarefas() {
                       <p className="text-sm text-gray-600 mt-1">Importar dados Google Ads para análises avançadas</p>
                     </div>
                   </div>
-                  <Badge className="bg-blue-600">OPCIONAL</Badge>
+                  <Badge className="bg-blue-600 text-white">OPCIONAL</Badge>
                 </div>
 
                 <div className="bg-white rounded-lg p-4 mb-4">
@@ -381,7 +381,7 @@ export default function ProximasTarefas() {
                       <p className="text-sm text-gray-600 mt-1">Visualização de dados de conversão e ROI</p>
                     </div>
                   </div>
-                  <Badge className="bg-blue-600">OPCIONAL</Badge>
+                  <Badge className="bg-blue-600 text-white">OPCIONAL</Badge>
                 </div>
 
                 <div className="bg-white rounded-lg p-4 mb-4">
@@ -392,7 +392,7 @@ export default function ProximasTarefas() {
 
                 <div className="flex items-center gap-3">
                   <Badge className="bg-orange-500">⏱️ 1-2 horas</Badge>
-                  <Badge className="bg-purple-500">🎓 Dificuldade: Média</Badge>
+                  <Badge className="bg-purple-500 text-white">🎓 Dificuldade: Média</Badge>
                 </div>
 
                 <div className="mt-4">
@@ -443,17 +443,17 @@ export default function ProximasTarefas() {
         {/* Links Rápidos */}
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           <Link to={createPageUrl("RelatorioImplementacao")}>
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 py-6">
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 py-6 text-white">
               📊 Ver Relatório Completo
             </Button>
           </Link>
           <Link to={createPageUrl("ConfiguracaoGoogleAds")}>
-            <Button className="w-full bg-green-600 hover:bg-green-700 py-6">
+            <Button className="w-full bg-green-700 hover:bg-green-800 py-6">
               ⚙️ Guia Google Ads
             </Button>
           </Link>
           <a href="https://tagmanager.google.com" target="_blank" rel="noopener noreferrer">
-            <Button className="w-full bg-indigo-600 hover:bg-indigo-700 py-6">
+            <Button className="w-full bg-indigo-600 hover:bg-indigo-700 py-6 text-white">
               <ExternalLink className="w-4 h-4 mr-2" />
               Google Tag Manager
             </Button>

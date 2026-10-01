@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plus, Edit, Trash2, Eye, EyeOff, Sparkles, ArrowLeft } from "lucide-react";
@@ -101,7 +100,7 @@ export default function AdminBlog() {
           </Card>
           <Card>
             <CardContent className="p-6">
-              <p className="text-2xl font-bold text-green-600">{posts.filter(p => p.published).length}</p>
+              <p className="text-2xl font-bold text-green-700">{posts.filter(p => p.published).length}</p>
               <p className="text-gray-600 text-sm">Publicados</p>
             </CardContent>
           </Card>

@@ -110,7 +110,7 @@ export default function RelatorioVideoHero() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex items-start gap-3">
-              <div className="mt-1 text-green-600">•</div>
+              <div className="mt-1 text-green-700">•</div>
               <div>
                 <strong className="text-green-800">Fallback de imagem otimizada:</strong>
                 <p className="text-green-700">
@@ -120,7 +120,7 @@ export default function RelatorioVideoHero() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="mt-1 text-green-600">•</div>
+              <div className="mt-1 text-green-700">•</div>
               <div>
                 <strong className="text-green-800">Lazy loading inteligente:</strong>
                 <p className="text-green-700">
@@ -130,7 +130,7 @@ export default function RelatorioVideoHero() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="mt-1 text-green-600">•</div>
+              <div className="mt-1 text-green-700">•</div>
               <div>
                 <strong className="text-green-800">Detecção avançada de conexão:</strong>
                 <p className="text-green-700">
@@ -139,7 +139,7 @@ export default function RelatorioVideoHero() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="mt-1 text-green-600">•</div>
+              <div className="mt-1 text-green-700">•</div>
               <div>
                 <strong className="text-green-800">Transição suave:</strong>
                 <p className="text-green-700">
@@ -148,7 +148,7 @@ export default function RelatorioVideoHero() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="mt-1 text-green-600">•</div>
+              <div className="mt-1 text-green-700">•</div>
               <div>
                 <strong className="text-green-800">Acessibilidade:</strong>
                 <p className="text-green-700">
@@ -220,7 +220,7 @@ export default function RelatorioVideoHero() {
 
               <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <Smartphone className="w-5 h-5 text-green-600" />
+                  <Smartphone className="w-5 h-5 text-green-700" />
                   <h3 className="font-semibold text-green-800">Mobile - 4G/3G</h3>
                 </div>
                 <ul className="space-y-1 text-sm text-green-700 ml-7">

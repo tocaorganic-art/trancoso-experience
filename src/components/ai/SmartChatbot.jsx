@@ -109,7 +109,7 @@ Responda de forma concisa e útil. Se for sobre cotação/preço, sugira preench
           >
             <Button
               onClick={() => setIsOpen(true)}
-              className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-2xl"
+              className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-2xl text-white"
               size="icon"
             >
               <div className="relative">
@@ -216,7 +216,7 @@ Responda de forma concisa e útil. Se for sobre cotação/preço, sugira preench
                 <Button
                   onClick={handleSend}
                   disabled={!input.trim() || isLoading}
-                  className="bg-purple-600 hover:bg-purple-700"
+                  className="bg-purple-600 hover:bg-purple-700 text-white"
                   size="icon"
                 >
                   <Send className="w-4 h-4" />
