@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Toca Experience · Proposta Nº 0034-26 · Sonorização com DJ ao vivo</title>
+<meta name="description" content="Proposta Toca Experience: sonorização com DJ ao vivo na Reserva Jacumã Boutique (Casa Fazenda Jacumã), Trancoso, Bahia. 11, 12 e 13 de outubro de 2026, 16h às 20h.">
+<meta name="theme-color" content="#1A1714">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #1A1714;
+    --card: #24201B;
+    --border: #4D4030;
+    --text: #F2DEC4;
+    --gold: #D6B680;
+    --muted: rgba(242, 222, 196, 0.72);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; }
+  .eyebrow {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  h1, h2, h3 { font-family: 'Newsreader', Georgia, serif; font-weight: 500; color: var(--text); }
+  h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin-top: 10px; }
+  h3 { font-size: 20px; line-height: 1.3; }
+  p { color: var(--muted); }
+  .card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+  }
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 720px) {
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  }
+  .divider { height: 1px; background: var(--border); border: 0; margin: 0 auto; max-width: 860px; opacity: 0.7; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 8px 16px; font-size: 13px; font-weight: 600;
+    color: var(--text); background: rgba(77, 64, 48, 0.35);
+  }
+  .hero {
+    padding: 64px 0 56px;
+    text-align: center;
+    background: radial-gradient(120% 90% at 50% 0%, rgba(214, 182, 128, 0.10) 0%, rgba(26, 23, 20, 0) 60%);
+  }
+  .hero h1 { font-size: clamp(34px, 6vw, 54px); line-height: 1.12; margin: 18px 0 12px; }
+  .hero .sub { font-size: clamp(16px, 2.4vw, 19px); max-width: 620px; margin: 0 auto; }
+  .stat-num {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(24px, 4vw, 34px); color: var(--gold); line-height: 1.1;
+  }
+  .stat-label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  ul.list { list-style: none; }
+  ul.list li {
+    position: relative; padding-left: 24px; margin-bottom: 12px; color: var(--muted);
+  }
+  ul.list li::before {
+    content: ""; position: absolute; left: 0; top: 9px;
+    width: 8px; height: 8px; border-radius: 999px; background: var(--gold);
+  }
+  .price-row {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    padding: 14px 0; border-bottom: 1px dashed var(--border);
+  }
+  .price-row:last-child { border-bottom: 0; }
+  .price-val { font-family: 'Newsreader', Georgia, serif; font-size: 24px; color: var(--gold); white-space: nowrap; }
+  .destaque-total { background: rgba(214, 182, 128, 0.08); border-radius: 14px; padding: 20px 28px; }
+  .clausula { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(77, 64, 48, 0.5); }
+  .clausula:last-child { border-bottom: 0; }
+  .clausula-num {
+    flex-shrink: 0; width: 34px; height: 34px; border-radius: 999px;
+    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: var(--gold);
+  }
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gold); color: #1A1714; text-decoration: none;
+    border-radius: 999px; padding: 16px 32px;
+    font-weight: 800; font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+  .cta:hover { transform: translateY(-2px); }
+  .pix-box { font-family: 'Manrope', system-ui, sans-serif; font-size: 15px; }
+  .pix-box strong { color: var(--text); }
+  .pix-box .campo { color: var(--muted); }
+  .pix-box .valor { color: var(--text); font-weight: 700; }
+  .footer {
+    text-align: center; padding: 64px 0 80px;
+    border-top: 1px solid var(--border);
+  }
+  .footer img { width: 200px; height: auto; object-fit: contain; margin: 0 auto 16px; }
+  .footer .slogan { font-family: 'Newsreader', Georgia, serif; font-size: 18px; color: var(--gold); }
+  .footnote { font-size: 13px; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <img src="/toca-logo-principal.png" alt="Toca Experience" width="220" height="222" style="width: 220px; height: auto; object-fit: contain; margin: 0 auto 8px;">
+      <p class="eyebrow">Proposta Nº 0034-26 · Sonorização</p>
+      <h1>Sonorização com DJ ao vivo<br>na Reserva Jacumã Boutique</h1>
+      <p class="sub">Casa Fazenda Jacumã, Trancoso, Bahia. Três dias de música cuidadosamente curada, das 16h às 20h, com equipamento Pioneer profissional.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px;">
+        <span class="badge">11, 12 e 13 de outubro de 2026</span>
+        <span class="badge">16h às 20h · 4 horas diárias</span>
+        <span class="badge">12 horas de apresentação</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- O EVENTO -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Cliente e evento</p>
+      <h2>Reserva Jacumã Boutique</h2>
+      <div class="grid grid-4" style="margin-top: 28px;">
+        <div class="card" style="text-align: center;">
+          <p class="stat-num">3</p>
+          <p class="stat-label">Dias de evento</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <p class="stat-num">4h</p>
+          <p class="stat-label">Por dia, 16h às 20h</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <p class="stat-num">12h</p>
+          <p class="stat-label">Apresentação total</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <p class="stat-num">DJ</p>
+          <p class="stat-label">Tony Monteiro ao vivo</p>
+        </div>
+      </div>
+      <p style="margin-top: 28px;">O escopo contempla a sonorização completa dos três dias com DJ ao vivo, trilha personalizada para cada momento da tarde e equipamento de áudio profissional incluso, na Casa Fazenda Jacumã, em Trancoso, Bahia.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- QUEM SOMOS -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Quem somos</p>
+      <h2>Toca Experience</h2>
+      <div class="card" style="margin-top: 28px;">
+        <p style="margin-bottom: 16px;">A <strong style="color: var(--text);">Toca Experience</strong> é uma label e coletivo artístico que promove eventos e a união de talentos da cena eletrônica global, sempre com foco na qualidade e inovação sonora.</p>
+        <p style="margin-bottom: 16px;">Desde 2015, construímos uma trajetória marcada pela busca constante da <strong style="color: var(--text);">excelência artística</strong>. Nossa jornada musical transcende fronteiras geográficas e culturais, levando a energia tropical de Trancoso para palcos internacionais.</p>
+        <p>Com apresentações em vários países, estabelecemos residências em clubes renomados do Rio de Janeiro e realizamos turnês pela <strong style="color: var(--text);">Polinésia Francesa, Europa e América do Sul</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EQUIPAMENTO -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Escopo técnico</p>
+      <h2>Equipamento incluso</h2>
+      <div class="card" style="margin-top: 28px;">
+        <ul class="list">
+          <li><strong style="color: var(--text);">1 CDJ Pioneer</strong> + <strong style="color: var(--text);">1 mixer Pioneer</strong></li>
+          <li><strong style="color: var(--text);">1 subwoofer</strong></li>
+          <li><strong style="color: var(--text);">2 caixas de som ativas</strong></li>
+          <li><strong style="color: var(--text);">1 mesa para DJ</strong></li>
+        </ul>
+        <p class="footnote">Cabos, setup e operação do equipamento por parte do DJ estão inclusos na proposta.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- INVESTIMENTO -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Investimento</p>
+      <h2>Valores do pacote</h2>
+      <div class="card" style="margin-top: 28px;">
+        <div class="price-row">
+          <span>Diária (4 horas de apresentação)</span>
+          <span class="price-val">R$ 5.000,00</span>
+        </div>
+        <div class="price-row">
+          <span>Hora adicional (fora do escopo diário)</span>
+          <span class="price-val">R$ 1.000,00</span>
+        </div>
+      </div>
+      <div class="card destaque-total" style="margin-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+        <div>
+          <p class="eyebrow">Total do pacote, 3 dias</p>
+          <p style="font-size: 14px; margin-top: 4px;">12 horas de apresentação, equipamento incluso</p>
+        </div>
+        <p style="font-family: 'Newsreader', Georgia, serif; font-size: clamp(30px, 5vw, 44px); color: var(--gold); line-height: 1;">R$ 15.000,00</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PAGAMENTO -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Forma de pagamento</p>
+      <h2>Reserva e pagamento</h2>
+      <div class="grid grid-2" style="margin-top: 28px;">
+        <div class="card">
+          <p class="eyebrow" style="color: var(--text);">Reserva da data</p>
+          <p class="price-val" style="font-size: 28px; margin-top: 10px;">50% · R$ 7.500,00</p>
+          <p style="margin-top: 8px; font-size: 15px;">Para reserva da data, via Pix.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow" style="color: var(--text);">Primeiro dia do evento</p>
+          <p class="price-val" style="font-size: 28px; margin-top: 10px;">50% · R$ 7.500,00</p>
+          <p style="margin-top: 8px; font-size: 15px;">Saldo final, pago no primeiro dia do evento.</p>
+        </div>
+      </div>
+
+      <div class="card pix-box" style="margin-top: 16px;">
+        <p class="eyebrow" style="margin-bottom: 14px;">Dados para pagamento (Pix)</p>
+        <p><span class="campo">Favorecido: </span><span class="valor">Toca Experience Inova Simples (I.S.)</span></p>
+        <p><span class="campo">CNPJ: </span><span class="valor">68.662.845/0001-86</span></p>
+        <p><span class="campo">Chave Pix: </span><span class="valor">68662845000186</span></p>
+        <p><span class="campo">Endereço: </span><span class="valor">Alameda Bom Jesus, 7, Trancoso, Porto Seguro/BA, CEP 45.982-000</span></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CLÁUSULAS -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Proposta Nº 0034-26</p>
+      <h2>Cláusulas contratuais</h2>
+      <div class="card" style="margin-top: 28px;">
+        <div class="clausula">
+          <span class="clausula-num">i</span>
+          <p>Em caso de doença ou acidente comprovado do artista, este será substituído por artista de qualidade igual ou superior, de comum acordo.</p>
+        </div>
+        <div class="clausula">
+          <span class="clausula-num">ii</span>
+          <p>O substituto se obriga a cumprir as mesmas obrigações do artista original.</p>
+        </div>
+        <div class="clausula">
+          <span class="clausula-num">iii</span>
+          <p>O contratante poderá cancelar a substituição, com devolução integral do sinal pago.</p>
+        </div>
+        <div class="clausula">
+          <span class="clausula-num">iv</span>
+          <p>Em caso de desistência por parte do contratante, não haverá devolução do sinal.</p>
+        </div>
+        <div class="clausula">
+          <span class="clausula-num">v</span>
+          <p>O contratante se obriga a zelar pelos equipamentos; danos causados por negligência serão de sua responsabilidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTATO -->
+  <section>
+    <div class="wrap" style="text-align: center;">
+      <p class="eyebrow">Gostou da proposta?</p>
+      <h2 style="margin-bottom: 12px;">Vamos reservar sua data</h2>
+      <p style="max-width: 520px; margin: 0 auto 28px;">Fale diretamente com Tony Monteiro para confirmar a reserva, tirar dúvidas ou ajustar o escopo.</p>
+      <a class="cta" href="https://wa.me/5521977313210?text=Ol%C3%A1%20Tony%2C%20recebi%20a%20proposta%20N%C2%BA%200034-26%20da%20Reserva%20Jacum%C3%A3%20Boutique%20e%20gostaria%20de%20falar%20sobre%20a%20reserva." target="_blank" rel="noopener noreferrer">
+        Falar com Tony Monteiro
+      </a>
+      <p style="margin-top: 18px; font-size: 14px;">Tony Monteiro · (21) 97731-3210</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <img src="/toca-logo-principal.png" alt="Toca Experience">
+      <p class="slogan">Um ecossistema. Todas as experiências.</p>
+      <p class="footnote">Proposta Nº 0034-26 · Sonorização com DJ ao vivo · Reserva Jacumã Boutique, Trancoso, Bahia</p>
+    </div>
+  </footer>
+
+</body>
+</html>
