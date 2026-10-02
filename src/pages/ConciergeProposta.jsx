@@ -102,8 +102,8 @@ export default function ConciergeProposta() {
             style={{ display: "block", width: "100%", height: "100dvh", border: 0, backgroundColor: CONCIERGE_COLORS.bg }}
           />
           <Link
-            to="/concierge"
-            aria-label="Voltar para Concierge"
+            to="/concierge/propostas"
+            aria-label="Voltar para propostas"
             className="fixed right-4 z-[60] inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold transition-colors"
             style={{
               top: "calc(64px + env(safe-area-inset-top))",
@@ -116,7 +116,7 @@ export default function ConciergeProposta() {
             }}
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            <span className="hidden sm:inline">Voltar para Concierge</span>
+            <span className="hidden sm:inline">Voltar para propostas</span>
           </Link>
         </>
       )}
