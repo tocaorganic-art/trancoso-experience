@@ -110,6 +110,13 @@ const AuthenticatedApp = () => {
           </React.Suspense>
         </LayoutWrapper>
       } />
+      <Route path="/concierge/proposta-tony" element={
+        <LayoutWrapper currentPageName="ConciergeProposta">
+          <React.Suspense fallback={<PageFallback />}>
+            <ConciergeProposta />
+          </React.Suspense>
+        </LayoutWrapper>
+      } />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

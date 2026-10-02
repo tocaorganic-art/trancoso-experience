@@ -4,9 +4,11 @@ import { createPageUrl } from "@/utils";
 import { DsButton } from "@shared";
 import { ConciergeBell, ArrowUpRight } from "@shared/icons";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import FloatingSpotifyPlayer from "@/components/concierge/FloatingSpotifyPlayer";
+import { ICONE_CASA, LOGO_PRINCIPAL } from "@/components/concierge/brand";
 
-const LINK_PROPOSTA = "https://base44.app/api/apps/6a7a395eda6099fa6338eef5/files/mp/public/6a7a395eda6099fa6338eef5/f8e921b98_toca-experience-tony-v5.html";
-const LINK_PROPOSTA_ES = `${LINK_PROPOSTA}?lang=es`;
+// A proposta sempre abre na página interna, nunca o arquivo cru de armazenamento.
+const ROTA_PROPOSTA = "/concierge/proposta-tony";
 
 const PROPOSTA = {
   titulo: "Friend’s Party Experience · Experiência Tony",
@@ -38,6 +40,24 @@ export default function Concierge() {
           />
         </div>
         <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:px-6 sm:py-24 md:text-left">
+          <div className="flex justify-center md:justify-start">
+            <img
+              src={ICONE_CASA}
+              alt=""
+              width="48"
+              height="48"
+              className="h-12 w-12 object-contain sm:hidden"
+              loading="lazy"
+            />
+            <img
+              src={LOGO_PRINCIPAL}
+              alt="Toca Experience"
+              width="220"
+              height="220"
+              className="hidden w-[220px] max-w-full object-contain sm:block"
+              loading="lazy"
+            />
+          </div>
           <p className="text-xs font-bold tracking-[0.3em]" style={{ color: "var(--ds-color-laranja)" }}>
             CONCIERGE
           </p>
@@ -79,7 +99,7 @@ export default function Concierge() {
                 className="mt-5 font-medium"
                 style={{ fontFamily: "var(--ds-font-editorial)", fontSize: "var(--ds-text-2xl)", color: "var(--ds-color-text)" }}
               >
-                <Link to={createPageUrl("ConciergeProposta")} className="hover:underline">
+                <Link to={ROTA_PROPOSTA} className="hover:underline">
                   {PROPOSTA.titulo}
                 </Link>
               </h3>
@@ -93,11 +113,11 @@ export default function Concierge() {
                 {PROPOSTA.valor}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <DsButton href={LINK_PROPOSTA}>Ver proposta</DsButton>
-                <DsButton variant="ghost" href={LINK_PROPOSTA_ES}>Ver em castelhano</DsButton>
+                <DsButton href={ROTA_PROPOSTA}>Ver proposta</DsButton>
+                <DsButton variant="ghost" href={`${ROTA_PROPOSTA}?lang=es`}>Ver em castelhano</DsButton>
               </div>
               <Link
-                to={createPageUrl("ConciergeProposta")}
+                to={ROTA_PROPOSTA}
                 className="mt-6 inline-flex items-center gap-1 text-sm font-bold"
                 style={{ color: "var(--ds-color-link)" }}
               >
@@ -108,6 +128,7 @@ export default function Concierge() {
           </div>
         </div>
       </section>
+      <FloatingSpotifyPlayer />
     </div>
   );
 }

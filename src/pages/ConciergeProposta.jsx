@@ -1,71 +1,127 @@
-import React from "react";
-import { createPageUrl } from "@/utils";
-import { DsButton } from "@shared";
-import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, RotateCcw } from "lucide-react";
+import FloatingSpotifyPlayer from "@/components/concierge/FloatingSpotifyPlayer";
+import { ICONE_CASA, CONCIERGE_COLORS, FONT_UI, FONT_TITLE } from "@/components/concierge/brand";
 
-const LINK_PROPOSTA = "https://base44.app/api/apps/6a7a395eda6099fa6338eef5/files/mp/public/6a7a395eda6099fa6338eef5/f8e921b98_toca-experience-tony-v5.html";
-const LINK_PROPOSTA_ES = `${LINK_PROPOSTA}?lang=es`;
-
-const PROPOSTA = {
-  titulo: "Friend’s Party Experience · Experiência Tony",
-  subtitulo: "Praia dos Amores, Balneário Camboriú · 17 a 22 de Novembro · 16 convidados",
-  descricao: "Proposta exclusiva Toca Experience: concierge, chef privativo, governança, barman e DJ, logística privativa e noites VIP no Surreal Park e no Green Valley.",
-  valor: "A partir de R$ 43.000,00 (R$ 2.687,50 por convidado)",
-};
+// Proposta v6, autocontida em HTML: buscada como texto e renderizada via srcDoc
+// para que o navegador a exiba em vez de baixá-la.
+const PROPOSTA_URL = "https://media.base44.com/files/public/6a7a395eda6099fa6338eef5/752ca9076_toca-experience-tony-v6.html";
 
 export default function ConciergeProposta() {
+  const [html, setHtml] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    setError(false);
+    setHtml(null);
+    try {
+      const res = await fetch(PROPOSTA_URL, { cache: "force-cache" });
+      if (!res.ok) throw new Error("resposta inválida");
+      setHtml(await res.text());
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const handleIframeLoad = () => {
+    window.dispatchEvent(new Event("proposta-iframe-ready"));
+  };
+
   return (
-    <div>
-      <Breadcrumbs
-        items={[
-          { label: "Serviços", href: createPageUrl("Home") + "#servicos" },
-          { label: "Concierge", href: createPageUrl("Concierge") },
-          { label: "Experiência Tony" },
-        ]}
-      />
+    <div style={{ backgroundColor: CONCIERGE_COLORS.bg }}>
+      <style>{`
+        @keyframes toca-loader-pulse {
+          0%, 100% { opacity: 0.55; transform: scale(0.96); }
+          50% { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
 
-      {/* Cabeçalho da proposta */}
-      <section
-        className="py-16 sm:py-20"
-        style={{ backgroundColor: "var(--ds-color-obsidiana)", color: "var(--ds-color-text-on-dark)" }}
-      >
-        <div className="mx-auto max-w-6xl px-5 sm:px-6">
-          <p className="text-xs font-bold tracking-[0.3em]" style={{ color: "var(--ds-color-laranja)" }}>
-            CONCIERGE · PROPOSTA
+      {loading && !html && (
+        <div
+          aria-live="polite"
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-6"
+          style={{ backgroundColor: CONCIERGE_COLORS.bg, fontFamily: FONT_UI }}
+        >
+          <img
+            src={ICONE_CASA}
+            alt=""
+            width="72"
+            height="72"
+            className="h-18 w-18 object-contain"
+            style={{ width: 72, height: 72, animation: "toca-loader-pulse 1.6s ease-in-out infinite" }}
+          />
+          <p className="text-sm font-semibold tracking-[0.2em]" style={{ color: CONCIERGE_COLORS.champagne }}>
+            PREPARANDO A PROPOSTA
           </p>
-          <h1
-            className="mt-3 font-medium"
-            style={{ fontFamily: "var(--ds-font-editorial)", fontSize: "var(--ds-text-3xl)", color: "var(--ds-color-areia)" }}
-          >
-            {PROPOSTA.titulo}
-          </h1>
-          <p className="mt-3 font-semibold" style={{ color: "var(--ds-color-text-on-dark-muted)" }}>
-            {PROPOSTA.subtitulo}
-          </p>
-          <p className="mt-4 max-w-3xl leading-relaxed" style={{ color: "var(--ds-color-text-on-dark-muted)" }}>
-            {PROPOSTA.descricao}
-          </p>
-          <p className="mt-4 text-lg font-bold" style={{ color: "var(--ds-color-areia)" }}>
-            {PROPOSTA.valor}
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <DsButton href={LINK_PROPOSTA}>Ver proposta</DsButton>
-            <DsButton variant="ghost-dark" href={LINK_PROPOSTA_ES}>Ver em castelhano</DsButton>
-          </div>
         </div>
-      </section>
+      )}
 
-      {/* Proposta interativa: iframe responsivo de largura total */}
-      <section aria-label="Proposta interativa completa" style={{ backgroundColor: "var(--ds-color-bg)" }}>
-        <iframe
-          src={LINK_PROPOSTA}
-          title={`Proposta interativa: ${PROPOSTA.titulo}`}
-          loading="lazy"
-          allow="fullscreen"
-          className="w-full"
-          style={{ display: "block", width: "100%", height: "90vh", minHeight: "90vh", border: 0 }}
-        />
-      </section>
+      {error && !html && (
+        <div
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-4 px-6 text-center"
+          style={{ backgroundColor: CONCIERGE_COLORS.bg, fontFamily: FONT_UI }}
+        >
+          <h1
+            className="font-medium"
+            style={{ fontFamily: FONT_TITLE, fontSize: 28, color: CONCIERGE_COLORS.text }}
+          >
+            Não foi possível carregar a proposta
+          </h1>
+          <p className="max-w-md leading-relaxed" style={{ color: CONCIERGE_COLORS.champagne }}>
+            Verifique sua conexão e tente novamente em alguns instantes.
+          </p>
+          <button
+            type="button"
+            onClick={load}
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-bold transition-transform duration-200 motion-safe:hover:-translate-y-0.5"
+            style={{ backgroundColor: CONCIERGE_COLORS.terracota, color: CONCIERGE_COLORS.bg }}
+          >
+            <RotateCcw className="h-4 w-4" aria-hidden="true" />
+            Tentar novamente
+          </button>
+        </div>
+      )}
+
+      {html && (
+        <>
+          <iframe
+            srcDoc={html}
+            title="Friend's Party Experience · Experiência Tony"
+            onLoad={handleIframeLoad}
+            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+            className="w-full"
+            style={{ display: "block", width: "100%", height: "100dvh", border: 0, backgroundColor: CONCIERGE_COLORS.bg }}
+          />
+          <Link
+            to="/concierge"
+            aria-label="Voltar para Concierge"
+            className="fixed right-4 z-[60] inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold transition-colors"
+            style={{
+              top: "calc(64px + env(safe-area-inset-top))",
+              backgroundColor: "rgba(26,23,20,0.85)",
+              borderColor: CONCIERGE_COLORS.border,
+              color: CONCIERGE_COLORS.text,
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              fontFamily: FONT_UI,
+            }}
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            <span className="hidden sm:inline">Voltar para Concierge</span>
+          </Link>
+        </>
+      )}
+
+      <FloatingSpotifyPlayer />
     </div>
   );
 }
