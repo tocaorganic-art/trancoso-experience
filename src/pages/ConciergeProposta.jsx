@@ -6,7 +6,8 @@ import { ICONE_CASA, CONCIERGE_COLORS, FONT_UI, FONT_TITLE } from "@/components/
 
 // Proposta v6, autocontida em HTML: buscada como texto e renderizada via srcDoc
 // para que o navegador a exiba em vez de baixá-la.
-const PROPOSTA_URL = "https://media.base44.com/files/public/6a7a395eda6099fa6338eef5/752ca9076_toca-experience-tony-v6.html";
+// Versão sem a seção "Marca" (documentação interna do kit de marca).
+const PROPOSTA_URL = "/propostas/toca-experience-tony-v6-limpa.html";
 
 export default function ConciergeProposta() {
   const [html, setHtml] = useState(null);
