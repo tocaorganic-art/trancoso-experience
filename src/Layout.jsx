@@ -8,8 +8,8 @@ import TrackingProvider from "@/components/tracking/TrackingProvider";
 import { isNoIndexPage } from "@/lib/internalPages";
 import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
 import { DsButton } from "@shared";
-import logoWeb720 from "@/assets/brand/logo-web-720.png";
-import simbolo192 from "@/assets/brand/simbolo-192.png";
+import TocaLogo from "@/components/brand/TocaLogo";
+import logoPrincipal from "@/assets/brand/concierge/logo-principal.png";
 import { ECOSYSTEM_LINKS } from "@shared/ui/EcosystemHub";
 
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
@@ -520,16 +520,7 @@ export default function Layout({ children, currentPageName }) {
               {/* Logo + Navigation Links */}
               <div className="flex min-w-0 flex-1 items-center gap-3">
                 <Link to={createPageUrl("Home")} className="flex-shrink-0 flex items-center gap-2" aria-label="TOCA EXPERIENCE, página inicial">
-                  <img
-                    src={simbolo192}
-                    alt=""
-                    width="36"
-                    height="36"
-                    className="h-9 w-9 rounded-[10px] object-cover"
-                  />
-                  <span className="hidden sm:inline text-xs font-extrabold tracking-[0.18em]" style={{ color: "var(--toca-areia)" }}>
-                    TOCA EXPERIENCE
-                  </span>
+                  <TocaLogo size={40} />
                 </Link>
                 <nav aria-label="Principal" className="flex min-w-0 flex-nowrap items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 <Button asChild variant="ghost" 
@@ -615,17 +606,14 @@ export default function Layout({ children, currentPageName }) {
           <div className="container mx-auto px-6 text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3" style={{ backgroundColor: "var(--toca-obsidiana)", borderRadius: "var(--toca-radius-lg)" }}>
-                <picture>
-                  <source media="(min-width: 700px)" srcSet={logoWeb720} />
-                  <img
-                    src={simbolo192}
-                    alt="TOCA EXPERIENCE. Experiências que conectam você ao seu próximo destino."
-                    width="720"
-                    height="379"
-                    className="h-24 w-24 object-cover min-[700px]:h-auto min-[700px]:w-[640px] min-[700px]:max-w-full"
-                    loading="lazy"
-                  />
-                </picture>
+                <img
+                  src={logoPrincipal}
+                  alt="TOCA EXPERIENCE. Experiências que conectam você ao seu próximo destino."
+                  width="2400"
+                  height="2435"
+                  className="h-24 w-24 object-contain min-[700px]:h-56 min-[700px]:w-auto"
+                  loading="lazy"
+                />
               </div>
             </div>
             <SiteFooterInfo />

@@ -162,7 +162,7 @@ export default function Home() {
           eyebrow="TRANCOSO · BAHIA"
           title="Experiências que conectam você ao seu"
           titleAccent="próximo destino."
-          subtitle="Eventos, sonorização e curadoria musical em Trancoso."
+          subtitle="Um ecossistema. Todas as experiências. A vitrine digital dos nossos projetos e serviços: Toca Experience, Toca Concierge, Trancoso Resolve e Trancoso Move."
           background={
             <React.Suspense fallback={null}>
               <VideoBackground />
@@ -190,7 +190,7 @@ export default function Home() {
               </DsButton>
               <ShareButton
                 title="TOCA EXPERIENCE"
-                text="Eventos, sonorização e experiências em Trancoso."
+                text="Um ecossistema. Todas as experiências em Trancoso."
               />
             </>
           }

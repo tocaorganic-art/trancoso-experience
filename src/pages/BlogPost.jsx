@@ -109,7 +109,7 @@ export default function BlogPostPage() {
         "name": "Toca Experience",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/8c9bc9739_logo_da_toca_experience_com_cone_branco2.jpg"
+          "url": "https://trancoso-experience-439c5a8b.base44.app/icon-512.png"
         }
       },
       "mainEntityOfPage": {
