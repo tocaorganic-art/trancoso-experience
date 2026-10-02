@@ -11,10 +11,10 @@ import { ICONE_CASA, LOGO_PRINCIPAL } from "@/components/concierge/brand";
 const ROTA_PROPOSTA = "/concierge/propostas/proposta-tony";
 
 const PROPOSTA = {
-  titulo: "Proposta Nº 0034-26 · Sonorização com DJ ao vivo",
-  subtitulo: "Reserva Jacumã Boutique, Trancoso · 11, 12 e 13 de outubro de 2026",
-  descricao: "Sonorização com DJ ao vivo na Casa Fazenda Jacumã: três dias, das 16h às 20h, com equipamento Pioneer profissional incluso (CDJ, mixer, subwoofer e caixas ativas).",
-  valor: "R$ 15.000,00 (3 dias · 12 horas de apresentação)",
+  titulo: "Friend's Party Experience · Experiência Tony",
+  subtitulo: "Praia dos Amores, Balneário Camboriú · 17 a 22 de Novembro",
+  descricao: "Experiência privativa para 16 convidados: concierge, chef privativo, governança, barman e DJ, com logística privativa e noites VIP.",
+  valor: "R$ 43.000,00 (17 a 22 de Novembro · 16 convidados)",
 };
 
 export default function ConciergePropostas() {

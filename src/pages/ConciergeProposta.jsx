@@ -1,30 +1,106 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, RotateCcw } from "lucide-react";
 import FloatingSpotifyPlayer from "@/components/concierge/FloatingSpotifyPlayer";
-import { CONCIERGE_COLORS, FONT_UI, FONT_TITLE } from "@/components/concierge/brand";
-import propostaHtml from "@/assets/proposta-tony-jacuma.html?raw";
+import { ICONE_CASA, CONCIERGE_COLORS, FONT_UI, FONT_TITLE } from "@/components/concierge/brand";
 
-// Proposta Nº 0034-26 (sonorização com DJ ao vivo, Reserva Jacumã Boutique),
-// autocontida em HTML e importada como texto para renderização via srcDoc,
-// garantindo que o navegador a exiba em vez de baixá-la.
+// Proposta v6, autocontida em HTML: buscada como texto e renderizada via srcDoc
+// para que o navegador a exiba em vez de baixá-la.
+// Versão sem a seção "Marca" (documentação interna do kit de marca).
+const PROPOSTA_URL = "/propostas/toca-experience-tony-v6-limpa.html";
+
 export default function ConciergeProposta() {
-  const html = propostaHtml;
+  const [html, setHtml] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    setError(false);
+    setHtml(null);
+    try {
+      const res = await fetch(PROPOSTA_URL, { cache: "force-cache" });
+      if (!res.ok) throw new Error("resposta inválida");
+      setHtml(await res.text());
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
+    load();
+  }, [load]);
+
+  const handleIframeLoad = () => {
     window.dispatchEvent(new Event("proposta-iframe-ready"));
-  }, []);
+  };
 
   return (
     <div style={{ backgroundColor: CONCIERGE_COLORS.bg }}>
+      <style>{`
+        @keyframes toca-loader-pulse {
+          0%, 100% { opacity: 0.55; transform: scale(0.96); }
+          50% { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
+
+      {loading && !html && (
+        <div
+          aria-live="polite"
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-6"
+          style={{ backgroundColor: CONCIERGE_COLORS.bg, fontFamily: FONT_UI }}
+        >
+          <img
+            src={ICONE_CASA}
+            alt=""
+            width="72"
+            height="72"
+            className="h-18 w-18 object-contain"
+            style={{ width: 72, height: 72, animation: "toca-loader-pulse 1.6s ease-in-out infinite" }}
+          />
+          <p className="text-sm font-semibold tracking-[0.2em]" style={{ color: CONCIERGE_COLORS.champagne }}>
+            PREPARANDO A PROPOSTA
+          </p>
+        </div>
+      )}
+
+      {error && !html && (
+        <div
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-6 px-6 text-center"
+          style={{ backgroundColor: CONCIERGE_COLORS.bg, fontFamily: FONT_UI }}
+        >
+          <p
+            className="font-medium"
+            style={{ fontFamily: FONT_TITLE, fontSize: 24, color: CONCIERGE_COLORS.text }}
+          >
+            A proposta não pôde ser carregada
+          </p>
+          <p className="max-w-sm text-sm" style={{ color: CONCIERGE_COLORS.text }}>
+            Verifique sua conexão e tente novamente em instantes.
+          </p>
+          <button
+            type="button"
+            onClick={load}
+            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-opacity hover:opacity-90"
+            style={{ backgroundColor: CONCIERGE_COLORS.champagne, color: CONCIERGE_COLORS.bg }}
+          >
+            <RotateCcw className="h-4 w-4" aria-hidden="true" />
+            Tentar novamente
+          </button>
+        </div>
+      )}
+
       {html && (
         <>
           <iframe
             srcDoc={html}
-            title="Proposta Nº 0034-26 · Sonorização com DJ ao vivo"
+            title="Friend's Party Experience · Experiência Tony"
             sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
             className="w-full"
             style={{ display: "block", width: "100%", height: "100dvh", border: 0, backgroundColor: CONCIERGE_COLORS.bg }}
+            onLoad={handleIframeLoad}
           />
           <Link
             to="/concierge/propostas"
