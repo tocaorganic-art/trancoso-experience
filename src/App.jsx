@@ -17,6 +17,10 @@ const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
 const MainPage = mainPageKey ? Pages[mainPageKey] : <></>;
 
+// Páginas novas (fora do loop legado de pagesConfig).
+const Concierge = React.lazy(() => import('./pages/Concierge'));
+const ConciergeProposta = React.lazy(() => import('./pages/ConciergeProposta'));
+
 // Fallback leve enquanto o chunk da rota carrega (acessível: anuncia o carregamento).
 const PageFallback = () => (
   <div role="status" aria-live="polite" className="flex min-h-[60vh] items-center justify-center">
@@ -92,6 +96,20 @@ const AuthenticatedApp = () => {
           }
         />
       ))}
+      <Route path="/Concierge" element={
+        <LayoutWrapper currentPageName="Concierge">
+          <React.Suspense fallback={<PageFallback />}>
+            <Concierge />
+          </React.Suspense>
+        </LayoutWrapper>
+      } />
+      <Route path="/ConciergeProposta" element={
+        <LayoutWrapper currentPageName="ConciergeProposta">
+          <React.Suspense fallback={<PageFallback />}>
+            <ConciergeProposta />
+          </React.Suspense>
+        </LayoutWrapper>
+      } />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

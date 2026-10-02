@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { toast } from "sonner";
 import { DsButton, EcosystemHub, HeroCinematic, MarqueeStrip, ServiceGrid, ShareButton, StickyCTA } from "@shared";
-import { Building2, Disc3 as DiscIcon, Heart, Newspaper as NewsIcon, PartyPopper, Speaker } from "@shared/icons";
+import { Building2, ConciergeBell, Disc3 as DiscIcon, Heart, Newspaper as NewsIcon, PartyPopper, Speaker } from "@shared/icons";
 import CriticalCSS from "@/components/performance/CriticalCSS";
 import DeferredResources from "@/components/performance/DeferredResources";
 import PerformanceOptimizer from "@/components/performance/PerformanceOptimizer";
@@ -224,6 +224,7 @@ export default function Home() {
           items={[
             { id: "casamentos", title: "Casamentos", description: "DJ e trilha sonora para casamentos em Trancoso.", href: createPageUrl("CasamentosTrancoso"), Icon: Heart, featured: true },
             { id: "corporativos", title: "Eventos corporativos", description: "DJ e sonorização para eventos empresariais, lançamentos e confraternizações.", href: createPageUrl("EventosCorporativos"), Icon: Building2 },
+            { id: "concierge", title: "Concierge", description: "Experiências privativas completas: concierge, chef, barman, DJ e logística em destinos premium.", href: createPageUrl("Concierge"), Icon: ConciergeBell },
             { id: "som", title: "Locação de som", description: "Aluguel de som profissional para festas e eventos em Trancoso.", href: createPageUrl("LocacaoSom"), Icon: Speaker },
             { id: "reveillon", title: "Réveillon", description: "Festas de Ano Novo em Trancoso, Caraíva e Arraial d'Ajuda.", href: createPageUrl("EventosAnoNovo"), Icon: PartyPopper },
             { id: "curadoria", title: "Curadoria", description: "Sets exclusivos, playlists curadas e o melhor do Afro House e Organic House.", href: createPageUrl("Curadoria"), Icon: NewsIcon },

@@ -3,7 +3,7 @@ import { Toaster } from "sonner";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar, Newspaper, Disc3, Music, Calendar as CalendarIcon } from "lucide-react";
+import { Calendar, ConciergeBell, Newspaper, Disc3, Music, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 import { isNoIndexPage } from "@/lib/internalPages";
 import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
@@ -36,7 +36,9 @@ export default function Layout({ children, currentPageName }) {
       "Discografia": `${baseUrl}/Discografia`,
       "LocacaoSom": `${baseUrl}/LocacaoSom`,
       "Cotacao": `${baseUrl}/Cotacao`,
-      "Ethos": `${baseUrl}/Ethos`
+      "Ethos": `${baseUrl}/Ethos`,
+      "Concierge": `${baseUrl}/Concierge`,
+      "ConciergeProposta": `${baseUrl}/ConciergeProposta`
     };
     canonicalLink.href = pageUrls[currentPageName] || baseUrl;
 
@@ -115,7 +117,9 @@ export default function Layout({ children, currentPageName }) {
       "Discografia": "Discografia Tony Monteiro & Enzo Furtado | Releases Afro House e Organic House",
       "Ethos": "Sobre Toca Experience | Filosofia e Valores dos DJs Tony Monteiro e Enzo Furtado",
       "Cotacao": "Solicitar Orçamento DJ Trancoso | Cotação Personalizada para Eventos",
-      "Obrigado": "Cotação Recebida | Toca Experience - Aguarde Nosso Contato"
+      "Obrigado": "Cotação Recebida | Toca Experience - Aguarde Nosso Contato",
+      "Concierge": "Concierge Privativo: Experiências Exclusivas | Toca Experience",
+      "ConciergeProposta": "Friend’s Party Experience · Experiência Tony | Proposta Toca Experience"
     };
 
     document.title = pageTitles[currentPageName] || "Toca Experience | DJs Tony Monteiro & Enzo Furtado - Afro House & Organic House";
@@ -140,7 +144,9 @@ export default function Layout({ children, currentPageName }) {
       "Discografia": "Viva o Novo - Viva Experiências. Discografia completa de Tony Monteiro e Enzo Furtado. Ouça lançamentos, remixes e produções originais de Afro House e Organic House. Disponível no Spotify, SoundCloud e Apple Music.",
       "Ethos": "Viva o Novo - Viva Experiências. Conheça a filosofia da Toca Experience: música como linguagem universal, fusão de brasilidades com eletrônica contemporânea, e excelência técnica em cada apresentação.",
       "Cotacao": "Viva o Novo - Viva Experiências. Solicite um orçamento personalizado para casamentos, eventos corporativos, festas privadas e Réveillon em Trancoso.",
-      "Obrigado": "Viva o Novo - Viva Experiências. Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo."
+      "Obrigado": "Viva o Novo - Viva Experiências. Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo.",
+      "Concierge": "Viva o Novo - Viva Experiências. Concierge privativo para experiências exclusivas: propostas completas com concierge, chef privativo, barman, DJ e logística em destinos premium.",
+      "ConciergeProposta": "Viva o Novo - Viva Experiências. Proposta exclusiva Friend's Party Experience · Experiência Tony: concierge, chef privativo, governança, barman e DJ, logística privativa e noites VIP no Surreal Park e no Green Valley."
     };
 
     metaDescription.content = pageDescriptions[currentPageName] || "Toca Experience apresenta Tony Monteiro & Enzo Furtado - duo de DJs especialistas em Afro House, Organic House e House. Contrate para casamentos, festivais, eventos corporativos e festas privadas.";
@@ -160,7 +166,9 @@ export default function Layout({ children, currentPageName }) {
       "LocacaoSom": "locação som profissional Trancoso, aluguel caixa de som eventos, equipamento DJ Bahia, sistema de som casamento",
       "EventosCorporativos": "DJ evento corporativo Trancoso, festa empresa exclusiva, confraternização empresarial musica, evento corporativo premium",
       "Curadoria": "curadoria musical Afro House, playlist Organic House, sets exclusivos house music, seleção musical profissional",
-      "Discografia": "Tony Monteiro Spotify, lancamentos Afro House Brasil, producoes Organic House, artistas house music brasileiros"
+      "Discografia": "Tony Monteiro Spotify, lancamentos Afro House Brasil, producoes Organic House, artistas house music brasileiros",
+      "Concierge": "concierge privativo, experiencia privativa balneario camboriu, friend's party experience, concierge premium, proposta concierge toca experience",
+      "ConciergeProposta": "friend's party experience, experiencia tony balneario camboriu, proposta concierge privativa, surreal park, green valley"
     };
     metaKeywords.content = pageKeywords[currentPageName] || "DJ, Afro House, Organic House, House Music, Tony Monteiro, Enzo Furtado, Toca Experience, DJ para casamento, DJ para evento, DJ Trancoso, festival, sunset, pool party";
 
@@ -368,7 +376,9 @@ export default function Layout({ children, currentPageName }) {
       "EventosCorporativos": ["Home", "Serviços", "Eventos Corporativos"],
       "Curadoria": ["Home", "Curadoria Musical"],
       "Discografia": ["Home", "Discografia"],
-      "Cotacao": ["Home", "Solicitar Cotação"]
+      "Cotacao": ["Home", "Solicitar Cotação"],
+      "Concierge": ["Home", "Concierge"],
+      "ConciergeProposta": ["Home", "Concierge", "Friend's Party Experience"]
     };
 
     if (breadcrumbPaths[currentPageName]) {
@@ -569,6 +579,14 @@ export default function Layout({ children, currentPageName }) {
                     className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
                   <Link to={createPageUrl("LocacaoSom")}>
                     <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
+                  </Link>
+                </Button>
+
+                <Button asChild variant="ghost"
+                    size="sm"
+                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
+                  <Link to={createPageUrl("Concierge")}>
+                    <ConciergeBell className="mr-0.5 h-2.5 w-2.5" /> CONCIERGE
                   </Link>
                 </Button>
                 {ECOSYSTEM_LINKS.filter((i) => !i.current).map((item) => (
