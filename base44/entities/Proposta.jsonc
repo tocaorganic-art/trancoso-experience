@@ -1,0 +1,118 @@
+{
+  "name": "Proposta",
+  "type": "object",
+  "properties": {
+    "titulo": {
+      "type": "string",
+      "description": "T\u00edtulo da proposta"
+    },
+    "subtitulo": {
+      "type": "string",
+      "description": "Local e per\u00edodo da proposta"
+    },
+    "cliente_nome": {
+      "type": "string",
+      "description": "Nome do cliente"
+    },
+    "cliente_contato": {
+      "type": "string",
+      "description": "Contato do cliente (e-mail ou WhatsApp)"
+    },
+    "convidados": {
+      "type": "string",
+      "description": "N\u00famero ou perfil de convidados"
+    },
+    "mensagem": {
+      "type": "string",
+      "description": "Texto de apresenta\u00e7\u00e3o da proposta"
+    },
+    "servicos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Servi\u00e7os inclusos no pacote"
+    },
+    "roteiro": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dia": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Roteiro dia a dia"
+    },
+    "politicas": {
+      "type": "string",
+      "description": "Condi\u00e7\u00f5es de reserva, pagamento e observa\u00e7\u00f5es"
+    },
+    "valor_total": {
+      "type": "number",
+      "description": "Valor total da proposta"
+    },
+    "template_id": {
+      "type": "string",
+      "description": "ID do template usado como base"
+    },
+    "template_nome": {
+      "type": "string",
+      "description": "Nome do template usado como base"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "rascunho",
+        "enviada",
+        "aceita",
+        "fechada"
+      ],
+      "default": "rascunho",
+      "description": "Status da proposta"
+    }
+  },
+  "required": [
+    "titulo"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

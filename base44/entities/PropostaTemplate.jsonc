@@ -1,0 +1,92 @@
+{
+  "name": "PropostaTemplate",
+  "type": "object",
+  "properties": {
+    "nome": {
+      "type": "string",
+      "description": "Nome do template (ex: Friend's Party Experience)"
+    },
+    "titulo": {
+      "type": "string",
+      "description": "T\u00edtulo padr\u00e3o da proposta gerada por este template"
+    },
+    "subtitulo": {
+      "type": "string",
+      "description": "Subt\u00edtulo padr\u00e3o: local e per\u00edodo"
+    },
+    "mensagem": {
+      "type": "string",
+      "description": "Texto de apresenta\u00e7\u00e3o da proposta"
+    },
+    "servicos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Servi\u00e7os inclusos no pacote"
+    },
+    "roteiro": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dia": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Roteiro dia a dia"
+    },
+    "politicas": {
+      "type": "string",
+      "description": "Condi\u00e7\u00f5es de reserva, pagamento e observa\u00e7\u00f5es"
+    },
+    "valor_total": {
+      "type": "number",
+      "description": "Valor total sugerido da proposta"
+    },
+    "ativo": {
+      "type": "boolean",
+      "default": true,
+      "description": "Se o template est\u00e1 dispon\u00edvel para uso"
+    }
+  },
+  "required": [
+    "nome"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
