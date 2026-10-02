@@ -9,6 +9,7 @@ import AuthorityBanner from "@/components/curadoria/AuthorityBanner";
 import PlayerTabs from "@/components/curadoria/PlayerTabs";
 import CuradoriaFilters from "@/components/curadoria/CuradoriaFilters";
 import CuradoriaCard from "@/components/curadoria/CuradoriaCard";
+import NewsSection from "@/components/curadoria/NewsSection";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export default function Curadoria() {
@@ -105,6 +106,9 @@ export default function Curadoria() {
         {/* Player Tabs */}
         <PlayerTabs />
 
+        {/* Novidades da Cena (fontes externas, outubro de 2026) */}
+        <NewsSection />
+
         {/* Category Filter */}
         <CuradoriaFilters 
           activeCategory={activeCategory} 
@@ -142,7 +146,7 @@ export default function Curadoria() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {[
-              { name: "When We Dip", url: "https://www.whenwedjp.com", category: "Afro/Organic" },
+              { name: "When We Dip", url: "https://www.whenwedip.com", category: "Afro/Organic" },
               { name: "Deep House Amsterdam", url: "https://www.deephouseamsterdam.com", category: "Curadoria" },
               { name: "Mixmag", url: "https://mixmag.net", category: "Internacional" },
               { name: "Resident Advisor", url: "https://ra.co", category: "Artistas" },
