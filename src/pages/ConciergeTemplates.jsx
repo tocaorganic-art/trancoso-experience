@@ -42,6 +42,20 @@ export default function ConciergeTemplates() {
     carregar();
   }, [carregar]);
 
+  // Sincronização em tempo real: cobre mudanças feitas em outra aba ou sessão.
+  useEffect(() => {
+    const unsubscribe = base44.entities.PropostaTemplate.subscribe((event) => {
+      if (event.type === "create") {
+        setTemplates((ts) => (ts.some((t) => t.id === event.data.id) ? ts : [event.data, ...ts]));
+      } else if (event.type === "update") {
+        setTemplates((ts) => ts.map((t) => (t.id === event.data.id ? { ...t, ...event.data } : t)));
+      } else if (event.type === "delete") {
+        setTemplates((ts) => ts.filter((t) => t.id !== event.id));
+      }
+    });
+    return unsubscribe;
+  }, []);
+
   const visiveis = isAdmin ? templates : templates.filter((t) => t.ativo !== false);
 
   const copiar = async (t) => {
@@ -57,14 +71,15 @@ export default function ConciergeTemplates() {
     try {
       if (editando?.id) {
         await base44.entities.PropostaTemplate.update(editando.id, dados);
+        setTemplates((ts) => ts.map((t) => (t.id === editando.id ? { ...t, ...dados } : t)));
         toast.success("Template atualizado.");
       } else {
-        await base44.entities.PropostaTemplate.create(dados);
+        const criado = await base44.entities.PropostaTemplate.create(dados);
+        setTemplates((ts) => (ts.some((x) => x.id === criado.id) ? ts : [criado, ...ts]));
         toast.success("Template criado.");
       }
       setFormAberto(false);
       setEditando(null);
-      carregar();
     } catch {
       toast.error("Não foi possível salvar o template.");
     }
@@ -74,8 +89,8 @@ export default function ConciergeTemplates() {
     if (!window.confirm(`Excluir o template "${t.nome}"?`)) return;
     try {
       await base44.entities.PropostaTemplate.delete(t.id);
+      setTemplates((ts) => ts.filter((x) => x.id !== t.id));
       toast.success("Template excluído.");
-      carregar();
     } catch {
       toast.error("Não foi possível excluir o template.");
     }
