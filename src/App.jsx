@@ -21,6 +21,8 @@ const MainPage = mainPageKey ? Pages[mainPageKey] : <></>;
 const Concierge = React.lazy(() => import('./pages/Concierge'));
 const ConciergeProposta = React.lazy(() => import('./pages/ConciergeProposta'));
 const ConciergePropostas = React.lazy(() => import('./pages/ConciergePropostas'));
+const ConciergeTemplates = React.lazy(() => import('./pages/ConciergeTemplates'));
+const PropostaEditor = React.lazy(() => import('./pages/PropostaEditor'));
 
 // Fallback leve enquanto o chunk da rota carrega (acessível: anuncia o carregamento).
 const PageFallback = () => (
@@ -122,6 +124,20 @@ const AuthenticatedApp = () => {
         <LayoutWrapper currentPageName="ConciergeProposta">
           <React.Suspense fallback={<PageFallback />}>
             <ConciergeProposta />
+          </React.Suspense>
+        </LayoutWrapper>
+      } />
+      <Route path="/concierge/templates" element={
+        <LayoutWrapper currentPageName="ConciergeTemplates">
+          <React.Suspense fallback={<PageFallback />}>
+            <ConciergeTemplates />
+          </React.Suspense>
+        </LayoutWrapper>
+      } />
+      <Route path="/concierge/editor-proposta" element={
+        <LayoutWrapper currentPageName="ConciergePropostaEditor">
+          <React.Suspense fallback={<PageFallback />}>
+            <AdminProtectedRoute><PropostaEditor /></AdminProtectedRoute>
           </React.Suspense>
         </LayoutWrapper>
       } />

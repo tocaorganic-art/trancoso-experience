@@ -9,6 +9,7 @@ import { ICONE_CASA, LOGO_PRINCIPAL } from "@/components/concierge/brand";
 
 // Subcategorias da categoria Concierge. Cada subcategoria tem sua própria página.
 const ROTA_PROPOSTAS = "/concierge/propostas";
+const ROTA_TEMPLATES = "/concierge/templates";
 
 const SUBCATEGORIAS = [
   {
@@ -17,6 +18,13 @@ const SUBCATEGORIAS = [
     descricao: "Propostas exclusivas de experiências privativas: concierge, gastronomia, logística e música em destinos premium.",
     quantidade: "1 proposta disponível",
     rota: ROTA_PROPOSTAS,
+  },
+  {
+    id: "templates",
+    nome: "Templates",
+    descricao: "Estruturas pré-definidas de serviços e roteiros para montar novas propostas sem começar do zero. Criação e edição exclusivas para administradores.",
+    quantidade: "Modelos reutilizáveis",
+    rota: ROTA_TEMPLATES,
   },
 ];
 

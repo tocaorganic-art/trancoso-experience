@@ -28,7 +28,7 @@ export const INTERNAL_PAGES = [
 ];
 
 // Páginas que não devem ser indexadas, mas são públicas (tela de login).
-export const NOINDEX_PUBLIC_PAGES = ['AdminLogin', 'OAuthConsent', 'Obrigado', 'ResultadosBusca'];
+export const NOINDEX_PUBLIC_PAGES = ['AdminLogin', 'OAuthConsent', 'Obrigado', 'ResultadosBusca', 'ConciergePropostaEditor'];
 
 export const isInternalPage = (name) => INTERNAL_PAGES.includes(name);
 export const isNoIndexPage = (name) =>

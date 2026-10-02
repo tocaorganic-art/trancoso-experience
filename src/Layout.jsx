@@ -37,7 +37,9 @@ export default function Layout({ children, currentPageName }) {
       "Cotacao": `${baseUrl}/Cotacao`,
       "Ethos": `${baseUrl}/Ethos`,
       "Concierge": `${baseUrl}/Concierge`,
-      "ConciergeProposta": `${baseUrl}/ConciergeProposta`
+      "ConciergeProposta": `${baseUrl}/ConciergeProposta`,
+      "ConciergeTemplates": `${baseUrl}/concierge/templates`,
+      "ConciergePropostaEditor": `${baseUrl}/concierge/editor-proposta`
     };
     canonicalLink.href = pageUrls[currentPageName] || baseUrl;
 
@@ -118,7 +120,8 @@ export default function Layout({ children, currentPageName }) {
       "Cotacao": "Solicitar Orçamento DJ Trancoso | Cotação Personalizada para Eventos",
       "Obrigado": "Cotação Recebida | Toca Experience - Aguarde Nosso Contato",
       "Concierge": "Concierge Privativo: Experiências Exclusivas | Toca Experience",
-      "ConciergeProposta": "Friend’s Party Experience · Experiência Tony | Proposta Toca Experience"
+      "ConciergeProposta": "Friend’s Party Experience · Experiência Tony | Proposta Toca Experience",
+      "ConciergeTemplates": "Templates de Proposta: Estruturas Pré-definidas | Toca Experience"
     };
 
     document.title = pageTitles[currentPageName] || "Toca Experience | DJs Tony Monteiro & Enzo Furtado - Afro House & Organic House";
@@ -145,7 +148,8 @@ export default function Layout({ children, currentPageName }) {
       "Cotacao": "Viva o Novo - Viva Experiências. Solicite um orçamento personalizado para casamentos, eventos corporativos, festas privadas e Réveillon em Trancoso.",
       "Obrigado": "Viva o Novo - Viva Experiências. Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo.",
       "Concierge": "Viva o Novo - Viva Experiências. Concierge privativo para experiências exclusivas: propostas completas com concierge, chef privativo, barman, DJ e logística em destinos premium.",
-      "ConciergeProposta": "Viva o Novo - Viva Experiências. Proposta exclusiva Friend's Party Experience · Experiência Tony: concierge, chef privativo, governança, barman e DJ, logística privativa e noites VIP no Surreal Park e no Green Valley."
+      "ConciergeProposta": "Viva o Novo - Viva Experiências. Proposta exclusiva Friend's Party Experience · Experiência Tony: concierge, chef privativo, governança, barman e DJ, logística privativa e noites VIP no Surreal Park e no Green Valley.",
+      "ConciergeTemplates": "Viva o Novo - Viva Experiências. Templates de proposta com estruturas pré-definidas de serviços e roteiros para experiências privativas."
     };
 
     metaDescription.content = pageDescriptions[currentPageName] || "Toca Experience apresenta Tony Monteiro & Enzo Furtado - duo de DJs especialistas em Afro House, Organic House e House. Contrate para casamentos, festivais, eventos corporativos e festas privadas.";
@@ -167,7 +171,8 @@ export default function Layout({ children, currentPageName }) {
       "Curadoria": "curadoria musical Afro House, playlist Organic House, sets exclusivos house music, seleção musical profissional",
       "Discografia": "Tony Monteiro Spotify, lancamentos Afro House Brasil, producoes Organic House, artistas house music brasileiros",
       "Concierge": "concierge privativo, experiencia privativa balneario camboriu, friend's party experience, concierge premium, proposta concierge toca experience",
-      "ConciergeProposta": "friend's party experience, experiencia tony balneario camboriu, proposta concierge privativa, surreal park, green valley"
+      "ConciergeProposta": "friend's party experience, experiencia tony balneario camboriu, proposta concierge privativa, surreal park, green valley",
+      "ConciergeTemplates": "template proposta, modelo proposta experiencia, estrutura servicos roteiro, proposta privativa"
     };
     metaKeywords.content = pageKeywords[currentPageName] || "DJ, Afro House, Organic House, House Music, Tony Monteiro, Enzo Furtado, Toca Experience, DJ para casamento, DJ para evento, DJ Trancoso, festival, sunset, pool party";
 
