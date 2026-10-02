@@ -12,7 +12,6 @@ import logoWeb720 from "@/assets/brand/logo-web-720.png";
 import simbolo192 from "@/assets/brand/simbolo-192.png";
 import { ECOSYSTEM_LINKS } from "@shared/ui/EcosystemHub";
 
-const ReveillonCTA = React.lazy(() => import("@/components/marketing/ReveillonCTA"));
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
 const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
 
@@ -509,11 +508,6 @@ export default function Layout({ children, currentPageName }) {
         >
           Pular para o conteúdo
         </a>
-
-        {/* Réveillon CTA Banner */}
-        <React.Suspense fallback={null}>
-          <ReveillonCTA />
-        </React.Suspense>
 
         {/* Barra de Navegação Global - Aparece em todas as páginas */}
         <div 
