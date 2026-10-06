@@ -1,26 +1,26 @@
 import React from "react";
-import { ArrowUpRight, Car, ConciergeBell, Sparkles, Wrench } from "../icons";
+import { Link } from "react-router-dom";
+import { ArrowUpRight, Car, Sparkles, Wrench } from "../icons";
 
 // Marcas e serviços relacionados. Descrições curtas, fiéis ao que cada site publica sobre si;
 // sem afirmar integração técnica, conta única, reserva integrada ou fusão societária.
 // Cada serviço mantém a própria marca: aqui aparece só o nome, um ícone neutro e o link.
+//
+// Concierge NÃO entra aqui: deixou de ser um produto à parte (o domínio
+// tocaconcierge.com.br não representa mais esse serviço) e passou a ser uma
+// categoria de serviço dentro da própria Toca Experience, em /Concierge — já
+// linkada no menu principal e na grade de serviços da Home. Listá-lo aqui de
+// novo, como link externo, duplicaria o item do menu e reafirmaria um domínio
+// fora de uso.
 export const ECOSYSTEM_LINKS = [
   {
     id: "toca-experience",
     name: "TOCA EXPERIENCE",
     href: "https://www.tocaexperience.com.br/",
-    tag: "Eventos e música",
-    description: "Eventos, sonorização e experiências em Trancoso.",
+    tag: "Eventos, música e concierge",
+    description: "Eventos, sonorização, curadoria musical e concierge privativo em Trancoso.",
     Icon: Sparkles,
     current: true,
-  },
-  {
-    id: "toca-concierge",
-    name: "Toca Concierge",
-    href: "https://tocaconcierge.com.br/",
-    tag: "Gestão para concierges",
-    description: "Sistema de gestão para concierges independentes: pipeline de viagens, clientes e finanças.",
-    Icon: ConciergeBell,
   },
   {
     id: "trancoso-resolve",
@@ -190,6 +190,14 @@ export default function EcosystemHub() {
               <p className="mt-1" style={{ color: "#E4D5BE" }}>
                 {current.description}
               </p>
+              <Link
+                to="/Concierge"
+                className="mt-3 inline-flex items-center gap-1 text-sm font-bold underline-offset-4 hover:underline"
+                style={{ color: "var(--toca-areia)" }}
+              >
+                Conhecer o Concierge privativo
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
             <span
               className="inline-flex items-center px-4 py-2 text-sm font-bold"
@@ -204,7 +212,7 @@ export default function EcosystemHub() {
           </div>
         )}
 
-        <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-6 grid max-w-3xl mx-auto gap-6 sm:grid-cols-2">
           {others.map((item) => (
             <li key={item.id}>
               <ServiceCard item={item} />
