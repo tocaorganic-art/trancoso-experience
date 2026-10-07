@@ -116,7 +116,7 @@ export default function Layout({ children, currentPageName }) {
       "LocacaoSom": "Locação de Som Profissional em Trancoso | Aluguel Pioneer CDJ-3000 e Funktion-One",
       "Curadoria": "Curadoria Musical Afro House & Organic House | Playlists e Sets Exclusivos",
       "Discografia": "Discografia Tony Monteiro & Enzo Furtado | Releases Afro House e Organic House",
-      "Ethos": "Sobre Toca Experience | Filosofia e Valores dos DJs Tony Monteiro e Enzo Furtado",
+      "Ethos": "Ethos | Missão, Visão e Valores do Ecossistema Toca",
       "Cotacao": "Solicitar Orçamento DJ Trancoso | Cotação Personalizada para Eventos",
       "Obrigado": "Cotação Recebida | Toca Experience - Aguarde Nosso Contato",
       "Concierge": "Concierge Privativo: Experiências Exclusivas | Toca Experience",
@@ -135,21 +135,21 @@ export default function Layout({ children, currentPageName }) {
     }
 
     const pageDescriptions = {
-      "Home": "Viva o Novo - Viva Experiências. Experiências musicais exclusivas em Trancoso. Tony Monteiro & Enzo Furtado. Aluguel de som profissional (CDJ, Controladoras, Caixas de Som) para festas e casamentos.",
-      "Agenda": "Viva o Novo - Viva Experiências. Confira a agenda de eventos e próximas apresentações. Tony Monteiro e Enzo Furtado. Afro House, Organic House e House music em festivais, clubs e eventos privados.",
-      "CasamentosTrancoso": "Viva o Novo - Viva Experiências. Casamentos de luxo em Trancoso. Som profissional Pioneer, trilha personalizada e experiência inesquecível para seu grande dia.",
-      "AluguelEquipamentos": "Viva o Novo - Viva Experiências. Aluguel de equipamentos profissionais em Trancoso: Pioneer CDJ-3000, Controladoras DDJ, caixas de som e iluminação para festas e eventos.",
-      "EventosCorporativos": "Viva o Novo - Viva Experiências. Eventos corporativos em Trancoso. Festas empresariais, lançamentos de produtos e confraternizações com música de alta qualidade.",
-      "EventosAnoNovo": "Viva o Novo - Viva Experiências. Guia completo de festas e eventos de Réveillon 2025/2026 em Trancoso, Caraíva e Arraial d'Ajuda. Mais de 40 opções de festas premium, open bar, música internacional. Ingressos e reservas disponíveis.",
-      "LocacaoSom": "Viva o Novo - Viva Experiências. Locação de equipamentos de som profissional em Trancoso: Pioneer CDJ-3000, DJM-V10, Funktion-One, iluminação LED. Instalação e suporte técnico inclusos. Ideal para casamentos, festas e eventos.",
-      "Curadoria": "Viva o Novo - Viva Experiências. Curadoria musical especializada em Afro House, Organic House e House Music. Playlists exclusivas, sets ao vivo e conteúdo selecionado por Tony Monteiro e Enzo Furtado.",
-      "Discografia": "Viva o Novo - Viva Experiências. Discografia completa de Tony Monteiro e Enzo Furtado. Ouça lançamentos, remixes e produções originais de Afro House e Organic House. Disponível no Spotify, SoundCloud e Apple Music.",
-      "Ethos": "Viva o Novo - Viva Experiências. Conheça a filosofia da Toca Experience: música como linguagem universal, fusão de brasilidades com eletrônica contemporânea, e excelência técnica em cada apresentação.",
-      "Cotacao": "Viva o Novo - Viva Experiências. Solicite um orçamento personalizado para casamentos, eventos corporativos, festas privadas e Réveillon em Trancoso.",
-      "Obrigado": "Viva o Novo - Viva Experiências. Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo.",
-      "Concierge": "Viva o Novo - Viva Experiências. Concierge privativo para experiências exclusivas: propostas completas com concierge, chef privativo, barman, DJ e logística em destinos premium.",
-      "ConciergeProposta": "Viva o Novo - Viva Experiências. Proposta exclusiva Friend's Party Experience · Experiência Tony: concierge, chef privativo, governança, barman e DJ, logística privativa e noites VIP no Surreal Park e no Green Valley.",
-      "ConciergeTemplates": "Viva o Novo - Viva Experiências. Templates de proposta com estruturas pré-definidas de serviços e roteiros para experiências privativas."
+      "Home": "Experiências musicais exclusivas em Trancoso. Tony Monteiro & Enzo Furtado. Aluguel de som profissional (CDJ, Controladoras, Caixas de Som) para festas e casamentos.",
+      "Agenda": "Confira a agenda de eventos e próximas apresentações. Tony Monteiro e Enzo Furtado. Afro House, Organic House e House music em festivais, clubs e eventos privados.",
+      "CasamentosTrancoso": "Casamentos de luxo em Trancoso. Som profissional Pioneer, trilha personalizada e experiência inesquecível para seu grande dia.",
+      "AluguelEquipamentos": "Aluguel de equipamentos profissionais em Trancoso: Pioneer CDJ-3000, Controladoras DDJ, caixas de som e iluminação para festas e eventos.",
+      "EventosCorporativos": "Eventos corporativos em Trancoso. Festas empresariais, lançamentos de produtos e confraternizações com música de alta qualidade.",
+      "EventosAnoNovo": "Guia completo de festas e eventos de Réveillon 2025/2026 em Trancoso, Caraíva e Arraial d'Ajuda. Mais de 40 opções de festas premium, open bar, música internacional. Ingressos e reservas disponíveis.",
+      "LocacaoSom": "Locação de equipamentos de som profissional em Trancoso: Pioneer CDJ-3000, DJM-V10, Funktion-One, iluminação LED. Instalação e suporte técnico inclusos. Ideal para casamentos, festas e eventos.",
+      "Curadoria": "Curadoria musical especializada em Afro House, Organic House e House Music. Playlists exclusivas, sets ao vivo e conteúdo selecionado por Tony Monteiro e Enzo Furtado.",
+      "Discografia": "Discografia completa de Tony Monteiro e Enzo Furtado. Ouça lançamentos, remixes e produções originais de Afro House e Organic House. Disponível no Spotify, SoundCloud e Apple Music.",
+      "Ethos": "Conheça o Ethos da Toca: missão, visão e valores de um ecossistema que une Toca Experience, Concierge, Trancoso Resolve e Trancoso Move em Trancoso.",
+      "Cotacao": "Solicite um orçamento personalizado para casamentos, eventos corporativos, festas privadas e Réveillon em Trancoso.",
+      "Obrigado": "Sua cotação foi recebida! A equipe Toca Experience entrará em contato em breve para discutir os detalhes do seu evento exclusivo.",
+      "Concierge": "Concierge privativo em Trancoso: propostas completas com concierge, chef privativo, barman, DJ e logística em destinos premium.",
+      "ConciergeProposta": "Proposta exclusiva Friend's Party Experience · Experiência Tony: concierge, chef privativo, governança, barman e DJ, logística privativa e noites VIP no Surreal Park e no Green Valley.",
+      "ConciergeTemplates": "Templates de proposta com estruturas pré-definidas de serviços e roteiros para experiências privativas."
     };
 
     metaDescription.content = pageDescriptions[currentPageName] || "Toca Experience apresenta Tony Monteiro & Enzo Furtado - duo de DJs especialistas em Afro House, Organic House e House. Contrate para casamentos, festivais, eventos corporativos e festas privadas.";
@@ -170,7 +170,7 @@ export default function Layout({ children, currentPageName }) {
       "EventosCorporativos": "DJ evento corporativo Trancoso, festa empresa exclusiva, confraternização empresarial musica, evento corporativo premium",
       "Curadoria": "curadoria musical Afro House, playlist Organic House, sets exclusivos house music, seleção musical profissional",
       "Discografia": "Tony Monteiro Spotify, lancamentos Afro House Brasil, producoes Organic House, artistas house music brasileiros",
-      "Concierge": "concierge privativo, experiencia privativa balneario camboriu, friend's party experience, concierge premium, proposta concierge toca experience",
+      "Concierge": "concierge privativo Trancoso, concierge Toca Experience, experiencia privativa balneario camboriu, friend's party experience, concierge premium, proposta concierge toca experience",
       "ConciergeProposta": "friend's party experience, experiencia tony balneario camboriu, proposta concierge privativa, surreal park, green valley",
       "ConciergeTemplates": "template proposta, modelo proposta experiencia, estrutura servicos roteiro, proposta privativa"
     };
@@ -313,6 +313,13 @@ export default function Layout({ children, currentPageName }) {
             "itemOffered": {
               "@type": "Service",
               "name": "DJ para Eventos Corporativos"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Concierge Privativo"
             }
           }
         ]
@@ -613,7 +620,7 @@ export default function Layout({ children, currentPageName }) {
               <div className="p-3" style={{ backgroundColor: "var(--toca-obsidiana)", borderRadius: "var(--toca-radius-lg)" }}>
                 <img
                   src={logoPrincipal}
-                  alt="TOCA EXPERIENCE. Experiências que conectam você ao seu próximo destino."
+                  alt="TOCA EXPERIENCE. Um ecossistema. Todas as experiências."
                   width="2400"
                   height="2435"
                   className="h-24 w-24 object-contain min-[700px]:h-56 min-[700px]:w-auto"
