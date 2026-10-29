@@ -29,3 +29,6 @@ dist-ssr
 
 .env
 base44/.app.jsonc
+
+# Memoria local do Claude Code (autoMemoryDirectory aponta para a vault segundo-cerebro)
+.claude/settings.local.json
