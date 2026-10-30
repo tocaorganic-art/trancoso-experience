@@ -16,7 +16,7 @@ import DeferredResources from "@/components/performance/DeferredResources";
 import PerformanceOptimizer from "@/components/performance/PerformanceOptimizer";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import ABTestTracker from "@/components/tracking/ABTestTracker";
-import TocaLogo from "@/components/brand/TocaLogo";
+import SpotifyArtistPlayer from "@/components/music/SpotifyArtistPlayer";
 
 // Lazy load non-critical components
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
@@ -160,7 +160,6 @@ export default function Home() {
 
         {/* Hero cinematográfico (design system compartilhado) */}
         <HeroCinematic
-          logo={<TocaLogo variant="negativo" priority className="w-[180px] sm:w-[200px] md:w-[240px]" />}
           eyebrow="TRANCOSO · BAHIA"
           title="Experiências que conectam você ao seu"
           titleAccent="próximo destino."
@@ -196,6 +195,7 @@ export default function Home() {
               />
             </>
           }
+          extra={<SpotifyArtistPlayer />}
           shortcuts={[
             { label: "Curadoria", href: createPageUrl("Curadoria"), Icon: NewsIcon },
             { label: "Discografia", href: createPageUrl("Discografia"), Icon: DiscIcon },

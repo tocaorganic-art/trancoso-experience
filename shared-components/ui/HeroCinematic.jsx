@@ -16,6 +16,7 @@ export default function HeroCinematic({
   titleAccent,
   subtitle,
   actions,
+  extra,
   shortcuts = [],
   background,
   scrollTargetId,
@@ -86,6 +87,14 @@ export default function HeroCinematic({
             style={{ animationDelay: "0.4s" }}
           >
             {actions}
+          </div>
+        )}
+        {extra && (
+          <div
+            className="ds-fade-up mt-8 flex justify-center md:justify-start"
+            style={{ animationDelay: "0.5s" }}
+          >
+            {extra}
           </div>
         )}
         {shortcuts.length > 0 && (
