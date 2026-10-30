@@ -160,7 +160,7 @@ export default function Home() {
 
         {/* Hero cinematográfico (design system compartilhado) */}
         <HeroCinematic
-          logo={<TocaLogo variant="negativo" layout="vertical" width={320} priority />}
+          logo={<TocaLogo variant="negativo" priority className="w-[180px] sm:w-[200px] md:w-[240px]" />}
           eyebrow="TRANCOSO · BAHIA"
           title="Experiências que conectam você ao seu"
           titleAccent="próximo destino."

@@ -42,9 +42,9 @@ export default function HeroCinematic({
         />
       </div>
 
-      <div className="mx-auto w-full max-w-6xl px-5 py-28 text-center sm:px-6 md:text-left">
+      <div className="mx-auto w-full max-w-6xl px-5 py-20 text-center sm:px-6 sm:py-24 md:py-28 md:text-left">
         {logo && (
-          <div className="ds-fade-up mb-6 flex justify-center md:justify-start">{logo}</div>
+          <div className="ds-fade-up mb-5 flex justify-center md:mb-7 md:justify-start">{logo}</div>
         )}
         {eyebrow && (
           <p

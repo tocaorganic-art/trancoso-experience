@@ -1,13 +1,13 @@
 import React from "react";
 
 /**
- * Marca "Toca em camadas": três arcos concêntricos (laranja, terracota e oliva)
- * com ponto central. Regras de legibilidade:
- * - o logo sempre leva ícone e nome juntos;
- * - horizontal nunca abaixo de 180px (abaixo disso: ícone + nome em HTML);
- * - vertical com tagline só a partir de 320px;
- * - altura abaixo de 48px usa o ícone reduzido (favicons);
- * - fundo claro: versão positiva; fundo escuro: negativa; foto escura: mono branco.
+ * Marca Toca Experience (kit oficial em /public/brand).
+ * Regras:
+ * - horizontal preserva SEMPRE ícone + nome juntos, na proporção nativa 2000/767;
+ * - ícone sozinho existe apenas para favicon / app icon;
+ * - fundo claro: positivo; fundo escuro: negativo; foto escura: mono branco;
+ * - a largura vem de `width` (px) ou de classes utilitárias; a altura é sempre automática.
+ * Não há conversão automática para ícone nem redução de largura mínima.
  */
 const HORIZONTAL = {
   positivo: "/brand/logo-horizontal-positivo.png",
@@ -21,100 +21,58 @@ const ICONE = {
   mono: "/brand/icone-negativo.png",
 };
 
-const VERTICAL = "/brand/logo-vertical-tagline-negativo-fundo.png";
-
-const PROPORCAO_VERTICAL = 1983 / 2000;
-const PROPORCAO_ICONE = 1924 / 2000;
-
-const CORES_NOME = {
-  positivo: "#241D16",
-  negativo: "#F2DEC4",
-  mono: "#FFFFFF",
-};
+const PROPORCAO_HORIZONTAL = "2000 / 767";
+const PROPORCAO_ICONE = "2000 / 1924";
 
 export default function TocaLogo({
   variant = "negativo",
   layout = "horizontal",
   width,
-  height,
   iconSize = 32,
   className = "",
   priority = false,
 }) {
   const carregamento = priority ? "eager" : "lazy";
-  let tipo = layout;
 
-  // Altura abaixo de 48px: usa o ícone reduzido (versão de 2 arcos).
-  if (height && height < 48) tipo = "icone";
-  // Logo horizontal abaixo de 180px: ícone + nome em texto HTML.
-  if (tipo === "horizontal" && width && width < 180) tipo = "compacto";
-
-  if (tipo === "vertical") {
-    const largura = Math.max(320, width || 320);
-    const altura = Math.round(largura * PROPORCAO_VERTICAL);
-    return (
-      <img
-        src={VERTICAL}
-        alt="Toca Experience"
-        width={largura}
-        height={altura}
-        className={"block object-contain " + className}
-        style={{ width: largura, height: altura }}
-        loading={carregamento}
-      />
-    );
-  }
-
-  if (tipo === "icone") {
-    const lado = Math.max(24, iconSize || 32);
-    const altura = Math.round(lado * PROPORCAO_ICONE);
+  // Ícone sozinho: reservado a favicon / app icon.
+  if (layout === "icone") {
     return (
       <img
         src={ICONE[variant]}
         alt="Toca Experience"
-        width={lado}
-        height={altura}
+        width={iconSize}
+        height={Math.round((iconSize * 1924) / 2000)}
         className={"block object-contain " + className}
-        style={{ width: lado, height: altura }}
+        style={{
+          width: iconSize,
+          height: "auto",
+          aspectRatio: PROPORCAO_ICONE,
+          objectFit: "contain",
+          flexShrink: 0,
+        }}
         loading={carregamento}
+        decoding="async"
       />
     );
   }
 
-  if (tipo === "compacto") {
-    const lado = Math.max(24, iconSize || 32);
-    return (
-      <span className={"inline-flex items-center gap-2 " + className}>
-        <img
-          src={ICONE[variant]}
-          alt="Toca Experience"
-          width={lado}
-          height={Math.round(lado * PROPORCAO_ICONE)}
-          className="block object-contain"
-          style={{ width: lado, height: Math.round(lado * PROPORCAO_ICONE) }}
-          loading={carregamento}
-        />
-        <span
-          className="font-brand whitespace-nowrap text-base font-black leading-none"
-          style={{ color: CORES_NOME[variant] }}
-        >
-          Toca Experience
-        </span>
-      </span>
-    );
-  }
-
-  const largura = Math.max(180, width || 220);
-  const altura = Math.round(largura * (767 / 2000));
+  const larguraAtributo = width || 220;
   return (
     <img
       src={HORIZONTAL[variant]}
       alt="Toca Experience"
-      width={largura}
-      height={altura}
-      className={"block object-contain " + className}
-      style={{ width: largura, height: altura }}
+      width={larguraAtributo}
+      height={Math.round((larguraAtributo * 767) / 2000)}
+      className={"block max-w-full object-contain " + className}
+      style={{
+        ...(width ? { width } : null),
+        height: "auto",
+        aspectRatio: PROPORCAO_HORIZONTAL,
+        objectFit: "contain",
+        flexShrink: 0,
+      }}
       loading={carregamento}
+      decoding="async"
     />
   );
 }

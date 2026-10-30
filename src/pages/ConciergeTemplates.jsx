@@ -161,8 +161,7 @@ export default function ConciergeTemplates() {
             >
               Endossado por
             </p>
-            <TocaLogo variant="negativo" layout="horizontal" width={220} priority className="hidden sm:block" />
-            <TocaLogo variant="negativo" layout="compacto" iconSize={32} priority className="flex sm:hidden" />
+            <TocaLogo variant="negativo" priority className="w-[170px] sm:w-[200px]" />
           </div>
           <p className="mt-4 text-xs font-bold tracking-[0.3em]" style={{ color: "var(--ds-color-laranja)" }}>
             CONCIERGE · TEMPLATES

@@ -2,14 +2,12 @@ import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar, ConciergeBell, Newspaper, Disc3, Music, Calendar as CalendarIcon } from "lucide-react";
 import TrackingProvider from "@/components/tracking/TrackingProvider";
 import { isNoIndexPage } from "@/lib/internalPages";
 import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
 import { DsButton } from "@shared";
 import TocaLogo from "@/components/brand/TocaLogo";
-import { ECOSYSTEM_LINKS } from "@shared/ui/EcosystemHub";
+import MainNav from "@/components/layout/MainNav";
 
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
 const FloatingChatWidget = React.lazy(() => import("@/components/chatbot/FloatingChatWidget"));
@@ -526,84 +524,25 @@ export default function Layout({ children, currentPageName }) {
           className="sticky top-0 z-50 overflow-hidden border-b border-white/10 backdrop-blur-[18px]"
           style={{ backgroundColor: "var(--toca-header-bg)" }}
         >
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex min-w-0 items-center justify-between">
-              {/* Logo + Navigation Links */}
-              <div className="flex min-w-0 flex-1 items-center gap-3">
-                <Link to={createPageUrl("Home")} className="flex-shrink-0 flex items-center gap-2" aria-label="TOCA EXPERIENCE, página inicial">
-                  <TocaLogo variant="negativo" layout="horizontal" width={220} priority className="hidden sm:block" />
-                  <TocaLogo variant="negativo" layout="compacto" iconSize={32} priority className="flex sm:hidden" />
-                </Link>
-                <nav aria-label="Principal" className="flex min-w-0 flex-nowrap items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                <Button asChild variant="ghost" 
-                    size="sm"
-                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
-                  <Link to={createPageUrl("Ethos")}>
-                    ETHOS
-                  </Link>
-                </Button>
-                <Button asChild variant="ghost" 
-                    size="sm"
-                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
-                  <Link to={createPageUrl("Eventos")}>
-                    <Calendar className="mr-0.5 h-2.5 w-2.5" /> EVENTOS
-                  </Link>
-                </Button>
-                <Button asChild variant="ghost" 
-                    size="sm"
-                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
-                  <Link to={createPageUrl("Curadoria")}>
-                    <Newspaper className="mr-0.5 h-2.5 w-2.5" /> CURADORIA
-                  </Link>
-                </Button>
-                <Button asChild variant="ghost" 
-                    size="sm"
-                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
-                  <Link to={createPageUrl("Cotacao")}>
-                    <CalendarIcon className="mr-0.5 h-2.5 w-2.5" /> COTAÇÃO
-                  </Link>
-                </Button>
-                <Button asChild variant="ghost" 
-                    size="sm"
-                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
-                  <Link to={createPageUrl("Discografia")}>
-                    <Disc3 className="mr-0.5 h-2.5 w-2.5" /> DISCOS
-                  </Link>
-                </Button>
+          <div className="container mx-auto px-4">
+            <div className="flex min-h-[64px] items-center justify-between gap-3 py-2.5">
+              <Link
+                to={createPageUrl("Home")}
+                className="flex shrink-0 items-center"
+                aria-label="TOCA EXPERIENCE, página inicial"
+              >
+                <TocaLogo variant="negativo" priority className="w-[180px] xl:w-[200px]" />
+              </Link>
 
-                <Button asChild variant="ghost" 
-                    size="sm"
-                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
-                  <Link to={createPageUrl("LocacaoSom")}>
-                    <Music className="mr-0.5 h-2.5 w-2.5" /> LOCAÇÃO DE SOM
-                  </Link>
-                </Button>
-
-                <Button asChild variant="ghost"
-                    size="sm"
-                    className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide transition-all duration-200 rounded-full px-2 py-1">
-                  <Link to={createPageUrl("Concierge")}>
-                    <ConciergeBell className="mr-0.5 h-2.5 w-2.5" /> CONCIERGE
-                  </Link>
-                </Button>
-                {ECOSYSTEM_LINKS.filter((i) => !i.current).map((item) => (
-                  <Button key={item.id} asChild variant="ghost"
-                      size="sm"
-                      className="min-h-[44px] text-[#F2DEC4] hover:text-white hover:bg-white/10 text-xs whitespace-nowrap font-medium tracking-wide">
-                    <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${item.name} (abre em nova aba)`}>
-                      {item.name.toUpperCase()}
-                    </a>
-                  </Button>
-                ))}
-                  </nav>
-                  </div>
-              <DsButton href={createPageUrl("Cotacao")} className="ml-3 hidden whitespace-nowrap !min-h-[40px] !px-4 !py-2 !text-sm sm:inline-flex">
-                Solicitar proposta
-              </DsButton>
+              <div className="ml-auto flex shrink-0 items-center gap-1">
+                <MainNav />
+                <DsButton
+                  href={createPageUrl("Cotacao")}
+                  className="ml-2 hidden whitespace-nowrap !min-h-[40px] !px-4 !py-2 !text-sm lg:inline-flex"
+                >
+                  Solicitar proposta
+                </DsButton>
+              </div>
             </div>
           </div>
         </div>
@@ -616,10 +555,8 @@ export default function Layout({ children, currentPageName }) {
         {/* Global Footer */}
         <footer className="py-8 border-t border-gray-200/60 bg-white">
           <div className="container mx-auto px-6 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-4" style={{ backgroundColor: "var(--toca-obsidiana)", borderRadius: "var(--toca-radius-lg)" }}>
-                <TocaLogo variant="negativo" layout="horizontal" width={220} />
-              </div>
+            <div className="mb-5 flex justify-center">
+              <TocaLogo variant="positivo" className="w-[180px] sm:w-[200px]" />
             </div>
             <SiteFooterInfo />
           </div>
