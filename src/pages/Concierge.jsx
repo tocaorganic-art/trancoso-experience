@@ -5,7 +5,7 @@ import { DsButton } from "@shared";
 import { ConciergeBell, ArrowUpRight } from "@shared/icons";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import FloatingSpotifyPlayer from "@/components/concierge/FloatingSpotifyPlayer";
-import { ICONE_CASA, LOGO_PRINCIPAL } from "@/components/concierge/brand";
+import TocaLogo from "@/components/brand/TocaLogo";
 
 // Subcategorias da categoria Concierge. Cada subcategoria tem sua própria página.
 const ROTA_PROPOSTAS = "/concierge/propostas";
@@ -50,23 +50,15 @@ export default function Concierge() {
           />
         </div>
         <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:px-6 sm:py-24 md:text-left">
-          <div className="flex justify-center md:justify-start">
-            <img
-              src={ICONE_CASA}
-              alt=""
-              width="48"
-              height="48"
-              className="h-12 w-12 object-contain sm:hidden"
-              loading="lazy"
-            />
-            <img
-              src={LOGO_PRINCIPAL}
-              alt="Toca Experience"
-              width="220"
-              height="220"
-              className="hidden w-[220px] max-w-full object-contain sm:block"
-              loading="lazy"
-            />
+          <div className="flex flex-col items-center gap-2 md:items-start">
+            <p
+              className="text-[11px] font-bold uppercase tracking-[0.3em]"
+              style={{ color: "var(--ds-color-text-on-dark-muted)" }}
+            >
+              Endossado por
+            </p>
+            <TocaLogo variant="negativo" layout="horizontal" width={220} priority className="hidden sm:block" />
+            <TocaLogo variant="negativo" layout="compacto" iconSize={32} priority className="flex sm:hidden" />
           </div>
           <p className="mt-4 text-xs font-bold tracking-[0.3em]" style={{ color: "var(--ds-color-laranja)" }}>
             CONCIERGE

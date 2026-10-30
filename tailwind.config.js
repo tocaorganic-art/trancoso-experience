@@ -6,7 +6,8 @@ module.exports = {
   	extend: {
   		fontFamily: {
   			sans: ['"Nunito Sans"', 'system-ui', 'sans-serif'],
-  			serif: ['Newsreader', 'Georgia', 'serif']
+  			serif: ['Newsreader', 'Georgia', 'serif'],
+  			brand: ['Nunito', '"Nunito Sans"', 'system-ui', 'sans-serif']
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

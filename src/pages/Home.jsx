@@ -16,6 +16,7 @@ import DeferredResources from "@/components/performance/DeferredResources";
 import PerformanceOptimizer from "@/components/performance/PerformanceOptimizer";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import ABTestTracker from "@/components/tracking/ABTestTracker";
+import TocaLogo from "@/components/brand/TocaLogo";
 
 // Lazy load non-critical components
 const Breadcrumbs = React.lazy(() => import("@/components/seo/Breadcrumbs"));
@@ -159,6 +160,7 @@ export default function Home() {
 
         {/* Hero cinematográfico (design system compartilhado) */}
         <HeroCinematic
+          logo={<TocaLogo variant="negativo" layout="vertical" width={320} priority />}
           eyebrow="TRANCOSO · BAHIA"
           title="Experiências que conectam você ao seu"
           titleAccent="próximo destino."

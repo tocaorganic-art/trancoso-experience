@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
+import TocaLogo from '@/components/brand/TocaLogo';
 
 
 export default function PageNotFound({}) {
@@ -23,6 +24,11 @@ export default function PageNotFound({}) {
         <div className="min-h-screen flex items-center justify-center p-6 bg-slate-50">
             <div className="max-w-md w-full">
                 <div className="text-center space-y-6">
+                    {/* Marca */}
+                    <div className="flex justify-center pb-2">
+                        <TocaLogo variant="positivo" layout="horizontal" width={200} priority />
+                    </div>
+
                     {/* 404 Error Code */}
                     <div className="space-y-2">
                         <h1 className="text-7xl font-light text-slate-300">404</h1>

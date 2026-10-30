@@ -9,7 +9,6 @@ import { isNoIndexPage } from "@/lib/internalPages";
 import SiteFooterInfo from "@/components/layout/SiteFooterInfo";
 import { DsButton } from "@shared";
 import TocaLogo from "@/components/brand/TocaLogo";
-import logoPrincipal from "@/assets/brand/concierge/logo-principal.png";
 import { ECOSYSTEM_LINKS } from "@shared/ui/EcosystemHub";
 
 const GlobalSearchBar = React.lazy(() => import("@/components/search/GlobalSearchBar"));
@@ -177,7 +176,7 @@ export default function Layout({ children, currentPageName }) {
     metaKeywords.content = pageKeywords[currentPageName] || "DJ, Afro House, Organic House, House Music, Tony Monteiro, Enzo Furtado, Toca Experience, DJ para casamento, DJ para evento, DJ Trancoso, festival, sunset, pool party";
 
     // Open Graph Tags - Dinâmico por página
-    const defaultOgImage = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/45fbf25d5_anima_o_ultra_realista_e_ultra_hd_estilo.jpg";
+    const defaultOgImage = "https://www.tocaexperience.com.br/brand/og-escuro-1200x630.png";
     
     const pageOgData = {
       "Home": {
@@ -214,7 +213,7 @@ export default function Layout({ children, currentPageName }) {
       { property: "og:description", content: ogData.description },
       { property: "og:image", content: defaultOgImage },
       { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { property: "og:type", content: ogData.type },
       { property: "og:locale", content: "pt_BR" },
       { property: "og:url", content: ogData.url || canonicalLink.href },
@@ -532,7 +531,8 @@ export default function Layout({ children, currentPageName }) {
               {/* Logo + Navigation Links */}
               <div className="flex min-w-0 flex-1 items-center gap-3">
                 <Link to={createPageUrl("Home")} className="flex-shrink-0 flex items-center gap-2" aria-label="TOCA EXPERIENCE, página inicial">
-                  <TocaLogo size={40} />
+                  <TocaLogo variant="negativo" layout="horizontal" width={220} priority className="hidden sm:block" />
+                  <TocaLogo variant="negativo" layout="compacto" iconSize={32} priority className="flex sm:hidden" />
                 </Link>
                 <nav aria-label="Principal" className="flex min-w-0 flex-nowrap items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 <Button asChild variant="ghost" 
@@ -617,15 +617,8 @@ export default function Layout({ children, currentPageName }) {
         <footer className="py-8 border-t border-gray-200/60 bg-white">
           <div className="container mx-auto px-6 text-center">
             <div className="flex justify-center mb-4">
-              <div className="p-3" style={{ backgroundColor: "var(--toca-obsidiana)", borderRadius: "var(--toca-radius-lg)" }}>
-                <img
-                  src={logoPrincipal}
-                  alt="TOCA EXPERIENCE. Um ecossistema. Todas as experiências."
-                  width="2400"
-                  height="2435"
-                  className="h-24 w-24 object-contain min-[700px]:h-56 min-[700px]:w-auto"
-                  loading="lazy"
-                />
+              <div className="p-4" style={{ backgroundColor: "var(--toca-obsidiana)", borderRadius: "var(--toca-radius-lg)" }}>
+                <TocaLogo variant="negativo" layout="horizontal" width={220} />
               </div>
             </div>
             <SiteFooterInfo />

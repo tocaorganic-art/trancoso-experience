@@ -5,6 +5,7 @@ import { Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { useAuth } from "@/lib/AuthContext";
+import TocaLogo from "@/components/brand/TocaLogo";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -23,6 +24,10 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-6">
+      <div className="w-full max-w-md">
+        <div className="mb-6 flex justify-center">
+          <TocaLogo variant="negativo" layout="horizontal" width={220} priority />
+        </div>
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
@@ -54,6 +59,7 @@ export default function AdminLogin() {
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

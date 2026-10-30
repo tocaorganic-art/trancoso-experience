@@ -10,6 +10,7 @@ const needsPlainAnchor = (href) => href.startsWith("#") || /^https?:\/\//i.test(
  * que garante contraste do texto (AA).
  */
 export default function HeroCinematic({
+  logo,
   eyebrow,
   title,
   titleAccent,
@@ -42,6 +43,9 @@ export default function HeroCinematic({
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-5 py-28 text-center sm:px-6 md:text-left">
+        {logo && (
+          <div className="ds-fade-up mb-6 flex justify-center md:justify-start">{logo}</div>
+        )}
         {eyebrow && (
           <p
             className="ds-fade-up text-xs font-bold tracking-[0.3em]"

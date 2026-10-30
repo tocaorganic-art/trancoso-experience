@@ -42,7 +42,7 @@ export default function StructuredDataEvents({ eventos = [] }) {
           "@type": "Organization",
           "name": "Toca Experience",
           "url": "https://tocaexperience.com.br",
-          "logo": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f2dbf0b11165a8439c5a8b/e3f5d6cf3_LOGO_VERT_POSIT.png"
+          "logo": "https://www.tocaexperience.com.br/brand/android-512.png"
         },
         "performer": {
           "@type": "MusicGroup",
