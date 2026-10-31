@@ -6,6 +6,7 @@ import { ConciergeBell, ArrowUpRight } from "@shared/icons";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import FloatingSpotifyPlayer from "@/components/concierge/FloatingSpotifyPlayer";
 import TocaLogo from "@/components/brand/TocaLogo";
+import ClimaTrancoso from "@/components/concierge/ClimaTrancoso";
 
 // Subcategorias da categoria Concierge. Cada subcategoria tem sua própria página.
 const ROTA_PROPOSTAS = "/concierge/propostas";
@@ -128,6 +129,8 @@ export default function Concierge() {
           </div>
         </div>
       </section>
+
+      <ClimaTrancoso />
 
       <FloatingSpotifyPlayer />
     </div>
