@@ -113,7 +113,7 @@ export default function ProgramaOficialBC2026() {
           srcDoc={html}
           title="Programa Oficial Toca Experience · Balneário Camboriú 2026"
           loading="eager"
-          allow="fullscreen"
+          allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture"
           sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
           style={{ display: "block", width: "100%", height: "100dvh", border: 0, backgroundColor: BG }}
         />
