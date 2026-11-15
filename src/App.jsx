@@ -23,6 +23,8 @@ const ConciergeProposta = React.lazy(() => import('./pages/ConciergeProposta'));
 const ConciergePropostas = React.lazy(() => import('./pages/ConciergePropostas'));
 const ConciergeTemplates = React.lazy(() => import('./pages/ConciergeTemplates'));
 const PropostaEditor = React.lazy(() => import('./pages/PropostaEditor'));
+// Programa Oficial Balneário Camboriú 2026 (rota privada, tela cheia, sem Layout).
+const ProgramaOficialBC2026 = React.lazy(() => import('./pages/ProgramaOficialBC2026'));
 
 // Fallback leve enquanto o chunk da rota carrega (acessível: anuncia o carregamento).
 const PageFallback = () => (
@@ -140,6 +142,11 @@ const AuthenticatedApp = () => {
             <AdminProtectedRoute><PropostaEditor /></AdminProtectedRoute>
           </React.Suspense>
         </LayoutWrapper>
+      } />
+      <Route path="/experiencias/balneario-camboriu-2026" element={
+        <React.Suspense fallback={<PageFallback />}>
+          <ProgramaOficialBC2026 />
+        </React.Suspense>
       } />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
